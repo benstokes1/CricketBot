@@ -3,10 +3,10 @@ import asyncio
 import random 
 from discord.ext import commands
 import os
-bot=commands.Bot(command_prefix='pepu ') 
+bot=commands.Bot(command_prefix='?') 
 @bot.event
 async def on_ready():
-	print("I am ready to serve ya")
+	print("Less go")
 @bot.command()
 async def load(ctx,extension):
 	for file in os.listdir("./cogs"):
