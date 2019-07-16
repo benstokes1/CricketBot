@@ -9,12 +9,12 @@ class register(commands.Cog):
 	@commands.command(aliases=["r"])
 	async def register(self,ctx):
 		await ctx.send("Seems like u have already registered :thinking:")
-		with open("register.txt","r") as f1:
+		with open("cogs/register.txt","r") as f1:
 			for i in f1:
 				if ctx.message.author.id==int(i):
 					await ctx.send("Seems like u have already registered :thinking:")
 					return
-		with open("register.txt","a") as f:		
+		with open("cogs/register.txt","a") as f:		
 			f.write(str(ctx.message.author.id))
 			await ctx.send(f"{ctx.message.author.mention} registered succesfully")
 					
