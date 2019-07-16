@@ -2,7 +2,7 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-class clear(commands.Cog):
+class register(commands.Cog):
 	def __init__(self,bot):
 		global welcome_channel
 		self.bot=bot
@@ -18,4 +18,4 @@ class clear(commands.Cog):
 					
     
 def setup(bot):
-	bot.add_cog(clear(bot))    
+	bot.add_cog(register(bot))    
