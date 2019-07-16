@@ -19,7 +19,7 @@ class register(commands.Cog):
 		
 		user = ctx.message.author
 		role = discord.utils.get(user.server.roles, name="registered")
-		await user.add_roles(ctx.message.author, role)
+		await self.bot.add_roles(ctx.message.author, role)
 					
     
 def setup(bot):
