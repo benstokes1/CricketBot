@@ -9,16 +9,15 @@ async def on_ready():
 	print("Less go")
 @bot.command()
 async def load(ctx,extension):
-	for file in os.listdir("./cogs"):
-		bot.load_extension("cogs."+filen+f"{extension}")
+	
+	bot.load_extension(f"cogs.{extension}")
 @bot.command()
 async def unload(ctx,extension):
-	for file in os.listdir("./cogs"):
-		bot.unload_extension("cogs."+filen+f"{extension}")
+	
+	bot.unload_extension(f"cogs.{extension}")
 for filename in os.listdir("./cogs"):
-	for file in os.listdir("./cogs/"+filename):
-		if file.endswith(".py"):
-			bot.load_extension("cogs."+filename+f".{file[:-3]}")
+	if filename.endswith(".py"):
+			bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.event
 async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandNotFound):
