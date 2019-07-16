@@ -16,6 +16,10 @@ class register(commands.Cog):
 				return		
 		registers.append(ctx.message.author.id)
 		await ctx.send(f"{ctx.message.author.mention} registered successfully")
+		
+		user = ctx.message.author
+		role = discord.utils.get(user.server.roles, name="registered")
+		await client.add_roles(ctx.message.author, role)
 					
     
 def setup(bot):
