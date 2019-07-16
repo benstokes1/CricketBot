@@ -2,7 +2,7 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-register=[]
+register=[0]
 class register(commands.Cog):
 	def __init__(self,bot):
 		global register
