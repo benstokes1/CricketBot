@@ -7,7 +7,7 @@ class register(commands.Cog):
 	def __init__(self,bot):
 		global register
 		self.bot=bot
-	@commands.command(aliases=["r"])
+	@commands.command(aliases=["r"],pass_context="True")
 	async def register(self,ctx):
 		
 		for i in registers:
