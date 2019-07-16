@@ -8,7 +8,7 @@ class register(commands.Cog):
 		self.bot=bot
 	@commands.command(aliases=["r"])
 	async def register(self,ctx):
-		with f as open("register.txt","a"):
+		with open("register.txt","a") as f:
 			for i in f:
 				if ctx.message.author.id==int(i):
 					await ctx.send("Seems like u have already registered :thinking:")
