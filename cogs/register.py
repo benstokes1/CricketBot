@@ -7,7 +7,7 @@ class register(commands.Cog):
 	def __init__(self,bot):
 		global register
 		self.bot=bot
-	@commands.command(aliases=["r"])
+	@commands.command(pass_context=True)
 	async def register(self,ctx):
 		
 		for i in registers:
@@ -18,8 +18,8 @@ class register(commands.Cog):
 		await ctx.send(f"{ctx.message.author.mention} registered successfully")
 		
 		user = ctx.message
-		role = discord.utils.get(user.server.roles, name="register")
-		await self.bot.add_roles(user.author, role)
+		role = discord.utils.get(user.server.roles, name="registered")
+		await self.bot.add_roles(user.message.mentions[0], role)
 					
     
 def setup(bot):
