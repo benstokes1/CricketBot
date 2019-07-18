@@ -7,7 +7,7 @@ class register(commands.Cog):
 	def __init__(self,bot):
 		global register
 		self.bot=bot
-	@commands.command(pass_context=True)
+	@commands.command()
 	async def register(self,ctx,role:discord.Role=None):
 		
 		for i in registers:
@@ -19,7 +19,7 @@ class register(commands.Cog):
 		
 		user = ctx.message
 		role = discord.utils.get(user.guild.roles, name="registered")
-		await self.bot.add_roles(role)
+		await user.author.add_roles(role)
 					
     
 def setup(bot):
