@@ -13,14 +13,15 @@ class register(commands.Cog):
 		user=ctx.message
 		role = discord.utils.get(user.guild.roles,name="registered")
 		j = discord.utils.get(user.guild.roles,name="quiz")
+		if role in ctx.author.roles:
+			await ctx.send("Seems like u have registered already :thinking:")
+			return
 		if j in ctx.author.roles:
 			
 			await ctx.send(f"{ctx.message.author.mention} registered successfully")	
 			await user.author.add_roles(role)
 			return
-		if role in ctx.author.roles:
-			await ctx.send("Seems like u have registered already :thinking:")
-			return		
+				
 		await ctx.send("Pay 100c to Void to register your name")
 		
 		
