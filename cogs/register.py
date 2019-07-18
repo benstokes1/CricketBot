@@ -18,7 +18,7 @@ class register(commands.Cog):
 		await ctx.send(f"{ctx.message.author.mention} registered successfully")
 		
 		user = ctx.message
-		role = discord.utils.get(user.guild.roles, name="registered")
+		role = discord.utils.get(user.guild.roles,name="registered")
 		await user.author.add_roles(role)
 					
     
