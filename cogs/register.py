@@ -8,7 +8,7 @@ class register(commands.Cog):
 		global register
 		self.bot=bot
 	@commands.command()
-	async def register(self,ctx,role:discord.Role=None):
+	async def register(self,ctx):
 		
 		for i in registers:
 			if ctx.message.author.id==i:
