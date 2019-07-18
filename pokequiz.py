@@ -21,6 +21,6 @@ for filename in os.listdir("./cogs"):
 @bot.event
 async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandNotFound):
-		await ctx.send("```This is not a command\nType ?help to see the list of commands```")
+		await ctx.send("```This is not a command \nType ?help to see the list of commands```")
 
 bot.run(os.getenv("BOT_TOKEN"))
