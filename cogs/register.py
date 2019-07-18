@@ -26,12 +26,7 @@ class register(commands.Cog):
 		user = ctx.message
 		role = discord.utils.get(user.guild.roles,name="registered")
 		await user.author.add_roles(role)
-	@commands.command()
-	async def allow(self,ctx,member:discord.Member):
-		allowed.append(member.id)
-		role = discord.utils.get(member.guild.roles,name="quiz")
-		await member.add_roles(role)
-		await ctx.send(f"{member.mention} now go and register!!!")
+	
 			
 					
     
