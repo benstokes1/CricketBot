@@ -10,6 +10,6 @@ class allow(commands.Cog):
 	
 		role = discord.utils.get(member.guild.roles,name="quiz")
 		await member.add_roles(role)
-		await ctx.send(f"{member.mention}Please register to participate in the quiz")
+		await ctx.send(f"{member.mention} Please register to participate in the quiz")
 def setup(bot):
 	bot.add_cog(allow(bot))
