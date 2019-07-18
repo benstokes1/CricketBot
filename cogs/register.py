@@ -3,13 +3,19 @@ import asyncio
 import random 
 from discord.ext import commands
 registers=[0]
+allowed=[0]
 class register(commands.Cog):
 	def __init__(self,bot):
 		global register
+		global allowed
 		self.bot=bot
 	@commands.command()
 	async def register(self,ctx):
-		
+		for i in allowed:
+			if ctx.author.id!=i:
+				await ctx.send("Pay 100c to Void to register your name")
+				return
+				
 		for i in registers:
 			if ctx.message.author.id==i:
 				await ctx.send("Seems like u have registered already :thinking:")
@@ -22,6 +28,7 @@ class register(commands.Cog):
 		await user.author.add_roles(role)
 	@commands.command()
 	async def allow(self,ctx,member:discord.Member):
+		allowed.append(member.id)
 		role = discord.utils.get(member.guild.roles,name="quiz")
 		await member.add_roles(role)
 		await ctx.send(f"{member.mention} now go and register!!!")
