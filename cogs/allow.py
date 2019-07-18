@@ -6,7 +6,7 @@ class allow(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command()
-	async def register(self,ctx,member:discord.Member):
+	async def allow(self,ctx,member:discord.Member):
 	
 		role = discord.utils.get(member.guild.roles,name="quiz")
 		await member.add_roles(role)
