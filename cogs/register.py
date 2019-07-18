@@ -8,7 +8,7 @@ class register(commands.Cog):
 		global register
 		self.bot=bot
 	@commands.command(pass_context=True)
-	async def register(self,ctx):
+	async def register(self,ctx,role:discord.Role=None):
 		
 		for i in registers:
 			if ctx.message.author.id==i:
@@ -19,7 +19,7 @@ class register(commands.Cog):
 		
 		user = ctx.message
 		role = discord.utils.get(user.server.roles, name="registered")
-		await self.bot.add_roles(user.mentions[0], role)
+		await self.bot.add_roles(role)
 					
     
 def setup(bot):
