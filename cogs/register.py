@@ -20,6 +20,11 @@ class register(commands.Cog):
 		user = ctx.message
 		role = discord.utils.get(user.guild.roles,name="registered")
 		await user.author.add_roles(role)
+	@commands.command()
+	async def allow(self,ctx,member:discord.Member):
+		role = discord.utils.get(user.guild.roles,name="quiz")
+		await member.add_roles(role)
+			
 					
     
 def setup(bot):
