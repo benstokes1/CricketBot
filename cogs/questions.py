@@ -11,10 +11,17 @@ class start(commands.Cog):
 			channel = message.channel
 			await channel.send('Select a category')
 			await channel.send('1.Fire\n2.Water')
-			def check(m):
-				return m.content.title() 
-			answer = await self.bot.wait_for('message',check=check)
-			await channel.send(f'{answer.content} {answer.author.mention}')
+			while 1:
+				def check(m):
+					return m.content.title() 
+				answer = await self.bot.wait_for('message',check=check)
+				if answer.content.title() in ["Fire","Water"]:
+					await channel.send(f'{answer.content} {answer.author.mention}')
+					break
+				else:
+					await channel.send('Noob head type a right option')
+					continue
+				
 	
 	@commands.command()
 	async def start(self,ctx):
