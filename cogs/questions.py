@@ -26,9 +26,9 @@ class start(commands.Cog):
             					return msg.content.title() == i[0]
 					try:
             					answer= await client.wait_for('message', timeout=10.0, check=check)
-        				except asyncio.TimeoutError:
+					except asyncio.TimeoutError:
 						await channel.send('Times up')
-        				else:
+					else:
 						await channel.send('Right answer')
 					
 						
