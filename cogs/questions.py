@@ -6,7 +6,7 @@ class start(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.Cog.listener()
-	async def on_message(message):
+	async def on_message(selfmessage):
 		if message.content.startswith('?start'):
 			channel = message.channel
 			await channel.send('Whats the volution of pikachu?')
@@ -14,7 +14,7 @@ class start(commands.Cog):
 				m=m.title()
 				return m.content == "Raichu" 
 			try:
-				answer = await client.wait_for(message, timeout=5.0, check=check)
+				answer = await self.bot.wait_for(message, timeout=5.0, check=check)
 			except asyncio.TimeoutError:
 				await channel.send('Oops times up')
 			else:
