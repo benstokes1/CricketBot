@@ -22,9 +22,9 @@ class start(commands.Cog):
 			with open("cogs/Fire.txt","r") as question:
 				for i in question:
 					i=i.split(':')
-					await channel.send(i[1])
+					await channel.send(i[0])
 					def check(m):
-						return m.content.title()==i[1]
+						return m.content==i[1]
 					try:
 						answer = await self.bot.wait_for('message',timeout=10,check=check)
 					except asyncio.TimeoutError:
