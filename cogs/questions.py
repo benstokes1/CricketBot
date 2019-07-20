@@ -9,16 +9,12 @@ class start(commands.Cog):
 	async def on_message(self,message):
 		if message.content.startswith('?start'):
 			channel = message.channel
-			await channel.send('Whats the volution of pikachu?')
+			await channel.send('Select a category')
+			await channel.send('1.Fire\n2.Water')
 			def check(m):
-				
-				return m.content.title() == "Raichu" 
-			try:
-				answer = await self.bot.wait_for('message', timeout=10.0, check=check)
-			except asyncio.TimeoutError:
-				await channel.send('Oops times up')
-			else:
-				await channel.send(f'Right answer {answer.author.mention}')
+				return m.content.title() 
+			answer = await self.bot.wait_for('message',check=check)
+			await channel.send(f'{answer.content} {answer.author.mention}')
 	
 	@commands.command()
 	async def start(self,ctx):
