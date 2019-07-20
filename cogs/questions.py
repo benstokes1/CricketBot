@@ -27,9 +27,9 @@ class start(commands.Cog):
 					try:
             					answer= await client.wait_for('message', timeout=10.0, check=check)
         				except asyncio.TimeoutError:
-            					await channel.send('Times up')
+						await channel.send('Times up')
         				else:
-            					await channel.send('Right answer')
+						await channel.send('Right answer')
 					
 						
 					
