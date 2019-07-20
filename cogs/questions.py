@@ -24,7 +24,7 @@ class start(commands.Cog):
 					i=i.split(':')
 					await channel.send(i[0])
 					def check(msg):
-            					return msg.content.title() == i[0]
+            					return msg.content.title() == i[1]
 					
 					try:
             					answer= await self.bot.wait_for('message', timeout=10.0, check=check)
