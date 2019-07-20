@@ -16,5 +16,8 @@ class allow(commands.Cog):
 			msg = await client.wait_for('message', check=check)
 			await channel.send('Hello {.author}!'.format(msg))
 		self.bot.process_commands(message)
+	@commands.command()
+	async def start(self,ctx):
+		pass
 def setup(bot):
 	  bot.add_cog(allow(bot))
