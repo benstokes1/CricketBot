@@ -13,7 +13,7 @@ class start(commands.Cog):
 			await channel.send('1.Fire\n2.Water')
 			while 1:
 				def check(m):
-					return m.content.title() 
+					return False
 				answer = await self.bot.wait_for('message',check=check)
 				if answer.content.title() in ["Fire","Water"]:
 					await channel.send(f'{answer.content} {answer.author.mention}')
@@ -21,6 +21,9 @@ class start(commands.Cog):
 				else:
 					await channel.send('Noob head type a right option')
 					continue
+			
+						
+					
 				
 	
 	@commands.command()
