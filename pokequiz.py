@@ -18,9 +18,6 @@ async def unload(ctx,extension):
 for filename in os.listdir("./cogs"):
 	if filename.endswith(".py"):
 			bot.load_extension(f"cogs.{filename[:-3]}")
-@bot.event
-async def on_command_error(ctx,error):
-	if isinstance(error,commands.CommandNotFound):
-		await ctx.send("```This is not a command \nType ?help to see the list of commands```")
+
 
 bot.run(os.getenv("BOT_TOKEN"))
