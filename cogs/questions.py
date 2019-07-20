@@ -27,7 +27,7 @@ class start(commands.Cog):
 					await channel.send(i[0])
 					def check(msg):
 						lists.append(i[1][:-2])
-						print(list)
+						print(lists)
 						return msg.content.title() == i[1][:-2]
 					try:
             					answer= await self.bot.wait_for('message', timeout=10.0, check=check)
