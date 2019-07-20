@@ -14,7 +14,7 @@ class start(commands.Cog):
 				m=m.title()
 				return m.content == "Raichu" 
 			try:
-				answer = await self.bot.wait_for(message, timeout=5.0, check=check)
+				answer = await self.bot.wait_for('message', timeout=5.0, check=check)
 			except asyncio.TimeoutError:
 				await channel.send('Oops times up')
 			else:
