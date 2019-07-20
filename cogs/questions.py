@@ -10,17 +10,15 @@ class allow(commands.Cog):
 		if message.content.startswith('?start'):
 			channel = message.channel
 			await channel.send('Whats the volution of pikachu?')
-
 			def check(m):
 				m=m.title()
-		    		return m.content == "Raichu" 
-
+				return m.content == "Raichu" 
 			try:
-		    		answer = await client.wait_for(message, timeout=5.0, check=check)
+				answer = await client.wait_for(message, timeout=5.0, check=check)
 			except asyncio.TimeoutError:
-		    		await channel.send('Oops times up')
+				await channel.send('Oops times up')
 			else:
-		    		await channel.send(f'Right answer {answer.author}')
+				await channel.send(f'Right answer {answer.author}')
 	
 	@commands.command()
 	async def start(self,ctx):
