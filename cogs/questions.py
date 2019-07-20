@@ -24,9 +24,8 @@ class start(commands.Cog):
 					i=i.split(':')
 					await channel.send(i[0])
 					def check(msg):
-            					return msg.content.title() == i[1]
-						await channel.send(f"{msg.content})
-					
+            					await channel.send(f"{msg.content})
+						return msg.content.title() == i[1]
 					try:
             					answer= await self.bot.wait_for('message', timeout=10.0, check=check)
 					except asyncio.TimeoutError:
