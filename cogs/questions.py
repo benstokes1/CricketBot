@@ -22,15 +22,15 @@ class start(commands.Cog):
 			with open("cogs/Fire.txt","r") as question:
 				for i in question:
 					i=i.split(':')
-					await channel.send(i[0])
-					def check(m):
-						return m.content==i[1]
-					try:
-						answer = await self.bot.wait_for('message',timeout=10,check=check)
-					except asyncio.TimeoutError:
-						await channel.send("Time's up :cry:")
-					else:
-						await channel.send("Right answer")
+					def check(msg):
+            					return msg.content.title() == i[0]
+
+        				try:
+            					answer= await client.wait_for('message', timeout=10.0, check=check)
+        				except asyncio.TimeoutError:
+            					await channel.send('Times up')
+        				else:
+            					await channel.send('Right answer')
 					
 						
 					
