@@ -6,7 +6,7 @@ class allow(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.Cog.listener()
-	async def on_message(message):
+	async def on_message(self,message):
 		if message.content.startswith('?start'):
 			channel = message.channel
 			await channel.send('Whats ur name?')
