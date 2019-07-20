@@ -19,7 +19,7 @@ class start(commands.Cog):
 				else:
 					await channel.send('Noob head type a right option')
 					continue
-			with open("cogs/"+answer.content.title()+".txt","r") as question:
+			with open("cogs/"+option.content.title()+".txt","r") as question:
 				for i in question:
 					i=i.split(':')
 					await channel.send(i[0])
