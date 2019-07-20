@@ -23,10 +23,10 @@ class start(commands.Cog):
 				question=list(question)
 				for i in question:
 					i=i.split(':')
-					list=[]
+					lists=[]
 					await channel.send(i[0])
 					def check(msg):
-						list.append(i[1][:-2])
+						lists.append(i[1][:-2])
 						print(list)
 						return msg.content.title() == i[1][:-2]
 					try:
