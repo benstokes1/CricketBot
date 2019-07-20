@@ -23,7 +23,7 @@ class start(commands.Cog):
 				for i in question:
 					i=i.split(':')
 					def check(msg):
-            					return Truw
+            					return True
 					await channel.send(i[0])
 					try:
             					answer= await self.bot.wait_for('message', timeout=10.0, check=check)
