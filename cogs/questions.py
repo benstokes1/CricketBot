@@ -2,7 +2,7 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-class allow(commands.Cog):
+class start(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.Cog.listener()
@@ -24,4 +24,4 @@ class allow(commands.Cog):
 	async def start(self,ctx):
 		pass
 def setup(bot):
-	  bot.add_cog(allow(bot))
+	  bot.add_cog(start(bot))
