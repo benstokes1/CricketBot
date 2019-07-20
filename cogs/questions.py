@@ -14,11 +14,11 @@ class start(commands.Cog):
 				
 				return m.content.title() == "Raichu" 
 			try:
-				answer = await self.bot.wait_for('message', timeout=5.0, check=check)
+				answer = await self.bot.wait_for('message', timeout=10.0, check=check)
 			except asyncio.TimeoutError:
 				await channel.send('Oops times up')
 			else:
-				await channel.send(f'Right answer {answer.author}')
+				await channel.send(f'Right answer {answer.author.mention}')
 	
 	@commands.command()
 	async def start(self,ctx):
