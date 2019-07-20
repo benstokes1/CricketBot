@@ -19,7 +19,7 @@ class start(commands.Cog):
 				else:
 					await channel.send('Noob head type a right option')
 					continue
-			with open("Fire.txt","r") as question:
+			with open("cogs/Fire.txt","r") as question:
 				for i in question:
 					i=question.split(':')
 					await channel.send(i[0])
