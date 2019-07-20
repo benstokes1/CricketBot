@@ -11,8 +11,8 @@ class start(commands.Cog):
 			channel = message.channel
 			await channel.send('Whats the volution of pikachu?')
 			def check(m):
-				m=m.title()
-				return m.content == "Raichu" 
+				
+				return m.content.title() == "Raichu" 
 			try:
 				answer = await self.bot.wait_for('message', timeout=5.0, check=check)
 			except asyncio.TimeoutError:
