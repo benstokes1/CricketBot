@@ -6,16 +6,22 @@ class allow(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.Cog.listener()
-	async def on_message(self,message):
+	async def on_message(message):
 		if message.content.startswith('?start'):
 			channel = message.channel
-			await channel.send('Whats ur name?')
+			await channel.send('Whats the volution of pikachu?')
+
 			def check(m):
-				k="void"
-				return m.content.lower() == k and m.channel == channel
-			msg = await self.bot.wait_for('message', check=check)
-			await channel.send('Hello {.author}!'.format(msg))
-		self.bot.process_commands(message)
+				m=m.title()
+		    		return m.content == "Raichu" 
+
+			try:
+		    		answer = await client.wait_for(message, timeout=5.0, check=check)
+			except asyncio.TimeoutError:
+		    		await channel.send('Oops times up')
+			else:
+		    		await channel.send(f'Right answer {answer.author}')
+	
 	@commands.command()
 	async def start(self,ctx):
 		pass
