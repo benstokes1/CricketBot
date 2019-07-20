@@ -22,7 +22,7 @@ class start(commands.Cog):
 			with open("cogs/Fire.txt","r") as question:
 				for i in question:
 					i=i.split(':')
-					await channel.send(i[0])
+					await channel.send(i[1])
 					def check(m):
 						return m.content.title()==i[1]
 					try:
