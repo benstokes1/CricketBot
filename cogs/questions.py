@@ -13,7 +13,7 @@ class allow(commands.Cog):
 			def check(m):
 				k="void"
 				return m.content.lower() == k and m.channel == channel
-			msg = await client.wait_for('message', check=check)
+			msg = await self.bot.wait_for('message', check=check)
 			await channel.send('Hello {.author}!'.format(msg))
 		self.bot.process_commands(message)
 	@commands.command()
