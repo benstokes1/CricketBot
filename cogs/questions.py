@@ -19,7 +19,19 @@ class start(commands.Cog):
 				else:
 					await channel.send('Noob head type a right option')
 					continue
-			
+			with open("Fire.txt","r") as question:
+				for i in question:
+					i=question.split(':')
+					await channel.send(i[0])
+					def check(m):
+						return m.content.title()==i[0]
+					try:
+						answer = await self.bot.wait_for('message',timeout=10,check=check)
+					except asyncio.TimeoutError:
+						await channel.send("Time's up :cry:")
+					else:
+						await channel.send("Right answer")
+					
 						
 					
 				
