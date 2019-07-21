@@ -10,7 +10,7 @@ class allow(commands.Cog):
 		user=ctx.message
 		j = discord.utils.get(user.guild.roles,name="quiz_master")
 		if j not in ctx.author.roles:
-			await ctx.send("Seems like u dont have perms to allow them to register :thinking:")
+			await ctx.send("Seems like u dont have perms to use this command :thinking:")
 			return
 		else:
 			role = discord.utils.get(member.guild.roles,name="quiz")
