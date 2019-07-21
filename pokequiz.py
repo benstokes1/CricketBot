@@ -3,6 +3,7 @@ import asyncio
 import random 
 from discord.ext import commands
 import os
+import json
 bot=commands.Bot(command_prefix='?') 
 @bot.event
 async def on_ready():
