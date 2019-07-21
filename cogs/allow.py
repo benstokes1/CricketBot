@@ -7,9 +7,14 @@ class allow(commands.Cog):
 		self.bot=bot
 	@commands.command()
 	async def allow(self,ctx,member:discord.Member):
-	
-		role = discord.utils.get(member.guild.roles,name="quiz")
-		await member.add_roles(role)
-		await ctx.send(f"{member.mention} Please register to participate in the quiz")
+		user=ctx.message
+		j = discord.utils.get(user.guild.roles,name="quiz_master")
+		if j not in ctx.author.roles:
+			await ctx.send("Seems like u dont have perms to allow them to register :thinking:")
+			return
+		else:
+			role = discord.utils.get(member.guild.roles,name="quiz")
+			await member.add_roles(role)
+			await ctx.send(f"{member.mention} Please register to participate in the quiz")
 def setup(bot):
 	bot.add_cog(allow(bot))
