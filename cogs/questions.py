@@ -41,4 +41,4 @@ class start(commands.Cog):
 	async def start(self,ctx):
 		pass
 def setup(bot):
-	  bot.add_cog(start(bot))
+	bot.add_cog(start(bot))
