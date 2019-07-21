@@ -17,7 +17,8 @@ class register(commands.Cog):
 			await ctx.send("Seems like u have registered already :thinking:")
 			return
 		if j in ctx.author.roles:
-			
+			role = discord.utils.get(user.guild.roles,name="quiz")
+			await ctx.author.remove_roles(waste)
 			await ctx.send(f"{ctx.message.author.mention} registered successfully")	
 			await user.author.add_roles(role)
 			return
