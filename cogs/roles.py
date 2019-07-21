@@ -10,7 +10,7 @@ class start(commands.Cog):
 		if role==None:
 			await ctx.send("Please enter a role")
 			return 
-		await ctx.guild.create_role(name=role,permissions=discord.Permissions("manage_server"))
+		await ctx.guild.create_role(name=role,permissions=discord.Permissions("manage_guild"))
 		await ctx.send("Role created successfully")
 	@commands.command(aliases=["rr"])
 	async def register_role(self,ctx,role=None):
