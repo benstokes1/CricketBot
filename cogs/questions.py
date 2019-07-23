@@ -7,31 +7,36 @@ class start(commands.Cog):
 		self.bot=bot
 	@commands.Cog.listener()
 	async def on_message(self,message):
-		if message.content.startswith('?start'):
-			channel = message.channel
-			await channel.send('Select a category')
-			await channel.send('1.Fire\n2.Water')
-			while 1:
-				option = await self.bot.wait_for('message')
-				if option.content.title() in ["Fire","Water"]:
-					await channel.send(f'{option.content} {option.author.mention}')
-					break
-				else:
-					await channel.send('Noob head type a right option')
-					continue
-			with open("cogs/"+option.content.title()+".txt","r") as question:
-				question=list(question)
-				for i in question:
-					i=i.split(':')
-					await channel.send(i[0])
-					def check(msg):
-						return msg.content.title() == i[1][:-1]
-					try:
-            					answer= await self.bot.wait_for('message', timeout=10.0, check=check)
-					except asyncio.TimeoutError:
-						await channel.send('Times up')
+		role = discord.utils.get(message.guild.roles,name="quiz")
+		channel = message.channel
+		if role in message.author.roles:
+			if message.content.startswith('?start'):
+				channel = message.channel
+				await channel.send('Select a category')
+				await channel.send('1.Fire\n2.Water')
+				while 1:
+					option = await self.bot.wait_for('message')
+					if option.content.title() in ["Fire","Water"]:
+						await channel.send(f'{option.content} {option.author.mention}')
+						break
 					else:
-						await channel.send('Right answer')
+						await channel.send('Noob head type a right option')
+						continue
+				with open("cogs/"+option.content.title()+".txt","r") as question:
+					question=list(question)
+					for i in question:
+						i=i.split(':')
+						await channel.send(i[0])
+						def check(msg):
+							return msg.content.title() == i[1][:-1]
+						try:
+							answer= await self.bot.wait_for('message', timeout=10.0, check=check)
+						except asyncio.TimeoutError:
+							await channel.send('Times up')
+						else:
+							await channel.send('Right answer')
+		else:
+			await channel.send("Seems like u dont have the pokequiz-master role")
 					
 						
 					
