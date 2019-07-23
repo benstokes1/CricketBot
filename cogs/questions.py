@@ -9,8 +9,9 @@ class start(commands.Cog):
 	async def on_message(self,message):
 		role = discord.utils.get(message.guild.roles,name="quiz")
 		channel = message.channel
-		if role in message.author.roles:
-			if message.content.startswith('?start'):
+		if message.content.startswith('?start'):	
+			if role in message.author.roles:
+			
 				channel = message.channel
 				await channel.send('Select a category')
 				await channel.send('1.Fire\n2.Water')
@@ -35,8 +36,8 @@ class start(commands.Cog):
 							await channel.send('Times up')
 						else:
 							await channel.send('Right answer')
-		else:
-			await channel.send("Seems like u dont have the pokequiz-master role")
+			else:
+				await channel.send("Seems like u dont have the pokequiz-master role")
 					
 						
 					
