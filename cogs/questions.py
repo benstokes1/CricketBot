@@ -7,7 +7,7 @@ class start(commands.Cog):
 		self.bot=bot
 	@commands.Cog.listener()
 	async def on_message(self,message):
-		role = discord.utils.get(message.guild.roles,name="quiz")
+		role = discord.utils.get(message.guild.roles,name="quiz_master")
 		channel = message.channel
 		if message.content.startswith('?start'):	
 			if role in message.author.roles:
