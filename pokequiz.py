@@ -1,6 +1,6 @@
 import discord 
 import asyncio
-import random 
+import rand
 from discord.ext import commands
 import os
 import json
@@ -22,7 +22,7 @@ for filename in os.listdir("./cogs"):
 			bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.command()
 async def help(ctx):
-	await ctx.send("```HELP MENU:\nMy prefix is '?'\nCommands:\n?start: Starts the quiz \n?allow: Aloow the user to register for the quiz \n?register: Registers the user for the quiz\n```") 
+	await ctx.send("```HELP MENU:\nMy prefix is '?'\n\nCommands:\n\n?start: Starts the quiz \n\n?allow: Aloow the user to register for the quiz \n\n?register: Registers the user for the quiz\n\n```") 
 
 
 bot.run(os.getenv("BOT_TOKEN"))
