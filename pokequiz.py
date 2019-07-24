@@ -22,7 +22,7 @@ for filename in os.listdir("./cogs"):
 			bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.command()
 async def help(ctx):
-	await ctx.send("```HELP MENU:\nMy prefix is '?'\n\nCommands:\n\n?start: Starts the quiz \n\n?allow: Aloow the user to register for the quiz \n\n?register: Registers the user for the quiz\n\n```") 
+	await ctx.send("```HELP MENU:\n\nMy prefix is '?'\n\nCommands:\n\n?start: Starts the quiz \n\n?allow: Allows the user to register for the quiz \n\n?register: Registers the user for the quiz\n\n```") 
 
 
 bot.run(os.getenv("BOT_TOKEN"))
