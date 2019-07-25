@@ -12,17 +12,17 @@ class register(commands.Cog):
 	async def register(self,ctx):
 		user=ctx.message
 		role = discord.utils.get(user.guild.roles,name="registered")
-		j = discord.utils.get(user.guild.roles,name="quiz")
+		
 		if role in ctx.author.roles:
 			await ctx.send("Seems like u have registered already :thinking:")
 			return
-		if j in ctx.author.roles:
-			await ctx.author.remove_roles(j)
-			await ctx.send(f"{ctx.message.author.mention} registered successfully")	
-			await user.author.add_roles(role)
-			return
+		
+		
+		await ctx.send(f"{ctx.message.author.mention} registered successfully")	
+		await user.author.add_roles(role)
+		
 				
-		await ctx.send("Pay 100c to Void to register your name")
+		
 		
 		
 		
