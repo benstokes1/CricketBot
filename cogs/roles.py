@@ -19,13 +19,7 @@ class start(commands.Cog):
 			return 
 		await ctx.guild.create_role(name=role)
 		await ctx.send("Role created successfully")
-	@commands.command(aliases=["ar"])
-	async def allow_registration(self,ctx,role=None):
-		if role==None:
-			await ctx.send("Please enter a role")
-			return 
-		await ctx.guild.create_role(name=role)
-		await ctx.send("Role created successfully")
+	
 
 def setup(bot):
 	bot.add_cog(start(bot))
