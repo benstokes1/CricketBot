@@ -75,7 +75,12 @@ class start(commands.Cog):
 	async def start(self,ctx):
 		pass
 	@commands.command()
-	async def log(self,ctx):
+	async def log(self,ctx,channel:str):
 		await ctx.send(f"{ctx.message.channel.id}")
+		for i in channel:
+			if i.isdigit():
+				channel_name+=i
+				goodbye_channel=int(channel_name)
+		await ctx.send(f"{goodbye_channel}")
 def setup(bot):
 	bot.add_cog(start(bot))
