@@ -14,7 +14,7 @@ class start(commands.Cog):
 		rolez = discord.utils.get(message.guild.roles,name="registered")
 		log=self.bot.get_channel(603358767643623427)
 		channel = message.channel
-		if message.content.startswith('?start'):	
+		if message.content.startswith('~start'):	
 			if role in message.author.roles:
 				
 				channel = message.channel
@@ -69,6 +69,15 @@ class start(commands.Cog):
 	@commands.command()
 	async def start(self,ctx):
 		pass
-	
+	@commands.command(aliases=["p"])
+	async def participants(self,ctx):
+		role = discord.utils.get(message.guild.roles,name="quiz_master")
+		i=self.bot.users
+		registers=""
+		for q in i:
+			if role in i.roles:
+				registers+=i.name+"\n"
+		registers="```"+resgisters+"```"
+		await ctx.send(registers)
 def setup(bot):
 	bot.add_cog(start(bot))
