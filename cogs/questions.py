@@ -72,10 +72,10 @@ class start(commands.Cog):
 	@commands.command(aliases=["p"])
 	async def participants(self,ctx):
 		role = discord.utils.get(ctx.message.guild.roles,name="quiz_master")
-		i=self.bot.users
+		
 		registers=""
-		print(i)
-		for q in i:
+		print(self.bot.get_all_members)
+		for q in self.bot.get_all_members:
 			if role in q.roles:
 				registers+=i.name+"\n"
 		registers="```"+resgisters+"```"
