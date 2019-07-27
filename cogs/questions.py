@@ -47,7 +47,7 @@ class start(commands.Cog):
 	async def start(self,ctx):
 		pass
 	@commands.command()
-	async def log(self,):
+	async def log(self,ctx):
 		await ctx.send(f"{ctx.message.channel}")
 def setup(bot):
 	bot.add_cog(start(bot))
