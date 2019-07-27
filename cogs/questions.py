@@ -75,7 +75,7 @@ class start(commands.Cog):
 		i=self.bot.users
 		registers=""
 		for q in i:
-			if role in i.roles:
+			if role in q.roles:
 				registers+=i.name+"\n"
 		registers="```"+resgisters+"```"
 		await ctx.send(registers)
