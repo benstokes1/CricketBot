@@ -2,10 +2,12 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-log=self.bot.get_channel(603358767643623427)
+log=0
 class start(commands.Cog):
 	def __init__(self,bot):
 		global log
+		log=self.bot.get_channel(603358767643623427)
+		
 		self.bot=bot
 	@commands.Cog.listener()
 	async def on_message(self,message):
