@@ -86,7 +86,7 @@ class start(commands.Cog):
 	async def reroll(self,ctx):
 		role = discord.utils.get(ctx.message.guild.roles,name="quiz_master")
 		roles=discord.utils.get(ctx.message.guild.roles,name="registered")
-		if role not in ctx.message.author: 			
+		if role not in ctx.message.author.roles: 			
 			for q in self.bot.get_all_members():
 				if role in q.roles:
 					await q.remove_roles(role)
