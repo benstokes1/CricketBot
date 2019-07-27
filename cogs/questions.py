@@ -74,7 +74,7 @@ class start(commands.Cog):
 		role = discord.utils.get(ctx.message.guild.roles,name="quiz_master")
 		
 		registers=""
-		print(self.bot.get_all_members)
+		print(self.bot.get_all_members())
 		for q in self.bot.get_all_members:
 			if role in q.roles:
 				registers+=i.name+"\n"
