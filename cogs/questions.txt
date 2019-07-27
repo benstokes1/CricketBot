@@ -1,1 +1,10 @@
-With what type of stone we can evolve a murkrow?:Dusk Stone
+Which generation introduced Umbreon and Espeon?\n1. 3\n2. 2\n3. 4\n4. 5\n5. 1:2
+Which of the following evolves with affection?\n1. Houndoom\n2. Mimikyu\n3. Golbat\n4. Pikachu\n5. Electrike:Golbat
+Which of the following is called the 'gripper pokemon'?\n1. Machamp\n2. Bewear\n3. Grumpig\n4. Dusknoir\n5. Steelix:Dusknoir
+What type of pokemon is the most common?\n1. Grass\n2. Bug\n3. Flying\n4. Normal\n5. Water:Water
+
+
+
+
+
+
