@@ -25,10 +25,11 @@ class start(commands.Cog):
 				with open("cogs/questions.txt","r") as question:
 					question=list(question)
 					q_no=0
+					c_a=0
 					for i in question:
 						q_no+=1
 						multiplier=1
-						c_a=0
+						
 						i=i.split(':')
 						await channel.send(i[0])
 						if (c_a==2):
