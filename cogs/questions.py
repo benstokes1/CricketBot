@@ -92,7 +92,7 @@ class start(commands.Cog):
 					await q.remove_roles(roles)
 					await ctx.send("Uhh that was a very tough job!!! Good luck for the next Session")
 		else:
-			await ctx.send("YOU ARE NOT THE QUIZ MASTER NUB")
+			await ctx.send(f"{ctx.author.mention} YOU ARE NOT THE QUIZ MASTER NUB")
 		
 				
 def setup(bot):
