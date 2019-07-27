@@ -80,7 +80,7 @@ class start(commands.Cog):
 		for i in channel:
 			if i.isdigit():
 				channel_name+=i
-				goodbye_channel=int(channel_name)
+		goodbye_channel=int(channel_name)		
 		await ctx.send(f"{goodbye_channel}")
 def setup(bot):
 	bot.add_cog(start(bot))
