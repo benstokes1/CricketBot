@@ -74,11 +74,14 @@ class start(commands.Cog):
 		role = discord.utils.get(ctx.message.guild.roles,name="quiz_master")
 		
 		registers=""
+		l=[]
 		print(self.bot.get_all_members())
 		for q in self.bot.get_all_members():
+			l=l.append(q)
 			if role in q.roles:
 				registers+=q.name+"\n"
 		registers="```"+registers+"```"
 		await ctx.send(registers)
+		print(l)
 def setup(bot):
 	bot.add_cog(start(bot))
