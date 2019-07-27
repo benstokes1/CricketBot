@@ -2,7 +2,7 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-log=590447365781979176
+
 class start(commands.Cog):
 	def __init__(self,bot):
 		global log
@@ -12,7 +12,7 @@ class start(commands.Cog):
 	async def on_message(self,message):
 		role = discord.utils.get(message.guild.roles,name="quiz_master")
 		rolez = discord.utils.get(message.guild.roles,name="registered")
-		log=self.bot.get_channel(log)
+		log=self.bot.get_channel(590447365781979176)
 		channel = message.channel
 		if message.content.startswith('?start'):	
 			if role in message.author.roles:
