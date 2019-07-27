@@ -6,30 +6,22 @@ log=590447365781979176
 class start(commands.Cog):
 	def __init__(self,bot):
 		global log
-		
-		
 		self.bot=bot
-		log=self.bot.get_channel(log)
+		
 	@commands.Cog.listener()
 	async def on_message(self,message):
 		role = discord.utils.get(message.guild.roles,name="quiz_master")
-		rolez = discord.utils.get(message.guild.roles,name="quiz_master")
+		rolez = discord.utils.get(message.guild.roles,name="registered")
+		log=self.bot.get_channel(log)
 		channel = message.channel
 		if message.content.startswith('?start'):	
 			if role in message.author.roles:
 				
 				channel = message.channel
-				await channel.send('Select a category')
-				await channel.send('1.Fire\n2.Water')
-				while 1:
-					option = await self.bot.wait_for('message')
-					if option.content.title() in ["Fire","Water"]:
-						await channel.send(f'{option.content} {option.author.mention}')
-						break
-					else:
-						await channel.send('Noob head type a right option')
-						continue
-				with open("cogs/"+option.content.title()+".txt","r") as question:
+				await channel.send('{rolesz.mention} GET READY FOR THE QUIZ!')
+				await asyncio.sleep(5)
+				
+				with open("cogs/questions.txt","r") as question:
 					question=list(question)
 					q_no=0
 					for i in question:
@@ -56,13 +48,14 @@ class start(commands.Cog):
 							await channel.send('Get ready for the next question~!! Go get your brain ..u have five seconds of time')
 
 							await log.send(f"No one got it right {role.mention}\n`Answer: {answer}`\n`reward: {multiplier*100}c")
-							
+							await asyncio.sleep(5)
 						else:
 							await channel.send(f'Yay! right answer {message.author.mention}')
 							await log.send(f"{message.author.mention} answered the {q_no} question {rolez.mention}\n`Answer: {answer}`\n`reward: {multiplier*100}c")
 							c_a+=1
 							if q_no!=10:
 								await channel.send('Get ready for the next question NOOBS!! Lets take a break for 5s')
+								await asyncio.sleep(5)
 							else:
 								await channel.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
 								await log.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
