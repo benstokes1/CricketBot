@@ -2,14 +2,14 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-log=0
+log=590447365781979176
 class start(commands.Cog):
 	def __init__(self,bot):
 		global log
 		
 		
 		self.bot=bot
-		log=self.bot.get_channel(590447365781979176)
+		log=self.bot.get_channel(log)
 	@commands.Cog.listener()
 	async def on_message(self,message):
 		role = discord.utils.get(message.guild.roles,name="quiz_master")
