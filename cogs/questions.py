@@ -18,7 +18,7 @@ class start(commands.Cog):
 			if role in message.author.roles:
 				
 				channel = message.channel
-				await channel.send('{rolez.mention} GET READY FOR THE QUIZ!')
+				await channel.send(f'{rolez.mention} GET READY FOR THE QUIZ!')
 				await asyncio.sleep(10)
 				
 				with open("cogs/questions.txt","r") as question:
