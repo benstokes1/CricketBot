@@ -9,7 +9,7 @@ class start(commands.Cog):
 		
 		
 		self.bot=bot
-		log=self.bot.get_channel(603358767643623427)
+		log=self.bot.fetch_channel(603358767643623427)
 	@commands.Cog.listener()
 	async def on_message(self,message):
 		role = discord.utils.get(message.guild.roles,name="quiz_master")
@@ -60,7 +60,7 @@ class start(commands.Cog):
 							await log.send(f"{message.author.mention} answered the {q_no} question {rolez.mention}\n`Answer: {answer}`\n`reward: {multiplier*100}c")
 							c_a+=1
 							if q_no!=10:
-								await channel.send('Get ready for the next question~!! Lets take a break for 5s')
+								await channel.send('Get ready for the next question~!! Go get your brain ..u have five seconds of time')
 							else:
 								await channel.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
 								await log.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
