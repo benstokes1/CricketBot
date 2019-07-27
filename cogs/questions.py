@@ -12,7 +12,7 @@ class start(commands.Cog):
 	async def on_message(self,message):
 		role = discord.utils.get(message.guild.roles,name="quiz_master")
 		rolez = discord.utils.get(message.guild.roles,name="registered")
-		log=self.bot.get_channel(590447365781979176)
+		log=self.bot.get_channel(603358767643623427)
 		channel = message.channel
 		if message.content.startswith('?start'):	
 			if role in message.author.roles:
@@ -69,14 +69,6 @@ class start(commands.Cog):
 	@commands.command()
 	async def start(self,ctx):
 		pass
-	@commands.command()
-	async def log(self,ctx,channel:str):
-		await ctx.send(f"{ctx.message.channel.id}")
-		channel_name=""
-		for i in channel:
-			if i.isdigit():
-				channel_name+=i
-		goodbye_channel=int(channel_name)		
-		await ctx.send(f"{goodbye_channel}")
+	
 def setup(bot):
 	bot.add_cog(start(bot))
