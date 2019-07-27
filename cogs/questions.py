@@ -2,8 +2,10 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
+log = ""
 class start(commands.Cog):
 	def __init__(self,bot):
+		global log
 		self.bot=bot
 	@commands.Cog.listener()
 	async def on_message(self,message):
@@ -48,6 +50,6 @@ class start(commands.Cog):
 		pass
 	@commands.command()
 	async def log(self,ctx):
-		await ctx.send(f"{ctx.message.channel}")
+		await ctx.send(f"{ctx.message.channel.id}")
 def setup(bot):
 	bot.add_cog(start(bot))
