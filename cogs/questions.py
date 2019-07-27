@@ -77,6 +77,7 @@ class start(commands.Cog):
 	@commands.command()
 	async def log(self,ctx,channel:str):
 		await ctx.send(f"{ctx.message.channel.id}")
+		channel_name=""
 		for i in channel:
 			if i.isdigit():
 				channel_name+=i
