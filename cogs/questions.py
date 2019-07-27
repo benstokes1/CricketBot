@@ -75,7 +75,7 @@ class start(commands.Cog):
 		
 		registers=""
 		print(self.bot.get_all_members())
-		for q in self.bot.get_all_members:
+		for q in self.bot.get_all_members():
 			if role in q.roles:
 				registers+=i.name+"\n"
 		registers="```"+resgisters+"```"
