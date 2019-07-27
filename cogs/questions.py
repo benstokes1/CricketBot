@@ -31,7 +31,7 @@ class start(commands.Cog):
 						c_a=0
 						i=i.split(':')
 						await channel.send(i[0])
-						if (c_a==3):
+						if (c_a==2):
 							multiplier=random.random([2,3,4,5,6,7,8,9,10])
 							await channel.send(f'Woah a {multiplier}X popped in!!\nIt got stuck to this question.....')
 							c_a=0
@@ -54,7 +54,7 @@ class start(commands.Cog):
 							await channel.send(f'Yay! right answer {answer.author.mention}')
 							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							c_a+=1
-							if q_no!=10:
+							if q_no!=4:
 								await channel.send('Get ready for the next question NOOBS!! Lets take a break for 5s')
 								await asyncio.sleep(5)
 							else:
