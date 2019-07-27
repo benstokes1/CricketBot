@@ -50,7 +50,7 @@ class start(commands.Cog):
 							
 							await channel.send('Get ready for the next question!! Go get your brains ..u guys have five seconds of time')
 
-							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n'Question:{i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
+							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							await asyncio.sleep(5)
 						else:
 							await channel.send(f'Yay! right answer {answer.author.mention}')
