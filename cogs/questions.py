@@ -89,8 +89,10 @@ class start(commands.Cog):
 		if role in ctx.message.author.roles: 			
 			for q in self.bot.get_all_members():
 				if role in q.roles:
-					await q.remove_roles(role)
+					await q.remove_roles(roles)
 					await ctx.send("Uhh that was a very tough job!!! Good luck for the next Session")
+		else:
+			await ctx.send("YOU ARE NOT THE QUIZ MASTER NUB")
 		
 				
 def setup(bot):
