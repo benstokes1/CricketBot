@@ -71,10 +71,9 @@ class start(commands.Cog):
 		pass
 	@commands.command(aliases=["p"])
 	async def participants(self,ctx):
-		role = discord.utils.get(ctx.message.guild.roles,name="quiz_master")
+		role = discord.utils.get(ctx.message.guild.roles,name="registered")
 		
 		registers=""
-		l=[]
 		print(self.bot.get_all_members())
 		for q in self.bot.get_all_members():
 			l.append(q)
@@ -82,6 +81,5 @@ class start(commands.Cog):
 				registers+=q.name+"\n"
 		registers="```"+registers+"```"
 		await ctx.send(registers)
-		print(l)
 def setup(bot):
 	bot.add_cog(start(bot))
