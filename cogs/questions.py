@@ -80,6 +80,6 @@ class start(commands.Cog):
 			if role in q.roles:
 				registers+=q.name+"\n"
 		registers="```"+registers+"```"
-		await ctx.send(registers)
+		await ctx.send(f'```The following have registered for the quiz```{registers}')
 def setup(bot):
 	bot.add_cog(start(bot))
