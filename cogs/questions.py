@@ -74,12 +74,23 @@ class start(commands.Cog):
 		role = discord.utils.get(ctx.message.guild.roles,name="registered")
 		
 		registers=""
-		print(self.bot.get_all_members())
+		
 		for q in self.bot.get_all_members():
 			
 			if role in q.roles:
 				registers+=q.name+"\n"
 		registers="```"+registers+"```"
 		await ctx.send(f'```The following have registered for the quiz```{registers}')
+	@commands.command()
+		
+	async def reroll(self,ctx):
+		role = discord.utils.get(ctx.message.guild.roles,name="quiz_master")
+				
+		for q in self.bot.get_all_members():
+			
+			if role in q.roles:
+				await q.remove_roles(role)
+				await ctx.send("Uhh that was a very tough job!!! Good luck for the next Session")
+				
 def setup(bot):
 	bot.add_cog(start(bot))
