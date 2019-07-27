@@ -38,6 +38,7 @@ class start(commands.Cog):
 							c_a=0
 							
 						answers=i[1][:-1]
+						print(answers)
 						
 						def check(msg):
 							return msg.content.title() == answers
