@@ -52,7 +52,9 @@ class start(commands.Cog):
 						except asyncio.TimeoutError:
 							await channel.send(f'Times up {rolez.mention}')
 							c_a=0
-							await channel.send('Get ready for the next question NOOBS!! Lets take a break for 5s')
+							
+							await channel.send('Get ready for the next question~!! Go get your brain ..u have five seconds of time')
+
 							await log.send(f"No one got it right {role.mention}\n`Answer: {answer}`\n`reward: {multiplier*100}c")
 							
 						else:
@@ -60,7 +62,7 @@ class start(commands.Cog):
 							await log.send(f"{message.author.mention} answered the {q_no} question {rolez.mention}\n`Answer: {answer}`\n`reward: {multiplier*100}c")
 							c_a+=1
 							if q_no!=10:
-								await channel.send('Get ready for the next question~!! Go get your brain ..u have five seconds of time')
+								await channel.send('Get ready for the next question NOOBS!! Lets take a break for 5s')
 							else:
 								await channel.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
 								await log.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
