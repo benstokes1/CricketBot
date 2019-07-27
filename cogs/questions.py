@@ -40,9 +40,11 @@ class start(commands.Cog):
 						await channel.send(i[0])
 						if (c_a==3):
 							multiplier=random.random([2,3,4,5,6,7,8,9,10])
+							await channel.send(f'Woah a {multiplier}X popped in!!\nIt got stuck to this question.....')
 							c_a=0
+							
 						answer=i[1][:-1]
-						await channel.send(f'Woah a {multiplier}X popped in!!\nIt got stuck to this question.....')
+						
 						def check(msg):
 							return msg.content.title() == answer
 						try:
@@ -51,6 +53,8 @@ class start(commands.Cog):
 							await channel.send(f'Times up {rolez.mention}')
 							c_a=0
 							await channel.send('Get ready for the next question NOOBS!! Lets take a break for 5s')
+							await log.send(f"No one got it right {role.mention}\n`Answer: {answer}`\n`reward: {multiplier*100}c")
+							
 						else:
 							await channel.send(f'Yay! right answer {message.author.mention}')
 							await log.send(f"{message.author.mention} answered the {q_no} question {rolez.mention}\n`Answer: {answer}`\n`reward: {multiplier*100}c")
@@ -59,6 +63,7 @@ class start(commands.Cog):
 								await channel.send('Get ready for the next question~!! Lets take a break for 5s')
 							else:
 								await channel.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
+								await log.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
 			else:
 				await channel.send("Seems like u dont have the pokequiz-master role")
 					
