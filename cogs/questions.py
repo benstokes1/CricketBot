@@ -35,10 +35,10 @@ class start(commands.Cog):
 							await channel.send(f'Woah a {multiplier}X popped in!!\nIt got stuck to this question.....')
 							c_a=0
 							
-						answer=i[1][:-1]
+						answers=i[1][:-1]
 						
 						def check(msg):
-							return msg.content.title() == answer
+							return msg.content.title() == answers
 						try:
 							answer= await self.bot.wait_for('message', timeout=10.0, check=check)
 						except asyncio.TimeoutError:
@@ -47,11 +47,11 @@ class start(commands.Cog):
 							
 							await channel.send('Get ready for the next question!! Go get your brains ..u guys have five seconds of time')
 
-							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Answer: {answer}`\n`reward: {multiplier*100}`c")
+							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Answer: {answers}`\n`reward: {multiplier*100}`c")
 							await asyncio.sleep(5)
 						else:
-							await channel.send(f'Yay! right answer {message.author.mention}')
-							await log.send(f"{message.author.mention} answered the {q_no} question {rolez.mention}\n`Answer: {answer}`\n`reward: {multiplier*100}`c")
+							await channel.send(f'Yay! right answer {answer.author.mention}')
+							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Answer: {answers.content}`\n`reward: {multiplier*100}`c")
 							c_a+=1
 							if q_no!=10:
 								await channel.send('Get ready for the next question NOOBS!! Lets take a break for 5s')
