@@ -1,4 +1,4 @@
-What color are Raichu cheeks?:Yellow
-What pokemon does Pupitar evolve in to?:Tyranitar
+Which pokemon did ash first catch?:Caterpie
+What pokemon does silcoon evolve into?:Beautifly
 With what type of stone we can evolve a murkrow?:Dusk stone
-At what level does zebstrika evolve?:27
+At what level does caterpie evolve?:7
