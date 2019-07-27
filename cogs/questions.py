@@ -33,7 +33,7 @@ class start(commands.Cog):
 						i=i.split(':')
 						await channel.send(i[0])
 						if (c_a==2):
-							multiplier=random.random([2,3,4,5,6,7,8,9,10])
+							multiplier=random.choice([2,3,4,5,6,7,8,9,10])
 							await channel.send(f'Woah a {multiplier}X popped in!!\nIt got stuck to this question.....')
 							c_a=0
 							
