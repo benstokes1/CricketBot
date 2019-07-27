@@ -9,7 +9,7 @@ class start(commands.Cog):
 		
 		
 		self.bot=bot
-		log=self.bot.fetch_channel(603358767643623427)
+		log=self.bot.get_channel(603358767643623427)
 	@commands.Cog.listener()
 	async def on_message(self,message):
 		role = discord.utils.get(message.guild.roles,name="quiz_master")
