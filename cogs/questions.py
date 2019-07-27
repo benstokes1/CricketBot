@@ -77,7 +77,7 @@ class start(commands.Cog):
 		print(self.bot.get_all_members())
 		for q in self.bot.get_all_members():
 			if role in q.roles:
-				registers+=i.name+"\n"
+				registers+=q.name+"\n"
 		registers="```"+resgisters+"```"
 		await ctx.send(registers)
 def setup(bot):
