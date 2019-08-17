@@ -41,7 +41,7 @@ class start(commands.Cog):
 							await channel.send(f'`Woah a {multiplier}X popped in!!`\n`It got stuck to this question.....`')
 							c_a=0
 							
-						answers=i[6][:-1]
+						answers=i[5][:-1]
 						print(answers)
 						
 						def check(msg):
