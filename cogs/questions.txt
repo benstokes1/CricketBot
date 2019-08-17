@@ -1,4 +1,4 @@
-Which generation introduced Umbreon and Espeon? \n 1. 3 \n 2. 2 \n 3. 4 \n 4. 5 \n 5. 1:2
+Which generation introduced Umbreon and Espeon?:1. 3:2. 2: 3. 4: 4. 5: 5. 1:2
 Which of the following evolves with affection?\n1. Houndoom\n2. Mimikyu\n3. Golbat\n4. Pikachu\n5. Electrike:Golbat
 Which of the following is called the gripper pokemon'?\n1. Machamp\n2. Bewear\n3. Grumpig\n4. Dusknoir\n5. Steelix:Dusknoir
 What type of pokemon is the most common?\n1. Grass\n2. Bug\n3. Flying\n4. Normal\n5. Water:Water
