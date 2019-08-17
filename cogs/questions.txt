@@ -7,4 +7,4 @@ Which of these pokemon is a rock type?:A. Lucario:B. Empoleon:C. Pachirisu:D. Bo
 What type of attacks are Normal type Pokemon immune to?:A. Fighting:B. Ghost:C. Dark :D. Fire:Ghost
 What type of Pokemon does Gym Leader Erika specialize in?:A. Grass:B. Earth:C. Water:D. Electric:Grass
 If you're facing a Magmar in battle, which of these attacks should your Pokemon use?:A. Hyper Beam:B.Solar Beam :C.Splash :D.Earthquake :Earthquake
-In which Pokemon generation was Lugia introduced?:A.1st generation B.2nd generation :C.3rd generation :D.4th generation :2nd generation
+In which Pokemon generation was Lugia introduced?:A. 1st generation B. 2nd generation :C. 3rd generation :D. 4th generation :2nd generation
