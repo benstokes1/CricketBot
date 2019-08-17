@@ -1,6 +1,10 @@
-Which generation introduced Umbreon and Espeon?: 1. 3:2. 2: 3. 4: 4. 5: 5. 1:2
-Which of the following evolves with affection?:1. Houndoom: 2. Mimikyu: 3. Golbat: 4. Pikachu: 5. Electrike:Golbat
-Which of the following is called the gripper pokemon'?:A. Machamp:B. Bewear:C. Grumpig: 4. Dusknoir: 5. Steelix:Dusknoir
-What type of pokemon is the most common?:A. Grass:B. Bug:C. Flying:D. Normal:E. Water:Water
-Which of these Pokemon control time?:A. Dialga:B. Raichu:C. Palkia:D. Voltorb:E.Darkrai
-
+Which generation introduced Umbreon and Espeon?:A. 3:B. 2:C. 4:D. 5:2
+Which of the following evolves with affection?:A. Houndoom:B. Mimikyu:C. Golbat:D. Pikachu:Golbat
+Which of the following is called the gripper pokemon'?:A. Machamp:B. Bewear:C. Grumpig:D. Dusknoir:Dusknoir
+What type of pokemon is the most common?:A. Grass:B. Bug:C. Flying:D. Water:Water
+Which of these Pokemon control time?:A. Dialga:B. Raichu:C. Palkia:D. Voltorb:Dialga
+Which of these pokemon is a rock type?:A. Lucario:B. Empoleon:C. Pachirisu:D. Bonsly:Bonsly
+What type of attacks are Normal type Pokemon immune to?:A. Fighting:B. Ghost:C. Dark :D. Fire:Ghost
+What type of Pokemon does Gym Leader Erika specialize in?:A. Grass:B. Earth:C. Water:D. Electric:Grass
+If you're facing a Magmar in battle, which of these attacks should your Pokemon use?:A. Hyper Beam:B.Solar Beam :C.Splash :D.Earthquake :Earthquake
+In which Pokemon generation was Lugia introduced?:A.1st generation B.2nd generation :C.3rd generation :D.4th generation :2nd generation
