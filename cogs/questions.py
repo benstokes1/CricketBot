@@ -60,7 +60,7 @@ class start(commands.Cog):
 							await channel.send(f'Yay! right answer {answer.author.mention}')
 							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							c_a+=1
-							if q_no!=4:
+							if q_no!=10:
 								await channel.send('Get ready for the next question NOOBS!!')
 								await asyncio.sleep(8)
 							else:
