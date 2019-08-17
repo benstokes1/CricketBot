@@ -17,11 +17,9 @@ class start(commands.Cog):
 			log=self.bot.get_channel(603358767643623427)
 			channel = message.channel
 			if role in message.author.roles:
-				
 				channel = message.channel
 				await channel.send(f'{rolez.mention}\n```Each question has four choices. U need to type the answer (not the option number)```')
 				await asyncio.sleep(10)
-				
 				with open("cogs/questions.txt","r") as question:
 					question=list(question)
 					q_no=0
@@ -40,7 +38,6 @@ class start(commands.Cog):
 							multiplier=random.choice([2,3,4,5])
 							await channel.send(f'`Woah a {multiplier}X popped in!!`\n`It got stuck to this question.....`')
 							c_a=0
-							
 						answers=i[5][:-1]
 						print(answers)
 						
@@ -51,28 +48,19 @@ class start(commands.Cog):
 						except asyncio.TimeoutError:
 							await channel.send(f'Times up {rolez.mention}')
 							c_a=0
-							
-							await channel.send('Get ready for the next question!! Go get your brains retards ..u guys have eight seconds of time')
-
 							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
-							await asyncio.sleep(8)
 						else:
 							await channel.send(f'Yay! right answer {answer.author.mention}')
 							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							c_a+=1
-							if q_no!=10:
-								await channel.send('Get ready for the next question NOOBS!!')
-								await asyncio.sleep(8)
-							else:
-								await channel.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
-								await log.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
+						if q_no!=10:
+							await channel.send('Get ready for the next question!!')
+							await asyncio.sleep(8)
+						else:
+							await channel.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
+							await log.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
 			else:
 				await channel.send("Seems like u dont have the pokequiz-master role")
-					
-						
-					
-				
-	
 	@commands.command()
 	async def start(self,ctx):
 		pass
