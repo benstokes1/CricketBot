@@ -46,15 +46,15 @@ class start(commands.Cog):
 						try:
 							answer= await self.bot.wait_for('message', timeout=8.0, check=check)
 						except asyncio.TimeoutError:
-							await channel.send(f'```Times up```')
+							await channel.send(f"`Time's up`")
 							c_a=0
 							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 						else:
-							await channel.send(f'```Yay! right answer```')
+							await channel.send(f'`Yay! right answer`')
 							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							c_a+=1
 						if q_no!=10:
-							await channel.send('```Get ready for the next question!!```')
+							await channel.send('`Get ready for the next question!!`')
 							await asyncio.sleep(8)
 						else:
 							await channel.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
