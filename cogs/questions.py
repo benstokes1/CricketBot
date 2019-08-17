@@ -46,7 +46,7 @@ class start(commands.Cog):
 						try:
 							answer= await self.bot.wait_for('message', timeout=8.0, check=check)
 						except asyncio.TimeoutError:
-							await channel.send(f'```Times up```{rolez.mention}')
+							await channel.send(f'```Times up```')
 							c_a=0
 							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 						else:
