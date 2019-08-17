@@ -45,7 +45,7 @@ class start(commands.Cog):
 						def check(msg):
 							return msg.content.title() == answers
 						try:
-							answer= await self.bot.wait_for('message', timeout=10.0, check=check)
+							answer= await self.bot.wait_for('message', timeout=8.0, check=check)
 						except asyncio.TimeoutError:
 							await channel.send(f'Times up {rolez.mention}')
 							c_a=0
@@ -53,14 +53,14 @@ class start(commands.Cog):
 							await channel.send('Get ready for the next question!! Go get your brains ..u guys have five seconds of time')
 
 							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
-							await asyncio.sleep(5)
+							await asyncio.sleep(8)
 						else:
 							await channel.send(f'Yay! right answer {answer.author.mention}')
 							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							c_a+=1
 							if q_no!=4:
 								await channel.send('Get ready for the next question NOOBS!! Lets take a break for 5s')
-								await asyncio.sleep(5)
+								await asyncio.sleep(8)
 							else:
 								await channel.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
 								await log.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
