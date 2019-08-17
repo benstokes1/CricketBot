@@ -26,14 +26,16 @@ class start(commands.Cog):
 					question=list(question)
 					q_no=0
 					c_a=0
+					h=0
 					for i in question:
 						q_no+=1
 						multiplier=1
-						
+						if (c_a==0):
+							h=random.choice([1,2,3,4])	
 						i=i.split(':')
 						await channel.send(f"{i[0]}")
-						if (c_a==3):
-							multiplier=random.choice([2,3,4,5,6,7,8,9,10])
+						if (c_a==h):
+							multiplier=random.choice([2,3,4,5])
 							await channel.send(f'`Woah a {multiplier}X popped in!!`\n`It got stuck to this question.....`')
 							c_a=0
 							
@@ -48,7 +50,7 @@ class start(commands.Cog):
 							await channel.send(f'Times up {rolez.mention}')
 							c_a=0
 							
-							await channel.send('```Get ready for the next question!! Go get your brains ..u guys have five seconds of time```')
+							await channel.send('Get ready for the next question!! Go get your brains ..u guys have five seconds of time')
 
 							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							await asyncio.sleep(5)
@@ -57,7 +59,7 @@ class start(commands.Cog):
 							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							c_a+=1
 							if q_no!=4:
-								await channel.send('```Get ready for the next question NOOBS!! Lets take a break for 5s```')
+								await channel.send('Get ready for the next question NOOBS!! Lets take a break for 5s')
 								await asyncio.sleep(5)
 							else:
 								await channel.send(f'GG! We are done with the quiz! Winners claim your rewards from {role.mention}')
