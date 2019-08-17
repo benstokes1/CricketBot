@@ -50,7 +50,7 @@ class start(commands.Cog):
 							await channel.send(f'Times up {rolez.mention}')
 							c_a=0
 							
-							await channel.send('Get ready for the next question!! Go get your brains ..u guys have five seconds of time')
+							await channel.send('Get ready for the next question!! Go get your brains retards ..u guys have five seconds of time')
 
 							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							await asyncio.sleep(8)
