@@ -33,13 +33,14 @@ class start(commands.Cog):
 						if (c_a==0):
 							h=random.choice([1,2,3,4])	
 						i=i.split(':')
-						await channel.send(f"{i[0]}")
+						for que in range(0,5):
+							await channel.send(f"{i[que]}")
 						if (c_a==h):
 							multiplier=random.choice([2,3,4,5])
 							await channel.send(f'`Woah a {multiplier}X popped in!!`\n`It got stuck to this question.....`')
 							c_a=0
 							
-						answers=i[1][:-1]
+						answers=i[6][:-1]
 						print(answers)
 						
 						def check(msg):
