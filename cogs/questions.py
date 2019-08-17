@@ -50,7 +50,7 @@ class start(commands.Cog):
 							c_a=0
 							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 						else:
-							await channel.send(f'Yay! right answer {answer.author.mention}')
+							await channel.send(f'```Yay! right answer```')
 							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Question: {i[0]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							c_a+=1
 						if q_no!=10:
