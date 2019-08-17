@@ -34,7 +34,7 @@ class start(commands.Cog):
 							h=random.choice([1,2,3,4])	
 						i=i.split(':')
 						for que in range(0,5):
-							await channel.send(f"{i[que]}")
+							await channel.send(f"'`'+{i[que]}+'`'")
 						if (c_a==h):
 							multiplier=random.choice([2,3,4,5])
 							await channel.send(f'`Woah a {multiplier}X popped in!!`\n`It got stuck to this question.....`')
@@ -53,11 +53,11 @@ class start(commands.Cog):
 							
 							await channel.send('Get ready for the next question!! Go get your brains retards ..u guys have eight seconds of time')
 
-							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[q] for q in range(0,5)}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
+							await log.send(f"No one from the {rolez.mention} got it right {role.mention}\n`Question: {i[q]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							await asyncio.sleep(8)
 						else:
 							await channel.send(f'Yay! right answer {answer.author.mention}')
-							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Question: {i[q] for q in range(0,5)}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
+							await log.send(f"{answer.author.mention} answered the {q_no} question {rolez.mention}\n`Question: {i[q]}`\n`Answer: {answers}`\n`Reward: {multiplier*100}c`")
 							c_a+=1
 							if q_no!=4:
 								await channel.send('Get ready for the next question NOOBS!!')
