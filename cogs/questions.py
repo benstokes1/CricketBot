@@ -34,7 +34,7 @@ class start(commands.Cog):
 							h=random.choice([1,2,3,4])	
 						i=i.split(':')
 						for que in range(0,5):
-							await channel.send(f"'`'+{i[que]}+'`'")
+							await channel.send(f"`+{i[que]}+`")
 						if (c_a==h):
 							multiplier=random.choice([2,3,4,5])
 							await channel.send(f'`Woah a {multiplier}X popped in!!`\n`It got stuck to this question.....`')
