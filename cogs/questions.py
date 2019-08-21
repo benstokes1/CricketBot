@@ -28,12 +28,12 @@ class start(commands.Cog):
 					for i in question:
 						q_no+=1
 						multiplier=1
+						kek=""
 						if (c_a==0):
 							h=random.choice([1,2,3,4])	
 						i=i.split(':')
 						for que in range(0,5):
-							await channel.send(f"`{i[que]}`")
-							await asyncio.sleep(1)
+							kek.append(i[que]+'\n')
 						if (c_a==h):
 							multiplier=random.choice([2,3,4,5])
 							await channel.send(f'`Woah a {multiplier}X popped in!!`\n`It got stuck to this question.....`')
