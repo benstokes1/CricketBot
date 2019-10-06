@@ -7,7 +7,7 @@ class badge(commands.Cog):
 		self.bot=bot
 	@commands.command(aliases=["gb"])
 	async def give_badge(self,ctx,names:discord.Member=None):
-		rolez = discord.utils.get(ctx.message.guild.roles,name="gym leader")
+		rolez = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
 		
 		if rolez in ctx.message.author.roles:
 			for i in ctx.message.author.roles:
