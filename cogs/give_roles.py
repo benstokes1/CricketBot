@@ -17,7 +17,7 @@ class badge(commands.Cog):
 				await ctx.send(f"Looks like you are not a gym leader")
 				return
 			if names==None:
-				await ctx.send("```Syntax: q!give_badge <@mention>```")
+				await ctx.send("```Syntax: b!give_badge <@mention>```")
 				return
 			role = discord.utils.get(ctx.message.guild.roles,name=rolez.name[:-6]+"badge")
 			if role in names.roles:
