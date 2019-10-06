@@ -10,7 +10,7 @@ class gym_leaders(commands.Cog):
 		leader= ""
 		for q in self.bot.get_all_members():
 			for role in q.roles:
-				if role.name.endswith(" gym leader"):
+				if role.lower().name.endswith(" gym leader"):
 					leader+="\n"+" "+role.name.upper()+": "+q.name+"\n"
 		leader="\n\n"+leader
 		x="Gym Leaders: "+"\n"
