@@ -13,8 +13,10 @@ class badge(commands.Cog):
 			for i in ctx.message.author.roles:
 				if i.name.endswith(" gym leader"):
 					rolez=i
-				else:
-					await ctx.send(f"Looks like you are not a gym leader")
+			else:
+				await ctx.send(f"Looks like you are not a gym leader")
+				return
+					
 			if names==None:
 				await ctx.send("```Syntax: q!give_badge <@mention>```")
 				return
