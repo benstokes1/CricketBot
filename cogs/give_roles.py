@@ -8,7 +8,6 @@ class badge(commands.Cog):
 	@commands.command(aliases=["gb"])
 	async def give_badge(self,ctx,names:discord.Member=None):
 		rolez = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
-		
 		if rolez in ctx.message.author.roles:
 			for i in ctx.message.author.roles:
 				if i.name.endswith(" gym leader"):
@@ -17,7 +16,6 @@ class badge(commands.Cog):
 			if rolez==discord.utils.get(ctx.message.guild.roles,name="gym leaders")
 				await ctx.send(f"Looks like you are not a gym leader")
 				return
-					
 			if names==None:
 				await ctx.send("```Syntax: q!give_badge <@mention>```")
 				return
