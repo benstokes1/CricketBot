@@ -15,7 +15,7 @@ class clear(commands.Cog):
 			amount=int(amount)
 			if (ctx.channel.name.endswith("gym") or ctx.channel.name.startswith("gym")) or ctx.message.author.guild_permissions.manage_messages:
 				role = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
-				if role in ctx.message.author.roles:
+				if role in ctx.message.author.roles or ctx.message.author.guild_permissions.manage_messages:
 					if amount>100:
 						await ctx.send("```Enter a value <= 100```") 
 					else:
@@ -23,7 +23,7 @@ class clear(commands.Cog):
 						await ctx.send(f'Cleared {amount} messages')
 						await asyncio.sleep(1)
 						await ctx.channel.purge(limit=1)
-				else:
+				else :
 					await ctx.send(f"{ctx.message.author.mention} Seems like you do not have perms to delete messages")
 			else:
 				await ctx.message("I am not able to clear the messages in this channel")
