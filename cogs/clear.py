@@ -10,6 +10,7 @@ class clear(commands.Cog):
 	@commands.command()
 	async def clear(self,ctx,amount:int) :
 		if ctx.channel.name.endswith("gym") or ctx.channel.name.startswith("gym"):
+			role = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
 			if role in ctx.messsage.author.roles:
 				if amount>100:
 					await ctx.send("```Enter a value <= 100```") 
