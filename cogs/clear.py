@@ -10,7 +10,7 @@ class clear(commands.Cog):
 	@commands.command()
 	async def clear(self,ctx,amount=None) :
 		if amount==None:
-			await ctx.send("```Please enter an integral amount of messages to be deleted```")
+			await ctx.send("```Syntax: b!clear <amount>```")
 		else:
 			amount=int(amount)
 			if (ctx.channel.name.endswith("gym") or ctx.channel.name.startswith("gym")) or ctx.message.author.guild_permissions.manage_messages:
