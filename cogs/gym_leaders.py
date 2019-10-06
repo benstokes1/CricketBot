@@ -12,7 +12,7 @@ class gym_leaders(commands.Cog):
 			for role in q.roles:
 				if role.name.endswith(" gym leader"):
 					leader+="\n"+" "+role.name.upper()+": "+q.name+"\n"
-		leeader="\n\n"+leader
+		leader="\n\n"+leader
 		x="Gym Leaders: "+"\n"
 		await ctx.send(f"``` {x} {leader}```") 
 def setup(bot):
