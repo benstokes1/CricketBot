@@ -2,24 +2,20 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-class start(commands.Cog):
+class badge(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
-	@commands.command(aliases=["qm"])
-	async def quiz_master(self,ctx,role=None):
-		if role==None:
-			await ctx.send("Please enter a role")
-			return 
-		await ctx.guild.create_role(name=role,permissions=discord.Permissions(16))
-		await ctx.send("Role created successfully")
-	@commands.command(aliases=["rr"])
-	async def register_role(self,ctx,role=None):
-		if role==None:
-			await ctx.send("Please enter a role")
-			return 
-		await ctx.guild.create_role(name=role)
-		await ctx.send("Role created successfully")
-	
-
+	@commands.command(aliases=["gb"])
+	async def give_badge(self,ctx,name:discord.Member=None):
+		rolez = discord.utils.get(message.guild.roles,name="gym leader")
+		if role in ctx.message.author.roles:
+			if name==None:
+				await ctx.send("```Syntax: q!give_badge <@mention>```")
+				return
+			role = discord.utils.get(user.guild.roles,name=ctx.message.author.name[:-6]+"badge")
+			await name.add_roles(role)
+			await ctx.send(f"Congratulations {name.mention}!!")
+		else:
+			await ctx.send(f"Looks like you don't have the gym leader role")
 def setup(bot):
-	bot.add_cog(start(bot))
+	bot.add_cog(badge(bot))
