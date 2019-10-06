@@ -15,7 +15,7 @@ class gym_details(commands.Cog):
 			return 
 		user=ctx.message
 		m=m.lower()
-		l=["mixed type gym leader","dragon type gym leader","electric type gym leader","fire type gym leader","psychic type gym leader","grass type gym Leader","dark type gym leader","mega gym gym leader","fighting type gym leader","rock type gym leader"]
+		l=["mixed type gym","dragon type gym","electric type gym","fire type gym","psychic type gym","grass type gym","dark type gym","mega gym gym","fighting type gym","rock type gym"]
 		if m not in (l):
 			await ctx.send("```Syntax: g!gym_details <name of gym (ex: fire type gym)>```")
 			return
