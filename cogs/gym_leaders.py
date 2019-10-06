@@ -12,6 +12,6 @@ class gym_leaders(commands.Cog):
 			for role in q.roles:
 				if role.name.endswith(" gym leader"):
 					leader+=" "+role.name+": "+q.name+"\n"
-		await ctx.send(f"``` {m} Gym Leaders: {leader}```") 
+		await ctx.send(f"``` Gym Leaders: {leader}```") 
 def setup(bot):
 	bot.add_cog(gym_leaders(bot))
