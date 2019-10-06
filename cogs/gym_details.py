@@ -11,7 +11,7 @@ class gym_details(commands.Cog):
 	@commands.command(aliases=["gd"])
 	async def gym_details(self,ctx,*,m=None):
 		if m==None:
-			await ctx.send("```Syntax: b!gym_details <name of gym (ex: fire type gym```")
+			await ctx.send("```Syntax: b!gym_details <name of gym (ex: fire type gym)>```")
 			return 
 		user=ctx.message
 		m=m.lower()
