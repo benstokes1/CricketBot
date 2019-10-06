@@ -4,7 +4,7 @@ import random
 from discord.ext import commands
 import os
 import json
-bot=commands.Bot(command_prefix='q!')
+bot=commands.Bot(command_prefix='g!')
 bot.remove_command('help')
 @bot.event
 async def on_ready():
@@ -22,7 +22,7 @@ for filename in os.listdir("./cogs"):
 			bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.command()
 async def help(ctx):
-	await ctx.send("```HELP MENU:\n\nMy prefix is 'q!'\n\nCommands:\n\nq!start: Starts the quiz \n\nq!register: Registers the user for the quiz\n\nq!participants: Displays the list of registered users\n\nq!reroll: Takes back the registered role from the user```") 
+	await ctx.send("```HELP MENU:\n\nMy prefix is 'g!'\n\nCommands:\n\ng!gym_details <name of gym>:  Gives gym details\n\ng!give_badge <@mention>: Gives the mentioned user badge\n\ng!gym_leaders: Gives the list of gym leaders\n\ng!clear <number>: Clears the messages```") 
 
 
 bot.run(os.getenv("BOT_TOKEN"))
