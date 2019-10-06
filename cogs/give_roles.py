@@ -6,12 +6,12 @@ class badge(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command(aliases=["gb"])
-	async def give_badge(self,ctx,name:discord.Member=None):
-		rolez = discord.utils.get(ctx.message.guild.roles,names="gym leader")
+	async def give_badge(self,ctx,names:discord.Member=None):
+		rolez = discord.utils.get(ctx.message.guild.roles,name="gym leader")
 		
 		if rolez in ctx.message.author.roles:
 			for i in ctx.message.author.roles:
-				if i.name.endswith("gym leader"):
+				if i.name.endswith(" gym leader"):
 					rolez=i
 				else:
 					await ctx.send(f"Looks like you are not a gym leader")
