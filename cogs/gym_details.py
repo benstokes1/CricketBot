@@ -15,7 +15,10 @@ class gym_details(commands.Cog):
 			return 
 		user=ctx.message
 		m=m.lower()
-		l=["mixed type gym","dragon type gym","electric type gym","fire type gym","psychic type gym","grass type gym","dark type gym","mega gym gym","fighting type gym","rock type gym"]
+		l=[]
+		for q in self.bot.get_all_roles():
+			if q.name.endswith("gym leader"):
+				l.append(q.name)
 		if m not in (l):
 			await ctx.send("```Syntax: b!gym_details <name of gym (ex: fire type gym)>```")
 			return
