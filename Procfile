@@ -1,1 +1,1 @@
-worker: python pokequiz.py
+worker: python gym_bot.py
