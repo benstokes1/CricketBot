@@ -24,7 +24,7 @@ class badge(commands.Cog):
 				await ctx.send("They have already won over "+role.name[:-6])
 			else:
 				await names.add_roles(role)
-				await ctx.send(f"Congratulations {names.mention}!!"+"\n"+"Your name has been added to the hall of fame")
+				await ctx.send(f"Congratulations {names.mention}!!"+"\n"+"Your name has been added to the hall of fame of {role.name.upper()} gym")
 		else:
 			await ctx.send(f"Looks like you don't have the gym leader role")
 def setup(bot):
