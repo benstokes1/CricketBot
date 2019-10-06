@@ -26,7 +26,7 @@ class clear(commands.Cog):
 				else :
 					await ctx.send(f"{ctx.message.author.mention} Seems like you do not have perms to delete messages")
 			else:
-				await ctx.message("I am not able to clear the messages in this channel")
+				await ctx.send("I am not able to clear the messages in this channel")
 	
 				       
 	
