@@ -9,7 +9,7 @@ class clear(commands.Cog):
 	#clear
 	@commands.command()
 	async def clear(self,ctx,amount:int) :
-		if ctx.channel.name.endswith("gym") or ctx.channel.name.startswith("gym"):
+		if (ctx.channel.name.endswith("gym") or ctx.channel.name.startswith("gym")) or ctx.message.author.guild_permissions.manage_messages:
 			role = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
 			if role in ctx.messsage.author.roles:
 				if amount>100:
