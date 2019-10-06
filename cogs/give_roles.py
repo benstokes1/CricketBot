@@ -13,7 +13,8 @@ class badge(commands.Cog):
 			for i in ctx.message.author.roles:
 				if i.name.endswith(" gym leader"):
 					rolez=i
-			else:
+					break
+			if rolez==discord.utils.get(ctx.message.guild.roles,name="gym leaders")
 				await ctx.send(f"Looks like you are not a gym leader")
 				return
 					
