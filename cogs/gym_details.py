@@ -30,6 +30,6 @@ class gym_details(commands.Cog):
 			for q in self.bot.get_all_members():
 				if train in q.roles:
 					trainer+=q.name+"\n"
-			await ctx.send(f"```` {m.upper()+"\n"} Leader: {leader} Hall Of Fame: {trainer}) 
+			await ctx.send(f"```` {m.upper()+"\n"} Leader: {leader} Hall Of Fame: {trainer}```") 
 def setup(bot):
 	bot.add_cog(gym_details(bot))    
