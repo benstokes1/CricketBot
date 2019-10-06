@@ -9,7 +9,7 @@ class gym_details(commands.Cog):
 		
 		self.bot=bot
 	@commands.command(aliases=["gd"])
-	async def gym_details(self,ctx,*m=None):
+	async def gym_details(self,ctx,*,m=None):
 		if m==None:
 			await ctx.send("```Syntax: g!gym_details <name of gym (ex: fire type gym```")
 			return 
