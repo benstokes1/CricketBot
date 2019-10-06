@@ -15,7 +15,7 @@ class clear(commands.Cog):
 			amount=int(amount)
 			if (ctx.channel.name.endswith("gym") or ctx.channel.name.startswith("gym")) or ctx.message.author.guild_permissions.manage_messages:
 				role = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
-				if role in ctx.messsage.author.roles:
+				if role in ctx.message.author.roles:
 					if amount>100:
 						await ctx.send("```Enter a value <= 100```") 
 					else:
