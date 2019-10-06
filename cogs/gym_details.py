@@ -29,7 +29,7 @@ class gym_details(commands.Cog):
 					leader+=" "+q.name+"\n"
 			for q in self.bot.get_all_members():
 				if train in q.roles:
-					trainer+=" "q.name+"\n"
+					trainer+=" "+q.name+"\n"
 			m=m.upper()+'\n\n'
 			leader="\n\n"+leader+"\n"
 			trainer="\n\n"+trainer+"\n"
