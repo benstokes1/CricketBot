@@ -16,7 +16,7 @@ class gym_details(commands.Cog):
 		user=ctx.message
 		m=m.lower()
 		l=[]
-		for q in self.bot.guild.roles():
+		for q in discord.server.roles():
 			if q.name.endswith("gym leader"):
 				l.append(q.name)
 		if m not in (l):
