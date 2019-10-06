@@ -14,6 +14,6 @@ class gym_leaders(commands.Cog):
 					leader+="\n"+" "+role.name.upper()+": "+q.name+"\n"
 		leeader="\n\n"+leader
 		x="Gym Leaders: "+"\n"
-		await ctx.send(f"```{x} {leader}```") 
+		await ctx.send(f"``` {x} {leader}```") 
 def setup(bot):
 	bot.add_cog(gym_leaders(bot))
