@@ -21,7 +21,7 @@ class clear(commands.Cog):
 					else:
 						await ctx.channel.purge(limit=amount+1) 
 						await ctx.send(f'Cleared {amount} messages')
-						await asyncio.sleep(1)
+						await asyncio.sleep(0.2)
 						await ctx.channel.purge(limit=1)
 				else :
 					await ctx.send(f"{ctx.message.author.mention} Seems like you do not have perms to delete messages")
