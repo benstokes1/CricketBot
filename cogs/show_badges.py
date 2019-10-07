@@ -29,10 +29,6 @@ class show_badge(commands.Cog):
 				s+="\n"+" "+i	
 			s+="\n"
 			await ctx.send(f"``` Badge Pouch: \n\n Number of badges: {len(badges)} \n\n Gyms Defeated: {s}```")
-		@show_badge.error
-		async def on_show_badge_error(self,ctx,error):
-			if isinstance(error,commands.BadArgument):
-				await ctx.send("```Syntax: b!sb <@mention>(optional)```")
 			
 			
 		
