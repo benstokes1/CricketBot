@@ -8,6 +8,7 @@ class badge(commands.Cog):
 	@commands.command(aliases=["gb"])
 	async def give_badge(self,ctx,names:discord.Member=None):
 		l=[]
+		rolez=None
 		for q in ctx.message.guild.roles:
 			if q.name.lower().endswith("gym leader"):
 				l.append(q)
