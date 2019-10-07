@@ -25,7 +25,7 @@ class show_badge(commands.Cog):
 			await ctx.send("``` Badge Pouch: \n Number of badges: 0```")
 		else:
 			for i in badges:
-				s+="\n"+" "+badges[i]	
+				s+="\n"+" "+i	
 			await ctx.send(f"``` Badge Pouch: \n Number of badges: {len(badges)} \n Gyms Defeated: {s}```")
 			
 			
