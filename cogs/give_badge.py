@@ -9,7 +9,7 @@ class badge(commands.Cog):
 	async def give_badge(self,ctx,names:discord.Member=None):
 		l=[]
 		for q in ctx.message.guild.roles:
-			if q.name.lower().endswith("gym badge"):
+			if q.name.lower().endswith("gym leader"):
 				l.append(q)
 		for i in l:
 			if i in ctx.message.author.roles:
