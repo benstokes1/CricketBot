@@ -23,6 +23,9 @@ for filename in os.listdir("./cogs"):
 @bot.command()
 async def help(ctx):
 	await ctx.send("```HELP MENU:\n\nMy prefix is 'b!'\n\nCommands:\n\nb!gym_details <name of gym>:  Gives gym details\n\nb!give_badge <@mention>: Gives the mentioned user badge\n\nb!gym_leaders: Gives the list of gym leaders\n\nb!clear <number>: Clears the messages```") 
-
+@bot.event
+async def on_command_error(ctx,error):
+	if isinstance(error,commands.CommandNotFound):
+		await ctx.send("```This is not a command\n\nType b!help to see the list of commands```")
 
 bot.run(os.getenv("BOT_TOKEN"))
