@@ -2,31 +2,33 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-class badge(commands.Cog):
+class show_badge(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command(aliases=["gb"])
-	async def give_badge(self,ctx,names:discord.Member=None):
-		rolez = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
-		if rolez in ctx.message.author.roles:
+	async def show_badge(self,ctx,names:discord.Member=None):
+		l=[]
+		badges=[]
+		s=""
+		for q in ctx.message.guild.roles:
+			if q.name.lower().endswith("gym badge"):
+				l.append(q.name[:-7])
+		if names==None:
 			for i in ctx.message.author.roles:
-				if i.name.endswith(" gym leader"):
-					rolez=i
-					break
-			if rolez==discord.utils.get(ctx.message.guild.roles,name="gym leaders"):
-				await ctx.send(f"Looks like you are not a gym leader")
-				return
-			if names==None:
-				await ctx.send("```Syntax: b!give_badge <@mention>```")
-				return
-			role = discord.utils.get(ctx.message.guild.roles,name=rolez.name[:-6]+"badge")
-			if role in names.roles:
-				await ctx.send("They have already won over "+role.name[:-6])
-			else:
-				await names.add_roles(role)
-				await ctx.send(f"Congratulations {names.mention}!!"+"\n"+f"Your name has been added to the hall of fame of {role.name.upper()[:-6]}")
+				if i in l:
+					badges.append(i.name)
 		else:
-			await ctx.send(f"Looks like you don't have the gym leader role")
+			for i in names.roles:
+				if i in l:
+					badges.append(i.name)
+		if len(badges)==0:
+			await ctx.send("``` Badge Pouch: \n Number of badges: 0```")
+		else:
+			for i in badges:
+			s+="\n"+" "+badges[i[:-6]]	
+			await ctx.send(f"``` Badge Pouch: \n Number of badges: {len(badges)} \n Gyms Defeated: {s}```")
+			
+			
+		
 def setup(bot):
-	bot.add_cog(badge(bot))
-© 2019 GitHub, Inc.
+	bot.add_cog(show_badge(bot))
