@@ -16,16 +16,16 @@ class show_badge(commands.Cog):
 		if names==None:
 			for i in ctx.message.author.roles:
 				if i.name in l:
-					badges.append(i.name)
+					badges.append(i.name[:-6])
 		else:
 			for i in names.roles:
 				if i.name in l:
-					badges.append(i.name)
+					badges.append(i.name[:-6])
 		if len(badges)==0:
 			await ctx.send("``` Badge Pouch: \n Number of badges: 0```")
 		else:
 			for i in badges:
-				s+="\n"+" "+badges[i][:-6]	
+				s+="\n"+" "+badges[i]	
 			await ctx.send(f"``` Badge Pouch: \n Number of badges: {len(badges)} \n Gyms Defeated: {s}```")
 			
 			
