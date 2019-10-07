@@ -15,7 +15,7 @@ class show_badge(commands.Cog):
 				l.append(q.name[:-7])
 		if names==None:
 			for i in ctx.message.author.roles:
-				if i in l:
+				if i.name in l:
 					badges.append(i.name)
 		else:
 			for i in names.roles:
