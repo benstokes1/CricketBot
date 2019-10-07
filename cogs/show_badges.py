@@ -22,11 +22,12 @@ class show_badge(commands.Cog):
 				if i.name in l:
 					badges.append(i.name[:-6])
 		if len(badges)==0:
-			await ctx.send("``` Badge Pouch: \n Number of badges: 0```")
+			await ctx.send("``` Badge Pouch: \n\n Number of badges: 0```")
 		else:
 			for i in badges:
 				s+="\n"+" "+i	
-			await ctx.send(f"``` Badge Pouch: \n Number of badges: {len(badges)} \n Gyms Defeated: {s}```")
+			s+="\n"+s
+			await ctx.send(f"``` Badge Pouch: \n\n Number of badges: {len(badges)} \n\n Gyms Defeated: {s}```")
 			
 			
 		
