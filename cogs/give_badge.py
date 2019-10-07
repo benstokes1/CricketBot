@@ -16,12 +16,14 @@ class badge(commands.Cog):
 			if i in ctx.message.author.roles:
 				rolez=i
 				break
-		if rolez==None:
-			await ctx.send(f"Looks like you are not a gym leader")
-			return
+		
 		if names==None:
 			await ctx.send("```Syntax: b!give_badge <@mention>```")
 			return
+		if rolez==None:
+			await ctx.send(f"Looks like you are not a gym leader")
+			return
+		
 		role = discord.utils.get(ctx.message.guild.roles,name=rolez.name[:-6]+"badge")
 		if role in names.roles:
 			await ctx.send("They have already won over "+role.name[:-6])
