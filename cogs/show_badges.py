@@ -5,7 +5,7 @@ from discord.ext import commands
 class show_badge(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
-	@commands.command(aliases=["gb"])
+	@commands.command(aliases=["sb"])
 	async def show_badge(self,ctx,names:discord.Member=None):
 		l=[]
 		badges=[]
