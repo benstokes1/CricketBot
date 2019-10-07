@@ -12,7 +12,7 @@ class show_badge(commands.Cog):
 		s=""
 		for q in ctx.message.guild.roles:
 			if q.name.lower().endswith("gym badge"):
-				l.append(q.name[:-7])
+				l.append(q.name)
 		if names==None:
 			for i in ctx.message.author.roles:
 				if i.name in l:
