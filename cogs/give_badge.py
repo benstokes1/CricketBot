@@ -7,13 +7,14 @@ class badge(commands.Cog):
 		self.bot=bot
 	@commands.command(aliases=["gb"])
 	async def give_badge(self,ctx,names:discord.Member=None):
-		rolez = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
-		if rolez in ctx.message.author.roles:
-			for i in ctx.message.author.roles:
-				if i.name.endswith(" gym leader"):
-					rolez=i
-					break
-			if rolez==discord.utils.get(ctx.message.guild.roles,name="gym leaders"):
+		for q in ctx.message.guild.roles:
+			if q.name.lower().endswith("gym badge"):
+				l.append(q)
+		for i in l:
+			if i in ctx.message.author.roles:
+				rolez=i
+				break
+			if rolez==None:
 				await ctx.send(f"Looks like you are not a gym leader")
 				return
 			if names==None:
@@ -25,7 +26,5 @@ class badge(commands.Cog):
 			else:
 				await names.add_roles(role)
 				await ctx.send(f"Congratulations {names.mention}!!"+"\n"+f"Your name has been added to the hall of fame of {role.name.upper()[:-6]}")
-		else:
-			await ctx.send(f"Looks like you don't have the gym leader role")
 def setup(bot):
 	bot.add_cog(badge(bot))
