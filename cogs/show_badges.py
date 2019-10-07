@@ -19,7 +19,7 @@ class show_badge(commands.Cog):
 					badges.append(i.name)
 		else:
 			for i in names.roles:
-				if i in l:
+				if i.name in l:
 					badges.append(i.name)
 		if len(badges)==0:
 			await ctx.send("``` Badge Pouch: \n Number of badges: 0```")
