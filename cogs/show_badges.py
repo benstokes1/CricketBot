@@ -26,7 +26,7 @@ class show_badge(commands.Cog):
 			n=names.name
 		
 		if len(badges)==0:
-			await ctx.send("``` __Trainer Card__ \n\n Trainer Name: {n} \n\n Number of badges: 0```")
+			await ctx.send(" __```Trainer Card```__"+"``` Trainer Name: {n} \n\n Number of badges: 0```")
 
 		else:
 			for i in badges:
