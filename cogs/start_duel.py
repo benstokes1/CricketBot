@@ -41,7 +41,7 @@ class duel(commands.Cog):
 		if mem==None:
 			await ctx.send("```Syntax: b!ed <@mention>(trainer name)```")
 			return
-		if c==None:
+		if c==0:
 			await ctx.send("*smh* You didnt start a battle!")
 			return
 		await ctx.send(f"GG! {mem.mention}")
