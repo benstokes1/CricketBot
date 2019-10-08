@@ -23,4 +23,4 @@ class duel(commands.Cog):
 			for i in ctx.message.guild.text_channels:
 				print(i)
 def setup(bot):
-	bot.add_cog(start_duel(bot))
+	bot.add_cog(duel(bot))
