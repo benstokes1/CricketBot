@@ -6,7 +6,6 @@ c=None
 class duel(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
-	global c
 	@commands.command(aliases=["sd"])
 
 	async def start_duel(self,ctx,mem:discord.Member=None):
@@ -69,6 +68,6 @@ class duel(commands.Cog):
 						temp=int(i[0])
 						i.edit(topic=f"{temp}-{mem.name}")
 		c=None			
-					
+global c					
 def setup(bot):
 	bot.add_cog(duel(bot))
