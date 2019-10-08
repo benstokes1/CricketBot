@@ -60,7 +60,7 @@ class duel(commands.Cog):
 				
 				h=rolez.name.lower().split(" ")
 				if k[0]==h[0]:
-					if len(c)=0
+					if len(c)==0:
 						i.edit(topic=f"1-{mem.name}")
 					else:
 						temp=i.topic.split("-")
