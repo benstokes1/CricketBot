@@ -33,7 +33,7 @@ class show_badge(commands.Cog):
 				s+="\n"+" "+i	
 			s="\n"+s
 			await ctx.send("__```Trainer Card```__"+f"``` Trainer Name: {n} \n\n Number of badges: {len(badges)} \n\n Gyms Defeated: {s}```")
-		await ctx.send("```Type b!gl to check the list of gyms leaders and their respective gyms```")	
+			
 			
 		
 def setup(bot):
