@@ -37,4 +37,4 @@ class trainer_card(commands.Cog):
 			
 		
 def setup(bot):
-	bot.add_cog(show_badge(bot))
+	bot.add_cog(trainer_card(bot))
