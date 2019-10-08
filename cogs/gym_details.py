@@ -45,6 +45,7 @@ class gym_details(commands.Cog):
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
 				if k[0]==h[0]:
+					print(k)
 					if i.topic=="":
 						
 						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp}\n Hall Of Fame: {trainer}```") 
