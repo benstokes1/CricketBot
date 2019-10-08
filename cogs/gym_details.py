@@ -61,7 +61,7 @@ class gym_details(commands.Cog):
 						if temp[1]!=t.name:
 							await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 							return
-						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp[1]} vs {temp[2]}\n Hall Of Fame: {trainer}```") 
+						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: {temp[1]} vs {temp[2]}\n\n Hall Of Fame: {trainer}```") 
 					break	
 def setup(bot):
 	bot.add_cog(gym_details(bot))    
