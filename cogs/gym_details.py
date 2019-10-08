@@ -44,6 +44,7 @@ class gym_details(commands.Cog):
 				trainer="None"
 			else: 
 				trainer="\n\n"+trainer+"\n"
+			print(trainer)
 			
 			h=p.split(" ")
 			print(h)
