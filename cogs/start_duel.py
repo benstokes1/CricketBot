@@ -74,6 +74,7 @@ class duel(commands.Cog):
 					else:
 						temp=i.topic.split("-")
 						temp=int(i[0])+1
+						print(temp)
 						await i.edit(topic=f"{temp}-{mem.name}")
 		c=0						
 def setup(bot):
