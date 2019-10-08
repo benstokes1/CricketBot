@@ -4,10 +4,11 @@ import random
 from discord.ext import commands
 c=None
 class duel(commands.Cog):
-	global c
 	def __init__(self,bot):
 		self.bot=bot
+	global c
 	@commands.command(aliases=["sd"])
+
 	async def start_duel(self,ctx,mem:discord.Member=None):
 		if mem==None:
 			await ctx.send("```Syntax: b!sd <@mention>(trainer name)```")
