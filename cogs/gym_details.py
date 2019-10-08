@@ -11,7 +11,7 @@ class gym_details(commands.Cog):
 	@commands.command(aliases=["gd"])
 	async def gym_details(self,ctx,*,m=None):
 		if m==None:
-			await ctx.send("```Syntax: b!gym_details <name of gym (ex: fire type gym)>```")
+			await ctx.send("```Syntax: b!gym_details <name of gym (ex: fire)>```")
 			return 
 		user=ctx.message
 		m=m.lower()
@@ -19,10 +19,12 @@ class gym_details(commands.Cog):
 		for q in ctx.message.guild.roles:
 			if q.name.endswith("gym leader"):
 				l.append(q.name[:-7])
+		m+=" type gym"
 		if m not in (l):
-			await ctx.send("```Syntax: b!gym_details <name of gym (ex: fire type gym)>```")
+			await ctx.send("```Syntax: b!gym_details <name of gym (ex: fire)>```")
 			return
 		else:
+			
 			role = discord.utils.get(user.guild.roles,name=m+" leader")
 			train= discord.utils.get(user.guild.roles,name=m+" badge")
 			leader= ""
