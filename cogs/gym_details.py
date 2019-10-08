@@ -46,7 +46,7 @@ class gym_details(commands.Cog):
 				k=i.name.lower().split("-")
 				if k[0]==h[0]:
 					if i.topic=="":
-						temp="None"
+						
 						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp}\n Hall Of Fame: {trainer}```") 
 						return
 					else:
