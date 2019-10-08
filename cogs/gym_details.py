@@ -38,6 +38,10 @@ class gym_details(commands.Cog):
 					trainer+=" "+q.name+"\n"
 			p=m
 			m=m.upper()+'\n\n'
+			if leader=="":
+				leader="None"
+			if trainer=="":	
+				trainer="None"
 			leader="\n\n"+leader+"\n"
 			trainer="\n\n"+trainer+"\n"
 			h=p.split(" ")
