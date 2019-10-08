@@ -10,9 +10,7 @@ class duel(commands.Cog):
 	@commands.command(aliases=["sd"])
 
 	async def start_duel(self,ctx,mem:discord.Member=None):
-		if mem==None:
-			await ctx.send("```Syntax: b!sd <@mention>(trainer name)```")
-			return
+		
 		await ctx.send(f"Good luck {mem.mention} uwu")
 		l=[]
 		rolez=None
@@ -27,6 +25,9 @@ class duel(commands.Cog):
 			await ctx.send(f"Looks like you are not a gym leader")
 			return
 		else:
+			if mem==None:
+				await ctx.send("```Syntax: b!sd <@mention>(trainer name)```")
+				return
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
 				
@@ -38,13 +39,7 @@ class duel(commands.Cog):
 	async def end_duel(self,ctx,mem:discord.Member=None):
 		print(c)
 		
-		if mem==None:
-			await ctx.send("```Syntax: b!ed <@mention>(trainer name)```")
-			return
-		if c==0:
-			await ctx.send("*smh* You didnt start a battle!")
-			return
-		await ctx.send(f"GG! {mem.mention}")
+		
 		l=[]
 		rolez=None
 		for q in ctx.message.guild.roles:
@@ -58,6 +53,15 @@ class duel(commands.Cog):
 			await ctx.send(f"Looks like you are not a gym leader")
 			return
 		else:
+
+			if mem==None:
+				await ctx.send("```Syntax: b!ed <@mention>(trainer name)```")
+				return
+			if c==0:
+				
+				await ctx.send("*smh* You didnt start a battle!")
+				return
+			await ctx.send(f"GG! {mem.mention}")
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
 				
