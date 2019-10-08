@@ -11,7 +11,7 @@ class duel(commands.Cog):
 
 	async def start_duel(self,ctx,mem:discord.Member=None):
 		
-		await ctx.send(f"Good luck {mem.mention} uwu")
+		
 		l=[]
 		rolez=None
 		for q in ctx.message.guild.roles:
@@ -25,6 +25,7 @@ class duel(commands.Cog):
 			await ctx.send(f"Looks like you are not a gym leader")
 			return
 		else:
+			await ctx.send(f"Good luck {mem.mention} uwu")
 			if mem==None:
 				await ctx.send("```Syntax: b!sd <@mention>(trainer name)```")
 				return
