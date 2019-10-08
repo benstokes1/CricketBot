@@ -41,6 +41,7 @@ class gym_details(commands.Cog):
 			leader="\n\n"+leader+"\n"
 			trainer="\n\n"+trainer+"\n"
 			h=p.split(" ")
+			print(h)
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
 				if k[0]==h[0]:
