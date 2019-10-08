@@ -2,10 +2,10 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-class show_badge(commands.Cog):
+class trainer_card(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
-	@commands.command(aliases=["sb"])
+	@commands.command(aliases=["tc"])
 	async def show_badge(self,ctx,names:discord.Member=None):
 		l=[]
 		badges=[]
