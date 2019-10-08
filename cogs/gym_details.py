@@ -40,10 +40,13 @@ class gym_details(commands.Cog):
 			m=m.upper()+'\n\n'
 			if leader=="":
 				leader="None"
+			else:
+				leader="\n\n"+leader+"\n"
 			if trainer=="":	
 				trainer="None"
-			leader="\n\n"+leader+"\n"
-			trainer="\n\n"+trainer+"\n"
+			else: 
+				trainer="\n\n"+trainer+"\n"
+			
 			h=p.split(" ")
 			print(h)
 			for i in ctx.message.guild.text_channels:
