@@ -70,11 +70,11 @@ class duel(commands.Cog):
 				h=rolez.name.lower().split(" ")
 				if k[0]==h[0]:
 					if len(i.topic)==0:
-						i.edit(topic=f"1-{mem.name}")
+						await i.edit(topic=f"1-{mem.name}")
 					else:
 						temp=i.topic.split("-")
 						temp=int(i[0])+1
-						i.edit(topic=f"{temp}-{mem.name}")
+						await i.edit(topic=f"{temp}-{mem.name}")
 		c=0						
 def setup(bot):
 	bot.add_cog(duel(bot))
