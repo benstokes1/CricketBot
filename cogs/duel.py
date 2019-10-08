@@ -43,7 +43,6 @@ class duel(commands.Cog):
 	async def end_duel(self,ctx,mem:discord.Member=None):
 		
 		
-		
 		l=[]
 		rolez=None
 		for q in ctx.message.guild.roles:
