@@ -29,6 +29,7 @@ class duel(commands.Cog):
 				await ctx.send("```Syntax: b!sd <@mention>(trainer name)```")
 				return
 			for i in ctx.message.guild.text_channels:
+				global c
 				k=i.name.lower().split("-")
 				
 				h=rolez.name.lower().split(" ")
@@ -53,7 +54,7 @@ class duel(commands.Cog):
 			await ctx.send(f"Looks like you are not a gym leader")
 			return
 		else:
-
+			global c
 			if mem==None:
 				await ctx.send("```Syntax: b!ed <@mention>(trainer name)```")
 				return
