@@ -38,6 +38,15 @@ class gym_details(commands.Cog):
 			m=m.upper()+'\n\n'
 			leader="\n\n"+leader+"\n"
 			trainer="\n\n"+trainer+"\n"
-			await ctx.send(f"``` {m} Leader: {leader} Hall Of Fame: {trainer}```") 
+			for i in ctx.message.guild.text_channels:
+				k=i.name.lower().split("-")
+				h=rolez.name.lower().split(" ")
+				if k[0]==h[0]:
+					if k.topic=="":
+						temp="None"
+						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp}\n Hall Of Fame: {trainer}```") 
+					else:
+						temp=i.topic.split("-")
+						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp[0]} vs {temp[1]}\n Hall Of Fame: {trainer}```") 
 def setup(bot):
 	bot.add_cog(gym_details(bot))    
