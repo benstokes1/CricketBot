@@ -22,13 +22,13 @@ class duel(commands.Cog):
 			return
 		else:
 			for i in ctx.message.guild.text_channels:
-				k=i.name.split("-")
+				k=i.name.lower().split("-")
 				
 				h=rolez.name.lower().split(" ")
 				
 				if k[0]==h[0]:
 					c=i.topic
-				print(c)	
+			print(c)	
 					
 					
 def setup(bot):
