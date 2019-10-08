@@ -26,13 +26,13 @@ class show_badge(commands.Cog):
 			n=names.name
 		
 		if len(badges)==0:
-			await ctx.send("__``` Trainer Card```__"+"``` Trainer Name: {n} \n\n Number of badges: 0```")
+			await ctx.send("__```Trainer Card```__"+f"``` Trainer Name: {n} \n\n Number of badges: 0```")
 
 		else:
 			for i in badges:
 				s+="\n"+" "+i	
 			s="\n"+s
-			await ctx.send(f"__``` Trainer Card```__"+"``` Trainer Name: {n} \n\n Number of badges: {len(badges)} \n\n Gyms Defeated: {s}```")
+			await ctx.send("__```Trainer Card```__"+f"``` Trainer Name: {n} \n\n Number of badges: {len(badges)} \n\n Gyms Defeated: {s}```")
 		await ctx.send("```Type b!gl to check the list of gyms leaders and their respective gyms```")	
 			
 		
