@@ -53,8 +53,10 @@ class gym_details(commands.Cog):
 					else:
 						temp=i.topic.split("-")
 						if temp[1]!=t.name:
+							print(t)
 							await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: None\n Hall Of Fame: {trainer}```") 
 							return
 						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp[1]} vs {temp[2]}\n Hall Of Fame: {trainer}```") 
+					break	
 def setup(bot):
 	bot.add_cog(gym_details(bot))    
