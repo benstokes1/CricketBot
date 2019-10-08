@@ -2,7 +2,7 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-c=None
+c=0
 class duel(commands.Cog):
 	def __init__(self,bot):
 		global c
@@ -69,6 +69,6 @@ class duel(commands.Cog):
 						temp=i.topic.split("-")
 						temp=int(i[0])+1
 						i.edit(topic=f"{temp}-{mem.name}")
-		c=None							
+		c=0						
 def setup(bot):
 	bot.add_cog(duel(bot))
