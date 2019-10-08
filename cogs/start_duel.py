@@ -55,7 +55,6 @@ class duel(commands.Cog):
 			return
 		else:
 			global c
-			print(c)
 			if mem==None:
 				await ctx.send("```Syntax: b!ed <@mention>(trainer name)```")
 				return
