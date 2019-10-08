@@ -42,11 +42,15 @@ class gym_details(commands.Cog):
 				k=i.name.lower().split("-")
 				h=rolez.name.lower().split(" ")
 				if k[0]==h[0]:
-					if k.topic=="":
+					if i.topic=="":
 						temp="None"
 						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp}\n Hall Of Fame: {trainer}```") 
+						return
 					else:
 						temp=i.topic.split("-")
-						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp[0]} vs {temp[1]}\n Hall Of Fame: {trainer}```") 
+						if temp[1]!=q.name:
+							await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp}\n Hall Of Fame: {trainer}```") 
+							return
+						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp[1]} vs {temp[2]}\n Hall Of Fame: {trainer}```") 
 def setup(bot):
 	bot.add_cog(gym_details(bot))    
