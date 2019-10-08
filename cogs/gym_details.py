@@ -36,12 +36,13 @@ class gym_details(commands.Cog):
 			for q in self.bot.get_all_members():
 				if train in q.roles:
 					trainer+=" "+q.name+"\n"
+			p=m
 			m=m.upper()+'\n\n'
 			leader="\n\n"+leader+"\n"
 			trainer="\n\n"+trainer+"\n"
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
-				h=m.name.lower().split(" ")
+				h=p.name.lower().split(" ")
 				if k[0]==h[0]:
 					if i.topic=="":
 						temp="None"
