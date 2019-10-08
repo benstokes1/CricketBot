@@ -38,7 +38,7 @@ class duel(commands.Cog):
 					c+=1
 	@commands.command(aliases=["ed"])
 	async def end_duel(self,ctx,mem:discord.Member=None):
-		print(c)
+		
 		
 		
 		l=[]
@@ -55,6 +55,7 @@ class duel(commands.Cog):
 			return
 		else:
 			global c
+			print(c)
 			if mem==None:
 				await ctx.send("```Syntax: b!ed <@mention>(trainer name)```")
 				return
