@@ -32,7 +32,7 @@ class duel(commands.Cog):
 				h=rolez.name.lower().split(" ")
 				
 				if k[0]==h[0]:
-					c=i.topic
+					c+=1
 	@commands.command(aliases=["ed"])
 	async def end_duel(self,ctx,mem:discord.Member=None):
 		print(c)
@@ -61,13 +61,12 @@ class duel(commands.Cog):
 				
 				h=rolez.name.lower().split(" ")
 				if k[0]==h[0]:
-					if len(c)==0:
+					if len(i.topic)==0:
 						i.edit(topic=f"1-{mem.name}")
 					else:
 						temp=i.topic.split("-")
-						temp=int(i[0])
+						temp=int(i[0])+1
 						i.edit(topic=f"{temp}-{mem.name}")
-		c=None			
-global c					
+		c=None							
 def setup(bot):
 	bot.add_cog(duel(bot))
