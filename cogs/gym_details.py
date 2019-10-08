@@ -29,9 +29,10 @@ class gym_details(commands.Cog):
 			train= discord.utils.get(user.guild.roles,name=m+" badge")
 			leader= ""
 			trainer= ""
-			for q in self.bot.get_all_members():
-				if role in q.roles:
-					leader+=" "+q.name+"\n"
+			for t in self.bot.get_all_members():
+				if role in t.roles:
+					leader+=" "+t.name+"\n"
+					break
 			for q in self.bot.get_all_members():
 				if train in q.roles:
 					trainer+=" "+q.name+"\n"
@@ -40,7 +41,7 @@ class gym_details(commands.Cog):
 			trainer="\n\n"+trainer+"\n"
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
-				h=rolez.name.lower().split(" ")
+				h=t.name.lower().split(" ")
 				if k[0]==h[0]:
 					if i.topic=="":
 						temp="None"
@@ -48,7 +49,7 @@ class gym_details(commands.Cog):
 						return
 					else:
 						temp=i.topic.split("-")
-						if temp[1]!=q.name:
+						if temp[1]!=t.name:
 							await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp}\n Hall Of Fame: {trainer}```") 
 							return
 						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp[1]} vs {temp[2]}\n Hall Of Fame: {trainer}```") 
