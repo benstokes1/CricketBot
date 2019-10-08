@@ -35,6 +35,7 @@ class duel(commands.Cog):
 					c=i.topic
 	@commands.command(aliases=["ed"])
 	async def end_duel(self,ctx,mem:discord.Member=None):
+		print(c)
 		if c==None:
 			await ctx.send("*smh* You didnt start a battle!")
 			return
