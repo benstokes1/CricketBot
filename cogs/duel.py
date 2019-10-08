@@ -80,7 +80,7 @@ class duel(commands.Cog):
 						temp=i.topic.split("-")
 						
 						temp=int(temp[0])+1
-						print(temp)
+						
 						await i.edit(topic=f"{temp}-{ctx.message.author.name}-{mem.name}")
 					break
 		c=0						
