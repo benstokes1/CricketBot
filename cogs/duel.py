@@ -29,11 +29,12 @@ class duel(commands.Cog):
 			if mem==None:
 				await ctx.send("```Syntax: b!sd <@mention>(trainer name)```")
 				return
+			h=rolez.name.lower().split(" ")
 			for i in ctx.message.guild.text_channels:
 				global c
 				k=i.name.lower().split("-")
 				
-				h=rolez.name.lower().split(" ")
+				
 				
 				if k[0]==h[0]:
 					c+=1
@@ -66,10 +67,11 @@ class duel(commands.Cog):
 				await ctx.send("*smh* You didnt start a battle!")
 				return
 			await ctx.send(f"GG! {mem.mention}")
+			h=rolez.name.lower().split(" ")
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
 				
-				h=rolez.name.lower().split(" ")
+				
 				if k[0]==h[0]:
 					if len(i.topic)==0:
 						await i.edit(topic=f"1-{ctx.message.author.name}-{mem.name}")
