@@ -73,7 +73,8 @@ class duel(commands.Cog):
 						await i.edit(topic=f"1-{mem.name}")
 					else:
 						temp=i.topic.split("-")
-						temp=int(i[0])+1
+						
+						temp=int(temp[0])+1
 						print(temp)
 						await i.edit(topic=f"{temp}-{mem.name}")
 		c=0						
