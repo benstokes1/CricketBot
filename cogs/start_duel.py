@@ -22,7 +22,7 @@ class duel(commands.Cog):
 			return
 		else:
 			for i in ctx.message.guild.text_channels:
-				k=i.split("-")
+				k=i.name.split("-")
 				print(k)
 				h=rolez.name.lower().split(" ")
 				print(h)
