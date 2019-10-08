@@ -41,7 +41,7 @@ class gym_details(commands.Cog):
 			trainer="\n\n"+trainer+"\n"
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
-				h=t.name.lower().split(" ")
+				h=m.name.lower().split(" ")
 				if k[0]==h[0]:
 					if i.topic=="":
 						temp="None"
