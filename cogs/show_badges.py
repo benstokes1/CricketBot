@@ -31,7 +31,7 @@ class show_badge(commands.Cog):
 			for i in badges:
 				s+="\n"+" "+i	
 			s="\n"+s
-			await ctx.send(f"``` Trainer Card: \n\n Trainer Name: {n} \n\n Number of badges: {len(badges)} \n\n Gyms Defeated: {s}```")
+			await ctx.send(f"``` Trainer Card \n\n Trainer Name: {n} \n\n Number of badges: {len(badges)} \n\n Gyms Defeated: {s}```")
 			
 			
 		
