@@ -2,6 +2,7 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
+c=None
 class duel(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
@@ -21,6 +22,14 @@ class duel(commands.Cog):
 			return
 		else:
 			for i in ctx.message.guild.text_channels:
-				print(i)
+				k=i.split("-")
+				print(k)
+				h=rolez.name.lower().split(" ")
+				print(h)
+				if k[0]==h[0]:
+					c=i.topic
+					
+					
+					
 def setup(bot):
 	bot.add_cog(duel(bot))
