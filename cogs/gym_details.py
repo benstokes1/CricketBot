@@ -47,14 +47,13 @@ class gym_details(commands.Cog):
 				if k[0]==h[0]:
 					print(k)
 					if i.topic=="":
-						
-						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp}\n Hall Of Fame: {trainer}```") 
+						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 						return
 					else:
 						temp=i.topic.split("-")
 						if temp[1]!=t.name:
 							print(t)
-							await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: None\n Hall Of Fame: {trainer}```") 
+							await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 							return
 						await ctx.send(f"``` {m} Leader: {leader} \n\n Last Battle: {temp[1]} vs {temp[2]}\n Hall Of Fame: {trainer}```") 
 					break	
