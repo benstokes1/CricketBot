@@ -40,8 +40,6 @@ class gym_details(commands.Cog):
 			m=m.upper()+'\n\n'
 			if leader=="":
 				leader="None"
-			else:
-				leader="\n\n"+leader+"\n"
 			if trainer=="":	
 				trainer="None"
 			else: 
