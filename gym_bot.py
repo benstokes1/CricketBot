@@ -22,7 +22,7 @@ for filename in os.listdir("./cogs"):
 			bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.command()
 async def help(ctx):
-	await ctx.send("```HELP MENU:\n\nMy prefix is 'b!'\n\nCommands:\n\nb!gym_details <name of gym>:  Gives gym details\n\nb!give_badge <@mention>: Gives the mentioned user badge\n\nb!gym_leaders: Gives the list of gym leaders\n\nb!clear <number>: Clears the messages\n\nb!show_badges <@mention>(optional) : Shows the badges owned by the trainer```") 
+	await ctx.send("```HELP MENU:\n\nMy prefix is 'b!'\n\nCommands:\n\nb!gym_details <name of gym> (example b!gd fire):  Gives gym details\n\nb!give_badge <@mention>: Gives the mentioned user badge\n\nb!gym_leaders: Gives the list of gym leaders\n\nb!clear <number>: Clears the messages\n\nb!show_badges <@mention>(optional) : Shows the badges owned by the trainer```") 
 @bot.event
 async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandNotFound):
