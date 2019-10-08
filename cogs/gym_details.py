@@ -11,7 +11,7 @@ class gym_details(commands.Cog):
 	@commands.command(aliases=["gd"])
 	async def gym_details(self,ctx,*,m=None):
 		if m==None:
-			await ctx.send("```Syntax: b!gym_details <name of gym (ex: fire)>```")
+			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return 
 		user=ctx.message
 		m=m.lower()
@@ -21,7 +21,7 @@ class gym_details(commands.Cog):
 				l.append(q.name[:-7])
 		m+=" type gym"
 		if m not in (l):
-			await ctx.send("```Syntax: b!gym_details <name of gym (ex: fire)>```")
+			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return
 		else:
 			
@@ -40,9 +40,9 @@ class gym_details(commands.Cog):
 			m=m.upper()+'\n\n'
 			leader="\n\n"+leader+"\n"
 			trainer="\n\n"+trainer+"\n"
+			h=p.split(" ")
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
-				h=p.name.lower().split(" ")
 				if k[0]==h[0]:
 					if i.topic=="":
 						temp="None"
