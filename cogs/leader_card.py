@@ -19,7 +19,7 @@ class leader_card(commands.Cog):
 				l.append(m[0])
 		print(l)
 		if mem==None:
-			print("g")
+			
 			mem=ctx.message.author
 		else:
 			if mem.lower() not in l:
@@ -29,25 +29,25 @@ class leader_card(commands.Cog):
 				mem=mem.lower()
 				for t in self.bot.get_all_members():
 					for i in t.roles:
-						if i.name.lower().endswith("gym badge"): 
+						if i.name.lower().endswith("gym leader"): 
 							g=i.name.lower().split(" ")
 							if g[0] == mem:
-								print(i.name)
+								
 								mem=t
-								print(mem)
+								
 								break
 		for i in mem.roles:
 			if i.name.lower().endswith("gym leader"):
 				h=i.name.lower().split(" ")
-				print(h[0])
+				
 				p=h[0]
-		print(p)
+		
 		if p==None:
 			await ctx.send("Looks like you are not a gym leader")
 			return
 		for i in ctx.message.guild.text_channels:
 			k=i.name.lower().split("-")
-			print(k[0])
+			
 			if k[0]==p:
 				p=p.title()
 				if i.topic==None:
