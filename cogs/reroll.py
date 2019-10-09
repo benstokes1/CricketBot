@@ -8,8 +8,8 @@ class reroll(commands.Cog):
 	def __init__(self,bot):
 		
 		self.bot=bot
-	@commands.command(aliases=["gd"])
-	async def reroll(self,ctx,*,a=None):
+	@commands.command(aliases=["rr"])
+	async def re_roll(self,ctx,*,a=None):
 		l=[]
 		g=[]
 		for q in ctx.message.guild.roles:
@@ -34,7 +34,7 @@ class reroll(commands.Cog):
 					return
 							
 				else:
-					await ctx.send("```Syntax:b!reroll <name of gym>(ex: fire)(optional)```")
+					await ctx.send("```Syntax:b!re_roll <name of gym>(ex: fire)(optional)```")
 					return
 			if a==None:
 				for q in ctx.message.author.roles:
@@ -59,7 +59,7 @@ class reroll(commands.Cog):
 							if p[0]==a:
 								await o.remove_roles(j.name,reason=ctx.message.author.name,atomic=True)
 								break
-					await ctx.send(f"All the {i.name}s have been stolen\nCheck Audit logs for more info")
+					await ctx.send(f"All the {j.name}s have been stolen\nCheck Audit logs for more info")
 					
 				else:
 					await ctx.send("```Syntax:b!reroll <name of gym>(ex: fire)(optional)```")
