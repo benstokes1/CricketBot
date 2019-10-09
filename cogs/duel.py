@@ -38,6 +38,8 @@ class duel(commands.Cog):
 				
 				if k[0]==h[0]:
 					c+=1
+					if len(i.topic)==0:
+						break
 					temp=i.topic.split("-")
 					if temp[1]!=ctx.message.author.name:
 						await i.edit(topic=f"0-{ctx.message.author.name}-{mem.name}")
