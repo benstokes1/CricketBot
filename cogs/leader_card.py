@@ -29,13 +29,13 @@ class leader_card(commands.Cog):
 				mem=mem.lower()
 				for t in self.bot.get_all_members():
 					for i in t.roles:
-						g=i.name.lower().split(" ")
-						if g[0] == mem:
-							print(i.name)
-							mem=t
-							break
+						if i.name.lower().endswith("gym badge"): 
+							g=i.name.lower().split(" ")
+							if g[0] == mem:
+								print(i.name)
+								mem=t
+								break
 		for i in mem.roles:
-			print("i")
 			if i.name.lower().endswith("gym leader"):
 				h=i.name.lower().split(" ")
 				print(h[0])
