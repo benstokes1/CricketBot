@@ -17,7 +17,7 @@ class leader_card(commands.Cog):
 			if q.name.lower().endswith("gym leader"):
 				m=q.name.lower().split(" ")
 				l.append(m[0])
-		
+		print(l)
 		if mem==None:
 			mem=ctx.message.author
 		elif mem.lower() not in m:
