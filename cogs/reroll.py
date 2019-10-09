@@ -43,7 +43,7 @@ class reroll(commands.Cog):
 					for i in o.roles:
 						p=i.name.split(" ")
 						if p[0]==q[0]:
-							await j.remove_roles(i.name,reason=ctx.message.author.name,atomic=True)
+							await o.remove_roles(i.name,reason=ctx.message.author.name,atomic=True)
 							break
 				await ctx.send(f"All the {i.name}s have been stolen\nCheck Audit logs for more info")
 
@@ -54,68 +54,17 @@ class reroll(commands.Cog):
 				if a in i:
 					for o in self.bot.get_all_members:
 						for j in o.roles:
-							p=i.name.split(" ")
+							p=j.name.split(" ")
 							if p[0]==a:
-								await j.remove_roles(i.name,reason=ctx.message.author.name,atomic=True)
+								await o.remove_roles(j.name,reason=ctx.message.author.name,atomic=True)
 								break
 					await ctx.send(f"All the {i.name}s have been stolen\nCheck Audit logs for more info")
 					
 				else:
-					
-					
-
-		if m==None:
-			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
-			return 
-		user=ctx.message
-		m=m.lower()
-		
-		m+=" type gym"
-		if m not in (l):
-			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
-			return
+					await ctx.send("```Syntax:b!reroll <name of gym>(ex: fire)(optional)```")
 		else:
-			
-			role = discord.utils.get(user.guild.roles,name=m+" leader")
-			train= discord.utils.get(user.guild.roles,name=m+" badge")
-			leader= ""
-			trainer= ""
-			for t in self.bot.get_all_members():
-				if role in t.roles:
-					leader+=" "+t.name+"\n"
-					break
-			
-			p=m
-			m=m.upper()+'\n\n'
-			if leader=="":
-				leader="None"
-			if trainer=="":	
-				trainer="None"
-			else: 
-				trainer="\n\n"+trainer+"\n"
+			await ctx.send("Looks like you arent any gym leeader")
+
 		
-			
-			h=p.split(" ")
-		
-			for i in ctx.message.guild.text_channels:
-				k=i.name.lower().split("-")
-				if k[0]==h[0]:
-				
-					if i.topic==None:
-						
-						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
-						
-					elif len(i.topic)==0:
-						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
-					else:
-						temp=i.topic.split("-")	
-						if int(temp[1])!=t.id:
-							await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
-							return
-						for f in self.bot.get_all_members():
-							if f.id==int(temp[2]):
-								break
-						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: {t.name} vs {f.name}\n\n Hall Of Fame: {trainer}```") 
-					break	
 def setup(bot):
 	bot.add_cog(reroll(bot))
