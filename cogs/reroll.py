@@ -10,17 +10,18 @@ class reroll(commands.Cog):
 		self.bot=bot
 	@commands.command(aliases=["rr"])
 	async def re_roll(self,ctx,*,a=None):
-		if  role in l:
-			
-			j=[]
-			for q in ctx.message.guild.roles:
+		j=[]
+		for q in ctx.message.guild.roles:
 				if q.name.endswith("badge"):
 					j.append(q)
-			
+		for i in ctx.message.author.roles():
+			if i in j:
+				role=i
+				break
+		if role in j:
 			if ctx.message.author.guild_permissions.manage_roles and a.lower()=="all":
 				print("a")
 				if ctx.message.author.guild_permissions.manage_roles:
-					
 					for q in self.bot.get_all_members:
 						for i in range(len(j)):
 							if q.role in i[0]:
@@ -32,6 +33,8 @@ class reroll(commands.Cog):
 					await ctx.send("```Syntax:b!re_roll <name of gym>(ex: fire)(optional)```")
 					return
 			else:
-				await ctx.send("Don't mess with me..`b!rr all` is the command..")
+				await ctx.send("Arghhhh...Don't mess with me..`b!rr all` is the command..")
+		else:
+			await ctx.send("Looks like you aint a leader")
 def setup(bot):
 	bot.add_cog(reroll(bot))
