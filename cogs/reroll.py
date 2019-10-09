@@ -22,7 +22,7 @@ class reroll(commands.Cog):
 			if i in j:
 				role=i
 				break
-		print(r)
+		print(role)
 		if role in j:
 			if a.lower()=="all":
 				print("a")
