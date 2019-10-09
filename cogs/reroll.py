@@ -10,21 +10,6 @@ class reroll(commands.Cog):
 		self.bot=bot
 	@commands.command(aliases=["rr"])
 	async def re_roll(self,ctx,*,a=None):
-		await ctx.send("Under construction")
-		l=[]
-		g=[]
-		for q in ctx.message.guild.roles:
-			if q.name.endswith("gym leader"):
-				l.append(q.name)
-		for i in l:
-			g.append(i.split(" "))
-			
-	
-		role=""
-		for q in ctx.message.author.roles:
-			if q.name in l:
-				role=q.name
-				break
 		if  role in l:
 			
 			j=[]
@@ -37,8 +22,9 @@ class reroll(commands.Cog):
 				if ctx.message.author.guild_permissions.manage_roles:
 					
 					for q in self.bot.get_all_members:
-						if q.role in j:
-							await q.remove_roles(q.role,reason=ctx.message.author.name,atomic=True)
+						for i in range(len(j)):
+							if q.role in i[0]:
+								await q.remove_roles(q.role,reason=ctx.message.author.name,atomic=True)
 					await ctx.send(f"All the {q.role.name} have been stolen\nCheck Audit logs for more info")		
 					return
 							
