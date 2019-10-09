@@ -44,8 +44,8 @@ class duel(commands.Cog):
 						break
 					else:	
 						temp=i.topic.split("-")
-						if temp[1]!=ctx.message.author.name:
-							await i.edit(topic=f"0-{ctx.message.author.name}-{mem.name}")
+						if int(temp[1])!=ctx.message.author.id:
+							await i.edit(topic=f"0-{ctx.message.author.id}-{mem.id}")
 					break
 	@commands.command(aliases=["ed"])
 	async def end_duel(self,ctx,mem:discord.Member=None):
@@ -79,15 +79,15 @@ class duel(commands.Cog):
 				if k[0]==h[0]:
 					print(type(i.topic))
 					if i.topic==None:
-						await i.edit(topic=f"1-{ctx.message.author.name}-{mem.name}")
+						await i.edit(topic=f"1-{ctx.message.author.id}-{mem.id}")
 					elif len(i.topic)==0:
-						await i.edit(topic=f"1-{ctx.message.author.name}-{mem.name}")
+						await i.edit(topic=f"1-{ctx.message.author.id}-{mem.id}")
 					else:
 						temp=i.topic.split("-")
 						
 						temp=int(temp[0])+1
 						
-						await i.edit(topic=f"{temp}-{ctx.message.author.name}-{mem.name}")
+						await i.edit(topic=f"{temp}-{ctx.message.author.id}-{mem.id}")
 					break
 		c=0						
 def setup(bot):
