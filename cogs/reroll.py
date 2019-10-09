@@ -11,6 +11,7 @@ class reroll(commands.Cog):
 	@commands.command(aliases=["gd"])
 	async def reroll(self,ctx,*,a=None):
 		l=[]
+		g=[]
 		for q in ctx.message.guild.roles:
 			if q.name.endswith("gym leader"):
 				l.append(q.name)
