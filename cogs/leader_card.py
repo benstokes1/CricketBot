@@ -106,4 +106,4 @@ class leader_card(commands.Cog):
 					break
 		c=0						
 def setup(bot):
-	bot.add_cog(duel(bot))
+	bot.add_cog(leader_card(bot))
