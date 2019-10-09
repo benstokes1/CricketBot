@@ -14,23 +14,16 @@ class reroll(commands.Cog):
 			await ctx.send("```Syntax:b!re_roll <name of gym>(ex: fire)(optional)```")
 
 		j=[]
-		role=0
 		for q in ctx.message.guild.roles:
 				if q.name.lower().endswith("badge"):
 					j.append(q)
-		print(j)
-		for i in ctx.message.author.roles:
-			if i in j:
-				role=i
-				break
-		print(role)
-		if role!=0 or ctx.message.author.guild_permissions.manage_roles:
+		if ctx.message.author.guild_permissions.manage_roles:
 			if a.lower()=="all":
 				print("a")
 				if ctx.message.author.guild_permissions.manage_roles:
 					for q in self.bot.get_all_members:
-						for i in range(len(j)):
-							if q.role in j[i]:
+						for i in q.roles:
+							if i in j:
 								await q.remove_roles(q.role,reason=ctx.message.author.name,atomic=True)
 					await ctx.send(f"All the {q.role.name} have been stolen\nCheck Audit logs for more info")		
 					return
