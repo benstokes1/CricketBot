@@ -6,7 +6,7 @@ class trainer_card(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command(aliases=["tc"])
-	async def show_badge(self,ctx,names:discord.Member=None):
+	async def trainer_card(self,ctx,names:discord.Member=None):
 		l=[]
 		badges=[]
 		s=""
