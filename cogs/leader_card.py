@@ -21,16 +21,18 @@ class leader_card(commands.Cog):
 		if mem==None:
 			mem=ctx.message.author
 		elif mem.lower() not in m:
-			await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader): Shows the gym leader card of thr respective gym```")
+			await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
+			return
 		else:
 			mem=mem.lower()
 			for t in self.bot.get_all_members():
-				if t.name.lower() in l:
-					mem=t
-					break
+				for i in t.roles:
+					if i.name.lower() in l:
+						mem=t
+						break
 		for i in mem.roles:
-			if i.role.name.endswith("gym leader"):
-				h=i.role.name.lower.split(" ")
+			if i.name.lower().endswith("gym leader"):
+				h=i.name.lower.split(" ")
 				p=h[0]
 		if p==None:
 			await ctx.send("Looks like you are not a gym leader")
