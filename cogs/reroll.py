@@ -17,10 +17,12 @@ class reroll(commands.Cog):
 		for q in ctx.message.guild.roles:
 				if q.name.lower().endswith("badge"):
 					j.append(q)
+		print(j)
 		for i in ctx.message.author.roles:
 			if i in j:
 				role=i
 				break
+		print(r)
 		if role in j:
 			if a.lower()=="all":
 				print("a")
