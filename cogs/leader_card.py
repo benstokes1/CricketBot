@@ -33,6 +33,7 @@ class leader_card(commands.Cog):
 							mem=t
 							break
 		for i in mem.roles:
+			print("i")
 			if i.name.lower().endswith("gym leader"):
 				h=i.name.lower.split(" ")
 				print(h[0])
