@@ -26,7 +26,7 @@ class reroll(commands.Cog):
 							if i in j:
 								print("O")
 								await q.remove_roles(q.role,reason=ctx.message.author.name,atomic=True)
-					await ctx.send(f"All the {q.role.name} have been stolen\nCheck Audit logs for more info")		
+					await ctx.send(f"All the badges have been stolen\nCheck Audit logs for more info")		
 					return
 							
 				else:
