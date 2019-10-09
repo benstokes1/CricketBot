@@ -45,9 +45,9 @@ class reroll(commands.Cog):
 					await ctx.send("```Syntax:b!re_roll <name of gym>(ex: fire)(optional)```")
 					return
 			if a==None:
-				for b in ctx.message.author.roles:
-					if b.name in l:
-						b=q.role.name.split(" ")
+				for q in ctx.message.author.roles:
+					if q.name in l:
+						b=q.name.split(" ")
 						break
 				print(q)
 				for o in self.bot.get_all_members:
