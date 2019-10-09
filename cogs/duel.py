@@ -73,11 +73,8 @@ class duel(commands.Cog):
 			h=rolez.name.lower().split(" ")
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
-				print(k)
-				
-				
 				if k[0]==h[0]:
-					print(len(i.topic))
+					print(type(i.topic))
 					if len(i.topic)==0:
 						print(i.topic)
 						print("jgj")
