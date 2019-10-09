@@ -24,6 +24,11 @@ class reroll(commands.Cog):
 						for i in q.roles:
 							if i.name in j:
 								await q.remove_roles(i,reason=ctx.message.author.name,atomic=True)
+								h=i.name.lower().split(" ")
+								for m in ctx.message.guild.text_channels:
+									d=m.name.lower().split("-")
+										if d[0]==h[0]:
+											m.edit(topic="")
 					await ctx.send(f"All the badges have been stolen\nCheck Audit logs for more info")		
 					return
 							
