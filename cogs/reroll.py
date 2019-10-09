@@ -46,7 +46,7 @@ class reroll(commands.Cog):
 					return
 			if a==None:
 				for q in ctx.message.author.roles:
-					if q.role.name in l:
+					if q.name in l:
 						q=q.role.name.split(" ")
 						break
 				print(q)
