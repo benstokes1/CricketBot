@@ -20,7 +20,7 @@ class leader_card(commands.Cog):
 		print(l)
 		if mem==None:
 			mem=ctx.message.author
-		elif mem.lower() not in m:
+		elif mem.lower() not in l:
 			await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
 			return
 		else:
