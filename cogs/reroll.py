@@ -11,7 +11,7 @@ class reroll(commands.Cog):
 	@commands.command(aliases=["rr"])
 	async def re_roll(self,ctx,*,a=None):
 		await ctx.send("Under construction")
-		''' l=[]
+		l=[]
 		g=[]
 		for q in ctx.message.guild.roles:
 			if q.name.endswith("gym leader"):
@@ -45,39 +45,7 @@ class reroll(commands.Cog):
 				else:
 					await ctx.send("```Syntax:b!re_roll <name of gym>(ex: fire)(optional)```")
 					return
-			if a == None:
-			
-				for q in ctx.message.author.roles:
-					if q.name in l:
-						b=q.name.split(" ")
-						break
-				print(q)
-				for o in self.bot.get_all_members:
-					for i in o.roles:
-						p=i.name.split(" ")
-						if p[0]==q[0]:
-							await o.remove_roles(i.name,reason=ctx.message.author.name,atomic=True)
-							break
-				await ctx.send(f"All the {i.name}s have been stolen\nCheck Audit logs for more info")
-
 			else:
-				i=[]
-				for q in g:
-					i.append[q[0]]
-				if a in i:
-					for o in self.bot.get_all_members:
-						for j in o.roles:
-							p=j.name.split(" ")
-							if p[0]==a:
-								await o.remove_roles(j.name,reason=ctx.message.author.name,atomic=True)
-								break
-					await ctx.send(f"All the {j.name}s have been stolen\nCheck Audit logs for more info")
-					
-				else:
-					await ctx.send("```Syntax:b!reroll <name of gym>(ex: fire)(optional)```")
-		else:
-			await ctx.send("Looks like you arent any gym leeader")
-
-		'''
+				await ctx.send("Don't mess with me..`b!rr all` is the command..")
 def setup(bot):
 	bot.add_cog(reroll(bot))
