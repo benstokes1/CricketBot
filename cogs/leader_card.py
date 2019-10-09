@@ -64,7 +64,7 @@ class leader_card(commands.Cog):
 								k=q.name.split(" ")
 								if p==k[0]:
 									count+=1
-						k=int(temp[0])-count)
+						k=int(temp[0])-count
 						if k<0:
 							await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of wins: 0\n\n Balance: 0```")	
 						else:
