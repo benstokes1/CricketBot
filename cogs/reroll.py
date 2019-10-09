@@ -17,8 +17,8 @@ class reroll(commands.Cog):
 				l.append(q.name)
 		for i in l:
 			g.append(i.split(" "))
-			print(g)
-		print(l)
+			
+	
 		role=""
 		for q in ctx.message.author.roles:
 			if q.name in l:
