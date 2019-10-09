@@ -18,7 +18,7 @@ class reroll(commands.Cog):
 		for i in l:
 			g.append(i.split(" "))
 			
-		if ctx.message.author.guild_permissions.manage_roles or ctx.message.author.role.name in l:
+		if ctx.message.author.role.name in l:
 			j=[]
 			for q in ctx.message.guild.roles:
 				if q.name.endswith("badge"):
