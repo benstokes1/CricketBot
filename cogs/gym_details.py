@@ -53,9 +53,11 @@ class gym_details(commands.Cog):
 				if k[0]==h[0]:
 				
 					if i.topic==None:
-						print("assa")
+						
 						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
-						return
+						
+					elif len(i.topic)==0:
+						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 					else:
 						temp=i.topic.split("-")
 						if temp[1]!=t.name:
