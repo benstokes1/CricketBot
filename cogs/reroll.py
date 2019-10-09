@@ -25,7 +25,7 @@ class reroll(commands.Cog):
 				role=q.name
 				break
 		if  role in l:
-			print("a")
+			print(a)
 			j=[]
 			for q in ctx.message.guild.roles:
 				if q.name.endswith("badge"):
@@ -45,6 +45,7 @@ class reroll(commands.Cog):
 					await ctx.send("```Syntax:b!re_roll <name of gym>(ex: fire)(optional)```")
 					return
 			if a==None:
+				print(a)
 				for q in ctx.message.author.roles:
 					if q.name in l:
 						b=q.name.split(" ")
