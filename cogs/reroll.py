@@ -21,6 +21,7 @@ class reroll(commands.Cog):
 		print(l)
 			
 		if ctx.message.author.role.name in l:
+			print(a)
 			j=[]
 			for q in ctx.message.guild.roles:
 				if q.name.endswith("badge"):
