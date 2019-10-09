@@ -1,6 +1,5 @@
 import discord 
 import asyncio
-import random 
 from discord.ext import commands
 c=0
 class duel(commands.Cog):
