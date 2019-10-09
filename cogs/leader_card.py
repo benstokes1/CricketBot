@@ -5,7 +5,7 @@ class leader_card(commands.Cog):
 	def __init__(self,bot):
 		
 		self.bot=bot
-	@commands.command(aliases=["ld"])
+	@commands.command(aliases=["lc"])
 
 	async def leader_card(self,ctx,*,mem=None):
 		
