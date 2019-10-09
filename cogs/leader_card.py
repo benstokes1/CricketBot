@@ -34,6 +34,7 @@ class leader_card(commands.Cog):
 							if g[0] == mem:
 								print(i.name)
 								mem=t
+								print(mem)
 								break
 		for i in mem.roles:
 			if i.name.lower().endswith("gym leader"):
