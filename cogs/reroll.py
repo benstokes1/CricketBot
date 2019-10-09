@@ -24,6 +24,7 @@ class reroll(commands.Cog):
 					for q in self.bot.get_all_members:
 						for i in q.roles:
 							if i in j:
+								print("O")
 								await q.remove_roles(q.role,reason=ctx.message.author.name,atomic=True)
 					await ctx.send(f"All the {q.role.name} have been stolen\nCheck Audit logs for more info")		
 					return
