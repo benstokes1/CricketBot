@@ -48,6 +48,8 @@ class reroll(commands.Cog):
 				for q in ctx.message.author.roles:
 					if q.role.name in l:
 						q=q.role.name.split(" ")
+						break
+				print(q)
 				for o in self.bot.get_all_members:
 					for i in o.roles:
 						p=i.name.split(" ")
