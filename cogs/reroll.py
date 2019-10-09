@@ -27,8 +27,8 @@ class reroll(commands.Cog):
 								h=i.name.lower().split(" ")
 								for m in ctx.message.guild.text_channels:
 									d=m.name.lower().split("-")
-										if d[0]==h[0]:
-											m.edit(topic="")
+									if d[0]==h[0]:
+										m.edit(topic="")
 					await ctx.send(f"All the badges have been stolen\nCheck Audit logs for more info")		
 					return
 							
