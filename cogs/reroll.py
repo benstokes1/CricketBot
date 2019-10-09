@@ -21,7 +21,7 @@ class reroll(commands.Cog):
 			if a.lower()=="all":
 				print("a")
 				if ctx.message.author.guild_permissions.manage_roles:
-					for q in self.bot.guild.get_all_members:
+					for q in self.bot.get_all_members():
 						print("j")
 						for i in q.roles:
 							if i.name in j:
