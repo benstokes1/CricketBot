@@ -25,14 +25,14 @@ class reroll(commands.Cog):
 				role=q.name
 				break
 		if  role in l:
-			print(a)
+			
 			j=[]
 			for q in ctx.message.guild.roles:
 				if q.name.endswith("badge"):
 					j.append(q)
-			print(j)
+			
 			if ctx.message.author.guild_permissions.manage_roles and a.lower()=="all":
-				
+				print("a")
 				if ctx.message.author.guild_permissions.manage_roles:
 					
 					for q in self.bot.get_all_members:
@@ -44,8 +44,8 @@ class reroll(commands.Cog):
 				else:
 					await ctx.send("```Syntax:b!re_roll <name of gym>(ex: fire)(optional)```")
 					return
-			if a==None:
-				print(a)
+			if a == None:
+			
 				for q in ctx.message.author.roles:
 					if q.name in l:
 						b=q.name.split(" ")
