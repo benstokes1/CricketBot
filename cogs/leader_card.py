@@ -32,14 +32,11 @@ class leader_card(commands.Cog):
 						if i.name.lower().endswith("gym leader"): 
 							g=i.name.lower().split(" ")
 							if g[0] == mem:
-								
 								mem=t
-								
 								break
 		for i in mem.roles:
 			if i.name.lower().endswith("gym leader"):
 				h=i.name.lower().split(" ")
-				
 				p=h[0]
 		
 		if p==None:
@@ -64,13 +61,15 @@ class leader_card(commands.Cog):
 						count=0
 						for q in ctx.message.guild.roles:
 							if q.name.lower().endswith("gym badge"):
-								k=q.name.split(" ")
+								k=q.name.lower().split(" ")
 								if p==k[0]:
 									count+=1
 						k=int(temp[0])-count
 						if k<0:
+							print(k)
 							await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of Battles: 0\n\n Number of wins: 0\n\n Balance: 0```")	
 						else:
+							print(k)
 							await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of Battles: {temp[0]}\n\n Number of wins: {k}\n\n Balance: {k*100}```")
 				break
 	
