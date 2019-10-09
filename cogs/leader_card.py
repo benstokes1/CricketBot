@@ -64,6 +64,7 @@ class leader_card(commands.Cog):
 								k=q.name.lower().split(" ")
 								if p==k[0]:
 									count+=1
+						print(count)
 						k=int(temp[0])-count
 						if k<0:
 							print(k)
