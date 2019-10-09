@@ -30,7 +30,7 @@ class leader_card(commands.Cog):
 				for t in self.bot.get_all_members():
 					for i in t.roles:
 						g=i.name.lower().split(" ")
-						if g[] == mem:
+						if g[0] == mem:
 							print(i.name)
 							mem=t
 							break
