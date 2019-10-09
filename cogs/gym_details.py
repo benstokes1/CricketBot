@@ -59,11 +59,14 @@ class gym_details(commands.Cog):
 					elif len(i.topic)==0:
 						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 					else:
-						temp=i.topic.split("-")
-						if temp[1]!=t.name:
+						temp=i.topic.split("-")	
+						if int(temp[1])!=t.id:
 							await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 							return
-						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: {temp[1]} vs {temp[2]}\n\n Hall Of Fame: {trainer}```") 
+						for f in self.bot.get_all_members():
+							if f.id==int(temp[2]):
+								break
+						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: {t.name} vs {f.name}\n\n Hall Of Fame: {trainer}```") 
 					break	
 def setup(bot):
 	bot.add_cog(gym_details(bot))
