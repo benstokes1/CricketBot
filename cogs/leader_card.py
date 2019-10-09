@@ -62,6 +62,7 @@ class leader_card(commands.Cog):
 						for q in ctx.message.guild.roles:
 							if q.name.lower().endswith("gym badge"):
 								k=q.name.lower().split(" ")
+								print(p,k[0])
 								if p==k[0]:
 									count+=1
 						print(count)
