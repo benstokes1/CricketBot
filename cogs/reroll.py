@@ -19,13 +19,10 @@ class reroll(commands.Cog):
 					j.append(q.name)
 		if ctx.message.author.guild_permissions.manage_roles:
 			if a.lower()=="all":
-				print("a")
 				if ctx.message.author.guild_permissions.manage_roles:
 					for q in self.bot.get_all_members():
-						print("j")
 						for i in q.roles:
 							if i.name in j:
-								print("O")
 								await q.remove_roles(i,reason=ctx.message.author.name,atomic=True)
 					await ctx.send(f"All the badges have been stolen\nCheck Audit logs for more info")		
 					return
