@@ -15,9 +15,9 @@ class reroll(commands.Cog):
 
 		j=[]
 		for q in ctx.message.guild.roles:
-				if q.name.endswith("badge"):
+				if q.name.lower().endswith("badge"):
 					j.append(q)
-		for i in ctx.message.author.roles():
+		for i in ctx.message.author.roles:
 			if i in j:
 				role=i
 				break
