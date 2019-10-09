@@ -10,7 +10,8 @@ class reroll(commands.Cog):
 		self.bot=bot
 	@commands.command(aliases=["rr"])
 	async def re_roll(self,ctx,*,a=None):
-		l=[]
+		await ctx.send("Under construction")
+		''' l=[]
 		g=[]
 		for q in ctx.message.guild.roles:
 			if q.name.endswith("gym leader"):
@@ -77,6 +78,6 @@ class reroll(commands.Cog):
 		else:
 			await ctx.send("Looks like you arent any gym leeader")
 
-		
+		'''
 def setup(bot):
 	bot.add_cog(reroll(bot))
