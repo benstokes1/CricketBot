@@ -48,15 +48,15 @@ class leader_card(commands.Cog):
 			if k[0]==p:
 				p=p.title()
 				if i.topic==None:
-					await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of wins: 0\n\n Balance: 0```")
+					await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of Battles: 0\n\n Number of wins: 0\n\n Balance: 0```")
 					break
 				elif len(i.topic)==0:
-					await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} typr gym\n\n Leader Name: {mem.name} \n\n Number of wins: 0\n\n Balance: 0```")
+					await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} typr gym\n\n Leader Name: {mem.name} \n\n Number of Battles: 0\n\n Number of wins: 0\n\n Balance: 0```")
 					break
 				else:	
 					temp=i.topic.split("-")
 					if int(temp[1])!=ctx.message.author.id:
-						await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of wins: 0\n\n Balance: 0```")
+						await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of Battles: 0\n\n Number of wins: 0\n\n Balance: 0```")
 					else:
 						count=0
 						for q in ctx.message.guild.roles:
@@ -66,9 +66,9 @@ class leader_card(commands.Cog):
 									count+=1
 						k=int(temp[0])-count
 						if k<0:
-							await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of wins: 0\n\n Balance: 0```")	
+							await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of Battles: 0\n\n Number of wins: 0\n\n Balance: 0```")	
 						else:
-							await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of wins: {k}\n\n Balance: {k*100}```")
+							await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of Battles: {temp[0]}\n\n Number of wins: {k}\n\n Balance: {k*100}```")
 				break
 	
 def setup(bot):
