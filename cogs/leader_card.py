@@ -46,6 +46,7 @@ class leader_card(commands.Cog):
 			k=i.name.lower().split("-")
 			print(k[0])
 			if k[0]==p:
+				p=p.title()
 				if i.topic==None:
 					await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of wins: 0\n\n Balance: 0```")
 					break
@@ -57,13 +58,13 @@ class leader_card(commands.Cog):
 					if int(temp[1])!=ctx.message.author.id:
 						await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of wins: 0\n\n Balance: 0```")
 					else:
-						count=1
+						count=0
 						for q in ctx.message.guild.roles:
 							if q.name.lower().endswith("gym badge"):
 								k=q.name.split(" ")
 								if p==k[0]:
 									count+=1
-						k=int(temp[0]-count)
+						k=int(temp[0])-count)
 						if k<0:
 							await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of wins: 0\n\n Balance: 0```")	
 						else:
