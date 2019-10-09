@@ -10,6 +10,9 @@ class reroll(commands.Cog):
 		self.bot=bot
 	@commands.command(aliases=["rr"])
 	async def re_roll(self,ctx,*,a=None):
+		if a==None:
+			await ctx.send("```Syntax:b!re_roll <name of gym>(ex: fire)(optional)```")
+
 		j=[]
 		for q in ctx.message.guild.roles:
 				if q.name.endswith("badge"):
