@@ -44,14 +44,14 @@ class gym_details(commands.Cog):
 				trainer="None"
 			else: 
 				trainer="\n\n"+trainer+"\n"
-			print(trainer)
+		
 			
 			h=p.split(" ")
-			print(h)
+		
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
 				if k[0]==h[0]:
-					print(k)
+				
 					if i.topic==None:
 						print("assa")
 						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
