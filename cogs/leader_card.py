@@ -55,7 +55,7 @@ class leader_card(commands.Cog):
 					break
 				else:	
 					temp=i.topic.split("-")
-					if int(temp[1])!=ctx.message.author.id:
+					if int(temp[1])!=mem.id:
 						await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of Battles: 0\n\n Number of wins: 0\n\n Balance: 0```")
 					else:
 						count=0
