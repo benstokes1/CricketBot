@@ -61,12 +61,13 @@ class leader_card(commands.Cog):
 						await ctx.send("__```Leader Card```__"+f"``` Gym Name: {p} type gym\n\n Leader Name: {mem.name} \n\n Number of Battles: 0\n\n Number of wins: 0\n\n Balance: 0```")
 					else:
 						count=0
-						for q in ctx.message.guild.roles:
-							if q.name.lower().endswith("gym badge"):
-								k=q.name.lower().split(" ")
+						for t in self.bot.get_all_members():
+							for q in t.roles:
+								if q.name.lower().endswith("gym badge"):
+									k=q.name.lower().split(" ")
 							
-								if p==k[0].title():
-									count+=1
+									if p==k[0].title():
+										count+=1
 						print(count)
 						k=int(temp[0])-count
 						if k<0:
