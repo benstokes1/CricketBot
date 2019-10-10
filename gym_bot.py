@@ -22,7 +22,7 @@ for filename in os.listdir("./cogs"):
 			bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.command()
 async def help(ctx):
-	await ctx.send("```HELP MENU:\n\nMy prefix is 'b!'```"+"```Trainer Commands:\n\n b!gym_details <name of gym> (example b!gd fire):  Gives gym details\n\n b!gym_leaders: Gives the list of gym leaders\n\n b!trainer_card : Shows the badges owned by the trainer\n\n```"+"Gym Leader Commands:\n\n b!start_duel <@mention>(trainer): To be used before u start a duel..To be used by gym leader only\n\n b!end_duel <@mention>(trainer): To be used after u end a duel..To be used by gym leader only\n\n b!give_badge <@mention>: Gives the mentioned user badge\n\n b!clear <number>: Clears the messages\n\n b!leader_card <name of gym>(optional if u are a gym leader) : Displays the gym leader card```") 		
+	await ctx.send("```HELP MENU:\n\nMy prefix is 'b!'```"+"__```Trainer Commands:```__"+"``` b!gym_details <name of gym> (example b!gd fire):  Gives gym details\n\n b!gym_leaders: Gives the list of gym leaders\n\n b!trainer_card : Shows the badges owned by the trainer\n\n```"+"__```Gym Leader Commands:__```"+"``` b!start_duel <@mention>(trainer): To be used before u start a duel..To be used by gym leader only\n\n b!end_duel <@mention>(trainer): To be used after u end a duel..To be used by gym leader only\n\n b!give_badge <@mention>: Gives the mentioned user badge\n\n b!clear <number>: Clears the messages\n\n b!leader_card <name of gym>(optional if u are a gym leader) : Displays the gym leader card```") 		
 @bot.event
 async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandNotFound):
