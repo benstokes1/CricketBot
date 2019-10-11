@@ -77,7 +77,7 @@ class gym_details(commands.Cog):
 						for f in self.bot.get_all_members():
 							if f.id==int(temp[2]):
 								break
-						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: {t.name} vs {f.name}\n\n Total number of battles: {temp[0]}\n\n Hall Of Fame: {trainer}```") 
+						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: {train.name} vs {f.name}\n\n Total number of battles: {temp[0]}\n\n Hall Of Fame: {trainer}```") 
 					break	
 def setup(bot):
 	bot.add_cog(gym_details(bot))
