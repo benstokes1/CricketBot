@@ -23,22 +23,22 @@ class badge(commands.Cog):
 		if rolez==None:
 			await ctx.send(f"Looks like you are not a gym leader")
 			return
-		print("b")
+		
 		i=rolez.name.lower().split(" ")
-		print(i)
-		for k in names.roles:
+	
+		for k in ctx.message.guild.roles:
 			if k.name.lower().endswith("gym badge"):
 				f=k.name.lower().split(" ")
 				if f[0]==i[0]:
 					role=k
 					break
-		print("P")
+		
 		print(role.name)
 		if role in names.roles:
-			print("a")
+		
 			await ctx.send("They have already won over "+role.name[:-6])
 		else:
-			print("b")
+		
 			await names.add_roles(role)
 			await ctx.send(f"Congratulations {names.mention}!!"+"\n"+f"Your name has been added to the hall of fame of {role.name.upper()[:-6]}\nType `b!tc` to see the list of badges")
 def setup(bot):
