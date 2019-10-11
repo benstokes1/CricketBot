@@ -32,6 +32,7 @@ class badge(commands.Cog):
 					role=k
 					break
 		print("P")
+		print(role.name)
 		if role in names.roles:
 			print("a")
 			await ctx.send("They have already won over "+role.name[:-6])
