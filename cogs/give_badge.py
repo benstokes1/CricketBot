@@ -31,8 +31,10 @@ class badge(commands.Cog):
 					role=k
 					break
 		if role in names.roles:
+			print("a")
 			await ctx.send("They have already won over "+role.name[:-6])
 		else:
+			print("b")
 			await names.add_roles(role)
 			await ctx.send(f"Congratulations {names.mention}!!"+"\n"+f"Your name has been added to the hall of fame of {role.name.upper()[:-6]}\nType `b!tc` to see the list of badges")
 def setup(bot):
