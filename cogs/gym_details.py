@@ -22,7 +22,7 @@ class gym_details(commands.Cog):
 				l.append(i[0])
 		n=m
 		m=n+" type gym"
-		if m not in (l):
+		if n not in (l):
 			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return
 		else:
@@ -34,7 +34,7 @@ class gym_details(commands.Cog):
 				for role in t.roles:
 					if role.name.lower().endswith("gym leader"):
 						i=role.naem.lower().split(" ")
-						if m==i[0]:
+						if n==i[0]:
 							leader+=" "+t.name+"\n"
 							break
 						
@@ -42,7 +42,7 @@ class gym_details(commands.Cog):
 				for role in q.roles:
 					if role.name.lower().endswith("gym badge"):
 						i=role.naem.lower().split(" ")
-						if m==i[0]:
+						if n==i[0]:
 							trainer+=" "+q.name+"\n"
 							break
 			p=m
