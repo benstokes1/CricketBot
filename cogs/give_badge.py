@@ -23,7 +23,7 @@ class badge(commands.Cog):
 		if rolez==None:
 			await ctx.send(f"Looks like you are not a gym leader")
 			return
-		i=rolez.name.lower.split(" ")
+		i=rolez.name.lower().split(" ")
 		for k in names.roles:
 			if k.name.lower().endswith("gym badge"):
 				f=k.name.lower().split(" ")
