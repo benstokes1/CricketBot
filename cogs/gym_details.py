@@ -27,17 +27,24 @@ class gym_details(commands.Cog):
 			return
 		else:
 			
-			role = discord.utils.get(user.guild.roles,name=m+" leader")
-			train= discord.utils.get(user.guild.roles,name=m+" badge")
+			
 			leader= ""
 			trainer= ""
 			for t in self.bot.get_all_members():
-				if role in t.roles:
-					leader+=" "+t.name+"\n"
-					break
+				for role in t.roles:
+					if role.name.lower().endswith("gym leader"):
+						i=role.naem.lower().split(" ")
+						if m==i[0]:
+							leader+=" "+t.name+"\n"
+							break
+						
 			for q in self.bot.get_all_members():
-				if train in q.roles:
-					trainer+=" "+q.name+"\n"
+				for role in q.roles:
+					if role.name.lower().endswith("gym badge"):
+						i=role.naem.lower().split(" ")
+						if m==i[0]:
+							trainer+=" "+q.name+"\n"
+							break
 			p=m
 			m=m.upper()+'\n\n'
 			if leader=="":
