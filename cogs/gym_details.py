@@ -62,14 +62,16 @@ class gym_details(commands.Cog):
 				if k[0]==n:
 				
 					if i.topic==None:
-						
+						print("A")
 						await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0 \n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 						
 					elif len(i.topic)==0:
+						print("J")
 						await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0 \n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 					else:
 						temp=i.topic.split("-")	
 						if int(temp[1])!=t.id:
+							print("O")
 							await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0\n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 							return
 						for f in self.bot.get_all_members():
