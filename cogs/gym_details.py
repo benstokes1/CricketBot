@@ -17,7 +17,7 @@ class gym_details(commands.Cog):
 		m=m.lower()
 		l=[]
 		for q in ctx.message.guild.roles:
-			if q.name.endswith("gym leader"):
+			if q.name.lower().endswith("gym leader"):
 				i=q.name.lower().split(" ")
 				l.append(i[0])
 		n=m
@@ -33,7 +33,7 @@ class gym_details(commands.Cog):
 			for t in self.bot.get_all_members():
 				for role in t.roles:
 					if role.name.lower().endswith("gym leader"):
-						i=role.naem.lower().split(" ")
+						i=role.name.lower().split(" ")
 						if n==i[0]:
 							leader+=" "+t.name+"\n"
 							break
@@ -41,7 +41,7 @@ class gym_details(commands.Cog):
 			for q in self.bot.get_all_members():
 				for role in q.roles:
 					if role.name.lower().endswith("gym badge"):
-						i=role.naem.lower().split(" ")
+						i=role.name.lower().split(" ")
 						if n==i[0]:
 							trainer+=" "+q.name+"\n"
 							break
