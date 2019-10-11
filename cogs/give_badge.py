@@ -25,6 +25,7 @@ class badge(commands.Cog):
 			return
 		print("b")
 		i=rolez.name.lower().split(" ")
+		print(i)
 		for k in names.roles:
 			if k.name.lower().endswith("gym badge"):
 				f=k.name.lower().split(" ")
