@@ -36,8 +36,8 @@ class gym_details(commands.Cog):
 						i=role.name.lower().split(" ")
 						if n==i[0]:
 							leader+=" "+t.name+"\n"
+							train=t
 							break
-						
 			for q in self.bot.get_all_members():
 				for role in q.roles:
 					if role.name.lower().endswith("gym badge"):
@@ -70,7 +70,7 @@ class gym_details(commands.Cog):
 						await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0 \n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 					else:
 						temp=i.topic.split("-")	
-						if int(temp[1])!=t.id:
+						if int(temp[1])!=train.id:
 							print("O")
 							await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0\n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 							return
