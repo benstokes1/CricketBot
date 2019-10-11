@@ -18,8 +18,10 @@ class gym_details(commands.Cog):
 		l=[]
 		for q in ctx.message.guild.roles:
 			if q.name.endswith("gym leader"):
-				l.append(q.name[:-7])
-		m+=" type gym"
+				i=q.name.lower.split(" ")
+				l.append(i[0])
+		n=m
+		m=n+" type gym"
 		if m not in (l):
 			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return
