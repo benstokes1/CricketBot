@@ -13,7 +13,7 @@ class clear(commands.Cog):
 			await ctx.send("```Syntax: b!clear <amount>```")
 		else:
 			amount=int(amount)
-			if ctx.message.channel.category.name="«────── ☆GYMS☆ ──────»":
+			if ctx.message.channel.category.name=="«────── ☆GYMS☆ ──────»":
 				role = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
 				if role in ctx.message.author.roles or ctx.message.author.guild_permissions.manage_messages:
 					if amount>100:
