@@ -55,11 +55,11 @@ class gym_details(commands.Cog):
 				trainer="\n\n"+trainer+"\n"
 		
 			
-			h=p.split(" ")
+			
 		
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
-				if k[0]==h[0]:
+				if k[0]==n:
 				
 					if i.topic==None:
 						
