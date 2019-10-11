@@ -18,7 +18,7 @@ class gym_details(commands.Cog):
 		l=[]
 		for q in ctx.message.guild.roles:
 			if q.name.endswith("gym leader"):
-				i=q.name.lower.split(" ")
+				i=q.name.lower().split(" ")
 				l.append(i[0])
 		n=m
 		m=n+" type gym"
