@@ -15,7 +15,7 @@ class clear(commands.Cog):
 			amount=int(amount)
 			if ctx.message.channel.category.name=="«────── ☆GYMS☆ ──────»":
 				for q in ctx.message.guild.roles:
-					if q.name.lower().endswith("gym leaders"):
+					if q.name.lower().endswith("gym leader"):
 						l.append(q)
 				role=None
 				for q in ctx.message.author.roles:
