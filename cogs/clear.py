@@ -14,8 +14,15 @@ class clear(commands.Cog):
 		else:
 			amount=int(amount)
 			if ctx.message.channel.category.name=="«────── ☆GYMS☆ ──────»":
-				role = discord.utils.get(ctx.message.guild.roles,name="gym leaders")
-				if role in ctx.message.author.roles or ctx.message.author.guild_permissions.manage_messages:
+				for q in ctx.message.guild.roles:
+					if q.name.lower().endswith("gym leaders"):
+						l.append(q)
+				role=None
+				for q in ctx.message.author.roles:
+					if q in l:
+						role=q
+						break
+				if role or ctx.message.author.guild_permissions.manage_messages:
 					if amount>100:
 						await ctx.send("```Enter a value <= 100```") 
 					else:
