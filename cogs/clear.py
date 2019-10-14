@@ -22,7 +22,7 @@ class clear(commands.Cog):
 					if q in l:
 						role=1
 						break
-				if  eole or ctx.message.author.guild_permissions.manage_messages:
+				if  role or ctx.message.author.guild_permissions.manage_messages:
 					if amount>100:
 						await ctx.send("```Enter a value <= 100```") 
 					else:
