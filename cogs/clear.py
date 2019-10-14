@@ -13,6 +13,7 @@ class clear(commands.Cog):
 			await ctx.send("```Syntax: b!clear <amount>```")
 		else:
 			amount=int(amount)
+			l=[]
 			if ctx.message.channel.category.name=="«────── ☆GYMS☆ ──────»":
 				for q in ctx.message.guild.roles:
 					if q.name.lower().endswith("gym leader"):
