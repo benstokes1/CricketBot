@@ -12,6 +12,7 @@ class badge(commands.Cog):
 		for q in ctx.message.guild.roles:
 			if q.name.lower().endswith("gym leader"):
 				l.append(q)
+		print(l)
 		for i in l:
 			if i in ctx.message.author.roles:
 				rolez=i
@@ -32,7 +33,6 @@ class badge(commands.Cog):
 				if f[0]==i[0]:
 					role=k
 					break
-		
 		print(role.name)
 		if role in names.roles:
 		
