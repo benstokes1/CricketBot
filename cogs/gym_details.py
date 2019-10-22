@@ -59,6 +59,7 @@ class gym_details(commands.Cog):
 		
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
+				print(k[0])
 				if n in k[0]:
 				
 					if i.topic==None:
