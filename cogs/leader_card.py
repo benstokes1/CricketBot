@@ -45,7 +45,7 @@ class leader_card(commands.Cog):
 		for i in ctx.message.guild.text_channels:
 			k=i.name.lower().split("-")
 			
-			if k[0]==p:
+			if p in k[0]:
 				
 				p=p.title()
 				
