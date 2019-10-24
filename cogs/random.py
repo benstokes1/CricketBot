@@ -19,9 +19,10 @@ class random(commands.Cog):
 						r.append(q.name)
 			print(r)
 
-			k=[r[0]]
+			k=[]
 			while len(r)>0:
 				h=random.choice(r)
+				print(h)
 				r.pop(r.index(h))
 				k.append(h)
 			print(k)
