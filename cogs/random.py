@@ -17,7 +17,7 @@ class random(commands.Cog):
 				for ro in q.roles:
 					if ro.name=="Tourney Participant":
 						r.append(q.name)
-			random.shuffle(r)
+			r=random.shuffle(r)
 			print(r)
 			le="P v P List"
 			ke=""
