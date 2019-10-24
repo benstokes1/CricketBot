@@ -68,9 +68,6 @@ class duel(commands.Cog):
 			if mem==None:
 				await ctx.send("```Syntax: b!ed <@mention>(trainer name)```")
 				return
-			if c==0:
-				await ctx.send("*smh* You didnt start a battle!")
-				return
 			await ctx.send(f"GG! {mem.mention}")
 			h=rolez.name.lower().split(" ")
 			for i in ctx.message.guild.text_channels:
@@ -87,7 +84,6 @@ class duel(commands.Cog):
 						temp=int(temp[0])+1
 						
 						await i.edit(topic=f"{temp}-{ctx.message.author.id}-{mem.id}")
-					break
-		c=0						
+					break					
 def setup(bot):
 	bot.add_cog(duel(bot))
