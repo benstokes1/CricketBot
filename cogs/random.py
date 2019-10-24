@@ -19,7 +19,7 @@ class random(commands.Cog):
 					for role in q.roles:
 						if role.name.lower()=="tourney participant":
 							r.append(q.name)
-
+					print(r)
 					i=1
 					k=[r[0]]
 					while i<len(r):
