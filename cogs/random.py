@@ -22,7 +22,7 @@ class random(commands.Cog):
 			k=[r[0]]
 			while len(r)>0:
 				h=random.choice(r)
-				r.pop(r.random(h))
+				r.pop(r.index(h))
 				k.append(h)
 
 			le="P v P List"
