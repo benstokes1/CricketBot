@@ -23,7 +23,7 @@ class random(commands.Cog):
 			ke=""
 			i=0
 			while i < len(r):
-				ke+=r[i]+"\t\t\tvs\t\t\t"+r[i+1]+"\n"
+				ke+=r[i]+"\t\t\t"+"vs"+"\t\t\t"+r[i+1]+"\n"
 				i+=2
 			le="```"+le+"```"
 			ke="```"+ke+"```"
