@@ -19,23 +19,23 @@ class random(commands.Cog):
 					for role in q.roles:
 						if role.name.lower()=="tourney participant":
 							r.append(q.name)
-					print(r)
-					i=1
-					k=[r[0]]
-					while i<len(r):
-						h=random.choice(l)
-						if h in k:
-							continue
-						else:
-							k.append(h)
-							i+=1
-					le="P v P List"
-					ke=""
-					for i in range(len(k)):
-						le+=k[i]+"vs"+k[i+1]+"\n"
-					le="```"+le+"```"
-					ke="```"+ke+"```"
-					await ctx.send(f"{le}\n{ke}")
+				print(r)
+				i=1
+				k=[r[0]]
+				while i<len(r):
+					h=random.choice(l)
+					if h in k:
+						continue
+					else:
+						k.append(h)
+						i+=1
+				le="P v P List"
+				ke=""
+				for i in range(len(k)):
+					le+=k[i]+"vs"+k[i+1]+"\n"
+				le="```"+le+"```"
+				ke="```"+ke+"```"
+				await ctx.send(f"{le}\n{ke}")
 					
 						
 					
