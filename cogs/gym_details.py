@@ -35,7 +35,7 @@ class gym_details(commands.Cog):
 					if role.name.lower().endswith("gym leader"):
 						i=role.name.lower().split(" ")
 						if n==i[0]:
-							leader+=" "+t.name+"\n"
+							leader+=t.name+"\n"
 							train=t
 							break
 			for q in self.bot.get_all_members():
