@@ -23,7 +23,7 @@ class random(commands.Cog):
 				i=1
 				k=[r[0]]
 				while i<len(r):
-					h=random.choice(l)
+					h=random.choice(r)
 					if h in k:
 						continue
 					else:
