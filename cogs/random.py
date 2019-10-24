@@ -23,10 +23,9 @@ class random(commands.Cog):
 			ke=""
 			i=0
 			while i < len(r):
-				ke+="```"+r[i]+"\nvs"+r[i+1]+"```"+"\n"
+				ke+="```"+r[i]+"\nvs\n"+r[i+1]+"```"+"\n"
 				i+=2
 			le="```"+le+"```"
-			ke="```"+ke+"```"
 			await ctx.send(le+"\n"+ke)
 		else:
 			await ctx.send("Ayee!")
