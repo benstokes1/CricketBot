@@ -18,18 +18,12 @@ class random(commands.Cog):
 					if ro.name=="Tourney Participant":
 						r.append(q.name)
 			print(r)
-
-			k=[]
-			while len(r)>0:
-				h=random.choice(r)
-				print(h)
-				r.pop(r.index(h))
-				k.append(h)
-			print(k)
+			random.shuffle(r)
+			print(r)
 			le="P v P List"
 			ke=""
-			for i in range(len(k)):
-				ke+=k[i]+"vs"+k[i+1]+"\n"
+			for i in range(len(r)):
+				ke+=k[i]+"vs"+r[i+1]+"\n"
 			le="```"+le+"```"
 			ke="```"+ke+"```"
 			await ctx.send(f"{le}\n{ke}")
