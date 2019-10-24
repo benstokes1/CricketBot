@@ -8,33 +8,39 @@ class random(commands.Cog):
 		self.bot=bot
 	#clear
 	@commands.command()
-	async def random(self,ctx,amount=None) :
-		if amount==None:
-			await ctx.send("```Syntax: b!clear <amount>```")
-		else:
-			amount=int(amount)
-			l=[]
-			if ctx.message.channel.category.name=="«────── ☆GYMS☆ ──────»":
-				for q in ctx.message.guild.roles:
-					if q.name.lower().endswith("gym leader"):
-						l.append(q)
-				role=None
-				for q in ctx.message.author.roles:
-					if q in l:
-						role=1
-						break
-				if  role or ctx.message.author.guild_permissions.manage_messages:
-					if amount>100:
-						await ctx.send("```Enter a value <= 100```") 
-					else:
-						await ctx.channel.purge(limit=amount+1) 
-						await ctx.send(f'Cleared {amount} messages')
-						await asyncio.sleep(0.2)
-						await ctx.channel.purge(limit=1)
-				else :
-					await ctx.send(f"{ctx.message.author.mention} Seems like you do not have perms to delete messages")
+	async def random(self,ctx,mem:discord.Member=None) :
+		if ctx.message.author.guild_permissions.manage_messages:
+			
+			if mem==None:
+				await ctx.send("```Syntax: b!random <@```")
 			else:
-				await ctx.send("I am not able to clear the messages in this channel")
+				r=[]
+				for q in self.bot.get_all_members():
+					for role in q.roles:
+						if role.name.lower()="tourney participant":
+							r.append(q.name)
+
+					i=1
+					k=[r[0]]
+					while i<len(r):
+						h=random.choice(l)
+						if h in k:
+							continue
+						else:
+							k.append(h)
+							i+=1
+					le="P v P List"
+					ke=""
+					for i in range(len(k)):
+						le+=k[i]+"vs"+k[i+1]+"\n"
+					le="```"+le+"```"
+					ke="```"+ke+"```"
+					await ctx.send(f"{le}\n{ke}")
+					
+						
+					
+		else:
+			await ctx.send("Ayee!")
 	
 				       
 	
