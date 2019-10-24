@@ -15,7 +15,9 @@ class random(commands.Cog):
 				await ctx.send("```Syntax: b!random <@```")
 			else:
 				r=[]
+				print("vnv")
 				for q in self.bot.get_all_members():
+					print(q.name)
 					for ro in q.roles:
 						print(ro.name)
 						if ro.name=="Tourney Participant":
