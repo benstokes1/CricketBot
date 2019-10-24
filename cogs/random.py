@@ -3,7 +3,7 @@ import asyncio
 import random 
 from discord.ext import commands
 
-class random(commands.Cog):
+class rand(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	#clear
