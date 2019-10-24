@@ -16,9 +16,9 @@ class random(commands.Cog):
 			else:
 				r=[]
 				for q in self.bot.get_all_members():
-					for role in q.roles:
-						print(role.name)
-						if role.name=="Tourney Participant":
+					for ro in q.roles:
+						print(ro.name)
+						if ro.name=="Tourney Participant":
 							r.append(q.name)
 						break
 				print(r)
