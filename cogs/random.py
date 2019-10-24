@@ -24,11 +24,11 @@ class random(commands.Cog):
 				h=random.choice(r)
 				r.pop(r.index(h))
 				k.append(h)
-
+			print(k)
 			le="P v P List"
 			ke=""
 			for i in range(len(k)):
-				le+=k[i]+"vs"+k[i+1]+"\n"
+				ke+=k[i]+"vs"+k[i+1]+"\n"
 			le="```"+le+"```"
 			ke="```"+ke+"```"
 			await ctx.send(f"{le}\n{ke}")
