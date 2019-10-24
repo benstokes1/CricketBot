@@ -25,8 +25,7 @@ class random(commands.Cog):
 			h=r[0:8]
 			r=r[8:]
 			while i < len(h):
-				ke=ke+"```"+h[i]+"\nvs\n"+r[i]+"```"+"\n"
-				i+=2
+				ke=ke+"```"+h[i]+"\t  vs\t  "+r[i]+"```"+"\n"
 			le="```"+le+"```"
 			await ctx.send(le+"\n"+ke)
 		else:
