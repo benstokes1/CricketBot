@@ -17,18 +17,15 @@ class random(commands.Cog):
 				for ro in q.roles:
 					if ro.name=="Tourney Participant":
 						r.append(q.name)
-			r=random.shuffle(r)
+			random.shuffle(r)
 			print(r)
 			le="P v P List"
 			ke=""
 			for i in range(len(r)):
-				ke+=k[i]+"vs"+r[i+1]+"\n"
+				ke+=r[i]+"vs"+r[i+1]+"\n"
 			le="```"+le+"```"
 			ke="```"+ke+"```"
 			await ctx.send(f"{le}\n{ke}")
-
-
-					
 		else:
 			await ctx.send("Ayee!")
 	
