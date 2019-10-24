@@ -8,38 +8,35 @@ class random(commands.Cog):
 		self.bot=bot
 	#clear
 	@commands.command()
-	async def random(self,ctx,mem:discord.Member=None) :
+	async def random(self,ctx) :
 		if ctx.message.author.guild_permissions.manage_messages:
-			
-			if mem==None:
-				await ctx.send("```Syntax: b!random <@```")
-			else:
-				r=[]
-				print("vnv")
-				for q in self.bot.get_all_members():
-					print(q.name)
-					for ro in q.roles:
-						print(ro.name)
-						if ro.name=="Tourney Participant":
-							r.append(q.name)
-						break
-				print(r)
-			
-				k=[r[0]]
-				while len(r)>0:
-					h=random.choice(r)
-					r.pop(r.random(h))
-					k.append(h)
-				
-				le="P v P List"
-				ke=""
-				for i in range(len(k)):
-					le+=k[i]+"vs"+k[i+1]+"\n"
-				le="```"+le+"```"
-				ke="```"+ke+"```"
-				await ctx.send(f"{le}\n{ke}")
-					
-						
+		
+			r=[]
+			print("vnv")
+			for q in self.bot.get_all_members():
+				print(q.name)
+				for ro in q.roles:
+					print(ro.name)
+					if ro.name=="Tourney Participant":
+						r.append(q.name)
+					break
+			print(r)
+
+			k=[r[0]]
+			while len(r)>0:
+				h=random.choice(r)
+				r.pop(r.random(h))
+				k.append(h)
+
+			le="P v P List"
+			ke=""
+			for i in range(len(k)):
+				le+=k[i]+"vs"+k[i+1]+"\n"
+			le="```"+le+"```"
+			ke="```"+ke+"```"
+			await ctx.send(f"{le}\n{ke}")
+
+
 					
 		else:
 			await ctx.send("Ayee!")
