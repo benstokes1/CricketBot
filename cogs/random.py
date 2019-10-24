@@ -14,12 +14,9 @@ class random(commands.Cog):
 			r=[]
 			print("vnv")
 			for q in self.bot.get_all_members():
-				print(q.name)
 				for ro in q.roles:
-					print(ro.name)
 					if ro.name=="Tourney Participant":
 						r.append(q.name)
-					break
 			print(r)
 
 			k=[r[0]]
