@@ -1,6 +1,6 @@
 import discord 
 import asyncio
-import random as rand
+import random 
 from discord.ext import commands
 
 class random(commands.Cog):
@@ -8,7 +8,7 @@ class random(commands.Cog):
 		self.bot=bot
 	#clear
 	@commands.command()
-	async def random(self,ctx) :
+	async def rand(self,ctx) :
 		if ctx.message.author.guild_permissions.manage_messages:
 		
 			r=[]
@@ -17,7 +17,7 @@ class random(commands.Cog):
 				for ro in q.roles:
 					if ro.name=="Tourney Participant":
 						r.append(q.name)
-			rand.shuffle(r)
+			random.shuffle(r)
 			print(r)
 			le="P v P List"
 			ke=""
@@ -32,4 +32,4 @@ class random(commands.Cog):
 				       
 	
 def setup(bot):
-	bot.add_cog(random(bot))
+	bot.add_cog(rand(bot))
