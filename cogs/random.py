@@ -22,10 +22,9 @@ class random(commands.Cog):
 			le="P v P List"
 			ke=""
 			i=0
-			h=r[0:8]
-			r=r[8:]
-			while i < len(h):
-				ke=ke+"```"+h[i]+"\t  vs\t  "+r[i]+"```"+"\n"
+			while i < len(r):
+				ke=ke+"```"+r[i]+"\t  vs\t  "+r[i+1]+"```"+"\n"
+				i+=2
 			le="```"+le+"```"
 			await ctx.send(le+"\n"+ke)
 		else:
