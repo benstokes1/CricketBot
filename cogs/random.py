@@ -20,15 +20,13 @@ class random(commands.Cog):
 						if role.name.lower()=="tourney participant":
 							r.append(q.name)
 				print(r)
-				i=1
+			
 				k=[r[0]]
-				while i<len(r):
+				while len(r)>0:
 					h=random.choice(r)
-					if h in k:
-						continue
-					else:
-						k.append(h)
-						i+=1
+					r.pop(r.random(h))
+					k.append(h)
+				
 				le="P v P List"
 				ke=""
 				for i in range(len(k)):
