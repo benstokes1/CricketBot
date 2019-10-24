@@ -21,8 +21,9 @@ class random(commands.Cog):
 			print(r)
 			le="P v P List"
 			ke=""
-			for i in range((len(r)/2)-1):
+			for i in range(len(r)):
 				ke+=r[i]+"vs"+r[i+1]+"\n"
+				i+=1
 			le="```"+le+"```"
 			ke="```"+ke+"```"
 			await ctx.send(f"{le}\n{ke}")
