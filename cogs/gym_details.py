@@ -9,19 +9,17 @@ class gym_details(commands.Cog):
 		
 		self.bot=bot
 	@commands.command(aliases=["gd"])
-	async def gym_details(self,ctx,*,m=None):
+	async def gym_details(self,ctx,*,n=None):
 		if m==None:
 			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return 
 		user=ctx.message
-		m=m.lower()
+		n=n.lower()
 		l=[]
 		for q in ctx.message.guild.roles:
 			if q.name.lower().endswith("gym leader"):
 				i=q.name.lower().split(" ")
 				l.append(i[0])
-		n=m
-		m=n+" type gym"
 		if n not in (l):
 			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return
