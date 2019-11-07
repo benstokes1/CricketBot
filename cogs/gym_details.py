@@ -61,16 +61,16 @@ class gym_details(commands.Cog):
 			for i in l:
 				if i in list(data.keys()):
 					for t in self.bot.get_all_members():
-						if str(t.id)==data[i][leader_id]:
+						if str(t.id)==data[i]["leader_id"]:
 							hm=t.name
 			if data[i][l_b]=="0":
 				return
 			for i in l:
 				if i in list(data.keys()):
 					for t in self.bot.get_all_members():
-						if str(t.id)==data[i][l_b]:
+						if str(t.id)==data[i]["l_b"]:
 							hs=t.name
-			await ctx.send(f"``` {m} Leader: {hm} \n Total number of battles: {data[i][n_o_b]} \n\n Last Battle: {hm} vs {hs}\n\n Hall Of Fame: {trainer}```") 
+			await ctx.send(f"``` {m} Leader: {hm} \n Total number of battles: {data[i]["n_o_b"]} \n\n Last Battle: {hm} vs {hs}\n\n Hall Of Fame: {trainer}```") 
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
 				print(k[0])
