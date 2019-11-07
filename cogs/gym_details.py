@@ -28,16 +28,8 @@ class gym_details(commands.Cog):
 		else:
 			
 			
-			leader= ""
 			trainer= ""
-			for t in self.bot.get_all_members():
-				for role in t.roles:
-					if role.name.lower().endswith("gym leader"):
-						i=role.name.lower().split(" ")
-						if n==i[0]:
-							leader+=t.name+"\n"
-							train=t
-							break
+			
 			for q in self.bot.get_all_members():
 				for role in q.roles:
 					if role.name.lower().endswith("gym badge"):
@@ -45,10 +37,7 @@ class gym_details(commands.Cog):
 						if n==i[0]:
 							trainer+=" "+q.name+"\n"
 							break
-			p=m
-			m=m.upper()+'\n\n'
-			if leader=="":
-				leader="None"
+			
 			if trainer=="":	
 				trainer="None"
 			else: 
@@ -57,46 +46,26 @@ class gym_details(commands.Cog):
 			
 			with open("./cogs/json/data.txt","r") as hh:
 				data=json.load(hh)
-			print("bh")
-			print(data)
-			print(data[n]["leader_id"])
+			hm=None
 			if n in data.keys():
 				for t in self.bot.get_all_members():
 					if str(t.id)==data[n]["leader_id"]:
 						hm=t.name
 						break
-			print(hm)
 				
-		
+			if hm==None:
+				await ctx.send(f"No {data[n]['gym_name']} leader")
+				return
 			hs=None
 			if n in data.keys():
 				for t in self.bot.get_all_members():
 					if str(t.id)==data[n]["l_b"]:
 						hs=t.name
 						break
-			print(hs)
-			print(data)
-			await ctx.send(f"``` {m} Leader: {hm} \n Total number of battles: {data[n]['n_o_b']} \n\n Last Battle: {hm} vs {hs}\n\n Hall Of Fame: {trainer}```") 
-			for i in ctx.message.guild.text_channels:
-				k=i.name.lower().split("-")
-				print(k[0])
-				if n in k[0]:
+			if hm==None:
+				await ctx.send(f"``` {data[n]["gym_name']} Leader: {hm} \n Total number of battles: "0" \n\n Last Battle: "None"\n\n Hall Of Fame: "None"```") 
+				return
+			await ctx.send(f"``` {data[n]["gym_name']} Leader: {hm} \n Total number of battles: {data[n]['n_o_b']} \n\n Last Battle: {hm} vs {hs}\n\n Hall Of Fame: {trainer}```") 
 				
-					if i.topic==None:
-						await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0 \n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
-						
-					elif len(i.topic)==0:
-						await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0 \n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
-					else:
-						temp=i.topic.split("-")	
-						if int(temp[1])!=train.id:
-							print("O")
-							await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0\n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
-							return
-						for f in self.bot.get_all_members():
-							if f.id==int(temp[2]):
-								break
-						await ctx.send(f"``` {m} Leader: {leader} \n Last Battle: {train.name} vs {f.name}\n\n Total number of battles: {temp[0]}\n\n Hall Of Fame: {trainer}```") 
-					break	
 def setup(bot):
 	bot.add_cog(gym_details(bot))
