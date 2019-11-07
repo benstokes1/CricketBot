@@ -63,9 +63,9 @@ class gym_details(commands.Cog):
 						hs=t.name
 						break
 			if hm==None:
-				await ctx.send(f"__```{data[n]['gym_name']}```__"+"``` Leader: {hm} \n Total number of battles: '0' \n\n Last Battle: 'None'\n\n Hall Of Fame: 'None'```") 
+				await ctx.send(f"__```{data[n]['gym_name']}```__"+"``` Leader: {hm} \n\n Total number of battles: '0' \n\n Last Battle: 'None'\n\n Hall Of Fame: 'None'```") 
 				return
-			await ctx.send(f"``` {data[n]['gym_name']} \n\n Leader: {hm} \n Total number of battles: {data[n]['n_o_b']} \n\n Last Battle: {hm} vs {hs}\n\n Hall Of Fame: {trainer}```") 
+			await ctx.send(f"__```{data[n]['gym_name']}```__"+"``` Leader: {hm} \n\n Total number of battles: {data[n]['n_o_b']} \n\n Last Battle: {hm} vs {hs}\n\n Hall Of Fame: {trainer}```") 
 				
 def setup(bot):
 	bot.add_cog(gym_details(bot))
