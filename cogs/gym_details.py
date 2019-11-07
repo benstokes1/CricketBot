@@ -2,7 +2,7 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
-
+import json
 
 class gym_details(commands.Cog):
 	def __init__(self,bot):
