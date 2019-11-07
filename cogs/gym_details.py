@@ -10,7 +10,7 @@ class gym_details(commands.Cog):
 		self.bot=bot
 	@commands.command(aliases=["gd"])
 	async def gym_details(self,ctx,*,n=None):
-		if m==None:
+		if n==None:
 			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return 
 		user=ctx.message
