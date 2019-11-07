@@ -63,7 +63,7 @@ class gym_details(commands.Cog):
 						if str(t.id)==data[i][leader_id]:
 							hm=t.name
 			if data[i][l_b]=="0":
-				await ctx.send(f"``` {m} Leader: {hm} \n Total number of battles: {data[i][n_o_b]} \n\n Last Battle: "None"\n\n Hall Of Fame: {trainer}```") 
+				await ctx.send(f"``` {m} Leader: {hm} \n Total number of battles: {data[i][n_o_b]} \n\n Last Battle: "None"\n\n Hall Of Fame: "None"```") 
 				return
 			for i in l:
 				if l in data:
