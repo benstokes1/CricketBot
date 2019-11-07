@@ -1,16 +1,11 @@
 import discord 
 import asyncio
 from discord.ext import commands
-c=0
 class store(commands.Cog):
 	def __init__(self,bot):
-		global c
 		self.bot=bot
 	@commands.command(aliases=["s"])
-
 	async def store(self,ctx):
-		
-		
 		l=[]
 		rolez=None
 		for q in ctx.message.guild.roles:
