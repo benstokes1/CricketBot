@@ -55,8 +55,9 @@ class gym_details(commands.Cog):
 				trainer="\n\n"+trainer+"\n"
 		
 			
-			with open("cogs.json.data.txt","r") as hh:
+			with open("json.data.txt","r") as hh:
 				data=json.load(hh)
+			print("bh")
 			for i in l:
 				if i in data:
 					for t in self.bot.get_all_members():
