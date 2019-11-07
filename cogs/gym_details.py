@@ -55,19 +55,31 @@ class gym_details(commands.Cog):
 				trainer="\n\n"+trainer+"\n"
 		
 			
-			
-		
+			with open("cogs.json.data.txt","r") as hh:
+				data=json.load(hh)
+			for i in l:
+				if l in data:
+					for t in self.bot.get_all_members():
+						if str(t.id)==data[i][leader_id]:
+							hm=t.name
+			if data[i][l_b]=="0":
+				await ctx.send(f"``` {m} Leader: {hm} \n Total number of battles: {data[i][n_o_b]} \n\n Last Battle: "None"\n\n Hall Of Fame: {trainer}```") 
+				return
+			for i in l:
+				if l in data:
+					for t in self.bot.get_all_members():
+						if str(t.id)==data[i][l_b]:
+							hs=t.name
+			await ctx.send(f"``` {m} Leader: {hm} \n Total number of battles: {data[i][n_o_b]} \n\n Last Battle: {hm} vs {hs}\n\n Hall Of Fame: {trainer}```") 
 			for i in ctx.message.guild.text_channels:
 				k=i.name.lower().split("-")
 				print(k[0])
 				if n in k[0]:
 				
 					if i.topic==None:
-						print("A")
 						await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0 \n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 						
 					elif len(i.topic)==0:
-						print("J")
 						await ctx.send(f"``` {m} Leader: {leader} \n Total number of battles: 0 \n\n Last Battle: None\n\n Hall Of Fame: {trainer}```") 
 					else:
 						temp=i.topic.split("-")	
