@@ -59,6 +59,7 @@ class gym_details(commands.Cog):
 				data=json.load(hh)
 			print("bh")
 			print(data)
+			print(data[n]["leader_id"])
 			if n in data.keys():
 				for t in self.bot.get_all_members():
 					if str(t.id)==data[n]["leader_id"]:
