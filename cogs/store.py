@@ -13,8 +13,8 @@ class store(commands.Cog):
 				l.append(q)
 		for i in l:
 			if i in ctx.message.author.roles:
-			rolez=i
-			break
+				rolez=i
+				break
 		if rolez==None:
 			await ctx.send(f"Looks like you are not a gym leader")
 			return
