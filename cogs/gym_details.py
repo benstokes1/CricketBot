@@ -65,7 +65,7 @@ class gym_details(commands.Cog):
 					if str(t.id)==data[n]["leader_id"]:
 						hm=t.name
 						break
-			
+			print(hm)
 				
 			if data[n][l_b]=="0":
 				return
@@ -75,6 +75,7 @@ class gym_details(commands.Cog):
 					if str(t.id)==data[n]["l_b"]:
 						hs=t.name
 						break
+			print(hs)
 			print(data)
 			await ctx.send(f"``` {m} Leader: {hm} \n Total number of battles: {data[n]['n_o_b']} \n\n Last Battle: {hm} vs {hs}\n\n Hall Of Fame: {trainer}```") 
 			for i in ctx.message.guild.text_channels:
