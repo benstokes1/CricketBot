@@ -13,7 +13,7 @@ class leader_card(commands.Cog):
 		mem=mem.lower()
 		l=[]
 		p=None
-		
+		print(mem)
 		for q in ctx.message.guild.roles:
 			if q.name.lower().endswith("gym leader"):
 				m=q.name.lower().split(" ")
