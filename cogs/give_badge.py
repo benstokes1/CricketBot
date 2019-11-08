@@ -12,7 +12,6 @@ class badge(commands.Cog):
 		for q in ctx.message.guild.roles:
 			if q.name.lower().endswith("gym leader"):
 				l.append(q)
-		print(l)
 		for i in l:
 			if i in ctx.message.author.roles:
 				rolez=i
