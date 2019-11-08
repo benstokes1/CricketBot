@@ -23,7 +23,7 @@ class gym_details(commands.Cog):
 		if n not in (l):
 			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return
-		else
+		else:
 			with open("./cogs/json/data.txt","r") as hh:
 				data=json.load(hh)
 			trainers=""
