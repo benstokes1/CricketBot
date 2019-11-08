@@ -33,13 +33,15 @@ class badge(commands.Cog):
 				if f[0]==i[0]:
 					role=k
 					break
-		print(role.name)
 		if role in names.roles:
 		
 			await ctx.send("They have already won over "+role.name[:-6])
 		else:
 		
 			await names.add_roles(role)
+			with open("./cogs/json/data.txt","r") as hh:
+				data=json.load(hh)
+			data[i[0]]['h_o_f'].append(names.name)
 			await ctx.send(f"Congratulations {names.mention}!!"+"\n"+f"Your name has been added to the hall of fame of {role.name.upper()[:-6]}\nType `b!tc` to see the list of badges")
 def setup(bot):
 	bot.add_cog(badge(bot))
