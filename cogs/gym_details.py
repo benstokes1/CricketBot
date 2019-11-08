@@ -35,7 +35,7 @@ class gym_details(commands.Cog):
 						hm=t.name
 						break
 			if n not in data.keys():
-				await ctx.send(f"No data related to {n.upper()} type gym")
+				await ctx.send(f"No data related to {n} type gym")
 				return 
 			if type(data[n]["h_o_f"]) == str :
 				trainers=" `None`"
