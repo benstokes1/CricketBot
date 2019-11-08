@@ -37,6 +37,8 @@ class gym_details(commands.Cog):
 					if str(t.id)==data[n]["leader_id"]:
 						hm=t.name
 						break
+			else:
+				await ctx.send(f"No {data[n]['gym_name']} leader")
 			if hm==None:
 				await ctx.send(f"No {data[n]['gym_name']} leader")
 				return
