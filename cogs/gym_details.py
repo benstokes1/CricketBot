@@ -29,6 +29,7 @@ class gym_details(commands.Cog):
 			trainers=""
 			for i in data[n]["h_o_f"]:
 				trainers+=" "+i+"\n"
+			print(trainers)
 			hm=None
 			if n in data.keys():
 				for t in self.bot.get_all_members():
