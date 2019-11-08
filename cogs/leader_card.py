@@ -30,7 +30,7 @@ class leader_card(commands.Cog):
 			await ctx.send("Ping Void!")
 			return
 		elif mem==None:
-			mem=ctx.message.author
+			mem=ctx.message.author()
 		else:
 			for t in self.bot.get_all_members():
 				if str(t.id) == data[mem]['leader_id']:
