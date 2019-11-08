@@ -26,7 +26,7 @@ class leader_card(commands.Cog):
 		if (mem not in l) and (mem!=None):
 			await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
 			return
-		elif mem not in data.keys() and (mem!=None):
+		elif (mem not in data.keys()) and (mem!=None):
 			await ctx.send("Ping Void!")
 			return
 		elif mem==None:
