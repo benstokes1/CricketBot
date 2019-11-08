@@ -23,27 +23,12 @@ class gym_details(commands.Cog):
 		if n not in (l):
 			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return
-		else:
-			
-			
-			trainer= ""
-			
-			for q in self.bot.get_all_members():
-				for role in q.roles:
-					if role.name.lower().endswith("gym badge"):
-						i=role.name.lower().split(" ")
-						if n==i[0]:
-							trainer+=" "+str(q.name)+"\n"
-							break
-			
-			if trainer=="":	
-				trainer="None"
-			else: 
-				trainer="\n\n"+trainer+"\n"
-		
-			
+		else
 			with open("./cogs/json/data.txt","r") as hh:
 				data=json.load(hh)
+			trainers=""
+			for i in data[n]["h_o_f"]:
+				trainers+=i+"\n"
 			hm=None
 			if n in data.keys():
 				for t in self.bot.get_all_members():
