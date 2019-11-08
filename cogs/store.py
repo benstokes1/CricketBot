@@ -19,7 +19,7 @@ class store(commands.Cog):
 			await ctx.send(f"Looks like you are not a gym leader")
 			return
 		else:
-			embed=discord.Embed(colour=discord.Color.red())
+			embed=discord.Embed(colour=discord.Color.darker_grey())
 			embed.add_field(name="Store",value="\n\n `You want Pokecord Credits?`\n 100 pokecord credits = 500 Gym Bot credits\n\n `Sick of posting the rules again and again?`\n Custom Rules = 1000 Gym Bot credits\n\n `Want to make your leader card fancy?`\n Fancy Card = 1500 Gym Bot credits\n\n `Dont have a Legendary Pokemon?`\n Legendary/Mythical = 3000 Gym Bot credits ")
 			await ctx.send(embed=embed) 
 def setup(bot):
