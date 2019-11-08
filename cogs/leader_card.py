@@ -38,6 +38,7 @@ class leader_card(commands.Cog):
 				for t in self.bot.get_all_members():
 					if str(t.id) == data[mem]['leader_id']:
 						mem=t
+						break
 		print("sa")		
 		for i in mem.roles:
 			if i.name.lower().endswith("gym leader"):
