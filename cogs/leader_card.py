@@ -23,7 +23,7 @@ class leader_card(commands.Cog):
 			data=json.load(hh)
 		if mem==None:
 			mem=ctx.message.author
-		
+			print("sa")
 			
 		else:
 			
@@ -34,7 +34,7 @@ class leader_card(commands.Cog):
 				if mem not in data.keys():
 					await ctx.send("Ping Void!")
 					return
-				print("sas")
+				
 				for t in self.bot.get_all_members():
 					if str(t.id) == data[mem]['leader_id']:
 						mem=t
@@ -50,7 +50,6 @@ class leader_card(commands.Cog):
 			await ctx.send("Looks like you are not a gym leader")
 			return
 		if data[p]['prem']=='0':
-			print("hjh")
 			await ctx.send("__```Leader Card```__"+f"``` Gym Name: {data[p]['gym_name']}\n\n Leader Name: {mem.name} \n\n Number of Battles: {data[p]['n_o_b']}\n\n Number of wins: {data[p]['n_o_w']}\n\n Balance: {data[p]['b']}```")
 		else:
 			embed=discord.Embed(colour=10181046)
