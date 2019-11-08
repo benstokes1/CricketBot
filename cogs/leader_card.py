@@ -30,9 +30,9 @@ class leader_card(commands.Cog):
 	
 		elif mem==None:
 			print("sa")
-			mem=ctx.message.author()
+			mem=ctx.message.author
 			print("saas")
-		elif mem==ctx.message.author():
+		elif type(mem)!=str:
 			hh=0
 			for i in data.keys():
 				print(hh)
