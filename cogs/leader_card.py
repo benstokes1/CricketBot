@@ -8,7 +8,7 @@ class leader_card(commands.Cog):
 		self.bot=bot
 	@commands.command(aliases=["lc"])
 
-	async def leader_card(self,ctx,mem=None):
+	async def leader_card(self,ctx,mem="None"):
 		
 		mem=mem.lower()
 		l=[]
@@ -23,15 +23,15 @@ class leader_card(commands.Cog):
 			data=json.load(hh)
 		
 			
-		if (mem not in l) and (mem!=None):
+		if (mem not in l) and (mem!="None"):
 			print("b")
 			await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
 			return
-		elif (mem not in data.keys()) and (mem!=None):
+		elif (mem not in data.keys()) and (mem!="None"):
 			print("a")
 			await ctx.send("Ping Void!")
 			return
-		elif mem==None:
+		elif mem=="None":
 			print("sa")
 			mem=ctx.message.author
 			print("saas")
