@@ -45,7 +45,7 @@ class leader_card(commands.Cog):
 				h=i.name.lower().split(" ")
 				p=h[0]
 				break
-		print("p")
+		print(p)
 		if p==None:
 			await ctx.send("Looks like you are not a gym leader")
 			return
