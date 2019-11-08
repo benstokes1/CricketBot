@@ -33,6 +33,7 @@ class leader_card(commands.Cog):
 			mem=ctx.message.author
 			print("saas")
 		elif type(mem)!=str:
+			print("hh")
 			hh=0
 			for i in data.keys():
 				print(hh)
