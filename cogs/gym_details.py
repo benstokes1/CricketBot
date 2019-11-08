@@ -33,7 +33,7 @@ class gym_details(commands.Cog):
 					if str(t.id)==data[n]["leader_id"]:
 						hm=t.name
 						break
-			else:
+			if n not in data.keys():
 				await ctx.send(f"No data related to {n.upper()} type gym")
 				return 
 			if type(data[n]["h_o_f"]) == str :
