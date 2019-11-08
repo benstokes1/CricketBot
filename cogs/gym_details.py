@@ -53,7 +53,7 @@ class gym_details(commands.Cog):
 		
 			embed=discord.Embed(colour=10181046)
 			if hs==None:
-				embed.add_field(name="Gym Details",value=f" **Gym Name** : {data[n]['gym_name']}\n\n **Leader** : {hm}\n\n **Total number of battles** : {0}\n\n **Last Battle** : None\n\n **Hall Of Fame** : None")
+				embed.add_field(name="Gym Details",value=f" **Gym Name** : {data[n]['gym_name']}\n\n **Leader** : {hm}\n\n **Total number of battles** : {0}\n\n **Last Battle** : None\n\n **Hall Of Fame** : \n{trainers}")
 				await ctx.send(embed=embed) 
 				return
 			embed.add_field(name="Gym Details",value=f" **Gym Name** : {data[n]['gym_name']}\n\n **Leader** : {hm}\n\n **Total number of battles** : {data[n]['n_o_b']}\n\n **Last Battle** : {hm} vs {hs}\n\n **Hall Of Fame** :\n{trainers}")
