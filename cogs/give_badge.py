@@ -40,7 +40,11 @@ class badge(commands.Cog):
 			await names.add_roles(role)
 			with open("./cogs/json/data.txt","r") as hh:
 				data=json.load(hh)
+			print(data)
 			data[i[0]]['h_o_f'].append(names.name)
+			print(data)
+			with open("./cogs/json/data.txt","w") as hh:
+				json.dump(data,hh)
 			await ctx.send(f"Congratulations {names.mention}!!"+"\n"+f"Your name has been added to the hall of fame of {role.name.upper()[:-6]}\nType `b!tc` to see the list of badges")
 def setup(bot):
 	bot.add_cog(badge(bot))
