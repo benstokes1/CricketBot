@@ -34,7 +34,7 @@ class leader_card(commands.Cog):
 				for t in self.bot.get_all_members():
 					if str(t.id) == data[mem]['leader_id']:
 						mem=t
-				
+		print("sa")		
 		for i in mem.roles:
 			if i.name.lower().endswith("gym leader"):
 				h=i.name.lower().split(" ")
@@ -48,6 +48,6 @@ class leader_card(commands.Cog):
 		else:
 			embed=discord.Embed(colour=10181046)
 			embed.add_field(name="Leader Card",value=f" **Gym Name** : \n {data[p]['gym_name']}\n\n **Leader Name** : \n `{data[p]['leader_name']}`\n\n Number of Battles: \n{data[p]['n_o_b']}\n\n  Number of wins: \n{data[p]['n_o_w']}\n\n Balance: \n{data[p]['b']}") 
-				
+			await ctx.send(embed=embed)	
 def setup(bot):
 	bot.add_cog(leader_card(bot))
