@@ -52,7 +52,7 @@ class gym_details(commands.Cog):
 				embed.add_field(name="Gym Details",value=f" **Gym Name** : {data[n]['gym_name']}\n\n **Leader** : {hm}\n\n **Total number of battles** : {0}\n\n **Last Battle** : 'None'\n\n **Hall Of Fame** : 'None'")
 				await ctx.send(embed=embed) 
 				return
-			embed.add_field(name="Gym Details",value=f" **Gym Name** : {data[n]['gym_name']}\n\n **Leader** : {hm}\n\n **Total number of battles** : {data[h]['n_o_b']}\n\n **Last Battle** : {hm} vs {hs}\n\n **Hall Of Fame** :\n{trainers}")
+			embed.add_field(name="Gym Details",value=f" **Gym Name** : {data[n]['gym_name']}\n\n **Leader** : {hm}\n\n **Total number of battles** : {data[n]['n_o_b']}\n\n **Last Battle** : {hm} vs {hs}\n\n **Hall Of Fame** :\n{trainers}")
 			
 			await ctx.send(embed=embed)				
 def setup(bot):
