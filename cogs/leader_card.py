@@ -44,10 +44,10 @@ class leader_card(commands.Cog):
 			await ctx.send("Looks like you are not a gym leader")
 			return
 		if data[p]['prem']=='0':
-			await ctx.send("__```Leader Card```__"+f"``` Gym Name: {data[p]['gym_name']\n\n Leader Name: {data[p]['leader_name']} \n\n Number of Battles: {data[p]['n_o_b']}\n\n Number of wins: {data[p]['n_o_w']}\n\n Balance: {data[p]['b']}```")
+			await ctx.send("__```Leader Card```__"+f"``` Gym Name: {data[p]['gym_name']}\n\n Leader Name: {data[p]['leader_name']} \n\n Number of Battles: {data[p]['n_o_b']}\n\n Number of wins: {data[p]['n_o_w']}\n\n Balance: {data[p]['b']}```")
 		else:
 			embed=discord.Embed(colour=10181046)
-			embed.add_field(name="Leader Card",value=f" **Gym Name** : \n {data[p]['gym_name']\n\n **Leader Name** : \n `{data[p]['leader_name']}`\n\n Number of Battles: \n{data[p]['n_o_b']}\n\n  Number of wins: \n{data[p]['n_o_w']}\n\n Balance: \n{data[p]['b']}") 
+			embed.add_field(name="Leader Card",value=f" **Gym Name** : \n {data[p]['gym_name']}\n\n **Leader Name** : \n `{data[p]['leader_name']}`\n\n Number of Battles: \n{data[p]['n_o_b']}\n\n  Number of wins: \n{data[p]['n_o_w']}\n\n Balance: \n{data[p]['b']}") 
 				
 def setup(bot):
 	bot.add_cog(leader_card(bot))
