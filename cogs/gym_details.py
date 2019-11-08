@@ -46,7 +46,7 @@ class gym_details(commands.Cog):
 						hs=t.name
 						break
 			print("sajh")
-			embed1=discord.Embed(colour=discord.Color.green())
+			embed=discord.Embed(colour=discord.Color.green())
 			print("sajh")
 			if hs==None:
 				embed.add_field(name="Gym Details",value=f" **Gym Name** : {data[n]['gym_name']}\n\n **Leader** : {hm}\n\n **Total number of battles** : 0\n\n **Last Battle** : 'None'\n\n **Hall Of Fame** : 'None'")
