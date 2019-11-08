@@ -28,7 +28,7 @@ class gym_details(commands.Cog):
 				data=json.load(hh)
 			trainers=""
 			for i in data[n]["h_o_f"]:
-				trainers+=i+"\n"
+				trainers+=" "i+"\n"
 			hm=None
 			if n in data.keys():
 				for t in self.bot.get_all_members():
@@ -44,10 +44,13 @@ class gym_details(commands.Cog):
 					if str(t.id)==data[n]["l_b"]:
 						hs=t.name
 						break
-			if hm==None:
-				await ctx.send(f"__```{data[n]['gym_name']}```__"+f"``` Leader: {hm} \n\n Total number of battles: '0' \n\n Last Battle: 'None'\n\n Hall Of Fame: 'None'```") 
+			embed=discord.Embed(colour=discord.Color.yellow())
+			if hs==None:
+				embed.add_field(name="Gym Details",value=f" **Gym Name** : {data[n]['gym_name']}\n\n **Leader** : {hm}\n\n **Total number of battles** : '0'\n\n **Last Battle** : 'None'\n\n **Hall Of Fame** : 'None'")
+				await ctx.send(embed=embed) 
 				return
-			await ctx.send(f"__```{data[n]['gym_name']}```__"+f"``` Leader: {hm} \n\n Total number of battles: {data[n]['n_o_b']} \n\n Last Battle: {hm} vs {hs}\n\n Hall Of Fame: {trainer}```") 
-				
+			embed.add_field(name="Gym Details",value=f" **Gym Name** : {data[n]['gym_name']}\n\n **Leader** : {hm}\n\n **Total number of battles** : '0'\n\n **Last Battle** : {hm} vs {hs}\n\n **Hall Of Fame** :\n{trainers}")
+			
+			await ctx.send(embed=embed)				
 def setup(bot):
 	bot.add_cog(gym_details(bot))
