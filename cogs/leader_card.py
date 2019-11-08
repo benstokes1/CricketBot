@@ -21,8 +21,8 @@ class leader_card(commands.Cog):
 		
 		with open("./cogs/json/data.txt","r") as hh:
 			data=json.load(hh)
-		if mem==None:
-			mem=ctx.message.author
+		if mem == None:
+			mem=ctx.message.author()
 			print("sa")
 			
 		else:
