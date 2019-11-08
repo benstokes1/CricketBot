@@ -30,6 +30,7 @@ class leader_card(commands.Cog):
 			await ctx.send("Ping Void!")
 			return
 		elif mem==None:
+			print("sa")
 			mem=ctx.message.author
 			print("saas")
 		else:
