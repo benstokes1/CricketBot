@@ -33,7 +33,7 @@ class gym_details(commands.Cog):
 					if role.name.lower().endswith("gym badge"):
 						i=role.name.lower().split(" ")
 						if n==i[0]:
-							trainer+=" "+str(q.id)+"\n"
+							trainer+=" "+str(q.name)+"\n"
 							break
 			
 			if trainer=="":	
