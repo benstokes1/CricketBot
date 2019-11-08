@@ -2,6 +2,7 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
+import json
 class badge(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
