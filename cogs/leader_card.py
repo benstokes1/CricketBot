@@ -32,17 +32,7 @@ class leader_card(commands.Cog):
 			print("sa")
 			mem=ctx.message.author
 			print("saas")
-		elif type(mem)!=str:
-			print("hh")
-			hh=0
-			for i in data.keys():
-				print(hh)
-				if str(mem.id)==data[i]['leader_id']:
-					hh=1
-					break
-			if hh==0:
-				await ctx.send("No data found!")
-				return
+		
 		else:
 			print("c")
 			mem=mem.lower()
@@ -59,6 +49,8 @@ class leader_card(commands.Cog):
 		if p==None:
 			await ctx.send("Looks like you are not a gym leader")
 			return
+		if p not in data.keys():
+			await ctx.send("Data Not Found! Ping Void")
 		if data[p]['prem']=='0':
 			await ctx.send("__```Leader Card```__"+f"``` Gym Name: {data[p]['gym_name']}\n\n Leader Name: {mem.name} \n\n Number of Battles: {data[p]['n_o_b']}\n\n Number of wins: {data[p]['n_o_w']}\n\n Balance: {data[p]['b']}```")
 		else:
