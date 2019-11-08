@@ -22,8 +22,10 @@ class leader_card(commands.Cog):
 			data=json.load(hh)
 		if mem==None:
 			mem=ctx.message.author
-		print("oop")
+		
+			
 		else:
+			print("oop")
 			if mem not in l:
 				await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
 				return
