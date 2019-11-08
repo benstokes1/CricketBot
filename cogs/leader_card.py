@@ -35,6 +35,7 @@ class leader_card(commands.Cog):
 		elif mem==ctx.message.author:
 			hh=0
 			for i in data.keys():
+				print(hh)
 				if str(mem.id)==data[i]['leader_id']:
 					hh=1
 					break
