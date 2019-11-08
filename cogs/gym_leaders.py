@@ -15,7 +15,7 @@ class gym_leaders(commands.Cog):
 		s=[] 
 		for i in l:
 			for t in self.bot.get_all_members():
-				if str(t.id)==data[n]["leader_id"]:
+				if str(t.id)==data[i]["leader_id"]:
 						s.append(t.name)
 		for i in len(l):
 			leaders+=" "+"**"+data[l[i]]["gym_name"]+"**"+"\n"+" "+"Leader : "+s[i]+"\n"+"\n"
