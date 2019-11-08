@@ -27,14 +27,20 @@ class leader_card(commands.Cog):
 			print("b")
 			await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
 			return
-		elif (mem not in data.keys()) and (mem!=None):
-			print("a")
-			await ctx.send("Ping Void!")
-			return
+	
 		elif mem==None:
 			print("sa")
 			mem=ctx.message.author
 			print("saas")
+		elif mem==ctx.message.author:
+			hh=0
+			for i in data.keys():
+				if str(mem.id)==data[i]['leader_id']:
+					hh=1
+					break
+			if hh==0:
+				await ctx.send("No data found!")
+				return
 		else:
 			print("c")
 			mem=mem.lower()
