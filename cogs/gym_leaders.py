@@ -18,7 +18,7 @@ class gym_leaders(commands.Cog):
 				if str(t.id)==data[n]["leader_id"]:
 						s.append(t.name)
 		for i in len(l):
-			leaders+=" "+"**"+data[l[i]]["gym_name"]+"**"+\n+" "+"Leader : "+s[i]+"\n"
+			leaders+=" "+"**"+data[l[i]]["gym_name"]+"**"+\n+" "+"Leader : "+s[i]+\n
 		embed=discord.Embed(colour=10181046)
 		embed.add_field(name="Leaders List",value="leaders")
 def setup(bot):
