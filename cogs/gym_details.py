@@ -27,9 +27,10 @@ class gym_details(commands.Cog):
 			with open("./cogs/json/data.txt","r") as hh:
 				data=json.load(hh)
 			trainers=""
+			if type(data[n]["h_o_f"]) == str :
+				trainers=" `None`"
 			for i in data[n]["h_o_f"]:
-				trainers+=" "+i+"\n"
-			print(trainers)
+				trainers+=" "+`+i+`+"\n"
 			hm=None
 			if n in data.keys():
 				for t in self.bot.get_all_members():
