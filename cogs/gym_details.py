@@ -30,7 +30,7 @@ class gym_details(commands.Cog):
 			if type(data[n]["h_o_f"]) == str :
 				trainers=" `None`"
 			for i in data[n]["h_o_f"]:
-				trainers+=" "+`+i+`+"\n"
+				trainers+=" "+"`"+i+"`"+"\n"
 			hm=None
 			if n in data.keys():
 				for t in self.bot.get_all_members():
