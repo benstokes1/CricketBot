@@ -19,7 +19,7 @@ class gym_leaders(commands.Cog):
 						s.append(t.name)
 		print("hgjg")
 		print(s)
-		for i in len(l):
+		for i in range(len(l)):
 			leader+=" "+"**"+data[l[i]]['gym_name']+"**"+"\n"+" "+"Leader : "+s[i]+"\n"+"\n"
 		print(s)
 		embed=discord.Embed(colour=1146986)
