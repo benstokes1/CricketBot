@@ -27,7 +27,8 @@ class gym_details(commands.Cog):
 			with open("./cogs/json/data.txt","r") as hh:
 				data=json.load(hh)
 			trainers=""
-			
+			hm=None
+
 			if n in data.keys():
 				for t in self.bot.get_all_members():
 					if str(t.id)==data[n]["leader_id"]:
@@ -40,7 +41,6 @@ class gym_details(commands.Cog):
 				trainers=" `None`"
 			for i in data[n]["h_o_f"]:
 				trainers+=" "+"`"+i+"`"+"\n"
-			hm=None
 			if hm==None:
 				await ctx.send(f"No {data[n]['gym_name']} leader")
 				return
