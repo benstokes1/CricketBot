@@ -12,7 +12,7 @@ class leader_card(commands.Cog):
 		mem=mem.lower()
 		l=[]
 		p=None
-		rolez=None
+		
 		for q in ctx.message.guild.roles:
 			if q.name.lower().endswith("gym leader"):
 				m=q.name.lower().split(" ")
@@ -24,13 +24,14 @@ class leader_card(commands.Cog):
 			mem=ctx.message.author
 		
 		else:
-			if mem.lower() not in l:
+			if mem not in l:
 				await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
 				return
 			else:
 				if mem not in data.keys():
 					await ctx.send("Ping Void!")
 					return
+				print("sas")
 				for t in self.bot.get_all_members():
 					if str(t.id) == data[mem]['leader_id']:
 						mem=t
