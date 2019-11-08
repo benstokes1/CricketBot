@@ -19,7 +19,7 @@ class gym_leaders(commands.Cog):
 						s.append(t.name)
 		print("hgjg")
 		for i in len(l):
-			leaders+=" "+"**"+data[l[i]]["gym_name"]+"**"+"\n"+" "+"Leader : "+s[i]+"\n"+"\n"
+			leader+=" "+"**"+data[l[i]]["gym_name"]+"**"+"\n"+" "+"Leader : "+s[i]+"\n"+"\n"
 		embed=discord.Embed(colour=1146986)
 		embed.add_field(name="Leaders List",value=f"\n{leader}")
 		await ctx.send(embed=embed)
