@@ -24,9 +24,11 @@ class leader_card(commands.Cog):
 		
 			
 		if (mem not in l) and (mem!=None):
+			print("b")
 			await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
 			return
 		elif (mem not in data.keys()) and (mem!=None):
+			print("a")
 			await ctx.send("Ping Void!")
 			return
 		elif mem==None:
@@ -34,6 +36,7 @@ class leader_card(commands.Cog):
 			mem=ctx.message.author
 			print("saas")
 		else:
+			print("c")
 			for t in self.bot.get_all_members():
 				if str(t.id) == data[mem]['leader_id']:
 					mem=t
