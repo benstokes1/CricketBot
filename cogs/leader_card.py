@@ -26,7 +26,7 @@ class leader_card(commands.Cog):
 		
 			
 		else:
-			print("oop")
+			
 			if mem not in l:
 				await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
 				return
@@ -39,22 +39,22 @@ class leader_card(commands.Cog):
 					if str(t.id) == data[mem]['leader_id']:
 						mem=t
 						break
-		print("sa")		
+		
 		for i in mem.roles:
 			if i.name.lower().endswith("gym leader"):
 				h=i.name.lower().split(" ")
 				p=h[0]
 				break
-		print(p)
+		
 		if p==None:
 			await ctx.send("Looks like you are not a gym leader")
 			return
 		if data[p]['prem']=='0':
 			print("hjh")
-			await ctx.send("__```Leader Card```__"+f"``` Gym Name: {data[p]['gym_name']}\n\n Leader Name: {data[p]['leader_name']} \n\n Number of Battles: {data[p]['n_o_b']}\n\n Number of wins: {data[p]['n_o_w']}\n\n Balance: {data[p]['b']}```")
+			await ctx.send("__```Leader Card```__"+f"``` Gym Name: {data[p]['gym_name']}\n\n Leader Name: {mem.name} \n\n Number of Battles: {data[p]['n_o_b']}\n\n Number of wins: {data[p]['n_o_w']}\n\n Balance: {data[p]['b']}```")
 		else:
 			embed=discord.Embed(colour=10181046)
-			embed.add_field(name="Leader Card",value=f" **Gym Name** : \n {data[p]['gym_name']}\n\n **Leader Name** : \n `{data[p]['leader_name']}`\n\n Number of Battles: \n{data[p]['n_o_b']}\n\n  Number of wins: \n{data[p]['n_o_w']}\n\n Balance: \n{data[p]['b']}") 
+			embed.add_field(name="Leader Card",value=f" **Gym Name** : \n {data[p]['gym_name']}\n\n **Leader Name** : \n `{mem.name}`\n\n Number of Battles: \n{data[p]['n_o_b']}\n\n  Number of wins: \n{data[p]['n_o_w']}\n\n Balance: \n{data[p]['b']}") 
 			await ctx.send(embed=embed)	
 def setup(bot):
 	bot.add_cog(leader_card(bot))
