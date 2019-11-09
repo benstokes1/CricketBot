@@ -29,6 +29,7 @@ class store(commands.Cog):
 				await ctx.send(embed=embed) 
 			elif m.lower() not in ['buy 1','buy 2','buy 3','buy 4']:
 				await ctx.send("Beep-boop! Item not found")
+				return
 			else:
 				m=m.lower().split(" ")
 				m=m[1]
