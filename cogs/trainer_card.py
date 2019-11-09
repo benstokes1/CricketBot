@@ -2,6 +2,7 @@ import discord
 import asyncio
 import random 
 from discord.ext import commands
+import json
 class trainer_card(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
@@ -10,31 +11,22 @@ class trainer_card(commands.Cog):
 		l=[]
 		badges=[]
 		s=""
-		n=""
-		for q in ctx.message.guild.roles:
-			if q.name.lower().endswith("gym badge"):
-				l.append(q.name)
-		if names==None:
-			for i in ctx.message.author.roles:
-				if i.name in l:
-					badges.append(i.name[:-6])
-			n=ctx.message.author.name
-		else:
-			for i in names.roles:
-				if i.name in l:
-					badges.append(i.name[:-6])
-			n=names.name
-		
+		with open("./cogs/json/data.txt","r") as hh:
+				data=json.load(hh)
+		if names== None:
+			names = ctx.message.author
+		for i in data.keys():
+			if names.id in data[i]['h_o_f_i']:
+				badges.append(i.upper()+"Badge")
+		embed=discord.Embed(colour=15844367)
 		if len(badges)==0:
-			await ctx.send("__```Trainer Card```__"+f"``` Trainer Name: {n} \n\n Number of badges: 0```")
-
+			embed.add_field(name="Trainer Card",value=f" **Trainer Name** : `{names.name}` \n\n **Number of Badges** : {0}\n\n **Gyms Defeated** : None") 
+			await ctx.send(embed = embed)
 		else:
 			for i in badges:
 				s+="\n"+" "+i	
 			s="\n"+s
-			await ctx.send("__```Trainer Card```__"+f"``` Trainer Name: {n} \n\n Number of badges: {len(badges)} \n\n Gyms Defeated: {s}```")
-			
-			
-		
+			embed.add_field(name="Trainer Card",value=f" **Trainer Name** : `{names.name}` \n\n **Number of Badges** : {len(badges)}\n\n **Gyms Defeated** : {s}") 
+			await ctx.send(embed = embed)
 def setup(bot):
 	bot.add_cog(trainer_card(bot))
