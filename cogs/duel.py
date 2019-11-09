@@ -46,7 +46,7 @@ class duel(commands.Cog):
  						data=json.load(hh)
 					with open("./cogs/json/data.txt","w") as hh:
  						json.dump(data,hh)
-					data[rolez[0]]['b_c']='0'
+					data[h[0]]['b_c']='0'
 							       
 				else:
 					data[h[0]['n_o_b']=str(int(data[h[0]]['n_o_b']+1)
