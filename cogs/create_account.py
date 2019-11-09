@@ -28,7 +28,9 @@ class create_account(commands.Cog):
 		with open("./cogs/json/data1.json","r") as hr:
 				data1=json.load(hr)
 		for i in data.keys():
+			print("oop")
 			if data[i]['leader_id']==str(ctx.message.author.id):
+				print("avl")
 				await ctx.send("But u already own an account")
 				return
 		print("poo")
