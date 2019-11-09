@@ -12,7 +12,7 @@ class trainer_card(commands.Cog):
 		badges=[]
 		s=""
 		with open("./cogs/json/data.txt","r") as hh:
-				data=json.load(hh)
+			data=json.load(hh)
 		if names== None:
 			names = ctx.message.author
 		for i in data.keys():
