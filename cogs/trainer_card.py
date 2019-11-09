@@ -20,13 +20,13 @@ class trainer_card(commands.Cog):
 				badges.append(i.upper()+"Badge")
 		embed=discord.Embed(colour=15844367)
 		if len(badges)==0:
-			embed.add_field(name="Trainer Card",value=f" **Trainer Name** : `{names.name}` \n\n **Number of Badges** : {0}\n\n **Gyms Defeated** : None") 
+			embed.add_field(name="Trainer Card",value=f" **Trainer Name** :\n `{names.name}` \n\n **Number of Badges** :\n {0}\n\n **Gyms Defeated** :\n None") 
 			await ctx.send(embed = embed)
 		else:
 			for i in badges:
 				s+="\n"+" "+i	
 			s="\n"+s
-			embed.add_field(name="Trainer Card",value=f" **Trainer Name** : `{names.name}` \n\n **Number of Badges** : {len(badges)}\n\n **Gyms Defeated** : {s}") 
+			embed.add_field(name="Trainer Card",value=f" **Trainer Name** :\n `{names.name}` \n\n **Number of Badges** :\n {len(badges)}\n\n **Gyms Defeated** :\n {s}") 
 			await ctx.send(embed = embed)
 def setup(bot):
 	bot.add_cog(trainer_card(bot))
