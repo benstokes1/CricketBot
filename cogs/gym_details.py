@@ -53,10 +53,10 @@ class gym_details(commands.Cog):
 		
 			embed=discord.Embed(colour=10181046)
 			if hs==None:
-				embed.add_field(name="Gym Details",value=f" **Gym Name** :\n {data[n]['gym_name']}\n\n **Leader** :\n {hm}\n\n **Total number of battles** :\n {data[n]['n_o_b']}\n\n **Last Battle** :\n None\n\n **Hall Of Fame** : \n{trainers}")
+				embed.add_field(name="Gym Details",value=f" **Gym Name** :\n {data[n]['gym_name']}\n\n **Leader** :\n `{hm}`\n\n **Total number of battles** :\n {data[n]['n_o_b']}\n\n **Last Battle** :\n None\n\n **Hall Of Fame** : \n{trainers}")
 				await ctx.send(embed=embed) 
 				return
-			embed.add_field(name="Gym Details",value=f" **Gym Name** :\n {data[n]['gym_name']}\n\n **Leader** :\n {hm}\n\n **Total number of battles** :\n {data[n]['n_o_b']}\n\n **Last Battle** :\n `{hm} vs {hs}`\n\n **Hall Of Fame** :\n{trainers}")
+			embed.add_field(name="Gym Details",value=f" **Gym Name** :\n {data[n]['gym_name']}\n\n **Leader** :\n `{hm}`\n\n **Total number of battles** :\n {data[n]['n_o_b']}\n\n **Last Battle** :\n `{hm} vs {hs}`\n\n **Hall Of Fame** :\n{trainers}")
 			
 			await ctx.send(embed=embed)				
 def setup(bot):
