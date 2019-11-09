@@ -51,7 +51,7 @@ class store(commands.Cog):
 						await ctx.send("You cant afford to buy this")
 					else:
 						data[rolez[0]]['b']=str(k-1000)
-						await ctx.send("You have succesfully bought the Custom Rules! Claim from Void!")
+						await ctx.send("You have succesfully bought the Custom Rules! Do b!lc and check ur fancy card")
 				elif m==3:
 					
 					k=int(data[rolez[0]]['b'])
