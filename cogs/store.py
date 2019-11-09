@@ -74,7 +74,7 @@ class store(commands.Cog):
 						await ctx.send("You have succesfully bought the Legendary! Claim from Void!")
 				
 				with open("./cogs/json/data.json","w") as hh:
-					json.dump(data)
+					json.dump(data,hh)
 				
 					
 def setup(bot):
