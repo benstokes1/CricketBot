@@ -35,7 +35,7 @@ class store(commands.Cog):
 				m=int(m[1])
 				with open("./cogs/json/data.json","r") as hh:
 					data=json.load(hh)
-				
+				print(data.keys())
 				if rolez[0] not in data.keys():
 					await ctx.send("Ping Void!")
 					return
