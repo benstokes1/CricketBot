@@ -2,6 +2,7 @@ import discord
 import asyncio
 from discord.ext import commands
 import json
+import random
 class leader_card(commands.Cog):
 	def __init__(self,bot):
 		
@@ -51,7 +52,9 @@ class leader_card(commands.Cog):
 		if data[p]['prem']=='0':
 			await ctx.send("__```Leader Card```__"+f"``` Gym Name: {data[p]['gym_name']}\n\n Leader Name: {mem.name} \n\n Number of Battles: {data[p]['n_o_b']}\n\n Number of wins: {data[p]['n_o_w']}\n\n Balance: {data[p]['b']}```")
 		else:
-			embed=discord.Embed(colour=10181046)
+			colors=[1752220,3066993,3447003,10181046,15844367,15105570,1515833,9807270,8359053,3426654,1146986,2067276,2123412,7419530,12745742,11027200,10038562,9936031,12370112,2899536,16580705,
+12320855]
+			embed=discord.Embed(colour=random.choice(colors))
 			embed.add_field(name="Leader Card",value=f" **Gym Name** : \n {data[p]['gym_name']}\n\n **Leader Name** : \n `{mem.name}`\n\n **Number of Battles** : \n{data[p]['n_o_b']}\n\n  **Number of wins** : \n{data[p]['n_o_w']}\n\n **Balance** : \n{data[p]['b']}") 
 			await ctx.send(embed=embed)	
 def setup(bot):
