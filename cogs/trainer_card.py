@@ -15,7 +15,9 @@ class trainer_card(commands.Cog):
 		if names== None:
 			names = ctx.message.author
 		for i in data.keys():
+			print(i)
 			if names.id in data[i]['h_o_f_i']:
+				
 				i=i.upper()+" Badge"
 				badges.append(i)
 		embed=discord.Embed(colour=15844367)
