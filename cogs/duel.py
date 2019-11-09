@@ -23,13 +23,14 @@ class duel(commands.Cog):
 			if mem==None:
 				await ctx.send("```Syntax: b!sd <@mention>(trainer name)```")
 				return
-			await ctx.send(f"Good luck {mem.mention} uwu")
 			h=rolez.name.lower().split(" ")
 			with open("./cogs/json/data.txt","r") as hh:
 				data=json.load(hh)
 			if h[0] not in data.keys():
 				await ctx.send("Ping Void!")
 			else:
+				await ctx.send(f"Good luck {mem.mention} uwu")
+				
 				if data[h[0]]['b_c']=='3':
 					await ctx.send("Gym is locked for now! Come after 12 hours")
 					return
