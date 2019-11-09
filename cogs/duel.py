@@ -1,10 +1,9 @@
 import discord 
 import asyncio
 from discord.ext import commands
-c=0
+import json
 class duel(commands.Cog):
 	def __init__(self,bot):
-		global c
 		self.bot=bot
 	@commands.command(aliases=["sd"])
 	async def start_duel(self,ctx,mem:discord.Member=None):
@@ -34,15 +33,19 @@ class duel(commands.Cog):
 				if data[rolez[0]]['b_c']=='3':
 					await ctx.send("Gym is locked for now! Come after 12 hours")
 					return
-				data[role[0]]['n_o_b']=str(int(data[role[0]]['n_o_b']+1)
-				data[role[0]]['n_o_w']=str(int(data[role[0]]['n_o_w']+1)
-				data[role[0]]['b']=str(int(data[role[0]]['b']+100)
 				elif data[role[0]]['b_c']=='2':
+					
+					data[role[0]]['n_o_b']=str(int(data[role[0]]['n_o_b']+1)
+					data[role[0]]['n_o_w']=str(int(data[role[0]]['n_o_w']+1)
+					data[role[0]]['b']=str(int(data[role[0]]['b']+100)
 					data[role[0]]['b_c']=str(int(data[role[0]]['b_c'])+1)
 
 					await asyncio.sleep(20)
 					data[role[0]]['b_c']='0'
 				else:
+					data[role[0]]['n_o_b']=str(int(data[role[0]]['n_o_b']+1)
+					data[role[0]]['n_o_w']=str(int(data[role[0]]['n_o_w']+1)
+					data[role[0]]['b']=str(int(data[role[0]]['b']+100)
 					data[role[0]]['b_c']=str(int(data[role[0]]['b_c'])+1)
 				
 def setup(bot):
