@@ -32,10 +32,11 @@ class duel(commands.Cog):
 				await ctx.send(f"Good luck {mem.mention} uwu")
 				
 				if data[h[0]]['b_c']=='3':
+					print("3")
 					await ctx.send("Gym is locked for now! Come after 12 hours")
 					return
 				elif data[h[0]]['b_c']=='2':
-					
+					print("2")
 					data[h[0]]['n_o_b']=str(int(data[h[0]]['n_o_b'])+1)
 					data[h[0]]['n_o_w']=str(int(data[h[0]]['n_o_w'])+1)
 					data[h[0]]['b']=str(int(data[h[0]]['b'])+100)
@@ -50,6 +51,7 @@ class duel(commands.Cog):
 					data[h[0]]['b_c']='0'
 							       
 				else:
+					print("1")
 					data[h[0]]['n_o_b']=str(int(data[h[0]]['n_o_b'])+1)
 					data[h[0]]['n_o_w']=str(int(data[h[0]]['n_o_w'])+1)
 					data[h[0]]['b']=str(int(data[h[0]]['b'])+100)
