@@ -44,10 +44,11 @@ class create_account(commands.Cog):
 
 		data[h[0]]['gym_name']=p+" Type Gym"
 		
-		print(data)
 		
 		with open("./cogs/json/data.json","w") as hh:
 			json.dump(data,hh)
+		print(data)
+
 		await ctx.send("Account created successfully..Good luck!")
 			
 					
