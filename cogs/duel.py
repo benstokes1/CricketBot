@@ -58,6 +58,7 @@ class duel(commands.Cog):
 					data[h[0]]['b_c']=str(int(data[h[0]]['b_c'])+1)
 					with open("./cogs/json/data.txt","w") as hh:
  						json.dump(data,hh)
+					print("end")
 				
 def setup(bot):
 	bot.add_cog(duel(bot))
