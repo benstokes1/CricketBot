@@ -19,7 +19,7 @@ class leader_card(commands.Cog):
 				m=q.name.lower().split(" ")
 				l.append(m[0])
 		
-		with open("./cogs/json/data.txt","r") as hh:
+		with open("./cogs/json/data.json","r") as hh:
 			data=json.load(hh)
 		
 			
