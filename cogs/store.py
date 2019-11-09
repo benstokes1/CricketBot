@@ -67,7 +67,12 @@ class store(commands.Cog):
 					if k<3000:
 						await ctx.send("You cant afford to buy this")
 					else:
+						if data[rolez[0]]['b']=='1':
+							await ctx.send("Looks like u already have a premium account")
+							return
+						
 						data[rolez[0]]['b']=str(k-3000)
+						
 						await ctx.send("You have succesfully bought the Legendary! Claim from Void!")
 				
 				with open("./cogs/json/data.json","w") as hh:
