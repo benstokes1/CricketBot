@@ -37,8 +37,8 @@ class gym_details(commands.Cog):
 			if n not in data.keys():
 				await ctx.send(f"No data related to {n.lower()} type gym")
 				return 
-			if type(data[n]["h_o_f"]) == str :
-				trainers=" `None`"
+			if len(data[n]["h_o_f"])==0 :
+				trainers=" None"
 			for i in data[n]["h_o_f"]:
 				trainers+=" "+"`"+i+"`"+"\n"
 			if hm==None:
@@ -53,7 +53,7 @@ class gym_details(commands.Cog):
 		
 			embed=discord.Embed(colour=10181046)
 			if hs==None:
-				embed.add_field(name="Gym Details",value=f" **Gym Name** :\n {data[n]['gym_name']}\n\n **Leader** :\n `{hm}`\n\n **Total number of battles** :\n {data[n]['n_o_b']}\n\n **Last Battle** :\n None\n\n **Hall Of Fame** : \n{trainers}")
+				embed.add_field(name="Gym Details",value=f" **Gym Name** :\n {data[n]['gym_name']}\n\n **Leader** :\n `{hm}`\n\n **Total number of battles** :\n {data[n]['n_o_b']}\n\n **Last Battle** :\n None\n\n **Hall Of Fame** :\n{trainers}")
 				await ctx.send(embed=embed) 
 				return
 			embed.add_field(name="Gym Details",value=f" **Gym Name** :\n {data[n]['gym_name']}\n\n **Leader** :\n `{hm}`\n\n **Total number of battles** :\n {data[n]['n_o_b']}\n\n **Last Battle** :\n `{hm} vs {hs}`\n\n **Hall Of Fame** :\n{trainers}")
