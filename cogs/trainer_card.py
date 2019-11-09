@@ -16,7 +16,7 @@ class trainer_card(commands.Cog):
 			names = ctx.message.author
 		for i in data.keys():
 			if str(names.id) in data[i]['h_o_f_i']:
-				i=i.upper()+" Badge"
+				i=i.title()+" Badge"
 				badges.append(i)
 		embed=discord.Embed(colour=15844367)
 		if len(badges)==0:
@@ -26,7 +26,7 @@ class trainer_card(commands.Cog):
 			for i in badges:
 				s+="\n"+" "+i	
 			s="\n"+s
-			embed.add_field(name="Trainer Card",value=f" **Trainer Name** :\n `{names.name}` \n\n **Number of Badges** :\n {len(badges)}\n\n **Gyms Defeated** :\n {s}") 
+			embed.add_field(name="Trainer Card",value=f" **Trainer Name** :\n `{names.name}` \n\n **Number of Badges** :\n {len(badges)}\n\n **Gyms Defeated** : {s}") 
 			await ctx.send(embed = embed)
 def setup(bot):
 	bot.add_cog(trainer_card(bot))
