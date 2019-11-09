@@ -40,6 +40,7 @@ class duel(commands.Cog):
 					data[h[0]]['n_o_w']=str(int(data[h[0]]['n_o_w'])+1)
 					data[h[0]]['b']=str(int(data[h[0]]['b'])+100)
 					data[h[0]]['b_c']=str(int(data[h[0]]['b_c'])+1)
+					data[h[0]]['l_b']=str(mem.id)
 					await ctx.send(f"Good luck {mem.mention} uwu")
 
 					with open("./cogs/json/data.json","w") as hh:
@@ -57,6 +58,7 @@ class duel(commands.Cog):
 					data[h[0]]['n_o_w']=str(int(data[h[0]]['n_o_w'])+1)
 					data[h[0]]['b']=str(int(data[h[0]]['b'])+100)
 					data[h[0]]['b_c']=str(int(data[h[0]]['b_c'])+1)
+					data[h[0]]['l_b']=str(mem.id)
 					await ctx.send(f"Good luck {mem.mention} uwu")
 
 					with open("./cogs/json/data.json","w") as hh:
