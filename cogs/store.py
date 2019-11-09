@@ -31,7 +31,7 @@ class store(commands.Cog):
 				await ctx.send("Beep-boop! Item not found")
 			else:
 				m=m.split(" ")
-				m=m[2]
+				m=m[1]
 				with open("./cogs/json/data.json","r") as hh:
 					data=json.load(hh)
 				if rolez[0] not in data.keys():
