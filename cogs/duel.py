@@ -35,10 +35,10 @@ class duel(commands.Cog):
 					return
 				elif data[role[0]]['b_c']=='2':
 					
-					data[role[0]]['n_o_b']=str(int(data[role[0]]['n_o_b']+1)
-					data[role[0]]['n_o_w']=str(int(data[role[0]]['n_o_w']+1)
-					data[role[0]]['b']=str(int(data[role[0]]['b']+100)
-					data[role[0]]['b_c']=str(int(data[role[0]]['b_c'])+1)
+					data[rolez[0]]['n_o_b']=str(int(data[role[0]]['n_o_b']+1)
+					data[rolez[0]]['n_o_w']=str(int(data[role[0]]['n_o_w']+1)
+					data[rolez[0]]['b']=str(int(data[role[0]]['b']+100)
+					data[rolez[0]]['b_c']=str(int(data[role[0]]['b_c'])+1)
 					with open("./cogs/json/data.txt","w") as hh:
  						json.dump(data,hh)
 					await asyncio.sleep(20)
@@ -46,13 +46,13 @@ class duel(commands.Cog):
  						data=json.load(hh)
 					with open("./cogs/json/data.txt","w") as hh:
  						json.dump(data,hh)
-					data[role[0]]['b_c']='0'
+					data[rolez[0]]['b_c']='0'
 							       
 				else:
-					data[role[0]]['n_o_b']=str(int(data[role[0]]['n_o_b']+1)
-					data[role[0]]['n_o_w']=str(int(data[role[0]]['n_o_w']+1)
-					data[role[0]]['b']=str(int(data[role[0]]['b']+100)
-					data[role[0]]['b_c']=str(int(data[role[0]]['b_c'])+1)
+					data[rolez[0]]['n_o_b']=str(int(data[role[0]]['n_o_b']+1)
+					data[rolez[0]]['n_o_w']=str(int(data[role[0]]['n_o_w']+1)
+					data[rolez[0]]['b']=str(int(data[role[0]]['b']+100)
+					data[rolez[0]]['b_c']=str(int(data[role[0]]['b_c'])+1)
 					with open("./cogs/json/data.txt","r") as hh:
  						json.dump(data,hh)
 				
