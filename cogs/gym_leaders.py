@@ -7,9 +7,9 @@ class gym_leaders(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command(aliases=["gl"])
-	async def gym_leaders(self,ctx,names:discord.Member=None):
-		with open("./cogs/json/data.json","r") as hh:
-			data=json.load(hh)
+	async def gym_leaders(self,ctx):
+		with open("./cogs/json/data.json","r") as hs:
+			data=json.load(hs)
 		l=data.keys()
 		leader=""
 		s=[] 
