@@ -40,10 +40,11 @@ class create_account(commands.Cog):
 			data[h[0]]['h_o_f']=hof
 			data[h[0]]['h_o_f_i']=hofi
 		else:
-			print("sa")
 			data[h[0]]=data1['i']
-		data[h[0]]['leader_id']=str(ctx.message.author.id)
+			print("sa")
 
+		data[h[0]]['leader_id']=str(ctx.message.author.id)
+		
 		data[h[0]]['gym_name']=p+" Type Gym"
 		
 		print("Sa")
