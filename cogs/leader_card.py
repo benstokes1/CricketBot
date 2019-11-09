@@ -24,20 +24,25 @@ class leader_card(commands.Cog):
 			data=json.load(hh)
 		
 			
-		if (mem not in l) and (mem!=None):
-			await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
-			return
+		
 	
-		elif mem==None:
+		if mem==None:
 		
 			mem=ctx.message.author
+		elif (mem not in l):
+			await ctx.send("```Syntax: b!leader_card <name of gym(ex: fire)>(optional if u are a gym leader)```")
+			return
 		
 		else:
-			mem=mem.lower()
-			for t in self.bot.get_all_members():
-				if str(t.id) == data[mem]['leader_id']:
-					mem=t
-					break
+			if mem not in data.keys():
+				await ctx.send("No data found")
+			else:
+				
+				mem=mem.lower()
+				for t in self.bot.get_all_members():
+					if str(t.id) == data[mem]['leader_id']:
+						mem=t
+						break
 		for i in mem.roles:
 			if i.name.lower().endswith("gym leader"):
 				h=i.name.lower().split(" ")
