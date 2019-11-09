@@ -12,13 +12,14 @@ class trainer_card(commands.Cog):
 		s=""
 		with open("./cogs/json/data.txt","r") as hh:
 			data=json.load(hh)
-		if names== None:
+		if names == None:
 			names = ctx.message.author
 		for i in data.keys():
 			print(i)
+			print(data[i]['h_o_f_i'])
 			if names.id in data[i]['h_o_f_i']:
-				
 				i=i.upper()+" Badge"
+				print(i)
 				badges.append(i)
 		embed=discord.Embed(colour=15844367)
 		if len(badges)==0:
