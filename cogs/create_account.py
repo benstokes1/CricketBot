@@ -36,11 +36,11 @@ class create_account(commands.Cog):
 
 			hof=data[h[0]]['h_o_f']
 			hofi=data[h[0]]['h_o_f_i']
-			data[h[0]]=data1[h[0]]
+			data[h[0]]=data1['i']
 			data[h[0]]['h_o_f']=hof
 			data[h[0]]['h_o_f_i']=hofi
 		else:
-			data[h[0]]=data1
+			data[h[0]]=data1['i']
 		data[h[0]]['leader_id']=str(ctx.message.author.id)
 		data[h[0]]['gym_name']=h[0].sentence()+" Type Gym"
 		print(h[0])
