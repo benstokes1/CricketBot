@@ -22,7 +22,7 @@ class create_account(commands.Cog):
 			return
 		
 		h=rolez.name.lower().split(" ")
-	
+		print("oop")
 		with open("./cogs/json/data.json","r") as hh:
 				data=json.load(hh)
 		with open("./cogs/json/data1.json","r") as hh:
@@ -31,6 +31,7 @@ class create_account(commands.Cog):
 			if data[i]['leader_id']==str(ctx.message.author.id):
 				await ctx.send("But u already own an account")
 				return
+		print("poo")
 		if h[0] in data.keys():
 			hof=data[h[0]]['h_o_f']
 			hofi=data[h[0]]['h_o_f_i']
