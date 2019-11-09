@@ -27,7 +27,7 @@ class create_account(commands.Cog):
 				data=json.load(hh)
 		with open("./cogs/json/data1.json","r") as hr:
 				data1=json.load(hr)
-		for i in data.keys():
+		for i in list(data.keys()):
 			print("oop")
 			if data[i]['leader_id']==str(ctx.message.author.id):
 				print("avl")
