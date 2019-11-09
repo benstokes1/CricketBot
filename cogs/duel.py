@@ -27,18 +27,18 @@ class duel(commands.Cog):
 			h=rolez.name.lower().split(" ")
 			with open("./cogs/json/data.txt","r") as hh:
 				data=json.load(hh)
-			if rolez[0] not in data.keys():
+			if h[0] not in data.keys():
 				await ctx.send("Ping Void!")
 			else:
-				if data[rolez[0]]['b_c']=='3':
+				if data[h[0]]['b_c']=='3':
 					await ctx.send("Gym is locked for now! Come after 12 hours")
 					return
-				elif data[role[0]]['b_c']=='2':
+				elif data[h[0]]['b_c']=='2':
 					
-					data[rolez[0]]['n_o_b']=str(int(data[rolez[0]]['n_o_b']+1)
-					data[rolez[0]]['n_o_w']=str(int(data[rolez[0]]['n_o_w']+1)
-					data[rolez[0]]['b']=str(int(data[rolez[0]]['b']+100)
-					data[rolez[0]]['b_c']=str(int(data[rolez[0]]['b_c'])+1)
+					data[h[0]]['n_o_b']=str(int(data[h[0]]['n_o_b']+1)
+					data[h[0]]['n_o_w']=str(int(data[h[0]]['n_o_w']+1)
+					data[h[0]]['b']=str(int(data[h[0]]['b']+100)
+					data[h[0]]['b_c']=str(int(data[h[0]]['b_c'])+1)
 					with open("./cogs/json/data.txt","w") as hh:
  						json.dump(data,hh)
 					await asyncio.sleep(20)
@@ -49,10 +49,10 @@ class duel(commands.Cog):
 					data[rolez[0]]['b_c']='0'
 							       
 				else:
-					data[rolez[0]]['n_o_b']=str(int(data[rolez[0]]['n_o_b']+1)
-					data[rolez[0]]['n_o_w']=str(int(data[rolez[0]]['n_o_w']+1)
-					data[rolez[0]]['b']=str(int(data[rolez[0]]['b']+100)
-					data[rolez[0]]['b_c']=str(int(data[rolez[0]]['b_c'])+1)
+					data[h[0]['n_o_b']=str(int(data[h[0]]['n_o_b']+1)
+					data[h[0]]['n_o_w']=str(int(data[h[0]]['n_o_w']+1)
+					data[h[0]]['b']=str(int(data[h[0]]['b']+100)
+					data[h[0]]['b_c']=str(int(data[h[0]]['b_c'])+1)
 					with open("./cogs/json/data.txt","r") as hh:
  						json.dump(data,hh)
 				
