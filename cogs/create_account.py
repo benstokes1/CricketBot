@@ -44,10 +44,9 @@ class create_account(commands.Cog):
 			print("sa")
 
 		data[h[0]]['leader_id']=str(ctx.message.author.id)
-		
+		p=h[0].title()
 		data[h[0]]['gym_name']=p+" Type Gym"
 		
-		print("Sa")
 		with open("./cogs/json/data.json","w") as hh:
 			json.dump(data,hh)
 		print(data)
