@@ -24,7 +24,7 @@ class duel(commands.Cog):
 				await ctx.send("```Syntax: b!sd <@mention>(trainer name)```")
 				return
 			h=rolez.name.lower().split(" ")
-			with open("./cogs/json/data.txt","r") as hh:
+			with open("./cogs/json/data.json","r") as hh:
 				data=json.load(hh)
 			if h[0] not in data.keys():
 				await ctx.send("Ping Void!")
@@ -42,13 +42,13 @@ class duel(commands.Cog):
 					data[h[0]]['b_c']=str(int(data[h[0]]['b_c'])+1)
 					await ctx.send(f"Good luck {mem.mention} uwu")
 
-					with open("./cogs/json/data.txt","w") as hh:
+					with open("./cogs/json/data.json","w") as hh:
  						json.dump(data,hh)
 					await asyncio.sleep(20)
-					with open("./cogs/json/data.txt","r") as hh:
+					with open("./cogs/json/data.json","r") as hh:
  						data=json.load(hh)
 					data[h[0]]['b_c']='0'
-					with open("./cogs/json/data.txt","w") as hh:
+					with open("./cogs/json/data.json","w") as hh:
  						json.dump(data,hh)
 							       
 				else:
@@ -59,7 +59,7 @@ class duel(commands.Cog):
 					data[h[0]]['b_c']=str(int(data[h[0]]['b_c'])+1)
 					await ctx.send(f"Good luck {mem.mention} uwu")
 
-					with open("./cogs/json/data.txt","w") as hh:
+					with open("./cogs/json/data.json","w") as hh:
  						json.dump(data,hh)
 					print("end")
 				
