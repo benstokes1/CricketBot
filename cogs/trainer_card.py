@@ -10,7 +10,7 @@ class trainer_card(commands.Cog):
 	async def trainer_card(self,ctx,names:discord.Member=None):
 		badges=[]
 		s=""
-		with open("./cogs/json/data.txt","r") as hh:
+		with open("./cogs/json/data.json","r") as hh:
 			data=json.load(hh)
 		if names == None:
 			names = ctx.message.author
