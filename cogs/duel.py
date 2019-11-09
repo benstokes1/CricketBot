@@ -29,7 +29,6 @@ class duel(commands.Cog):
 			if h[0] not in data.keys():
 				await ctx.send("Ping Void!")
 			else:
-				await ctx.send(f"Good luck {mem.mention} uwu")
 				
 				if data[h[0]]['b_c']=='3':
 					print("3")
@@ -41,14 +40,16 @@ class duel(commands.Cog):
 					data[h[0]]['n_o_w']=str(int(data[h[0]]['n_o_w'])+1)
 					data[h[0]]['b']=str(int(data[h[0]]['b'])+100)
 					data[h[0]]['b_c']=str(int(data[h[0]]['b_c'])+1)
+					await ctx.send(f"Good luck {mem.mention} uwu")
+
 					with open("./cogs/json/data.txt","w") as hh:
  						json.dump(data,hh)
 					await asyncio.sleep(20)
 					with open("./cogs/json/data.txt","r") as hh:
  						data=json.load(hh)
+					data[h[0]]['b_c']='0'
 					with open("./cogs/json/data.txt","w") as hh:
  						json.dump(data,hh)
-					data[h[0]]['b_c']='0'
 							       
 				else:
 					print("1")
@@ -56,9 +57,12 @@ class duel(commands.Cog):
 					data[h[0]]['n_o_w']=str(int(data[h[0]]['n_o_w'])+1)
 					data[h[0]]['b']=str(int(data[h[0]]['b'])+100)
 					data[h[0]]['b_c']=str(int(data[h[0]]['b_c'])+1)
+					await ctx.send(f"Good luck {mem.mention} uwu")
+
 					with open("./cogs/json/data.txt","w") as hh:
  						json.dump(data,hh)
 					print("end")
+				
 				
 def setup(bot):
 	bot.add_cog(duel(bot))
