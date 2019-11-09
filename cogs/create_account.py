@@ -32,7 +32,6 @@ class create_account(commands.Cog):
 				await ctx.send("But u already own an account")
 				return
 		if h[0] in data.keys():					
-			print("hoo")
 
 			hof=data[h[0]]['h_o_f']
 			hofi=data[h[0]]['h_o_f_i']
@@ -42,9 +41,8 @@ class create_account(commands.Cog):
 		else:
 			data[h[0]]=data1['i']
 		data[h[0]]['leader_id']=str(ctx.message.author.id)
-		print(h[0])
 
-		h[0]=h[0].sentence()
+		h[0]=h[0].title()
 		data[h[0]]['gym_name']=h[0]+" Type Gym"
 		with open("./cogs/json/data.json","w") as hh:
 			json.dump(data,hh)
