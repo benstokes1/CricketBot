@@ -31,6 +31,7 @@ class create_account(commands.Cog):
 				print("avl")
 				await ctx.send("But u already own an account")
 				return
+		print(h[0])
 		if h[0] in data.keys():					
 			print("hoo")
 
