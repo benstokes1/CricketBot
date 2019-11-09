@@ -41,7 +41,7 @@ class badge(commands.Cog):
 			await names.add_roles(role)
 			with open("./cogs/json/data.txt","r") as hh:
 				data=json.load(hh)
-			data[i[0]]['h_o_f']].append(names.name)
+			data[i[0]['h_o_f']].append(names.name)
 			data[i[0]['n_o_w']]=str(int(data[i[0]['n_o_w']])-1)
 			data[i[0]['b']]=str(int(data[i[0]['b']])-100)
 			with open("./cogs/json/data.txt","w") as hh:
