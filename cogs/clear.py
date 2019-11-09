@@ -6,7 +6,6 @@ from discord.ext import commands
 class clear(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
-	#clear
 	@commands.command()
 	async def clear(self,ctx,amount=None) :
 		if amount==None:
