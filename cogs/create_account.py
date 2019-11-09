@@ -33,13 +33,14 @@ class create_account(commands.Cog):
 				return
 		print("sa")
 		if h[0] in data.keys():					
-
+			print("sa")
 			hof=data[h[0]]['h_o_f']
 			hofi=data[h[0]]['h_o_f_i']
 			data[h[0]]=data1['i']
 			data[h[0]]['h_o_f']=hof
 			data[h[0]]['h_o_f_i']=hofi
 		else:
+			print("sa")
 			data[h[0]]=data1['i']
 		data[h[0]]['leader_id']=str(ctx.message.author.id)
 
