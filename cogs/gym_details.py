@@ -24,7 +24,7 @@ class gym_details(commands.Cog):
 			await ctx.send("```Syntax: b!gym_details <name of gym>(ex: fire)```")
 			return
 		else:
-			with open("./cogs/json/data.txt","r") as hh:
+			with open("./cogs/json/data.json","r") as hh:
 				data=json.load(hh)
 			trainers=""
 			hm=None
