@@ -17,10 +17,6 @@ class create_account(commands.Cog):
 			if i in ctx.message.author.roles:
 				rolez=i
 				break
-		
-		if names==None:
-			await ctx.send("```Syntax: b!give_badge <@mention>```")
-			return
 		if rolez==None:
 			await ctx.send(f"Looks like you are not a gym leader")
 			return
