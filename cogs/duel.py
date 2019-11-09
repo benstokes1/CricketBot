@@ -44,7 +44,7 @@ class duel(commands.Cog):
 
 					with open("./cogs/json/data.json","w") as hh:
  						json.dump(data,hh)
-					await asyncio.sleep(20)
+					await asyncio.sleep(43200)
 					with open("./cogs/json/data.json","r") as hh:
  						data=json.load(hh)
 					data[h[0]]['b_c']='0'
