@@ -39,11 +39,11 @@ class create_account(commands.Cog):
 			data[h[0]]['h_o_f_i']=hofi
 		else:
 			data[h[0]]=data1
-			data[h[0]]['leader_id']=str(ctx.message.author.id)
-			data[h[0]]['gym_name']=h[0].sentence()+" Type Gym"
-			with open("./cogs/json/data.json","w") as hh:
-				json.dump(data,hh)
-			await ctx.send("Account created successfully..Good luck!")
+		data[h[0]]['leader_id']=str(ctx.message.author.id)
+		data[h[0]]['gym_name']=h[0].sentence()+" Type Gym"
+		with open("./cogs/json/data.json","w") as hh:
+			json.dump(data,hh)
+		await ctx.send("Account created successfully..Good luck!")
 			
 					
 					
