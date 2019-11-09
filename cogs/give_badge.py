@@ -43,7 +43,7 @@ class badge(commands.Cog):
 				data=json.load(hh)
 			data[i[0]]['h_o_f'].append(names.name)
 			data[i[0]]['n_o_w']=str(int(data[i[0]]['n_o_w'])-1)
-			data[i[0]]['b']]=str(int(data[i[0]]['b'])-100)
+			data[i[0]]['b']=str(int(data[i[0]]['b'])-100)
 			with open("./cogs/json/data.txt","w") as hh:
 				json.dump(data,hh)
 			await ctx.send(f"Congratulations {names.mention}!!"+"\n"+f"Your name has been added to the hall of fame of {role.name.upper()[:-6]}\nType `b!tc` to see the list of badges")
