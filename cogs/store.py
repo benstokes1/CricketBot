@@ -31,6 +31,9 @@ class store(commands.Cog):
 				m=m[2]
 				with open("./cogs/json/data.json","r") as hh:
 					data=json.load(hh)
+				if rolez[0] not in data.keys():
+					await ctx.send("Ping Void!")
+					return
 				if m==1:
 					k=int(data[rolez[0]]['b'])
 					if k<500:
