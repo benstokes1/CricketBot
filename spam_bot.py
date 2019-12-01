@@ -12,7 +12,7 @@ async def on_ready():
 @bot.command(aliases=["st"])
 async def stop(ctx):
 	channel=ctx.message.channel
-	channel.edit(topic="stop :1") 
+	await channel.edit(topic="stop :1") 
 				
 for filename in os.listdir("./cogs"):
 	if filename.endswith(".py"):
