@@ -14,6 +14,7 @@ class start(commands.Cog):
 				pass	
 		except:	
 			text=t+text
+			print(text)
 			t=None
 		for i in ctx.message.author.roles:
 			if 'spam' in i.name.lower():
