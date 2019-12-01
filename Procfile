@@ -1,1 +1,1 @@
-worker: python gym_bot.py
+worker: python spam_bot.py
