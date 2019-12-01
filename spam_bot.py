@@ -30,7 +30,7 @@ for filename in os.listdir("./cogs"):
 
 async def help(ctx):
 	embed=discord.Embed(colour=discord.Color.blue())
-	embed.add_field(name="Help Menu",value="\n**My prefix is 's!'**\n\n"+" **s!start <#channel>** : Starts spamming in the required channel or current channel\n"+"** s!stop** : Stops the bot")
+	embed.add_field(name="Help Menu",value="\n**My prefix is 's!'**\n\n"+" **s!start <#channel>** : Starts spamming in the required channel or current channel\n\n"+"** s!stop** : Stops the bot")
 	await ctx.send(embed=embed)
 @bot.event
 async def on_command_error(ctx,error):
