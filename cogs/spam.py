@@ -11,7 +11,7 @@ class start(commands.Cog):
 	async def start(self,ctx,t=None):
 		channel=ctx.message.channel
 		noww=datetime.now()
-		channel.edit(topic="stop :0")
+		await channel.edit(topic="stop :0")
 		if t==None:
 			nex= noww+timedelta(minutes = 10)
 		elif 's' in t.lower():
