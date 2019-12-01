@@ -16,17 +16,16 @@ class start(commands.Cog):
 		except:	
 			if text==None:
 				text=t
-				print(text)
 			else:
-				text=t+text
+				text=t+" "+text
 			t=None
 		else:
 			if t[:2]=="<@":
 				if text==None:
 					text=t
-					print(text)
+				
 				else:
-					text=t+text
+					text=t+" "+text
 				t=None				
 		for i in ctx.message.author.roles:
 			if 'spam' in i.name.lower():
