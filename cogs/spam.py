@@ -22,9 +22,10 @@ class start(commands.Cog):
 			print(noww)
 		
 		while 1:
-			if noww==nex:
+			if noww>=nex:
 				break
 			else:
+				noww=datetime.now()
 				await asyncio.sleep(0.8)
 				await channel.send("Spam")
 		'''elif 'm' in t.lower():
