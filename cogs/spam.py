@@ -13,23 +13,23 @@ class start(commands.Cog):
 		noww=datetime.now()
 		if t==None:
 			nex= noww+timedelta(minutes = 10)
-		elif 's' in time.lower():
+		elif 's' in t.lower():
 			t=int(t[:-1])
 			nex= noww+timedelta(seconds = t)
 		
-		elif 'm' in time.lower():
+		elif 'm' in t.lower():
 			t=int(t[:-1])
 			nex= noww+timedelta(minutes = t)
 		
-		elif 'h' in time.lower():
+		elif 'h' in t.lower():
 			t=int(t[:-1])
 			nex= noww+timedelta(hours = t)
 		
-		elif 'd' in time.lower():
+		elif 'd' in t.lower():
 			t=int(t[:-1])
 			nex= noww+timedelta(days = t)
 		while 1:
-			if noww==next:
+			if noww==nex:
 				break
 			else:
 				await asyncio.sleep(0.5)
