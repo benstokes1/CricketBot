@@ -10,23 +10,32 @@ class start(commands.Cog):
 	@commands.command()
 	async def start(self,ctx,t=None,*,text=None):
 		try:
-			print(t)
-			if type(int(t[3:len(t)-1]))==int:
-				pass
-		except:	
-			if text==None:
-				text=t
-			else:
-				text=t+" "+text
-			t=None
-		else:
-			if t[:2]=="<@":
+			if type(int(t[:-1]))==int:
+				if int(t[:-1]) > 0:
+					pass
+				else:
+					await ctx.send("Oops cant read negative numbers")
+					return
+		except:
+			
+			try:
+				print(t)
+				if type(int(t[3:len(t)-1]))==int:
+					pass
+			except:	
 				if text==None:
 					text=t
-				
 				else:
 					text=t+" "+text
-				t=None				
+				t=None
+			else:
+				if t[:2]=="<@":
+					if text==None:
+						text=t
+
+					else:
+						text=t+" "+text
+					t=None				
 		for i in ctx.message.author.roles:
 			if 'spam' in i.name.lower():
 				
