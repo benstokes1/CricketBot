@@ -32,6 +32,7 @@ class start(commands.Cog):
 			if noww==next:
 				break
 			else:
+				await asyncio.sleep(0.5)
 				await channel.send("Spam")
 		
 def setup(bot):
