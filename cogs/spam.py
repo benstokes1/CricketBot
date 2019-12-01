@@ -36,7 +36,7 @@ class start(commands.Cog):
 			time=int(time[:-1])
 			nex= now+timedelta(days = time)
 		while 1:
-			if now=next:
+			if now==next:
 				break
 			else:
 				await channel.send("Spam")
