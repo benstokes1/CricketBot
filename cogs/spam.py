@@ -9,13 +9,21 @@ class start(commands.Cog):
 		self.bot=bot
 	@commands.command()
 	async def start(self,ctx,t=None,*,text=None):
+		
 		try:
 			if type(int(t[:-1]))==int:
-				if int(t[:-1]) > 0:
-					pass
-				else:
-					await ctx.send("Oops cant read negative numbers")
-					return
+				try:
+					if type(int(t))==int:
+						text=t
+						t=None
+				except:
+					
+					if int(t[:-1]) >= 0:
+						pass
+
+					else:
+						await ctx.send("Oops cant read negative numbers")
+						return
 		except:
 			
 			try:
