@@ -10,6 +10,7 @@ class start(commands.Cog):
 	@commands.command()
 	async def start(self,ctx,t=None,*,text=None):
 		try:
+			print(t)
 			if type(int(t[:-1]))==int:
 				pass	
 		except:	
