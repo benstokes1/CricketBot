@@ -7,7 +7,7 @@ from datetime import datetime,timedelta
 class start(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
-	@commands.command(aliases=["start"])
+	@commands.command()
 	async def start(self,ctx,t=None):
 		channel=ctx.message.channel
 		noww=datetime.now()
