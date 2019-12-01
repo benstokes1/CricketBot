@@ -14,12 +14,19 @@ class start(commands.Cog):
 			if type(int(t[3:len(t)-1]))==int:
 				pass
 		except:	
-			text=t
-			print(text)
+			if text==None:
+				text=t
+				print(text)
+			else:
+				text=t+text
 			t=None
 		else:
 			if t[:2]=="<@":
-				text=t
+				if text==None:
+					text=t
+					print(text)
+				else:
+					text=t+text
 				t=None				
 		for i in ctx.message.author.roles:
 			if 'spam' in i.name.lower():
