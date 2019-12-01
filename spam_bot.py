@@ -17,12 +17,12 @@ async def load(ctx,extension):
 async def stop(ctx,extension):
 
 	for filename in os.listdir("./cogs"):
-		if filename.endswith(".py"):
-				bot.unload_extension(f"cogs.{filename[:-3]}")
+			bot.unload_extension("cogs."+f"{extension}")
 
 	for filename in os.listdir("./cogs"):
-		if filename.endswith(".py"):
-				bot.load_extension(f"cogs.{filename[:-3]}")
+			bot.load_extension("cogs."+f"{extension}")
+		
+	
 	await ctx.send("Stopped all the processes")
 				
 for filename in os.listdir("./cogs"):
@@ -31,7 +31,7 @@ for filename in os.listdir("./cogs"):
 @bot.command()
 async def help(ctx):
 	embed=discord.Embed(colour=discord.Color.blue())
-	embed.add_field(name="Help Menu",value="\n**My prefix is 's!'**\n\n"+" **s!start <#channel>** : Starts spamming in the required channel or current channel\n\n"+"** s!stop** : Stops the bot")
+	embed.add_field(name="Help Menu",value="\n**My prefix is 's!'**\n\n"+" **s!start <time>(s,m,h,d) ** : Starts spamming in the required channel or current channel\n\n"+"** s!stop** : Stops the bot")
 	await ctx.send(embed=embed)
 @bot.event
 async def on_command_error(ctx,error):
