@@ -11,7 +11,7 @@ class start(commands.Cog):
 	async def start(self,ctx,t=None,*,text=None):
 		try:
 			print(t)
-			if type(int(t[:-1]))==int:
+			if type(int(t[3:len(t)-1]))==int:
 				pass	
 		except:	
 			text=t+text
