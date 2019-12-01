@@ -25,10 +25,6 @@ async def help(ctx):
 @bot.command()
 async def invite(ctx):
 	await ctx.send("https://discordapp.com/api/oauth2/authorize?client_id=650654612545732618&permissions=8&scope=bot")
-@bot.event
-async def on_command_error(ctx,error):
-	if isinstance(error,commands.CommandNotFound):
-		
-		await ctx.send("```This is not a command\n\nType s!help to see the list of commands```")
+
 
 bot.run(os.getenv("BOT_TOKEN"))
