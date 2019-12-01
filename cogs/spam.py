@@ -17,11 +17,11 @@ class start(commands.Cog):
 			while 1:
 				if channel.topic=="stop :1":
 					await channel.send("Processes stopped successfully")
-					break
+					return
 				noww=datetime.now()
 				await asyncio.sleep(0.8)
 				await channel.send("Spam")
-			return
+	
 		elif 's' in t.lower():
 			t=int(t[:-1])
 			print(t)
