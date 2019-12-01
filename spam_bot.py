@@ -13,8 +13,8 @@ async def on_ready():
 async def load(ctx,extension):
 	
 	bot.load_extension(f"cogs.{extension}")
-@bot.command(aliases=["ss"])
-async def stop_spam(ctx,extension):
+@bot.command(aliases=["st"])
+async def stop(ctx,extension):
 	for filename in os.listdir("./cogs"):
 		for file in os.listdir("./cogs/"+filename):
 			if file.endswith(".py"):
@@ -30,7 +30,7 @@ for filename in os.listdir("./cogs"):
 
 async def help(ctx):
 	embed=discord.Embed(colour=discord.Color.blue())
-	embed.add_field(name="Help Menu",value="\n**My prefix is 's!'**\n\n"+" **s!start <#channel>** : Starts spamming in the required channel or current channel" )
+	embed.add_field(name="Help Menu",value="\n**My prefix is 's!'**\n\n"+" **s!start <#channel>** : Starts spamming in the required channel or current channel\n"+"** s!stop** : Stops the bot")
 	await ctx.send(embed=embed)
 @bot.event
 async def on_command_error(ctx,error):
