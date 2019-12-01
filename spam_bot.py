@@ -9,10 +9,6 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
 	print("Less go")
-@bot.command()
-async def load(ctx,extension):
-	
-	bot.load_extension(f"cogs.{extension}")
 @bot.command(aliases=["st"])
 async def stop(ctx,extension):
 	bot.unload_extension(f"cogs.{extension}")
