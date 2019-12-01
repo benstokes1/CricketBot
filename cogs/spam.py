@@ -7,14 +7,21 @@ from datetime import datetime,timedelta
 class start(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
-	@commands.command(aliases=["s"])
+	@commands.command(aliases=["start"])
 	async def start(self,ctx,t=None):
 		channel=ctx.message.channel
 		noww=datetime.now()
 		channel.edit(topic="stop :0")
 		await channel.edit(topic="stop :0")
 		if t==None:
-			nex= noww+timedelta(minutes = 10)
+			while 1:
+				if channel.topic=="stop :1":
+					await channel.send("Processes stopped successfully")
+					break
+				noww=datetime.now()
+				await asyncio.sleep(0.8)
+				await channel.send("Spam")
+			return
 		elif 's' in t.lower():
 			t=int(t[:-1])
 			print(t)
