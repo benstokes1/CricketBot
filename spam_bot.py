@@ -4,7 +4,7 @@ import random
 from discord.ext import commands
 import os
 import json
-bot=commands.Bot(command_prefix='b!')
+bot=commands.Bot(command_prefix='s!')
 bot.remove_command('help')
 @bot.event
 async def on_ready():
