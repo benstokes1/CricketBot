@@ -40,6 +40,7 @@ class start(commands.Cog):
 			else:
 				if channel.topic=="stop :1":
 					await channel.send("Processes stopped successfully")
+					break
 				noww=datetime.now()
 				await asyncio.sleep(0.8)
 				await channel.send("Spam")
