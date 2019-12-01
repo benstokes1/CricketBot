@@ -4,12 +4,12 @@ import random
 from discord.ext import commands
 import os
 import json
-bot=commands.Bot(command_prefix='s!')
+bot=commands.Bot(command_prefix='spam')
 bot.remove_command('help')
 @bot.event
 async def on_ready():
 	print("Less go")
-@bot.command(aliases=["st"])
+@bot.command(aliases=["stop"])
 async def stop(ctx):
 	channel=ctx.message.channel
 	await channel.edit(topic="stop :1") 
@@ -20,7 +20,7 @@ for filename in os.listdir("./cogs"):
 @bot.command()
 async def help(ctx):
 	embed=discord.Embed(colour=discord.Color.blue())
-	embed.add_field(name="Help Menu",value="\n**My prefix is 's!'**\n\n"+" **s!start <time>(s,m,h,d) ** : Starts spamming in the required channel or current channel\n\n"+"** s!stop** : Stops the bot")
+	embed.add_field(name="Help Menu",value="\n**My prefix is 'spam'**\n\n"+" **spam start <time>(s,m,h,d) ** : Starts spamming in the required channel or current channel\n\n"+"** spam stop** : Stops the bot"+" **spam link** : Sends bot link")
 	await ctx.send(embed=embed)
 @bot.event
 async def on_command_error(ctx,error):
