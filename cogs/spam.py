@@ -11,7 +11,8 @@ class start(commands.Cog):
 	async def start(self,ctx,t=None):
 		channel=ctx.message.channel
 		noww=datetime.now()
-		if t==None:
+		print(t)
+		'''if t==None:
 			nex= noww+timedelta(minutes = 10)
 		elif 's' in t.lower():
 			t=int(t[:-1])
@@ -33,7 +34,7 @@ class start(commands.Cog):
 				break
 			else:
 				await asyncio.sleep(0.5)
-				await channel.send("Spam")
+				await channel.send("Spam")'''
 		
 def setup(bot):
 	bot.add_cog(start(bot))
