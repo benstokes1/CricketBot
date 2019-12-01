@@ -9,6 +9,12 @@ class start(commands.Cog):
 		self.bot=bot
 	@commands.command()
 	async def start(self,ctx,t=None,*,text=None):
+		try:
+			if type(int(t[:-1]))==int:
+				pass	
+		except:	
+			text=t+text
+			t=None
 		for i in ctx.message.author.roles:
 			if 'spam' in i.name.lower():
 				
