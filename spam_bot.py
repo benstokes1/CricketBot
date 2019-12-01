@@ -10,9 +10,15 @@ bot.remove_command('help')
 async def on_ready():
 	print("Less go")
 @bot.command(aliases=["st"])
-async def stop(ctx,extension):
-	bot.unload_extension(f"cogs.{extension}")
-	bot.load_extension(f"cogs.{extension}")
+async def stop(ctx):
+
+	for filename in os.listdir("./cogs"):
+		if filename.endswith(".py"):
+				bot.unload_extension(f"cogs.{filename[:-3]}")
+
+	for filename in os.listdir("./cogs"):
+		if filename.endswith(".py"):
+				bot.load_extension(f"cogs.{filename[:-3]}")
 	await ctx.send("Stopped all the processes")
 				
 for filename in os.listdir("./cogs"):
