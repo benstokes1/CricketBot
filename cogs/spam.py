@@ -18,6 +18,8 @@ class start(commands.Cog):
 			t=int(t[:-1])
 			print(t)
 			nex= noww+timedelta(seconds = t)
+			print(nex)
+			print(noww)
 		
 		'''elif 'm' in t.lower():
 			t=int(t[:-1])
