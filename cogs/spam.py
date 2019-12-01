@@ -12,22 +12,22 @@ class start(commands.Cog):
 		channel=ctx.message.channel
 		noww=datetime.now()
 		if time==None:
-			nex= now+timedelta(minutes = 10)
+			nex= now+\timedelta(minutes = 10)
 		elif 's' in time.lower():
 			time=int(time[:-1])
-			nex= now+timedelta(seconds = time)
+			nex= now+\timedelta(seconds = time)
 		
 		elif 'm' in time.lower():
 			time=int(time[:-1])
-			nex= now+timedelta(minutes = time)
+			nex= now+\timedelta(minutes = time)
 		
 		elif 'h' in time.lower():
 			time=int(time[:-1])
-			nex= now+timedelta(hours = time)
+			nex= now+\timedelta(hours = time)
 		
 		elif 'd' in time.lower():
 			time=int(time[:-1])
-			nex= now+timedelta(days = time)
+			nex= now+\timedelta(days = time)
 		while 1:
 			if noww==next:
 				break
