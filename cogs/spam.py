@@ -8,15 +8,8 @@ class start(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command(aliases=["s"])
-	async def start(self,ctx,channel=None,time=None):
-		if channel == None:
-			channel=ctx.message.channel
-		else:
-			for i in channel:
-				if i.isdigit():
-					cn+=i
-			channel=int(cn)
-			channel=self.bot.get_channel(channel)
+	async def start(self,ctx,time=None):
+		channel=ctx.message.channel
 		noww=datetime.now()
 		if time==None:
 			nex= now+timedelta(minutes = 10)
