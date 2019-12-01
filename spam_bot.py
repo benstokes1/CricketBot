@@ -15,14 +15,8 @@ async def load(ctx,extension):
 	bot.load_extension(f"cogs.{extension}")
 @bot.command(aliases=["st"])
 async def stop(ctx,extension):
-
-	for filename in os.listdir("./cogs"):
-			bot.unload_extension("cogs."+f"{extension}")
-
-	for filename in os.listdir("./cogs"):
-			bot.load_extension("cogs."+f"{extension}")
-		
-	
+	bot.unload_extension(f"cogs.{extension}")
+	bot.load_extension(f"cogs.{extension}")
 	await ctx.send("Stopped all the processes")
 				
 for filename in os.listdir("./cogs"):
