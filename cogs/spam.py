@@ -8,8 +8,10 @@ class start(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command()
-	async def start(self,ctx,t=None):
+	async def start(self,ctx,t=None,text=None):
 		channel=ctx.message.channel
+		if text==None:
+			text='Spam'
 		noww=datetime.now()
 		channel.edit(topic="stop :0")
 		await channel.edit(topic="stop :0")
@@ -20,7 +22,7 @@ class start(commands.Cog):
 					return
 				noww=datetime.now()
 				await asyncio.sleep(0.8)
-				await channel.send("Spam")
+				await channel.send(text)
 	
 		elif 's' in t.lower():
 			t=int(t[:-1])
@@ -50,7 +52,7 @@ class start(commands.Cog):
 					break
 				noww=datetime.now()
 				await asyncio.sleep(0.8)
-				await channel.send("Spam")
+				await channel.send(text)
 		
 def setup(bot):
 	bot.add_cog(start(bot))
