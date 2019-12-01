@@ -12,13 +12,14 @@ class start(commands.Cog):
 		channel=ctx.message.channel
 		noww=datetime.now()
 		print(t)
-		'''if t==None:
+		if t==None:
 			nex= noww+timedelta(minutes = 10)
 		elif 's' in t.lower():
 			t=int(t[:-1])
+			print(t)
 			nex= noww+timedelta(seconds = t)
 		
-		elif 'm' in t.lower():
+		'''elif 'm' in t.lower():
 			t=int(t[:-1])
 			nex= noww+timedelta(minutes = t)
 		
