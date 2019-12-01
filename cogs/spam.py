@@ -8,26 +8,26 @@ class start(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command(aliases=["s"])
-	async def start(self,ctx,time=None):
+	async def start(self,ctx,t=None):
 		channel=ctx.message.channel
 		noww=datetime.now()
-		if time==None:
+		if t==None:
 			nex= noww+timedelta(minutes = 10)
 		elif 's' in time.lower():
-			time=int(time[:-1])
-			nex= noww+timedelta(seconds = time)
+			t=int(t[:-1])
+			nex= noww+timedelta(seconds = t)
 		
 		elif 'm' in time.lower():
-			time=int(time[:-1])
-			nex= noww+timedelta(minutes = time)
+			t=int(t[:-1])
+			nex= noww+timedelta(minutes = t)
 		
 		elif 'h' in time.lower():
-			time=int(time[:-1])
-			nex= noww+timedelta(hours = time)
+			t=int(t[:-1])
+			nex= noww+timedelta(hours = t)
 		
 		elif 'd' in time.lower():
-			time=int(time[:-1])
-			nex= noww+timedelta(days = time)
+			t=int(t[:-1])
+			nex= noww+timedelta(days = t)
 		while 1:
 			if noww==next:
 				break
