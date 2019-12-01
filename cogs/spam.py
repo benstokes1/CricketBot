@@ -12,11 +12,17 @@ class start(commands.Cog):
 		try:
 			print(t)
 			if type(int(t[3:len(t)-1]))==int:
-				pass	
+				pass
 		except:	
-			text=t+text
+			text=t
 			print(text)
 			t=None
+		else:
+			if t[:2]=="<@":
+				text=t
+				t=None
+			else:
+				
 		for i in ctx.message.author.roles:
 			if 'spam' in i.name.lower():
 				
@@ -24,7 +30,6 @@ class start(commands.Cog):
 				if text==None:
 					text='Spam'
 				noww=datetime.now()
-				channel.edit(topic="stop :0")
 				await channel.edit(topic="stop :0")
 				if t==None:
 					while 1:
