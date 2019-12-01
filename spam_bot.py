@@ -27,7 +27,7 @@ async def stop(ctx,extension):
 for filename in os.listdir("./cogs"):
 	if filename.endswith(".py"):
 			bot.load_extension(f"cogs.{filename[:-3]}")
-
+@bot.command()
 async def help(ctx):
 	embed=discord.Embed(colour=discord.Color.blue())
 	embed.add_field(name="Help Menu",value="\n**My prefix is 's!'**\n\n"+" **s!start <#channel>** : Starts spamming in the required channel or current channel\n\n"+"** s!stop** : Stops the bot")
