@@ -8,7 +8,7 @@ class start(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command()
-	async def start(self,ctx,t=None,text=None):
+	async def start(self,ctx,t=None,*,text=None):
 		channel=ctx.message.channel
 		if text==None:
 			text='Spam'
