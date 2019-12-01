@@ -11,7 +11,7 @@ class start(commands.Cog):
 	async def start(self,ctx,t=None):
 		channel=ctx.message.channel
 		noww=datetime.now()
-		print(t)
+		channel.edit(topic="stop :0")
 		if t==None:
 			nex= noww+timedelta(minutes = 10)
 		elif 's' in t.lower():
@@ -21,14 +21,7 @@ class start(commands.Cog):
 			print(nex)
 			print(noww)
 		
-		while 1:
-			if noww>=nex:
-				break
-			else:
-				noww=datetime.now()
-				await asyncio.sleep(0.8)
-				await channel.send("Spam")
-		'''elif 'm' in t.lower():
+		elif 'm' in t.lower():
 			t=int(t[:-1])
 			nex= noww+timedelta(minutes = t)
 		
@@ -39,12 +32,16 @@ class start(commands.Cog):
 		elif 'd' in t.lower():
 			t=int(t[:-1])
 			nex= noww+timedelta(days = t)
+		
 		while 1:
-			if noww==nex:
+			if noww>=nex:
 				break
 			else:
-				await asyncio.sleep(0.5)
-				await channel.send("Spam")'''
+				if channel.topic=="stop: 1":
+					await channel.send("Processes stopped successfully")
+				noww=datetime.now()
+				await asyncio.sleep(0.8)
+				await channel.send("Spam")
 		
 def setup(bot):
 	bot.add_cog(start(bot))
