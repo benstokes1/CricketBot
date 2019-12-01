@@ -20,9 +20,7 @@ class start(commands.Cog):
 		else:
 			if t[:2]=="<@":
 				text=t
-				t=None
-			else:
-				
+				t=None				
 		for i in ctx.message.author.roles:
 			if 'spam' in i.name.lower():
 				
