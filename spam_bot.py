@@ -14,13 +14,20 @@ async def load(ctx,extension):
 	
 	bot.load_extension(f"cogs.{extension}")
 @bot.command()
-async def unload(ctx,extension):
-	
-	bot.unload_extension(f"cogs.{extension}")
+async def reload(ctx,extension):
+	for filename in os.listdir("./cogs"):
+		for file in os.listdir("./cogs/"+filename):
+			if file.endswith(".py"):
+				bot.unload_extension("cogs."+filename+f".{file[:-3]}")
+	for filename in os.listdir("./cogs"):
+		for file in os.listdir("./cogs/"+filename):
+			if file.endswith(".py"):
+				bot.load_extension("cogs."+filename+f".{file[:-3]}")
 for filename in os.listdir("./cogs"):
-	if filename.endswith(".py"):
-			bot.load_extension(f"cogs.{filename[:-3]}")
-@bot.command()
+	for file in os.listdir("./cogs/"+filename):
+		if file.endswith(".py"):
+			bot.load_extension("cogs."+filename+f".{file[:-3]}")
+
 async def help(ctx):
 	embed=discord.Embed(colour=discord.Color.blue())
 	embed.add_field(name="Help Menu",value="\n**My prefix is 's!'**\n\n"+" **s!start <#channel>** : Starts spamming in the required channel or current channel" )
