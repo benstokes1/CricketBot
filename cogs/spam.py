@@ -56,6 +56,7 @@ class start(commands.Cog):
 						noww=datetime.now()
 						await asyncio.sleep(0.8)
 						await channel.send(text)
+				return
 			else:
 				await ctx.send("Looks like you dont have the spam role")
 
