@@ -13,8 +13,8 @@ async def on_ready():
 async def load(ctx,extension):
 	
 	bot.load_extension(f"cogs.{extension}")
-@bot.command()
-async def reload(ctx,extension):
+@bot.command(aliases=["ss"])
+async def stop_spam(ctx,extension):
 	for filename in os.listdir("./cogs"):
 		for file in os.listdir("./cogs/"+filename):
 			if file.endswith(".py"):
