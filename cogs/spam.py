@@ -4,11 +4,11 @@ import random
 from discord.ext import commands
 import json
 from datetime import datetime,timedelta
-class spam(commands.Cog):
+class start(commands.Cog):
 	def __init__(self,bot):
 		self.bot=bot
 	@commands.command(aliases=["s"])
-	async def spam(self,ctx,channel=None,time=None):
+	async def start(self,ctx,channel=None,time=None):
 		if channel == None:
 			channel=ctx.message.channel
 		else:
@@ -42,4 +42,4 @@ class spam(commands.Cog):
 				await channel.send("Spam")
 		
 def setup(bot):
-	bot.add_cog(spam(bot))
+	bot.add_cog(start(bot))
