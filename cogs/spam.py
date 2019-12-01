@@ -57,8 +57,7 @@ class start(commands.Cog):
 						await asyncio.sleep(0.8)
 						await channel.send(text)
 				return
-			else:
-				await ctx.send("Looks like you dont have the spam role")
+		await ctx.send("Looks like you dont have the spam role")
 
 def setup(bot):
 	bot.add_cog(start(bot))
