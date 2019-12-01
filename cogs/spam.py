@@ -21,6 +21,12 @@ class start(commands.Cog):
 			print(nex)
 			print(noww)
 		
+		while 1:
+			if noww==nex:
+				break
+			else:
+				await asyncio.sleep(0.8)
+				await channel.send("Spam")
 		'''elif 'm' in t.lower():
 			t=int(t[:-1])
 			nex= noww+timedelta(minutes = t)
