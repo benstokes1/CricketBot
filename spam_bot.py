@@ -15,18 +15,18 @@ async def load(ctx,extension):
 	bot.load_extension(f"cogs.{extension}")
 @bot.command(aliases=["st"])
 async def stop(ctx,extension):
+
 	for filename in os.listdir("./cogs"):
-		for file in os.listdir("./cogs/"+filename):
-			if file.endswith(".py"):
-				bot.unload_extension("cogs."+filename+f".{file[:-3]}")
+		if filename.endswith(".py"):
+				bot.unload_extension(f"cogs.{filename[:-3]}")
+
 	for filename in os.listdir("./cogs"):
-		for file in os.listdir("./cogs/"+filename):
-			if file.endswith(".py"):
-				bot.load_extension("cogs."+filename+f".{file[:-3]}")
+		if filename.endswith(".py"):
+				bot.load_extension(f"cogs.{filename[:-3]}")
+				
 for filename in os.listdir("./cogs"):
-	for file in os.listdir("./cogs/"+filename):
-		if file.endswith(".py"):
-			bot.load_extension("cogs."+filename+f".{file[:-3]}")
+	if filename.endswith(".py"):
+			bot.load_extension(f"cogs.{filename[:-3]}")
 
 async def help(ctx):
 	embed=discord.Embed(colour=discord.Color.blue())
