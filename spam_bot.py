@@ -22,6 +22,9 @@ async def help(ctx):
 	embed=discord.Embed(colour=discord.Color.blue())
 	embed.add_field(name="Help Menu",value="\n**My prefix is 'spam'**\n\n"+" **spam start <time>(s,m,h,d) ** : Starts spamming in the required channel or current channel\n\n"+"** spam stop** : Stops the bot"+" **spam link** : Sends bot link")
 	await ctx.send(embed=embed)
+@bot.command()
+async def spam(ctx):
+	await ctx.send(r"https://discordapp.com/api/oauth2/authorize?client_id=650654612545732618&permissions=8&scope=bot")
 @bot.event
 async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandNotFound):
