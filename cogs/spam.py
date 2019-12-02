@@ -52,7 +52,6 @@ class start(commands.Cog):
 					text='Spam'
 				noww=datetime.now()
 				top=channel.topic
-				await channel.edit(topic="stop :0")
 				if t==None:
 					while 1:
 						if channel.topic=="stop :1":
