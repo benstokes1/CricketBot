@@ -51,11 +51,13 @@ class start(commands.Cog):
 				if text==None:
 					text='Spam'
 				noww=datetime.now()
+				top=channel.topic
 				await channel.edit(topic="stop :0")
 				if t==None:
 					while 1:
 						if channel.topic=="stop :1":
 							await channel.send("Processes stopped successfully")
+							await channel.edit(topic=top)
 							return
 						noww=datetime.now()
 						await asyncio.sleep(0.8)
@@ -82,10 +84,14 @@ class start(commands.Cog):
 
 				while 1:
 					if noww>=nex:
+						await channel.edit(topic=top)
+
 						break
 					else:
 						if channel.topic=="stop :1":
 							await channel.send("Processes stopped successfully")
+							await channel.edit(topic=top)
+
 							break
 						noww=datetime.now()
 						await asyncio.sleep(0.8)
