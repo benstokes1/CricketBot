@@ -1,1 +1,1 @@
-worker: python spam_bot.py
+worker: python event_banner.py
