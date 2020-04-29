@@ -52,7 +52,7 @@ async def bowl(ctx):
 	embed=discord.Embed(title=txt)
 	embed.set_image(url=f'{img}')
 	await ctx.send(embed=embed)	
-	'''channel=ctx.message.channel
+	channel=ctx.message.channel
 	topic=channel.topic
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
 	last=None
@@ -140,7 +140,7 @@ async def bowl(ctx):
 				await ctx.send(embed=embed)
 			if o=='no-ball':
 				last="Pull-up ur socks batsman, coz its a freehit"
-				embed=discord.Embed(title=f"{last} Score: }/top ")'''
+				embed=discord.Embed(title=f"{last} Score: }/top ")
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
 	if number==None:
