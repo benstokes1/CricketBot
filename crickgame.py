@@ -38,13 +38,13 @@ async def bowl(ctx):
 		img='https://media0.giphy.com/media/MuHNNsIf3CzcTsdpcv/giphy.gif?cid=19f5b51a7fde06336ea661ea8b0c5339572716c561abaef1&rid=giphy.gif'
 		txt="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
 	if o=='no-ball':
-		img='https://media.giphy.com/media/MsvBd8sEJdtFS/giphy.gif'
+		img='https://media.discordapp.net/attachments/549222632873000980/705001910490628146/PicsArt_04-29-06.25.25.gif?width=425&height=425'
 		txt="The bowler over-stepped this time, it's a no ball"
 	if o=='wide':
-		img='https://tenor.com/view/wide-wide-ball-cricket-funny-cricket-bowler-gif-16733235'
+		img='https://media.discordapp.net/attachments/549222632873000980/704999410580324412/PicsArt_04-29-06.15.40.gif?width=425&height=425'
 		txt="Extra runs for the batting team, it's a wide"
 	if o=='wicket':
-		img='https://i.pinimg.com/originals/bb/62/f0/bb62f086402559b09a64ca203ab44bfd.gif'
+		img='https://media.discordapp.net/attachments/549222632873000980/705010813517299712/videotogif_2020.04.29_19.00.44.gif?width=403&height=403'
 		txt="Bull's eye! The bowler doesn't miss the stumps this time"
 	embed=discord.Embed(title=txt)
 	embed.set_image(url=f'{img}')
