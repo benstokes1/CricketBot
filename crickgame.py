@@ -24,10 +24,9 @@ async def bowl(ctx):
 	channel=ctx.message.channel
 	topic=channel.topic
 	if topic==None or topic=="":
-		embed=discord.Embed(title="Details not give")
+		embed=discord.Embed(title="Details not given\nType `.so <number>` to set overs")
 		await channel.send(embed=embed)
-	outcomes=[1]
-	#outcomes=[2, 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6,  'no-ball',3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 3, 0, 0, 3, 6, 6, 1, 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4,2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
+	outcomes=[2, 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6,  'no-ball',3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 3, 0, 0, 3, 6, 6, 1, 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4,2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
 	o=random.choice(outcomes)
 	if o==0:
 		img="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
@@ -85,7 +84,7 @@ async def bowl(ctx):
 					top[1],top[3],top[4],top[5]='0.0','0','0','0'
 					topic="\n".join(top)
 					await channel.edit(topic=topic)
-					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {top[0]}")
+					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {top[0]} runs")
 					await ctx.send(embed=embed)
 					return
 				else:
@@ -115,11 +114,11 @@ async def bowl(ctx):
 				top[1],top[3],top[4],top[5]='0.0','0','0','0'
 				topic="\n".join(top)
 				await channel.edit(topic=topic)
-				embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {top[0]}")
+				embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {top[0]} runs")
 				await ctx.send(embed=embed)
 				return
 			else:
-				if int(top[4])<int(top[0]):
+				if int(top[4])<int(top[0]) and int(top[4])!=int(top[0]):
 					last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4])-1)+" runs"
 					await channel.edit(topic=None)
 					embed=discord.Embed(title=last)
@@ -165,7 +164,7 @@ async def bowl(ctx):
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
 	if number==None:
-		pass
+		await channel.send("Syntax: `.so <number>`")
 	else:
 		number=int(number)
 		channel=ctx.message.channel
