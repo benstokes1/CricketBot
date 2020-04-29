@@ -26,7 +26,7 @@ async def bowl(ctx):
 	if topic==None or topic=="":
 		embed=discord.Embed(title="Details not give")
 		await channel.send(embed=embed)
-	outcomes=[1,'no-ball','wicket']
+	outcomes=['wicket']
 	#outcomes=[2, 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6,  'no-ball',3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 3, 0, 0, 3, 6, 6, 1, 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4,2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
 	o=random.choice(outcomes)
 	if o==0:
@@ -79,13 +79,13 @@ async def bowl(ctx):
 			last="A total waste, coz its a free hit"
 		else:
 			top[5]=str(int(top[5])+1)
-			if top[5]=='10':
+			if top[5]=='5':
 				if top[0]=='0':
 					top[0]=str(int(top[4])+1)
 					top[1],top[3],top[4],top[5]='0.0','0','0','0'
 					topic="\n".join(top)
 					await channel.edit(topic=topic)
-					embed=discord.Embed(title=f"Well played Team 1, Team 2 your target is {top[0]}")
+					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {top[0]}")
 					await ctx.send(embed=embed)
 					return
 				else:
@@ -115,7 +115,7 @@ async def bowl(ctx):
 				top[1],top[3],top[4],top[5]='0.0','0','0','0'
 				topic="\n".join(top)
 				await channel.edit(topic=topic)
-				embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target: {top[0]}")
+				embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {top[0]}")
 				await ctx.send(embed=embed)
 				return
 			else:
