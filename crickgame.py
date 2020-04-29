@@ -20,7 +20,7 @@ async def toss(ctx):
 	await message.edit(embed=embed)
 @bot.command(aliases=["b"])
 async def bowl(ctx):
-	outcomes=[2, 'no-ball', 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6, 3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 'no-ball', 3, 0, 0, 3, 6, 6, 'wicket', 1, 'wicket', 'wicket', 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4, 'no-ball', 2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
+	outcomes=[2, 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6,  'no-ball',3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 3, 0, 0, 3, 6, 6, 1, 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4,, 2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
 	o=random.choice(outcomes)
 	if o==1:
 		img='https://media.giphy.com/media/3oh6e1cdNdVLlfUXpE/giphy.gif'
