@@ -158,6 +158,8 @@ async def bowl(ctx):
 		else:
 			t[1]=6-int(t[1])
 		t[0]=b-int(t[0])
+		if t[1]==0:
+			t[1]=6
 		total=t[0]*6+t[1]
 		score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]+"\nNeed "+str(int(top[0])-int(top[4])) +" from "+str(total)
 		if total==1:
