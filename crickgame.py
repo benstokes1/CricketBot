@@ -48,7 +48,7 @@ async def bowl(ctx):
 		txt="Extra runs for the batting team, it's a wide"
 	if o=='wicket':
 		img='https://media.discordapp.net/attachments/549222632873000980/705010813517299712/videotogif_2020.04.29_19.00.44.gif?width=403&height=403'
-		txt="Bull's eye! The bowler doesn't miss the stumps this time"
+		txt="Bullseye! The bowler doesn't miss the stumps this time"
 	embed=discord.Embed(title=txt)
 	embed.set_image(url=f'{img}')
 	await ctx.send(embed=embed)	
