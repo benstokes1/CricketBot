@@ -7,7 +7,13 @@ bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
 @bot.event
 async def on_ready():
-	print("Less go")	
+	print("Less go")
+@bot.command(aliases=["e"])
+async def end(ctx):
+	channel=ctx.message.channel
+	await channel.edit(topic=None)
+	embed=discord.Embed(title="Match Abandoned")
+	await ctx.send(embed=embed)
 @bot.command(aliases=["t"])
 async def toss(ctx):
 	
