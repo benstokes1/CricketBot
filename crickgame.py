@@ -61,7 +61,6 @@ async def bowl(ctx):
 		await channel.send(embed=embed)
 	else:
 		top=topic.split("\n")
-		print(top)
 		#score
 		top[4]=str(int(top[4])+d[o])
 		if int(top[4])>int(top[0]) and int(top[0])!=0:
@@ -140,11 +139,13 @@ async def bowl(ctx):
 			score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]
 		else:
 			t=top[1].split(".")
+			b=top[2].split(".")
+			b=int(b[0])-1
 			if t[1]=='0':
 				t[1]=int(t[1])
 			else:
 				t[1]=6-int(t[1])
-			t[0]=4-int(t[0])
+			t[0]=b-int(t[0])
 			total=t[0]*6+t[1]
 			score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]+"\nNeed "+str(int(top[0])-int(top[4])) +" from "+str(total)
 		if o=='no-ball':
