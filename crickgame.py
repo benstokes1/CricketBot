@@ -9,9 +9,6 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
 	print("Less go")	
-for filename in os.listdir("./cogs"):
-	if filename.endswith(".py"):
-			bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.command(aliases=["t"])
 async def toss(ctx):
 	outcomes=["Heads","Tails"]
