@@ -44,9 +44,8 @@ async def bowl(ctx):
 		img='https://tenor.com/view/wide-wide-ball-cricket-funny-cricket-bowler-gif-16733235'
 		txt="Extra runs for the batting team, it's a wide"
 	if o=='wicket':
-		img='https://tenor.com/view/its-awicket-happy-jumping-cheering-satisfied-gif-13800701'
-		txt=["Bull's eye! The bowler doesn't miss the stumps this time","The fielder pulled out a blinder, very good catch!"]
-		txt=random.choice(txt)
+		img='https://i.pinimg.com/originals/bb/62/f0/bb62f086402559b09a64ca203ab44bfd.gif'
+		txt="Bull's eye! The bowler doesn't miss the stumps this time"
 	embed=discord.Embed(title=txt)
 	embed.set_image(url=f'{img}')
 	await ctx.send(embed=embed)	
