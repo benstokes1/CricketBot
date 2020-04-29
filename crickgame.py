@@ -103,8 +103,9 @@ async def bowl(ctx):
 			temp[1]=str(int(temp[1])+1)
 			if temp[1]=='6':
 				temp[0]=str(int(temp[0])+1)
-				temp[1]=str(0)	
-			if temp[1]==top[2]:
+				temp[1]=str(0)
+			temp=".".join(temp)
+			if temp==top[2]:
 				if top[0]=='0':
 					top[0]=str(int(top[4])+1)
 					top[1],top[3],top[4],top[5]='0','0','0','0'
@@ -128,7 +129,6 @@ async def bowl(ctx):
 						embed=discord.Embed(title=last)
 						await ctx.send(embed=embed)
 						return
-			temp=".".join(temp)
 			top[1]=temp		
 		
 		k=top
