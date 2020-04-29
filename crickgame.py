@@ -69,7 +69,7 @@ async def bowl(ctx):
 	top[4]=str(int(top[4])+d[o])
 	if int(top[4])>int(top[0]) and int(top[0])!=0:
 		last="GG both teams, well played! Team 2 won over Team 1 by "+str(10-int(top[5]))+" wickets"
-		channel.edit(topic="")
+		await channel.edit(topic=None)
 		embed=discord.Embed(title=last)
 		await ctx.send(embed=embed)
 		return
