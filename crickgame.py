@@ -72,7 +72,7 @@ async def bowl(ctx):
 		#wickets
 		if o=='wicket':
 			if top[3]=='no-ball':
-				last="Pull up ur socks batsman coz its a free hit"
+				last="A total waste, coz its a free hit"
 			else:
 				top[5]=str(int(top[5])+1)
 				if top[5]=='10':
@@ -103,9 +103,7 @@ async def bowl(ctx):
 			temp[1]=str(int(temp[1])+1)
 			if temp[1]=='6':
 				temp[0]=str(int(temp[0])+1)
-				temp[1]=str(0)
-				if top[0]=='0':
-					last="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]
+				temp[1]=str(0)	
 			if temp[1]==top[2]:
 				if top[0]=='0':
 					top[0]=str(int(top[4])+1)
