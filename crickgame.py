@@ -86,7 +86,7 @@ async def bowl(ctx):
 						return
 					else:
 						last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4]))+" runs"
-						channel.edit(topic=None)
+						await channel.edit(topic=None)
 						embed=discord.Embed(title=last)
 						await ctx.send(embed=embed)
 						return
@@ -116,7 +116,7 @@ async def bowl(ctx):
 				else:
 					if int(top[4])<int(top[0]):
 						last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4]))+" runs"
-					   	channel.edit(topic=None)
+					   	await channel.edit(topic=None)
 						embed=discord.Embed(title=last)
 						await ctx.send(embed=embed)
 						return
