@@ -143,15 +143,15 @@ async def bowl(ctx):
 			top[1]=temp
 			top="\n".join(top)
 			await channel.edit(topic=top)
-			if last==None:
-				pass
-			else:
-				embed=discord.Embed(text=last)
-				await ctx.send(embed=embed)
 			if o=='no-ball':
 				last="Pull-up ur socks batsman, coz its a freehit"
-				embed=discord.Embed(title=f"{last}\nScore: }/top ")
+			if last==None:
+				embed=discord.Embed(title=f"{score}/top ")
 			else:
+				embed=discord.Embed(title=f"{last}\n{score}/top ")
+			await ctx.send(embed=embed)
+			
+				
 				
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
