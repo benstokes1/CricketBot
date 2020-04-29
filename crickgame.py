@@ -61,6 +61,7 @@ async def bowl(ctx):
 		await channel.send(embed=embed)
 	else:
 		top=topic.split("\n")
+		print(top)
 		#score
 		top[4]=str(int(top[4])+d[o])
 		if int(top[4])>int(top[0]) and int(top[0])!=0:
