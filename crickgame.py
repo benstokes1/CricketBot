@@ -79,7 +79,7 @@ async def bowl(ctx):
 				if top[5]=='10':
 					if top[0]=='0':
 						top[0]=str(int(top[4])+1)
-						top[1],top[3],top[4],top[5]='0','0','0','0'
+						top[1],top[3],top[4],top[5]='0.0','0','0','0'
 						topic="\n".join(top)
 						await channel.edit(topic=topic)
 						embed=discord.Embed(title=f"Well played team 1, Target: {top[0]}")
@@ -109,7 +109,7 @@ async def bowl(ctx):
 			if temp==top[2]:
 				if top[0]=='0':
 					top[0]=str(int(top[4])+1)
-					top[1],top[3],top[4],top[5]='0','0','0','0'
+					top[1],top[3],top[4],top[5]='0.0','0','0','0'
 					topic="\n".join(top)
 					await channel.edit(topic=topic)
 					embed=discord.Embed(title=f"Well played team 1, Target: {top[0]}")
@@ -126,7 +126,7 @@ async def bowl(ctx):
 						last="GG both teams, well played! Since it turned out to be no one's lets go for a super-over...Team 1 will bat first"
 						top[0]='0'
 						top[2]='1.0'
-						top[1],top[3],top[4],top[5]='0','0','0','0'
+						top[1],top[3],top[4],top[5]='0.0','0','0','0'
 						embed=discord.Embed(title=last)
 						await ctx.send(embed=embed)
 						return
