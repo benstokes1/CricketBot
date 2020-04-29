@@ -97,7 +97,7 @@ async def bowl(ctx):
 		temp=".".join(temp)
 		top[1]=temp
 		top="\n".join(top)
-		channel.edit(topic=top)
+		await channel.edit(topic=top)
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
 	if number==None:
@@ -106,5 +106,6 @@ async def setovers(ctx,number=None):
 		number=int(number)
 		channel=ctx.message.channel
 		top="0\n0.0\n"+str(number)+"\nNone\n0\n0"
-		channel.edit(topic=top)
+		await channel.edit(topic=top)
+		await channel.send("Overs set successfully")
 bot.run(os.getenv("BOT_TOKEN"))
