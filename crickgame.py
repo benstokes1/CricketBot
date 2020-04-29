@@ -197,4 +197,8 @@ async def setovers(ctx,number=None):
 		top="0\n0.0\n"+str(number)+".0\nNone\n0\n0"
 		await channel.edit(topic=top)
 		await channel.send("Overs set successfully")
+@bot.event
+async def on_command_error(ctx,error):
+	if isinstance(error,commands.CommandOnCooldown):
+		await ctx.send(error)
 bot.run(os.getenv("BOT_TOKEN"))
