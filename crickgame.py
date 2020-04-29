@@ -96,7 +96,7 @@ async def bowl(ctx):
 		else:
 			top[3]=str(o)
 		#overs
-		if o=='no-ball':
+		if o=='no-ball' or o=='wide':
 			pass
 		else:
 			temp=top[1].split(".")
@@ -149,7 +149,7 @@ async def bowl(ctx):
 		if o=='no-ball':
 			last="Pull-up ur socks batsman, coz its a freehit"
 		if last==None:
-			embed=discord.Embed(title=f"{score}/top ")
+			embed=discord.Embed(title=f"{score}")
 		else:
 			embed=discord.Embed(title=f"{last}\n{score}/top ")
 		await ctx.send(embed=embed)
