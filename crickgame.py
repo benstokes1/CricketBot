@@ -134,8 +134,9 @@ async def bowl(ctx):
 		k=top
 		k="\n".join(k)
 		await channel.edit(topic=k)
+		score=""
 		if top[0]=='0':
-			score="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]
+			score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]
 		else:
 			t=top[1].split(".")
 			if t[1]=='0':
@@ -144,7 +145,7 @@ async def bowl(ctx):
 				t[1]=6-int(t[1])
 			t[0]=4-int(t[0])
 			total=t[0]*6+t[1]
-			score="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]+"\nNeed "+str(int(top[0])-int(top[4])) +" from "+str(total)
+			score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]+"\nNeed "+str(int(top[0])-int(top[4])) +" from "+str(total)
 		if o=='no-ball':
 			last="Pull-up ur socks batsman, coz its a freehit"
 		if last==None:
