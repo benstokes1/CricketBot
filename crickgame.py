@@ -52,5 +52,50 @@ async def bowl(ctx):
 	embed=discord.Embed(title=txt)
 	embed.set_image(url=f'{img}')
 	await ctx.send(embed=embed)	
-	
+	channel=message.channel
+	topic=channel.topic
+	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
+	if topic==None or topic=="":
+		embed=discord.Embed(title="Details not give")
+		await channel.send(embed=embed)
+	else:
+		top=topic.split("\n")
+		#score
+		top[4]=str(int(top[4])+d[o])
+		if int(top[4])>=int(top[0]) and int(top[0])!=0:
+			pass
+		#wickets
+		if o=='wicket':
+			if top[3]=='no-ball':
+				pass
+			else:
+				top[5]=str(int(top[5])+1)
+				if top[5]=='10':
+					if top[0]=='0':
+						pass
+					else:
+						pass
+				else:
+					   pass
+					   
+		#prev-ball
+		if top[3]=='no-ball':
+			top[3]=str(o)+'free-hit'
+		else:
+			top[3]=str(o)
+		#overs
+		temp=top[1].split(".")
+		temp[1]=str(int(temp[1])+1)
+		if temp[1]==6:
+			temp[0]=str(int(temp[0])+1)
+			temp[1]=str(0)
+		if temp[1]==5:
+			if top[0]=='0':
+				pass
+			else:
+				pass
+		temp=".".join(temp)
+		top[1]=temp
+		top="\n".join(top)
+		channel.edit(topic=top)
 bot.run(os.getenv("BOT_TOKEN"))
