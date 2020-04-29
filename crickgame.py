@@ -20,7 +20,7 @@ async def toss(ctx):
 	outcomes=["Heads","Tails"]
 	answer=random.choice(outcomes)
 	embed=discord.Embed(title='Toss')
-	embed.set_image(url="https://tenor.com/view/quarter-coin-flip-heads-tails-gif-14158378")
+	embed.set_image(url="https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif")
 	message=await ctx.send(embed=embed)
 	await asyncio.sleep(4)	
 	embed=discord.Embed(title=f'Oh! Its a {answer}')
