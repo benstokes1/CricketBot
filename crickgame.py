@@ -89,7 +89,7 @@ async def bowl(ctx):
 		if temp[1]=='6':
 			temp[0]=str(int(temp[0])+1)
 			temp[1]=str(0)
-		if temp[1]=='5':
+		if temp[1]==top[2]:
 			if top[0]=='0':
 				pass
 			else:
