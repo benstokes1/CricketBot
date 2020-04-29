@@ -131,7 +131,8 @@ async def bowl(ctx):
 					top[0]='0'
 					top[2]='1.0'
 					top[1],top[3],top[4],top[5]='0.0','0','0','0'
-					embed=discord.Embed(title=last)
+					top="\n".join(top)
+					embed=discord.Embed(title=top)
 					await ctx.send(embed=embed)
 					return
 		top[1]=temp		
