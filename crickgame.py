@@ -52,7 +52,7 @@ async def bowl(ctx):
 	embed=discord.Embed(title=txt)
 	embed.set_image(url=f'{img}')
 	await ctx.send(embed=embed)	
-	channel=message.channel
+	channel=ctx.message.channel
 	topic=channel.topic
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
 	if topic==None or topic=="":
@@ -97,5 +97,14 @@ async def bowl(ctx):
 		temp=".".join(temp)
 		top[1]=temp
 		top="\n".join(top)
+		channel.edit(topic=top)
+@bot.command(aliases=["so"])
+async def setovers(ctx,number=None):
+	if number==None:
+		pass
+	else:
+		number=int(number)
+		channel=ctx.message.channel
+		top="0\n0.0\n"+str(number)+"\nNone\n0\n0"
 		channel.edit(topic=top)
 bot.run(os.getenv("BOT_TOKEN"))
