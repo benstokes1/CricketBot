@@ -32,13 +32,13 @@ async def bowl(ctx):
 		img='https://media1.giphy.com/media/NRtZEyZjbLgr0BJ4B8/giphy.gif'
 		txt="They turned that into 3, that's very good running"
 	if o==4:
-		img='https://tenor.com/view/kstr-kochstrasse-four-gif-14628115'
+		img='https://media.tenor.com/images/0b12eaa6835a3fb204ea4965f728613c/tenor.gif'
 		txt='Smashed into the gap for a FOUR'
 	if o==6:
-		img='https://tenor.com/view/six-six-six-going-up-pointing-up-andre-russell-kkr-hai-taiyaar-gif-13941061'
+		img='https://media0.giphy.com/media/MuHNNsIf3CzcTsdpcv/giphy.gif?cid=19f5b51a7fde06336ea661ea8b0c5339572716c561abaef1&rid=giphy.gif'
 		txt="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
 	if o=='no-ball':
-		img='https://tenor.com/view/no-ball-cricket-umpire-man-standing-gif-17020197'
+		img='https://media.giphy.com/media/MsvBd8sEJdtFS/giphy.gif'
 		txt="The bowler over-stepped this time, it's a no ball"
 	if o=='wide':
 		img='https://tenor.com/view/wide-wide-ball-cricket-funny-cricket-bowler-gif-16733235'
