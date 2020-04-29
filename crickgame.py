@@ -154,6 +154,10 @@ async def bowl(ctx):
 		t[0]=b-int(t[0])
 		total=t[0]*6+t[1]
 		score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]+"\nNeed "+str(int(top[0])-int(top[4])) +" from "+str(total)
+		if total==1:
+			score+=" ball"
+		else:
+			score+=" balls"
 	if o=='no-ball':
 		last="Pull-up ur socks batsman, coz its a freehit"
 	if last==None:
