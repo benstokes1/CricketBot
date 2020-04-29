@@ -26,7 +26,8 @@ async def bowl(ctx):
 	if topic==None or topic=="":
 		embed=discord.Embed(title="Details not given\nType `.so <number>` to set overs")
 		await channel.send(embed=embed)
-	outcomes=[2, 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6,  'no-ball',3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 3, 0, 0, 3, 6, 6, 1, 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4,2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
+	outcomes=[1]
+	#outcomes=[2, 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6,  'no-ball',3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 3, 0, 0, 3, 6, 6, 1, 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4,2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
 	o=random.choice(outcomes)
 	if o==0:
 		img="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
