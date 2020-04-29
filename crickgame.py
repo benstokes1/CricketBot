@@ -202,5 +202,5 @@ async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandOnCooldown):
 		message=await ctx.send(error)
 		asyncio.sleep(1)
-		await messag.delete()
+		await message.delete()
 bot.run(os.getenv("BOT_TOKEN"))
