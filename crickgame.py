@@ -55,6 +55,7 @@ async def bowl(ctx):
 	'''channel=ctx.message.channel
 	topic=channel.topic
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
+	last=None
 	if topic==None or topic=="":
 		embed=discord.Embed(title="Details not give")
 		await channel.send(embed=embed)
@@ -104,7 +105,7 @@ async def bowl(ctx):
 				temp[0]=str(int(temp[0])+1)
 				temp[1]=str(0)
 				if top[0]=='0':
-					
+					last="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]
 			if temp[1]==top[2]:
 				if top[0]=='0':
 					top[0]=str(int(top[4])+1)
@@ -133,7 +134,11 @@ async def bowl(ctx):
 			top[1]=temp
 			top="\n".join(top)
 			await channel.edit(topic=top)
-			embed=discord.Embed(text=last)'''
+			if last==None:
+				pass
+			else:
+				embed=discord.Embed(text=last)
+				await ctx.send(embed=embed)'''
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
 	if number==None:
