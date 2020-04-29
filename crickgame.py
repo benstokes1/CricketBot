@@ -48,5 +48,6 @@ async def bowl(ctx):
 		txt=random.choice(txt)
 	embed=discord.Embed(title=txt)
 	embed.set_img(url=f'{img}')
-	await ctx.send(embed=embed)	      
+	await ctx.send(embed=embed)	
+	
 bot.run(os.getenv("BOT_TOKEN"))
