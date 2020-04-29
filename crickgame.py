@@ -181,6 +181,9 @@ async def bowl(ctx):
 				
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
+	if ctx.messag.channel.topic!="" or ctx.message.channel.topic!=None:
+		await ctx.send("Seems like there is a match which is not done yet... Type `.end` to abandon the match")
+		return
 	if number==None:
 		await channel.send("Syntax: `.so <number>`")
 	else:
