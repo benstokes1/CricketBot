@@ -3,6 +3,7 @@ import asyncio
 import random
 from discord.ext import commands
 import os
+import datetime
 bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
 @bot.event
@@ -173,7 +174,8 @@ async def bowl(ctx):
 	else:
 		embed=discord.Embed(title=f"{last}\n{score}")
 	message=await ctx.send(embed=embed)
-	print(message)
+	new_time = datetime.datetime.now() + datetime.timedelta(seconds=3)
+	await discord.utils.sleep_until(new_time, result=None)
 				
 				
 @bot.command(aliases=["so"])
