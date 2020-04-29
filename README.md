@@ -1,1 +1,1 @@
-# pokequizbotv1.0
+# crickgame
