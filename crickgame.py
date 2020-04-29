@@ -15,8 +15,8 @@ async def toss(ctx):
 	embed=discord.Embed(title='Toss')
 	embed.set_image(url="https://tenor.com/view/quarter-coin-flip-heads-tails-gif-14158378")
 	message=await ctx.send(embed=embed)
-	await asyncio.sleep(3)	
-	embed=discord.Embed(title=f'Oh its a {answer}')
+	await asyncio.sleep(6)	
+	embed=discord.Embed(title=f'Oh! Its a {answer}')
 	await message.edit(embed=embed)
 @bot.command(aliases=["b"])
 async def bowl(ctx):
