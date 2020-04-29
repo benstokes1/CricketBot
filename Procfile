@@ -1,1 +1,1 @@
-worker: python event_banner.py
+worker: python crickgame.py 
