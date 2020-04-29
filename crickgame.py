@@ -27,7 +27,7 @@ async def toss(ctx):
 	embed=discord.Embed(title=f'Oh! Its a {answer}')
 	await message.edit(embed=embed)
 @bot.command(aliases=["b"])
-@commands.cooldown(1, 30, commands.BucketType.user)
+@commands.cooldown(1, 3, commands.BucketType.user)
 async def bowl(ctx):
 	
 	channel=ctx.message.channel
