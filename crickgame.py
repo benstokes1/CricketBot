@@ -128,6 +128,7 @@ async def bowl(ctx):
 						embed=discord.Embed(title=last)
 						await ctx.send(embed=embed)
 						return
+			score="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]
 			temp=".".join(temp)
 			top[1]=temp
 			top="\n".join(top)
