@@ -81,7 +81,7 @@ async def bowl(ctx):
 						top[1],top[3],top[4],top[5]='0.0','0','0','0'
 						topic="\n".join(top)
 						await channel.edit(topic=topic)
-						embed=discord.Embed(title=f"Well played team 1, Team 2 your target is {top[0]}")
+						embed=discord.Embed(title=f"Well played Team 1, Team 2 your target is {top[0]}")
 						await ctx.send(embed=embed)
 						return
 					else:
@@ -111,7 +111,7 @@ async def bowl(ctx):
 					top[1],top[3],top[4],top[5]='0.0','0','0','0'
 					topic="\n".join(top)
 					await channel.edit(topic=topic)
-					embed=discord.Embed(title=f"Well played team 1, Target: {top[0]}")
+					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target: {top[0]}")
 					await ctx.send(embed=embed)
 					return
 				else:
