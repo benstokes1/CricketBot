@@ -48,7 +48,7 @@ async def bowl(ctx):
 		txt=["Bull's eye! The bowler doesn't miss the stumps this time","The fielder pulled out a blinder, very good catch!"]
 		txt=random.choice(txt)
 	embed=discord.Embed(title=txt)
-	embed.set_img(url=f'{img}')
+	embed.set_image(url=f'{img}')
 	await ctx.send(embed=embed)	
 	
 bot.run(os.getenv("BOT_TOKEN"))
