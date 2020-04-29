@@ -128,7 +128,7 @@ async def bowl(ctx):
 						embed=discord.Embed(title=last)
 						await ctx.send(embed=embed)
 						return
-			if top[0]!='0':
+			if top[0]=='0':
 				score="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]
 			else:
 				t=top[1].split(".")
