@@ -173,9 +173,10 @@ async def bowl(ctx):
 		embed=discord.Embed(title=f"{score}")
 	else:
 		embed=discord.Embed(title=f"{last}\n{score}")
-	message=await ctx.send(embed=embed)
 	new_time = datetime.datetime.now() + datetime.timedelta(seconds=3)
 	await discord.utils.sleep_until(new_time, result=None)
+	message=await ctx.send(embed=embed)
+	
 				
 				
 @bot.command(aliases=["so"])
