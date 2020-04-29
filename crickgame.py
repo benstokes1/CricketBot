@@ -10,6 +10,7 @@ async def on_ready():
 	print("Less go")	
 @bot.command(aliases=["t"])
 async def toss(ctx):
+	
 	outcomes=["Heads","Tails"]
 	answer=random.choice(outcomes)
 	embed=discord.Embed(title='Toss')
@@ -20,7 +21,13 @@ async def toss(ctx):
 	await message.edit(embed=embed)
 @bot.command(aliases=["b"])
 async def bowl(ctx):
-	outcomes=[2, 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6,  'no-ball',3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 3, 0, 0, 3, 6, 6, 1, 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4,2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
+	channel=ctx.message.channel
+	topic=channel.topic
+	if topic==None or topic=="":
+		embed=discord.Embed(title="Details not give")
+		await channel.send(embed=embed)
+	outcomes=[1,'no-ball','wicket']
+	#outcomes=[2, 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6,  'no-ball',3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 3, 0, 0, 3, 6, 6, 1, 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4,2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
 	o=random.choice(outcomes)
 	if o==0:
 		img="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
@@ -52,110 +59,107 @@ async def bowl(ctx):
 	embed=discord.Embed(title=txt)
 	embed.set_image(url=f'{img}')
 	await ctx.send(embed=embed)	
-	channel=ctx.message.channel
-	topic=channel.topic
+	
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
 	last=None
-	if topic==None or topic=="":
-		embed=discord.Embed(title="Details not give")
-		await channel.send(embed=embed)
-	else:
-		top=topic.split("\n")
-		#score
-		top[4]=str(int(top[4])+d[o])
-		if int(top[4])>int(top[0]) and int(top[0])!=0:
-			last="GG both teams, well played! Team 2 won over Team 1 by "+str(10-int(top[5]))+" wickets"
-			channel.edit(topic="")
-			embed=discord.Embed(title=last)
-			await ctx.send(embed=embed)
-			return
-		#wickets
-		if o=='wicket':
-			if top[3]=='no-ball':
-				last="A total waste, coz its a free hit"
-			else:
-				top[5]=str(int(top[5])+1)
-				if top[5]=='10':
-					if top[0]=='0':
-						top[0]=str(int(top[4])+1)
-						top[1],top[3],top[4],top[5]='0.0','0','0','0'
-						topic="\n".join(top)
-						await channel.edit(topic=topic)
-						embed=discord.Embed(title=f"Well played Team 1, Team 2 your target is {top[0]}")
-						await ctx.send(embed=embed)
-						return
-					else:
-						last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4]))+" runs"
-						await channel.edit(topic=None)
-						embed=discord.Embed(title=last)
-						await ctx.send(embed=embed)
-						return
-		#prev-ball
+	
+	
+	top=topic.split("\n")
+	#score
+	top[4]=str(int(top[4])+d[o])
+	if int(top[4])>int(top[0]) and int(top[0])!=0:
+		last="GG both teams, well played! Team 2 won over Team 1 by "+str(10-int(top[5]))+" wickets"
+		channel.edit(topic="")
+		embed=discord.Embed(title=last)
+		await ctx.send(embed=embed)
+		return
+	#wickets
+	if o=='wicket':
 		if top[3]=='no-ball':
-			top[3]=str(o)+'free-hit'
+			last="A total waste, coz its a free hit"
 		else:
-			top[3]=str(o)
-		#overs
-		if o=='no-ball' or o=='wide':
-			pass
-		else:
-			temp=top[1].split(".")
-			temp[1]=str(int(temp[1])+1)
-			if temp[1]=='6':
-				temp[0]=str(int(temp[0])+1)
-				temp[1]=str(0)
-			temp=".".join(temp)
-			if temp==top[2]:
+			top[5]=str(int(top[5])+1)
+			if top[5]=='10':
 				if top[0]=='0':
 					top[0]=str(int(top[4])+1)
 					top[1],top[3],top[4],top[5]='0.0','0','0','0'
 					topic="\n".join(top)
 					await channel.edit(topic=topic)
-					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target: {top[0]}")
+					embed=discord.Embed(title=f"Well played Team 1, Team 2 your target is {top[0]}")
 					await ctx.send(embed=embed)
 					return
 				else:
-					if int(top[4])<int(top[0]):
-						last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4])-1)+" runs"
-						await channel.edit(topic=None)
-						embed=discord.Embed(title=last)
-						await ctx.send(embed=embed)
-						return
-					elif int(top[4])==int(top[0]):
-						last="GG both teams, well played! Since it turned out to be no one's lets go for a super-over...Team 1 will bat first"
-						top[0]='0'
-						top[2]='1.0'
-						top[1],top[3],top[4],top[5]='0.0','0','0','0'
-						embed=discord.Embed(title=last)
-						await ctx.send(embed=embed)
-						return
-			top[1]=temp		
-		
-		k=top
-		k="\n".join(k)
-		await channel.edit(topic=k)
-		score=""
-		if top[0]=='0':
-			score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]
-		else:
-			t=top[1].split(".")
-			b=top[2].split(".")
-			b=int(b[0])-1
-			if t[1]=='0':
-				t[1]=int(t[1])
+					last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4]))+" runs"
+					await channel.edit(topic=None)
+					embed=discord.Embed(title=last)
+					await ctx.send(embed=embed)
+					return
+	#prev-ball
+	if top[3]=='no-ball':
+		top[3]=str(o)+'free-hit'
+	else:
+		top[3]=str(o)
+	#overs
+	if o=='no-ball' or o=='wide':
+		pass
+	else:
+		temp=top[1].split(".")
+		temp[1]=str(int(temp[1])+1)
+		if temp[1]=='6':
+			temp[0]=str(int(temp[0])+1)
+			temp[1]=str(0)
+		temp=".".join(temp)
+		if temp==top[2]:
+			if top[0]=='0':
+				top[0]=str(int(top[4])+1)
+				top[1],top[3],top[4],top[5]='0.0','0','0','0'
+				topic="\n".join(top)
+				await channel.edit(topic=topic)
+				embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target: {top[0]}")
+				await ctx.send(embed=embed)
+				return
 			else:
-				t[1]=6-int(t[1])
-			t[0]=b-int(t[0])
-			total=t[0]*6+t[1]
-			score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]+"\nNeed "+str(int(top[0])-int(top[4])) +" from "+str(total)
-		if o=='no-ball':
-			last="Pull-up ur socks batsman, coz its a freehit"
-		if last==None:
-			embed=discord.Embed(title=f"{score}")
+				if int(top[4])<int(top[0]):
+					last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4])-1)+" runs"
+					await channel.edit(topic=None)
+					embed=discord.Embed(title=last)
+					await ctx.send(embed=embed)
+					return
+				elif int(top[4])==int(top[0]):
+					last="GG both teams, well played! Since it turned out to be no one's lets go for a super-over...Team 1 will bat first"
+					top[0]='0'
+					top[2]='1.0'
+					top[1],top[3],top[4],top[5]='0.0','0','0','0'
+					embed=discord.Embed(title=last)
+					await ctx.send(embed=embed)
+					return
+		top[1]=temp		
+
+	k=top
+	k="\n".join(k)
+	await channel.edit(topic=k)
+	score=""
+	if top[0]=='0':
+		score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]
+	else:
+		t=top[1].split(".")
+		b=top[2].split(".")
+		b=int(b[0])-1
+		if t[1]=='0':
+			t[1]=int(t[1])
 		else:
-			embed=discord.Embed(title=f"{last}\n{score}/top ")
-		await ctx.send(embed=embed)
-			
+			t[1]=6-int(t[1])
+		t[0]=b-int(t[0])
+		total=t[0]*6+t[1]
+		score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]+"\nNeed "+str(int(top[0])-int(top[4])) +" from "+str(total)
+	if o=='no-ball':
+		last="Pull-up ur socks batsman, coz its a freehit"
+	if last==None:
+		embed=discord.Embed(title=f"{score}")
+	else:
+		embed=discord.Embed(title=f"{last}\n{score}/top ")
+	await ctx.send(embed=embed)
+
 				
 				
 @bot.command(aliases=["so"])
