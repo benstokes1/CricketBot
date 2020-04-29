@@ -16,8 +16,12 @@ for filename in os.listdir("./cogs"):
 async def toss(ctx):
 	outcomes=["Heads","Tails"]
 	answer=random.choice(outcomes)
-	await ctx.send(f"Oh! It's a {answer}")
-		
+	embed=discord.Embed(title='Toss')
+	embed.set_image(url=f"{}")
+	message=await ctx.send(embed=embed)
+	await asyncio.sleep(3)	
+	embed=discord.Embed(title=f'Oh its a {answer}')
+	await message.edit(embed=embed)
 @bot.command(aliases=["b"])
 async def bowl(ctx):
 	outcomes=[2, 'no-ball', 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6, 3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 'no-ball', 3, 0, 0, 3, 6, 6, 'wicket', 1, 'wicket', 'wicket', 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4, 'no-ball', 2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
@@ -46,5 +50,7 @@ async def bowl(ctx):
 		img='https://tenor.com/view/its-awicket-happy-jumping-cheering-satisfied-gif-13800701'
 		txt=["Bull's eye! The bowler doesn't miss the stumps this time","The fielder pulled out a blinder, very good catch!"]
 		txt=random.choice(txt)
-	
+	embed=discord.Embed(title=txt)
+	embed.set_img(url=f'{img}')
+	await ctx.send(embed=embed)	      
 bot.run(os.getenv("BOT_TOKEN"))
