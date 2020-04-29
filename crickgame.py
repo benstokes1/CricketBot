@@ -52,7 +52,7 @@ async def bowl(ctx):
 	embed=discord.Embed(title=txt)
 	embed.set_image(url=f'{img}')
 	await ctx.send(embed=embed)	
-	channel=ctx.message.channel
+	'''channel=ctx.message.channel
 	topic=channel.topic
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
 	if topic==None or topic=="":
@@ -62,42 +62,78 @@ async def bowl(ctx):
 		top=topic.split("\n")
 		#score
 		top[4]=str(int(top[4])+d[o])
-		if int(top[4])>=int(top[0]) and int(top[0])!=0:
-			pass
+		if int(top[4])>int(top[0]) and int(top[0])!=0:
+			last="GG both teams, well played! Team 2 won over Team 1 by "+str(10-int(top[5])) " wickets"
+			channel.edit(topic="")
+			embed=discord.Embed(title=last)
+			await ctx.send(embed=embed)
+			return
 		#wickets
 		if o=='wicket':
 			if top[3]=='no-ball':
-				pass
+				last="Pull up ur socks batsman coz its a free hit"
 			else:
 				top[5]=str(int(top[5])+1)
 				if top[5]=='10':
 					if top[0]=='0':
-						pass
+						top[0]=str(int(top[4])+1)
+						top[1],top[3],top[4],top[5]='0','0','0','0'
+						topic="\n".join(top)
+						await ctx.edit(topic=topic)
+						embed=discord.Embed(title=f"Well played team 1, Target: {top[0]}")
+						await ctx.send(embed=embed)
+						return
 					else:
-						pass
-				else:
-					   pass
-					   
+						last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4]))+" runs"
+					   	channel.edit(topic="")
+						embed=discord.Embed(title=last)
+						await ctx.send(embed=embed)
+						return
 		#prev-ball
 		if top[3]=='no-ball':
 			top[3]=str(o)+'free-hit'
 		else:
 			top[3]=str(o)
 		#overs
-		temp=top[1].split(".")
-		temp[1]=str(int(temp[1])+1)
-		if temp[1]=='6':
-			temp[0]=str(int(temp[0])+1)
-			temp[1]=str(0)
-		if temp[1]==top[2]:
-			if top[0]=='0':
-				pass
-			else:
-				pass
-		temp=".".join(temp)
-		top[1]=temp
-		top="\n".join(top)
-		await channel.edit(topic=top)
+		if o=='no-ball':
+			pass
+		else:
+			temp=top[1].split(".")
+			temp[1]=str(int(temp[1])+1)
+			if temp[1]=='6':
+				temp[0]=str(int(temp[0])+1)
+				temp[1]=str(0)
+				if top[0]=='0':
+					
+			if temp[1]==top[2]:
+				if top[0]=='0':
+					top[0]=str(int(top[4])+1)
+					top[1],top[3],top[4],top[5]='0','0','0','0'
+					topic="\n".join(top)
+					await ctx.edit(topic=topic)
+					embed=discord.Embed(title=f"Well played team 1, Target: {top[0]}")
+					await ctx.send(embed=embed)
+					return
+				else:
+					if int(top[4])<int(top[0]):
+						last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4]))+" runs"
+					   	channel.edit(topic="")
+						embed=discord.Embed(title=last)
+						await ctx.send(embed=embed)
+						return
+					elif int(top[4])==int(top[0]):
+						last="GG both teams, well played! Since it turned out to be no one's lets go for a super-over...Team 1 will bat first"
+					   	top[0]='0'
+						top[2]='1.0'
+						top[1],top[3],top[4],top[5]='0','0','0','0'
+						embed=discord.Embed(title=last)
+						await ctx.send(embed=embed)
+						return
+			temp=".".join(temp)
+			top[1]=temp
+			top="\n".join(top)
+			await channel.edit(topic=top)
+			embed=discord.Embed(text=last)'''
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
 	if number==None:
@@ -105,7 +141,7 @@ async def setovers(ctx,number=None):
 	else:
 		number=int(number)
 		channel=ctx.message.channel
-		top="0\n0.0\n"+str(number)+"\nNone\n0\n0"
+		top="0\n0.0\n"+str(number)+".0\nNone\n0\n0"
 		await channel.edit(topic=top)
 		await channel.send("Overs set successfully")
 bot.run(os.getenv("BOT_TOKEN"))
