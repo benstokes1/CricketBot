@@ -157,7 +157,7 @@ async def bowl(ctx):
 	if last==None:
 		embed=discord.Embed(title=f"{score}")
 	else:
-		embed=discord.Embed(title=f"{last}\n{score}/top ")
+		embed=discord.Embed(title=f"{last}\n{score}")
 	await ctx.send(embed=embed)
 
 				
