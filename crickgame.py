@@ -136,7 +136,10 @@ async def bowl(ctx):
 				pass
 			else:
 				embed=discord.Embed(text=last)
-				await ctx.send(embed=embed)'''
+				await ctx.send(embed=embed)
+			if o=='no-ball':
+				last="Pull-up ur socks batsman, coz its a freehit"
+				embed=discord.Embed(title=f"{last} Score: }/top ")'''
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
 	if number==None:
