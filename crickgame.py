@@ -110,7 +110,7 @@ async def bowl(ctx):
 					top[0]=str(int(top[4])+1)
 					top[1],top[3],top[4],top[5]='0','0','0','0'
 					topic="\n".join(top)
-					await ctx.edit(topic=topic)
+					await channel.edit(topic=topic)
 					embed=discord.Embed(title=f"Well played team 1, Target: {top[0]}")
 					await ctx.send(embed=embed)
 					return
