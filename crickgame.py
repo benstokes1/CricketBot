@@ -122,7 +122,7 @@ async def bowl(ctx):
 						return
 					elif int(top[4])==int(top[0]):
 						last="GG both teams, well played! Since it turned out to be no one's lets go for a super-over...Team 1 will bat first"
-					   	top[0]='0'
+						top[0]='0'
 						top[2]='1.0'
 						top[1],top[3],top[4],top[5]='0','0','0','0'
 						embed=discord.Embed(title=last)
