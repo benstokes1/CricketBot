@@ -200,5 +200,7 @@ async def setovers(ctx,number=None):
 @bot.event
 async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandOnCooldown):
-		await ctx.send(error)
+		message=await ctx.send(error)
+		asyncio.sleep(1)
+		await messag.delete()
 bot.run(os.getenv("BOT_TOKEN"))
