@@ -173,15 +173,14 @@ async def bowl(ctx):
 		embed=discord.Embed(title=f"{score}")
 	else:
 		embed=discord.Embed(title=f"{last}\n{score}")
-	new_time = datetime.datetime.now() + datetime.timedelta(seconds=3)
 	await discord.utils.sleep_until(new_time, result=None)
-	message=await ctx.send(embed=embed)
+	
 	
 				
 				
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
-	if ctx.messag.channel.topic!="" or ctx.message.channel.topic!=None:
+	if ctx.message.channel.topic!="" or ctx.message.channel.topic!=None:
 		await ctx.send("Seems like there is a match which is not done yet... Type `.end` to abandon the match")
 		return
 	if number==None:
