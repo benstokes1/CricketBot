@@ -39,7 +39,7 @@ async def bowl(ctx):
 		txt="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
 	if o=='no-ball':
 		img='https://tenor.com/view/no-ball-cricket-umpire-man-standing-gif-17020197'
-		txt="The bowler stepped this time, it's a no ball"
+		txt="The bowler over-stepped this time, it's a no ball"
 	if o=='wide':
 		img='https://tenor.com/view/wide-wide-ball-cricket-funny-cricket-bowler-gif-16733235'
 		txt="Extra runs for the batting team, it's a wide"
