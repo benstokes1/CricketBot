@@ -172,8 +172,8 @@ async def bowl(ctx):
 		embed=discord.Embed(title=f"{score}")
 	else:
 		embed=discord.Embed(title=f"{last}\n{score}")
-	await ctx.send(embed=embed)
-
+	message=await ctx.send(embed=embed)
+	print(message)
 				
 				
 @bot.command(aliases=["so"])
