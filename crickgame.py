@@ -151,7 +151,7 @@ async def bowl(ctx):
 			last="Pull-up ur socks batsman, coz its a freehit"
 			top[3]='no-ball'
 		else:
-			top[3]=str(o)+'free-hit'
+			top[3]=str(o)+' free-hit'
 	else:
 		top[3]=str(o)
 	
