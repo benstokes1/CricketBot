@@ -46,7 +46,7 @@ async def bowl(ctx):
 		return
 	top=topic.split("\n")
 	if top[6]=='0':
-		embed=discord.Embed(title="Toss not done yet\nType `.toss` to set overs")
+		embed=discord.Embed(title="Toss not done yet\nType `.toss` to toss the coin")
 		await channel.send(embed=embed)
 		return
 	
