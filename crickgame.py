@@ -66,9 +66,7 @@ async def bowl(ctx):
 	if o=='wicket':
 		img='https://media.discordapp.net/attachments/549222632873000980/705010813517299712/videotogif_2020.04.29_19.00.44.gif?width=403&height=403'
 		txt="Bullseye! The bowler doesn't miss the stumps this time"
-	embed=discord.Embed(title=txt)
-	embed.set_image(url=f'{img}')
-	await ctx.send(embed=embed)	
+
 	
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
 	last=None
@@ -151,7 +149,9 @@ async def bowl(ctx):
 					await ctx.send(embed=embed)
 					return
 		top[1]=temp		
-
+	embed=discord.Embed(title=txt)
+	embed.set_image(url=f'{img}')
+	await ctx.send(embed=embed)	
 	k=top
 	k="\n".join(k)
 	await channel.edit(topic=k)
