@@ -9,7 +9,7 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
 	print("Less go")
-@bot.command(aliases=["e"])
+@bot.command()
 async def help(ctx):
 	channel=ctx.message.channel
 	await channel.edit(topic=None)
