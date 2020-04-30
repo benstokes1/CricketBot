@@ -106,13 +106,14 @@ async def bowl(ctx):
 					return
 	#prev-ball
 	if top[3]=='no-ball':
-		top[3]=str(o)+'free-hit'
-	else:
-		top[3]=str(o)
-	if top[3]=='no-ball':
 		if o=='wide':
 			last="Pull-up ur socks batsman, coz its a freehit"
 			top[3]='no-ball'
+		else:
+			top[3]=str(o)+'free-hit'
+	else:
+		top[3]=str(o)
+	
 	#overs
 	if o=='no-ball' or o=='wide':
 		pass
