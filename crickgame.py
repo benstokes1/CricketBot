@@ -17,7 +17,7 @@ async def end(ctx):
 	await ctx.send(embed=embed)
 @bot.command(aliases=["t"])
 async def toss(ctx):
-	
+	#toss
 	outcomes=["Heads","Tails"]
 	answer=random.choice(outcomes)
 	embed=discord.Embed(title='Toss')
@@ -26,6 +26,13 @@ async def toss(ctx):
 	await asyncio.sleep(4)	
 	embed=discord.Embed(title=f'Oh! Its a {answer}')
 	await message.edit(embed=embed)
+	#topic
+	channel=ctx.message.channel
+	topic=channel.topic
+	top=topic.split("\n")
+	top[6]='1'
+	top="\n".join(top)
+	await channel.edit(topic=top)
 @bot.command(aliases=["b"])
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def bowl(ctx):
@@ -36,8 +43,13 @@ async def bowl(ctx):
 		embed=discord.Embed(title="Details not given\nType `.so <number>` to set overs")
 		await channel.send(embed=embed)
 		return
-	
-	outcomes=[3, 1, 1, 2, 2, 1, 0, 'wide', 0, 4, 1, 4, 2, 0, 3, 2, 1, 1, 'wicket', 4, 4, 2, 3, 0, 2, 1, 4, 4, 4, 2, 3, 'wicket', 2, 3, 1, 2, 'wide', 'wide', 0, 1, 2, 1, 6, 'wide', 1, 2, 0, 3, 4, 2, 'wicket', 1, 4, 1, 2, 4, 0, 1, 'no-ball', 0, 3, 1, 'no-ball', 1, 3, 3, 'wide', 'no-ball', 3, 6, 1, 'no-ball', 3, 2, 0, 1, 2, 2, 0, 2, 'wicket', 6, 2, 6, 2, 3, 2, 'no-ball', 1, 3, 6, 3, 1, 3, 'wicket']
+	top=topic.split("\n")
+	if top[6]=='0':
+		embed=discord.Embed(title="Toss not done yet\nType `.toss` to set overs")
+		await channel.send(embed=embed)
+		return
+	outcomes=['no-ball']
+	#outcomes=[3, 1, 1, 2, 2, 1, 0, 'wide', 0, 4, 1, 4, 2, 0, 3, 2, 1, 1, 'wicket', 4, 4, 2, 3, 0, 2, 1, 4, 4, 4, 2, 3, 'wicket', 2, 3, 1, 2, 'wide', 'wide', 0, 1, 2, 1, 6, 'wide', 1, 2, 0, 3, 4, 2, 'wicket', 1, 4, 1, 2, 4, 0, 1, 'no-ball', 0, 3, 1, 'no-ball', 1, 3, 3, 'wide', 'no-ball', 3, 6, 1, 'no-ball', 3, 2, 0, 1, 2, 2, 0, 2, 'wicket', 6, 2, 6, 2, 3, 2, 'no-ball', 1, 3, 6, 3, 1, 3, 'wicket']
 	o=random.choice(outcomes)
 	if o==0:
 		img="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
@@ -101,7 +113,7 @@ async def bowl(ctx):
 	last=None
 	
 	
-	top=topic.split("\n")
+	
 	#score
 	top[4]=str(int(top[4])+d[o])
 	if z==None:
@@ -215,8 +227,6 @@ async def bowl(ctx):
 	
 	await ctx.send(embed=embed)
 	
-	
-				
 				
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
@@ -231,7 +241,7 @@ async def setovers(ctx,number=None):
 	else:
 		number=int(number)
 		channel=ctx.message.channel
-		top="0\n0.0\n"+str(number)+".0\nNone\n0\n0"
+		top="0\n0.0\n"+str(number)+".0\nNone\n0\n0\n0"
 		await channel.edit(topic=top)
 		await channel.send("Overs set successfully")
 @bot.event
