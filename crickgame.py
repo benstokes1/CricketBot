@@ -36,7 +36,7 @@ async def bowl(ctx):
 		embed=discord.Embed(title="Details not given\nType `.so <number>` to set overs")
 		await channel.send(embed=embed)
 		return
-	outcomes=[2, 1, 1, 1, 1, 2, 3, 0, 4, 2, 1, 1, 1, 4, 2, 6,  'no-ball',3, 3, 1, 2, 1, 0, 3, 1, 1, 4, 6, 4, 2, 1, 'wicket', 3, 0, 0, 3, 6, 6, 1, 'wicket', 'wide', 1, 3, 3, 3, 0, 3, 'wicket', 3, 4, 2, 2, 6, 3, 0, 'wicket', 'wide', 3, 1, 3, 6, 6, 4,2, 1, 3, 3, 3, 'wide', 'wide', 2, 6, 0, 2, 2, 3, 4, 2, 4, 3, 4, 2, 2, 4, 6, 3, 'no-ball', 0, 2, 1, 2, 1, 2, 1, 'wicket', 'wicket', 'no-ball', 2, 0, 2, 0, 6, 'wide', 'wicket', 1]
+	outcomes=[4, 0, 3, 0, 'no-ball', 'no-ball', 4, 3, 2, 1, 6, 2, 3, 0, 1, 0, 1, 3, 3, 2, 0, 3, 3, 1, 4, 1, 1, 2, 'wide', 1, 2, 2, 3, 4, 'wicket', 0, 2, 1, 'wicket', 1, 1, 3, 3, 'wicket', 1, 4, 0, 1, 'wicket', 'wide', 2, 'wide', 2, 1, 6, 'no-ball', 3, 'no-ball', 4, 2, 2, 4, 1, 2, 0, 0, 1, 'no-ball', 6, 1, 2, 'wicket', 4, 3, 3, 1, 2, 4, 6, 'wide', 2, 3, 'wide', 1, 2, 2, 2, 3, 1, 2, 0, 6, 1, 2, 4]
 	o=random.choice(outcomes)
 	if o==0:
 		img="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
