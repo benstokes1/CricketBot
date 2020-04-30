@@ -109,11 +109,8 @@ async def bowl(ctx):
 	else:
 		embed.set_image(url=f'{img}')
 		await ctx.send(embed=embed)
-	await ctx.send(embed=embed)	
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
 	last=None
-	
-	
 	
 	#score
 	top[4]=str(int(top[4])+d[o])
