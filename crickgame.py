@@ -14,9 +14,9 @@ async def help(ctx):
 	channel=ctx.message.channel
 	await channel.edit(topic=None)
 	embed=discord.Embed(title="List of commands")
-	embed.add_field(name=".setovers",value="Sets the number of overs for match")
-	embed.add_field(name=".toss",value="Tosses a coin and prints the outcome")
-	embed.add_field(name=".bowl",value="Should be used by the bowling team while bowling")
+	embed.add_field(name=".setovers",value="Sets the number of overs for match",inline=False)
+	embed.add_field(name=".toss",value="Tosses a coin and prints the outcome",inline=False)
+	embed.add_field(name=".bowl",value="Should be used by the bowling team while bowling",inline=False)
 	await ctx.send(embed=embed)
 @bot.command(aliases=["e"])
 async def end(ctx):
