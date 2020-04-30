@@ -10,6 +10,15 @@ bot.remove_command('help')
 async def on_ready():
 	print("Less go")
 @bot.command(aliases=["e"])
+async def help(ctx):
+	channel=ctx.message.channel
+	await channel.edit(topic=None)
+	embed=discord.Embed(title="List of commands")
+	embed.add_field(name=".setovers",value="Sets the number of overs for match")
+	embed.add_field(name=".toss",value="Tosses a coin and prints the outcome")
+	embed.add_field(name=".bowl",value="Should be used by the bowling team while bowling")
+	await ctx.send(embed=embed)
+@bot.command(aliases=["e"])
 async def end(ctx):
 	channel=ctx.message.channel
 	await channel.edit(topic=None)
@@ -102,7 +111,7 @@ async def bowl(ctx):
 	if o=='wicket':
 		img='https://media.discordapp.net/attachments/549222632873000980/705010813517299712/videotogif_2020.04.29_19.00.44.gif?width=403&height=403'
 		txt="Bullseye! The bowler doesn't miss the stumps this time"
-	await asyncio.sleep(1)
+	
 	embed=discord.Embed(title=txt)
 	if img==None:
 		await ctx.send(embed=embed)
