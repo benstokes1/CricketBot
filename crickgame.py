@@ -37,7 +37,7 @@ async def toss(ctx):
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def bowl(ctx):
 	z=None
-	tx,img=None,None
+	txt,img=None,None
 	channel=ctx.message.channel
 	topic=channel.topic
 	if topic==None or topic=="":
