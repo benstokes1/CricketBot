@@ -9,6 +9,12 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
 	print("Less go")
+@bot.event
+async def on_message(message):
+	channel=message.channel
+	if bot.user.mentioned_in(message) and message.mention_everyone is False:
+		await channel.send("My prefix is `.`. To learn how to use the bot, use the `.help` command.")
+	await bot.process_commands(message)
 @bot.command()
 async def help(ctx):
 	channel=ctx.message.channel
