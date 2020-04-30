@@ -112,7 +112,7 @@ async def bowl(ctx):
 		img='https://media0.giphy.com/media/MuHNNsIf3CzcTsdpcv/giphy.gif?cid=19f5b51a7fde06336ea661ea8b0c5339572716c561abaef1&rid=giphy.gif'
 		txt="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
 	if o=='no-ball':
-		z=[2, 2, 3, 2, 0, 2, 1, 0, 2, 2, 3, 2, 3, 1, 1, 4, 1, 1, 0, 3, 6, 1, 0, 2, 1, 0, 2, 1, 3, 2, 3, 1, 4, 0, 3, 4, 3, 1, 2, 1, 2, 2, 4, 2, 0, 1, 4, 2, 1, 1, 2, 3, 2, 1, 0, 2, 2, 0, 2, 0, 0, 6, 3, 2, 3, 6, 3, 1, 0, 1, 2, 0, 3, 0, 4, 4, 0, 2, 1, 4, 4, 1, 1, 1, 2, 1, 6, 2, 1, 0, 0, 1, 0, 0, 1, 3, 6, 3, 0]
+		z=[2, 2, 3, 2, 0, 2, 1, 0, 2, 2, 3, 2, 3, 1, 1, 4, 1, 1, 0, 3, 6, 1, 0, 2, 1, 0, 2, 1, 'wicket',3, 2, 3, 1, 4, 0, 3, 4, 3, 1, 2, 1, 2, 2, 4, 2, 0, 1, 4, 2, 1, 1, 2, 3, 2, 1,'wicket', 0, 2, 2, 0, 2, 0, 0, 6, 3, 2, 3, 6, 3, 1, 0, 1, 2, 0, 3, 0, 4, 4, 0, 2, 1, 4, 4, 1, 1, 1, 2, 1, 6, 2, 1, 0, 0, 1, 0, 0, 1, 3, 6, 3, 0]
 		z=random.choice(z)
 		if z==0:
 			imge="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
@@ -132,6 +132,9 @@ async def bowl(ctx):
 		if z==6:
 			imge='https://media0.giphy.com/media/MuHNNsIf3CzcTsdpcv/giphy.gif?cid=19f5b51a7fde06336ea661ea8b0c5339572716c561abaef1&rid=giphy.gif'
 			txte="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
+		if z=='wicket':
+			img='https://media.discordapp.net/attachments/549222632873000980/705010813517299712/videotogif_2020.04.29_19.00.44.gif?width=403&height=403'
+			txt="Bullseye! The bowler doesn't miss the stumps this time"
 		embed=discord.Embed(title=txte)
 		embed.set_image(url=f'{imge}')
 		await ctx.send(embed=embed)
@@ -158,7 +161,7 @@ async def bowl(ctx):
 	if z==None:
 		pass
 	else:
-		top[4]=str(int(top[4])+z)
+		top[4]=str(int(top[4])+d[z])
 	if int(top[4])>=int(top[0]) and int(top[0])!=0:
 		last="GG both teams, well played! Team 2 won over Team 1 by "+str(10-int(top[5]))+" wickets"
 		await channel.edit(topic=None)
