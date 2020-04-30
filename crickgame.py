@@ -29,7 +29,7 @@ async def toss(ctx):
 @bot.command(aliases=["b"])
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def bowl(ctx):
-	
+	z=None
 	channel=ctx.message.channel
 	topic=channel.topic
 	if topic==None or topic=="":
@@ -58,7 +58,30 @@ async def bowl(ctx):
 		img='https://media0.giphy.com/media/MuHNNsIf3CzcTsdpcv/giphy.gif?cid=19f5b51a7fde06336ea661ea8b0c5339572716c561abaef1&rid=giphy.gif'
 		txt="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
 	if o=='no-ball':
-		img='https://media.discordapp.net/attachments/549222632873000980/705001910490628146/PicsArt_04-29-06.25.25.gif?width=425&height=425'
+		z=[2, 2, 3, 2, 0, 2, 1, 0, 2, 2, 3, 2, 3, 1, 1, 4, 1, 1, 0, 3, 6, 1, 0, 2, 1, 0, 2, 1, 3, 2, 3, 1, 4, 0, 3, 4, 3, 1, 2, 1, 2, 2, 4, 2, 0, 1, 4, 2, 1, 1, 2, 3, 2, 1, 0, 2, 2, 0, 2, 0, 0, 6, 3, 2, 3, 6, 3, 1, 0, 1, 2, 0, 3, 0, 4, 4, 0, 2, 1, 4, 4, 1, 1, 1, 2, 1, 6, 2, 1, 0, 0, 1, 0, 0, 1, 3, 6, 3, 0]
+		z=random.choice(z)
+		if o==0:
+			imge="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
+			txte="Well bowled! no runs came off that ball"
+		if o==1:
+			imge='https://media.giphy.com/media/3oh6e1cdNdVLlfUXpE/giphy.gif'
+			txte='Straight to the fielder for a single!'
+		if o==2:
+			imge='https://media.giphy.com/media/pPd3Tzuc34UpJJvK2F/giphy.gif'
+			txte='Nudged into the gap for a double.'
+		if o==3:
+			imge='https://media1.giphy.com/media/NRtZEyZjbLgr0BJ4B8/giphy.gif'
+			txte="They turned that into 3, that's very good running"
+		if o==4:
+			imge='https://media.tenor.com/images/0b12eaa6835a3fb204ea4965f728613c/tenor.gif'
+			txte='Smashed into the gap for a FOUR'
+		if o==6:
+			imge='https://media0.giphy.com/media/MuHNNsIf3CzcTsdpcv/giphy.gif?cid=19f5b51a7fde06336ea661ea8b0c5339572716c561abaef1&rid=giphy.gif'
+			txte="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
+		embed=discord.Embed(title=txte)
+		embed.set_image(url=f'{imge}')
+		await ctx.send(embed=embed)
+		#img='https://media.discordapp.net/attachments/549222632873000980/705001910490628146/PicsArt_04-29-06.25.25.gif?width=425&height=425'
 		txt="The bowler over-stepped this time, it's a no ball"
 	if o=='wide':
 		img='https://media.discordapp.net/attachments/549222632873000980/704999410580324412/PicsArt_04-29-06.15.40.gif?width=425&height=425'
@@ -66,8 +89,14 @@ async def bowl(ctx):
 	if o=='wicket':
 		img='https://media.discordapp.net/attachments/549222632873000980/705010813517299712/videotogif_2020.04.29_19.00.44.gif?width=403&height=403'
 		txt="Bullseye! The bowler doesn't miss the stumps this time"
-
-	
+	await asyncio.sleep(1)
+	embed=discord.Embed(title=txt)
+	if img==None:
+		await ctx.send(embed=embed)
+	else:
+		embed.set_image(url=f'{img}')
+		await ctx.send(embed=embed)
+	await ctx.send(embed=embed)	
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
 	last=None
 	
@@ -75,6 +104,10 @@ async def bowl(ctx):
 	top=topic.split("\n")
 	#score
 	top[4]=str(int(top[4])+d[o])
+	if z==None:
+		pass
+	else:
+		top[4]=str(int(top[4])+z)
 	if int(top[4])>=int(top[0]) and int(top[0])!=0:
 		last="GG both teams, well played! Team 2 won over Team 1 by "+str(10-int(top[5]))+" wickets"
 		await channel.edit(topic=None)
@@ -149,9 +182,7 @@ async def bowl(ctx):
 					await ctx.send(embed=embed)
 					return
 		top[1]=temp		
-	embed=discord.Embed(title=txt)
-	embed.set_image(url=f'{img}')
-	await ctx.send(embed=embed)	
+	
 	k=top
 	k="\n".join(k)
 	await channel.edit(topic=k)
