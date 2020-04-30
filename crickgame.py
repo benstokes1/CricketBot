@@ -72,22 +72,22 @@ async def bowl(ctx):
 	if o=='no-ball':
 		z=[2, 2, 3, 2, 0, 2, 1, 0, 2, 2, 3, 2, 3, 1, 1, 4, 1, 1, 0, 3, 6, 1, 0, 2, 1, 0, 2, 1, 3, 2, 3, 1, 4, 0, 3, 4, 3, 1, 2, 1, 2, 2, 4, 2, 0, 1, 4, 2, 1, 1, 2, 3, 2, 1, 0, 2, 2, 0, 2, 0, 0, 6, 3, 2, 3, 6, 3, 1, 0, 1, 2, 0, 3, 0, 4, 4, 0, 2, 1, 4, 4, 1, 1, 1, 2, 1, 6, 2, 1, 0, 0, 1, 0, 0, 1, 3, 6, 3, 0]
 		z=random.choice(z)
-		if o==0:
+		if z==0:
 			imge="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
 			txte="Well bowled! no runs came off that ball"
-		if o==1:
+		if z==1:
 			imge='https://media.giphy.com/media/3oh6e1cdNdVLlfUXpE/giphy.gif'
 			txte='Straight to the fielder for a single!'
-		if o==2:
+		if z==2:
 			imge='https://media.giphy.com/media/pPd3Tzuc34UpJJvK2F/giphy.gif'
 			txte='Nudged into the gap for a double.'
-		if o==3:
+		if z==3:
 			imge='https://media1.giphy.com/media/NRtZEyZjbLgr0BJ4B8/giphy.gif'
 			txte="They turned that into 3, that's very good running"
-		if o==4:
+		if z==4:
 			imge='https://media.tenor.com/images/0b12eaa6835a3fb204ea4965f728613c/tenor.gif'
 			txte='Smashed into the gap for a FOUR'
-		if o==6:
+		if z==6:
 			imge='https://media0.giphy.com/media/MuHNNsIf3CzcTsdpcv/giphy.gif?cid=19f5b51a7fde06336ea661ea8b0c5339572716c561abaef1&rid=giphy.gif'
 			txte="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
 		embed=discord.Embed(title=txte)
