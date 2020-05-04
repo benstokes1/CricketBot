@@ -92,7 +92,8 @@ async def bowl(ctx):
 		await channel.send(embed=embed)
 		return
 
-	outcomes=[3, 1, 1, 2, 2, 1, 0, 'wide', 0, 4, 1, 4, 2, 0, 3, 2, 1, 1, 4, 4, 2, 3, 0, 2, 1, 4, 4, 4, 2, 3, 'wicket', 2, 3, 1, 2, 'wide', 'wide', 0, 1, 2, 1, 6, 'wide', 1, 2, 0, 3, 4, 2, 'wicket', 1, 4, 1, 2, 4, 0, 1, 'no-ball', 0, 3, 1, 'no-ball', 1, 3, 3, 'wide', 'no-ball', 3, 6, 1, 'no-ball', 3, 2, 0, 1, 2, 2, 0, 2, 'wicket', 6, 2, 6, 2, 3, 2, 'no-ball', 1, 3, 6, 3, 1, 3, 'wicket']
+	#outcomes=[3, 1, 1, 2, 2, 1, 0, 'wide', 0, 4, 1, 4, 2, 0, 3, 2, 1, 1, 4, 4, 2, 3, 0, 2, 1, 4, 4, 4, 2, 3, 'wicket', 2, 3, 1, 2, 'wide', 'wide', 0, 1, 2, 1, 6, 'wide', 1, 2, 0, 3, 4, 2, 'wicket', 1, 4, 1, 2, 4, 0, 1, 'no-ball', 0, 3, 1, 'no-ball', 1, 3, 3, 'wide', 'no-ball', 3, 6, 1, 'no-ball', 3, 2, 0, 1, 2, 2, 0, 2, 'wicket', 6, 2, 6, 2, 3, 2, 'no-ball', 1, 3, 6, 3, 1, 3, 'wicket']
+	outcomes=[6]
 	o=random.choice(outcomes)
 	if o==0:
 		img="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
