@@ -91,9 +91,13 @@ async def bowl(ctx):
 		embed=discord.Embed(title="Toss not done yet\nType `.toss` to toss the coin")
 		await channel.send(embed=embed)
 		return
-
-	outcomes=[3, 1, 1, 2, 2, 1, 0, 'wide', 0, 4, 1, 4, 2, 0, 3, 2, 1, 1, 4, 4, 2, 3, 0, 2, 1, 4, 4, 4, 2, 3, 'wicket', 2, 3, 1, 2, 'wide', 'wide', 0, 1, 2, 1, 6, 'wide', 1, 2, 0, 3, 4, 2, 'wicket', 1, 4, 1, 2, 4, 0, 1, 'no-ball', 0, 3, 1, 'no-ball', 1, 3, 3, 'wide', 'no-ball', 3, 6, 1, 'no-ball', 3, 2, 0, 1, 2, 2, 0, 2, 'wicket', 6, 2, 6, 2, 3, 2, 'no-ball', 1, 3, 6, 3, 1, 3, 'wicket']
-	
+	a=top[1].split(".")
+	c=top[2].split(".")
+	outcomes=[1, 4, 2, 2, 2, 6, 'no-ball', 3, 2, 2, 2, 4, 1, 1, 2, 1, 2, 1, 'wicket', 1, 3, 1, 'wicket', 0, 2, 'no-ball', 1, 2, 2, 'wicket', 0, 1, 'wicket', 'wide', 2, 1, 'no-ball', 2, 4, 2, 'wide', 6, 1, 3, 0, 1, 3, 2, 'no-ball', 1, 2, 1, 0, 'wicket', 'wide', 3, 2, 6, 1, 4, 1, 3, 'wide', 4, 3, 2, 0, 4, 6, 1, 'wicket', 2, 0, 4, 4, 3, 'wide', 2, 0, 0, 1, 'wide', 1, 1]
+	if a=='0':
+		outcomes=[6, 3, 6, 0, 4, 3, 2, 'wicket', 3, 'wide', 1, 1, 4, 3, 0, 2, 2, 2, 2, 'wicket', 0, 1, 4, 4, 4, 'wicket', 4, 3, 1, 2, 4, 2, 'wicket', 0, 2, 2, 'wide', 4, 3, 1, 4, 4, 4, 6, 3, 'no-ball', 1, 1, 0, 4, 2, 6, 'wicket', 6, 'wide', 0, 'no-ball', 0, 1, 0, 6, 4, 'wicket', 4, 6, 'wide', 3, 1, 1, 4, 0, 6, 0]
+	elif a=str(int(c)-1) and a!='0':
+		outcomes=[4, 1, 'no-ball', 1, 6, 0, 0, 6, 0, 2, 4, 3, 0, 'wide', 4, 'wicket', 0, 4, 4, 0, 2, 6, 3, 4, 4, 'no-ball', 1, 0, 'wicket', 2, 2, 'no-ball', 3, 2, 2, 'wide', 1, 1, 'wicket', 4, 1, 'wicket', 4, 'wicket', 4, 2, 'wide', 1, 4, 4, 6, 1, 6, 2, 2, 4, 6, 0, 6, 2, 4, 0, 1, 'wide', 1, 3, 0, 3, 'wicket', 3, 3, 3, 4, 'no-ball', 6]
 	o=random.choice(outcomes)
 	if o==0:
 		img="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
@@ -114,7 +118,7 @@ async def bowl(ctx):
 		img='https://media0.giphy.com/media/MuHNNsIf3CzcTsdpcv/giphy.gif?cid=19f5b51a7fde06336ea661ea8b0c5339572716c561abaef1&rid=giphy.gif'
 		txt="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
 	if o=='no-ball':
-		z=[2, 2, 3, 2, 0, 2, 1, 0, 2, 2, 3, 2, 3, 1, 1, 4, 1, 1, 0, 3, 6, 1, 0, 2, 1, 0, 2, 1, 'wicket',3, 2, 3, 1, 4, 0, 3, 4, 3, 1, 2, 1, 2, 2, 4, 2, 0, 1, 4, 2, 1, 1, 2, 3, 2, 1,'wicket', 0, 2, 2, 0, 2, 0, 0, 6, 3, 2, 3, 6, 3, 1, 0, 1, 2, 0, 3, 0, 4, 4, 0, 2, 1, 4, 4, 1, 1, 1, 2, 1, 6, 2, 1, 0, 0, 1, 0, 0, 1, 3, 6, 3, 0]
+		z=[2, 2, 3, 2, 0, 2, 1, 0, 2, 2, 3,'wicket', 2, 3, 1, 1, 4, 1, 1, 0, 3, 6, 1, 0, 2, 1, 0, 2, 1, 'wicket',3, 2, 3, 1, 4, 0, 3, 4, 3, 1, 2, 1, 2, 2, 4, 2, 0, 1, 4, 2, 1, 1, 2, 3, 2, 1,'wicket', 0, 2, 2, 0, 2, 0, 0, 6, 3, 2, 3, 6, 3, 1, 0, 1, 2, 0, 3, 0, 4, 4, 0, 2, 1, 4, 4, 1, 1, 1, 2, 1, 6, 2, 1, 0, 0, 1, 0, 0, 1, 3, 6, 3, 0]
 		z=random.choice(z)
 		if z==0:
 			imge="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
@@ -136,8 +140,7 @@ async def bowl(ctx):
 			txte="The fielder can do nothing but watch the ball sail over his head, its a SIX!"
 		if z=='wicket':
 			img='https://media.discordapp.net/attachments/549222632873000980/705010813517299712/videotogif_2020.04.29_19.00.44.gif?width=403&height=403'
-			txt=["Bullseye! The bowler doesn't miss the stumps this time","The fielder pulls out a blinder!!","And a pretty good throw from the fielder yielded them a wicket"]
-			txt=random.choice(txt)
+			txt=["Bullseye! The bowler doesn't miss the stumps this time","The fielder pulls out a blinder!!"]
 		embed=discord.Embed(title=txte)
 		embed.set_image(url=f'{imge}')
 		await ctx.send(embed=embed)
