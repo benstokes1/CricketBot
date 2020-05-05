@@ -96,7 +96,7 @@ async def bowl(ctx):
 	outcomes=[1, 4, 2, 2, 2, 6, 'no-ball', 3, 2, 2, 2, 4, 1, 1, 2, 1, 2, 1, 'wicket', 1, 3, 1, 'wicket', 0, 2, 'no-ball', 1, 2, 2, 'wicket', 0, 1, 'wicket', 'wide', 2, 1, 'no-ball', 2, 4, 2, 'wide', 6, 1, 3, 0, 1, 3, 2, 'no-ball', 1, 2, 1, 0, 'wicket', 'wide', 3, 2, 6, 1, 4, 1, 3, 'wide', 4, 3, 2, 0, 4, 6, 1, 'wicket', 2, 0, 4, 4, 3, 'wide', 2, 0, 0, 1, 'wide', 1, 1]
 	if a=='0':
 		outcomes=[6, 3, 6, 0, 4, 3, 2, 'wicket', 3, 'wide', 1, 1, 4, 3, 0, 2, 2, 2, 2, 'wicket', 0, 1, 4, 4, 4, 'wicket', 4, 3, 1, 2, 4, 2, 'wicket', 0, 2, 2, 'wide', 4, 3, 1, 4, 4, 4, 6, 3, 'no-ball', 1, 1, 0, 4, 2, 6, 'wicket', 6, 'wide', 0, 'no-ball', 0, 1, 0, 6, 4, 'wicket', 4, 6, 'wide', 3, 1, 1, 4, 0, 6, 0]
-	elif a=str(int(c)-1) and a!='0':
+	elif a==str(int(c)-1) and a!='0':
 		outcomes=[4, 1, 'no-ball', 1, 6, 0, 0, 6, 0, 2, 4, 3, 0, 'wide', 4, 'wicket', 0, 4, 4, 0, 2, 6, 3, 4, 4, 'no-ball', 1, 0, 'wicket', 2, 2, 'no-ball', 3, 2, 2, 'wide', 1, 1, 'wicket', 4, 1, 'wicket', 4, 'wicket', 4, 2, 'wide', 1, 4, 4, 6, 1, 6, 2, 2, 4, 6, 0, 6, 2, 4, 0, 1, 'wide', 1, 3, 0, 3, 'wicket', 3, 3, 3, 4, 'no-ball', 6]
 	o=random.choice(outcomes)
 	if o==0:
