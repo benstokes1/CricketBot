@@ -277,7 +277,7 @@ async def bowl(ctx):
 		embed=discord.Embed(title=f"{last}\n{score}")
 	
 	await ctx.send(embed=embed)
-	
+	await channel.edit(topic=k)
 				
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
