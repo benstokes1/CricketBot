@@ -254,8 +254,10 @@ async def bowl(ctx):
 	await channel.edit(topic=k)
 	score=""
 	if top[0]=='0':
+		print("6-if")
 		score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]
 	else:
+		print("6-else")
 		t=top[1].split(".")
 		b=top[2].split(".")
 		b=int(b[0])-1
@@ -267,6 +269,7 @@ async def bowl(ctx):
 		if t[1]==0:
 			t[1]=6
 		total=t[0]*6+t[1]
+		print("6.1-else")
 		score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]+"\nNeed "+str(int(top[0])-int(top[4])) +" from "+str(total)
 		if total==1:
 			score+=" ball"
@@ -278,7 +281,7 @@ async def bowl(ctx):
 		embed=discord.Embed(title=f"{score}")
 	else:
 		embed=discord.Embed(title=f"{last}\n{score}")
-	print("6")
+	print("7")
 	await ctx.send(embed=embed)
 	await channel.edit(topic=k)
 				
