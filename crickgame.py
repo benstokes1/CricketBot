@@ -164,7 +164,7 @@ async def bowl(ctx):
 		await ctx.send(embed=embed)
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
 	last=None
-	
+	print("1")
 	#score
 	top[4]=str(int(top[4])+d[o])
 	if z==None:
@@ -177,6 +177,7 @@ async def bowl(ctx):
 		embed=discord.Embed(title=last)
 		await ctx.send(embed=embed)
 		return
+	print("2")
 	#wickets
 	if o=='wicket':
 		if top[3]=='no-ball':
@@ -198,6 +199,7 @@ async def bowl(ctx):
 					embed=discord.Embed(title=last)
 					await ctx.send(embed=embed)
 					return
+	print("3")
 	#prev-ball
 	if top[3]=='no-ball':
 		if o=='wide':
@@ -208,6 +210,7 @@ async def bowl(ctx):
 	else:
 		top[3]=str(o)
 	
+	print("4")
 	#overs
 	if o=='no-ball' or o=='wide':
 		pass
@@ -245,7 +248,7 @@ async def bowl(ctx):
 					await ctx.send(embed=embed)
 					return
 		top[1]=temp		
-	
+	print("5")
 	k=top
 	k="\n".join(k)
 	await channel.edit(topic=k)
@@ -275,7 +278,7 @@ async def bowl(ctx):
 		embed=discord.Embed(title=f"{score}")
 	else:
 		embed=discord.Embed(title=f"{last}\n{score}")
-	
+	print("6")
 	await ctx.send(embed=embed)
 	await channel.edit(topic=k)
 				
