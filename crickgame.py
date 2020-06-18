@@ -8,10 +8,9 @@ import pymongo
 bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
 
-database_url="mongodb+srv://Shrikar:shrikar123@cricket.u4p4f.mongodb.net/Cricket-details?retryWrites=true&w=majority"
-db_client=pymongo.MongoClient(database_url)
-db_name=db_client["sample"]
-db_collection=db_name['score']
+db_client=pymongo.MongoClient(os.getenv("DB_URL"))
+db_name=db_client["Bot_data"]
+db_collection=db_name['Servers']
 @bot.event
 async def on_ready():
 	print("Less go")
@@ -338,4 +337,4 @@ async def on_command_error(ctx,error):
 		message=await ctx.send(error)
 		await asyncio.sleep(1)
 		await message.delete()
-bot.run("NzA0OTc5MDc2NzcwNjkzMjcw.XqlBKA.ZlwpiaoS0I2xFMpaZCefYlRZMpA")
+bot.run(os.getenv("BOT_TOKEN"))
