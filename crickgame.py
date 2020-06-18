@@ -4,9 +4,14 @@ import random
 from discord.ext import commands
 import os
 import datetime
+import pymongo
 bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
-@bot.event
+
+database_url="mongodb+srv://Shrikar:shrikar123@cricket.u4p4f.mongodb.net/Cricket-details?retryWrites=true&w=majority"
+db_client=pymongo.MongoClient(database_url)
+db_name=db_client["sample"]
+db_collection=db_name['score']
 @bot.event
 async def on_ready():
 	print("Less go")
@@ -18,7 +23,7 @@ async def on_ready():
 	await bot.change_presence(status=None, activity=game)
 @bot.event
 async def on_guild_join(guild):
-	
+
 	r=len(bot.guilds)
 	if r==1:
 		game = discord.Game(f"Cricket in {r} Guild")	
@@ -27,6 +32,8 @@ async def on_guild_join(guild):
 	await bot.change_presence(status=None, activity=game)
 @bot.event
 async def on_guild_remove(guild):
+	condition={"Server_Id": guild.id}
+	db_collection.delete_one(condition) 
 	r=len(bot.guilds)
 	if r==1:
 		game = discord.Game(f"Cricket in {r} Guild")	
@@ -53,12 +60,23 @@ async def help(ctx):
 	await ctx.send(embed=embed)
 @bot.command(aliases=["e"])
 async def end(ctx):
+	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
+	if x==None:
+		await ctx.send("No matches are running in this server")
+		return
+	db_collection.delete_one({"Server_Id": ctx.message.guild.id})
 	channel=ctx.message.channel
 	await channel.edit(topic=None)
 	embed=discord.Embed(title="Match Abandoned")
 	await ctx.send(embed=embed)
 @bot.command(aliases=["t"])
 async def toss(ctx):
+	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
+	if x["Match_channel"]!=ctx.message.channel.id:
+		return
+	if x["Score_card"]["Toss"]==1:
+		return
+	db_collection.update_one({"Server_Id": ctx.message.guild.id},{"$set": {"Score_card.Toss": 1}})
 	#toss
 	outcomes=["Heads","Tails"]
 	answer=random.choice(outcomes)
@@ -68,32 +86,26 @@ async def toss(ctx):
 	await asyncio.sleep(4)	
 	embed=discord.Embed(title=f'Oh! Its a {answer}')
 	await message.edit(embed=embed)
-	#topic
-	channel=ctx.message.channel
-	topic=channel.topic
-	top=topic.split("\n")
-	top[6]='1'
-	top="\n".join(top)
-	await channel.edit(topic=top)
 @bot.command(aliases=["b"])
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def bowl(ctx):
 	z=None
 	txt,img=None,None
 	channel=ctx.message.channel
-	topic=channel.topic
-	if topic==None or topic=="":
+	
+	if db_collection.find_one({"Server_Id": ctx.message.guild.id})["Score_card"]["Maximum_overs"]=="0.0":
 		embed=discord.Embed(title="Details not given\nType `.so <number>` to set overs")
 		await channel.send(embed=embed)
 		return
-	top=topic.split("\n")
-	if top[6]=='0':
+	if db_collection.find_one({"Server_Id": ctx.message.guild.id})["Score_card"]["Toss"]=="0.0":
 		embed=discord.Embed(title="Toss not done yet\nType `.toss` to toss the coin")
 		await channel.send(embed=embed)
 		return
-	a=top[1].split(".")
+	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
+	x=x["Score_card"]
+	a=x["Overs"].split(".")
 	a=a[0]
-	c=top[2].split(".")
+	c=x["Maximum_overs"].split(".")
 	c=c[0]
 	outcomes=[1, 4, 2, 2, 2, 6, 'no-ball', 3, 2, 2, 2, 4, 1, 1, 2, 1, 2, 1, 'wicket', 1, 3, 1, 'wicket', 0, 2, 'no-ball', 1, 2, 2, 'wicket', 0, 1, 'wicket', 'wide', 2, 1, 'no-ball', 2, 4, 2, 'wide', 6, 1, 3, 0, 1, 3, 2, 'no-ball', 1, 2, 1, 0, 'wicket', 'wide', 3, 2, 6, 1, 4, 1, 3, 'wide', 4, 3, 2, 0, 4, 6, 1, 'wicket', 2, 0, 4, 4, 3, 'wide', 2, 0, 0, 1, 'wide', 1, 1]
 	if a=='0':
@@ -164,102 +176,109 @@ async def bowl(ctx):
 		await ctx.send(embed=embed)
 	d={0:0,1:1,2:2,3:3,4:4,6:6,'no-ball':1,'wide':1,'wicket':0}
 	last=None
-	print("1")
 	#score
-	top[4]=str(int(top[4])+d[o])
+	x["Score"]=int(x["Score"])+d[o]
 	if z==None:
 		pass
 	else:
-		top[4]=str(int(top[4])+d[z])
-	if int(top[4])>=int(top[0]) and int(top[0])!=0:
-		last="GG both teams, well played! Team 2 won over Team 1 by "+str(10-int(top[5]))+" wickets"
-		await channel.edit(topic=None)
+		x["Score"]=int(x["Score"])+d[z]
+	if int(x["Score"])>=int(x["Target"]) and int(x["Target"])!=0:
+		last="GG both teams, well played! Team 2 won over Team 1 by "+str(10-int(x["Wickets"]))+" wickets"
+		db_collection.delete_one({"Server_Id": ctx.message.guild.id})
 		embed=discord.Embed(title=last)
 		await ctx.send(embed=embed)
 		return
-	print("2")
-	#wickets
 	if o=='wicket':
-		if top[3]=='no-ball':
+		if x["Last_ball"]=='no-ball':
 			last="A total waste, coz its a free hit"
 		else:
-			top[5]=str(int(top[5])+1)
-			if top[5]=='10':
-				if top[0]=='0':
-					top[0]=str(int(top[4])+1)
-					top[1],top[3],top[4],top[5]='0.0','0','0','0'
-					topic="\n".join(top)
-					await channel.edit(topic=topic)
-					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {top[0]} runs")
+			x["Wickets"]=int(x["Wickets"])+1
+			if x["Wickets"]==10:
+				if x["Target"]==0:
+					x["Target"]=int(x["Score"])+1
+					db_collection.update_one({"Server_Id": ctx.message.guild.id},{"$set":{"Score_card":{"Target": x["Target"],
+								"Overs": "0.0",
+								"Maximum_overs": x["Maximum_overs"],
+								"Last_ball": "0",
+								"Score": 0,
+								"Wickets": 0,
+								"Toss": 1}}})
+					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {x['Target']} runs")
 					await ctx.send(embed=embed)
 					return
 				else:
-					last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4]))+" runs"
-					await channel.edit(topic=None)
-					embed=discord.Embed(title=last)
+					last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(x["Target"])-int(x["Score"]))+" runs"
+					db_collection.delete_one({"Server_Id": ctx.message.guild.id})
 					await ctx.send(embed=embed)
 					return
-	print("3")
 	#prev-ball
-	if top[3]=='no-ball':
+	if x["Last_ball"]=='no-ball':
 		if o=='wide':
 			last="Pull-up ur socks batsman, coz its a freehit"
-			top[3]='no-ball'
+			x["Last_ball"]='no-ball'
 		else:
-			top[3]=str(o)+' free-hit'
+			x["Last_ball"]=str(o)+' free-hit'
 	else:
-		top[3]=str(o)
+		x["Last_ball"]=str(o)
 	
-	print("4")
 	#overs
 	if o=='no-ball' or o=='wide':
 		pass
 	else:
-		temp=top[1].split(".")
+		temp=x["Overs"].split(".")
 		temp[1]=str(int(temp[1])+1)
 		if temp[1]=='6':
 			temp[0]=str(int(temp[0])+1)
 			temp[1]=str(0)
 		temp=".".join(temp)
-		if temp==top[2]:
-			if top[0]=='0':
-				top[0]=str(int(top[4])+1)
-				top[1],top[3],top[4],top[5]='0.0','0','0','0'
-				topic="\n".join(top)
-				await channel.edit(topic=topic)
-				embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {top[0]} runs")
+		if temp==x["Maximum_overs"]:
+			if x["Target"]==0:
+				x["Target"]=int(x["Score"])+1
+
+				embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {x['Target']} runs")
+				db_collection.update_one({"Server_Id": ctx.message.guild.id},{"$set":{"Score_card":{"Target": x["Target"],
+								"Overs": "0.0",
+								"Maximum_overs": x["Maximum_overs"],
+								"Last_ball": "0",
+								"Score": 0,
+								"Wickets": 0,
+								"Toss": 1}}})
 				await ctx.send(embed=embed)
 				return
 			else:
-				if int(top[4])<int(int(top[0])-1):
-					last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(top[0])-int(top[4])-1)+" runs"
-					await channel.edit(topic=None)
+				if int(x["Score"])<int(int(x["Target"])-1):
+					last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
+					db_collection.delete_one({"Server_Id": ctx.message.guild.id})
 					embed=discord.Embed(title=last)
 					await ctx.send(embed=embed)
 					return
-				elif int(top[4])==int(int(top[0])-1):
+				elif int(x["Score"])==int(int(x["Target"])-1):
 					last="GG both teams, well played! Since it turned out to be no one's, lets go for a super-over...Team 1 will bat first"
-					top[0]='0'
-					top[2]='1.0'
-					top[1],top[3],top[4],top[5]='0.0','0','0','0'
-					top="\n".join(top)
-					await channel.edit(topic=top)
+					db_collection.update_one({"Server_Id": ctx.message.guild.id},{"$set":{"Score_card":{"Target": 0,
+								"Overs": "0.0",
+								"Maximum_overs": "1.0",
+								"Last_ball": "0",
+								"Score": 0,
+								"Wickets": 0,
+								"Toss": 1}}})
 					embed=discord.Embed(title=last)
 					await ctx.send(embed=embed)
 					return
-		top[1]=temp		
-	print("5")
-	k=top
-	k="\n".join(k)
-	await channel.edit(topic=k)
+		x["Overs"]=temp		
+	k=x
+	db_collection.update_one({"Server_Id": ctx.message.guild.id},{"$set":{"Score_card":{"Target": x["Target"],
+								"Overs": x["Overs"],
+								"Maximum_overs": x["Maximum_overs"],
+								"Last_ball": x["Last_ball"],
+								"Score": x["Score"],
+								"Wickets": x["Wickets"],
+								"Toss": 1}}})
 	score=""
-	if top[0]=='0':
-		print("6-if")
-		score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]
+	if x["Target"]==0:
+		score+="Score: "+str(x["Score"])+"/"+str(x["Wickets"])+"\nOvers: "+x["Overs"]+"/"+x["Maximum_overs"]
 	else:
-		print("6-else")
-		t=top[1].split(".")
-		b=top[2].split(".")
+		t=x["Overs"].split(".")
+		b=x["Maximum_overs"].split(".")
 		b=int(b[0])-1
 		if t[1]=='0':
 			t[1]=int(t[1])
@@ -269,8 +288,7 @@ async def bowl(ctx):
 		if t[1]==0:
 			t[1]=6
 		total=t[0]*6+t[1]
-		print("6.1-else")
-		score+="Score: "+top[4]+"/"+top[5]+"\nOvers: "+top[1]+"/"+top[2]+"\nNeed "+str(int(top[0])-int(top[4])) +" from "+str(total)
+		score+="Score: "+str(x["Score"])+"/"+str(x["Wickets"])+"\nOvers: "+x["Overs"]+"/"+x["Maximum_overs"]+"\nNeed "+str(int(x["Target"])-int(x["Score"])) +" from "+str(total)
 		if total==1:
 			score+=" ball"
 		else:
@@ -281,30 +299,43 @@ async def bowl(ctx):
 		embed=discord.Embed(title=f"{score}")
 	else:
 		embed=discord.Embed(title=f"{last}\n{score}")
-	print("7")
 	await ctx.send(embed=embed)
 	await channel.edit(topic=k)
 				
 @bot.command(aliases=["so"])
 async def setovers(ctx,number=None):
-	topic=ctx.message.channel.topic
-	if topic==None or topic=="" :
+	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
+	if x==None:
 		pass
 	else:
-		await ctx.send("Seems like there is a match which is not done yet... Type `.end` to abandon the match")
+		await ctx.send("Theres a matching running in this server currently, to cancel it type `.end`")
 		return
+	
 	if number==None:
-		await channel.send("Syntax: `.so <number>`")
+		await ctx.channel.send("Syntax: `.so <number>`")
 	else:
 		number=int(number)
-		channel=ctx.message.channel
-		top="0\n0.0\n"+str(number)+".0\nNone\n0\n0\n0"
-		await channel.edit(topic=top)
-		await channel.send("Overs set successfully")
+		temp={
+		"Server_Id": ctx.message.guild.id,
+		"Match_running": 0,
+		"Premium": 0,
+		"Match_channel": ctx.message.channel.id,
+		"Score_card": {
+			"Target": 0,
+			"Overs": "0.0",
+			"Maximum_overs": str(number)+".0",
+			"Last_ball": "0",
+			"Score": 0,
+			"Wickets": 0,
+			"Toss": 0
+		} 
+		}
+		db_collection.insert_one(temp)
+		await ctx.channel.send("Overs set successfully")
 @bot.event
 async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandOnCooldown):
 		message=await ctx.send(error)
 		await asyncio.sleep(1)
 		await message.delete()
-bot.run(os.getenv("BOT_TOKEN"))
+bot.run("NzA0OTc5MDc2NzcwNjkzMjcw.XqlBKA.ZlwpiaoS0I2xFMpaZCefYlRZMpA")
