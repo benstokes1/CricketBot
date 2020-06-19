@@ -85,7 +85,6 @@ async def end(ctx):
 		return
 	db_collection.delete_one({"Server_Id": ctx.message.guild.id})
 	channel=ctx.message.channel
-	await channel.edit(topic=None)
 	embed=discord.Embed(title="Match Abandoned")
 	await ctx.send(embed=embed)
 @bot.command(aliases=["t"])
