@@ -50,6 +50,7 @@ async def on_message(message):
 async def invite(ctx):
 	channel=ctx.message.channel
 	embed=discord.Embed(title="Invite link",description="Invite the bot now\n\n[Invite](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)")
+	await ctx.send(embed=embed)
 @bot.command()
 async def help(ctx):
 	channel=ctx.message.channel
