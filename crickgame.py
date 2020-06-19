@@ -95,7 +95,7 @@ async def toss(ctx):
 		await ctx.send("Make sure you do the toss in the channel where you started the match")
 		return
 	if x["Score_card"]["Toss"]==1:
-		await ctx.send("Toss already done! Type c!bowl to start the game")
+		await ctx.send("Toss already done! Type `c!bowl` to start the game")
 		return
 	#toss
 	outcomes=["Heads","Tails"]
