@@ -49,7 +49,7 @@ async def on_message(message):
 @bot.command()
 async def invite(ctx):
 	channel=ctx.message.channel
-	embed=discord.Embed(title="Invite link",description="Invite the bot now\n\n[Invite](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)")
+	embed=discord.Embed(title="Invite link",description="Invite the bot now!\n\n[Invite](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)")
 	await ctx.send(embed=embed)
 @bot.command()
 async def help(ctx):
@@ -92,6 +92,9 @@ async def end(ctx):
 async def toss(ctx):
 	
 	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
+	if x==None:
+		await ctx.send("No game is running currently. To start a game type `c!so <number_of_overs>`")
+		return
 	if x["Match_channel"]!=ctx.message.channel.id:
 		await ctx.send("Make sure you do the toss in the channel where you started the match")
 		return
