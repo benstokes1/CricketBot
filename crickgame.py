@@ -216,7 +216,7 @@ async def bowl(ctx):
 								"Score": 0,
 								"Wickets": 0,
 								"Toss": 1,
-								"First_innings_score": str(x['Target']-1)+"/"+str(x['Wickets']}}})
+								"First_innings_score": str(x['Target']-1)+"/"+str(x['Wickets'])}}})
 					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {x['Target']} runs")
 					await ctx.send(embed=embed)
 					return
