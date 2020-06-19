@@ -58,7 +58,7 @@ async def help(ctx):
 	embed.add_field(name=".scoreboard",value="Displays the scoreboard of the match running, if any",inline=False)
 	
 	await ctx.send(embed=embed)
-@bot.command(aliases=['sb',scorecard])
+@bot.command(aliases=['sb','scorecard'])
 async def scoreboard(ctx):
 	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
 	if x==None:
