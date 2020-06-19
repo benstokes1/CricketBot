@@ -85,6 +85,12 @@ async def end(ctx):
 	await ctx.send(embed=embed)
 @bot.command(aliases=["t"])
 async def toss(ctx):
+	
+	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
+	if x["Match_channel"]!=ctx.message.channel.id:
+		return
+	if x["Score_card"]["Toss"]==1:
+		return
 	#toss
 	outcomes=["Heads","Tails"]
 	answer=random.choice(outcomes)
@@ -95,11 +101,6 @@ async def toss(ctx):
 	embed=discord.Embed(title=f'Oh! Its a {answer}')
 	await message.edit(embed=embed)
 	
-	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
-	if x["Match_channel"]!=ctx.message.channel.id:
-		return
-	if x["Score_card"]["Toss"]==1:
-		return
 	db_collection.update_one({"Server_Id": ctx.message.guild.id},{"$set": {"Score_card.Toss": 1}})
 @bot.command(aliases=["b"])
 @commands.cooldown(1, 3, commands.BucketType.user)
@@ -112,7 +113,7 @@ async def bowl(ctx):
 		embed=discord.Embed(title="Details not given\nType `.so <number>` to set overs")
 		await channel.send(embed=embed)
 		return
-	if db_collection.find_one({"Server_Id": ctx.message.guild.id})["Score_card"]["Toss"]=="0.0":
+	if db_collection.find_one({"Server_Id": ctx.message.guild.id})["Score_card"]["Toss"]=="0":
 		embed=discord.Embed(title="Toss not done yet\nType `.toss` to toss the coin")
 		await channel.send(embed=embed)
 		return
