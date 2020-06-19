@@ -5,7 +5,7 @@ from discord.ext import commands
 import os
 import datetime
 import pymongo
-bot=commands.Bot(command_prefix='.')
+bot=commands.Bot(command_prefix='c!')
 bot.remove_command('help')
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
 db_name=db_client["Cricket_bot_personal"]
@@ -53,13 +53,13 @@ async def invite(ctx):
 @bot.command()
 async def help(ctx):
 	channel=ctx.message.channel
-	embed=discord.Embed(title="List of commands",description="My prefix is '.'")
-	embed.add_field(name=".setovers",value="Sets the number of overs for match",inline=False)
-	embed.add_field(name=".toss",value="Tosses a coin and prints the outcome",inline=False)
-	embed.add_field(name=".bowl",value="Should be used by the bowling team while bowling",inline=False)
-	embed.add_field(name=".end",value="Abandons the current match running in the channel",inline=False)
-	embed.add_field(name=".scoreboard",value="Displays the scoreboard of the match running, if any",inline=False)
-	embed.add_field(name=".invite",value="Sends an invite link of the bot",inline=False)
+	embed=discord.Embed(title="List of commands",description="My prefix is 'c!'")
+	embed.add_field(name="c!setovers",value="Sets the number of overs for match",inline=False)
+	embed.add_field(name="c!toss",value="Tosses a coin and prints the outcome",inline=False)
+	embed.add_field(name="c!bowl",value="Should be used by the bowling team while bowling",inline=False)
+	embed.add_field(name="c!end",value="Abandons the current match running in the channel",inline=False)
+	embed.add_field(name="c!scoreboard",value="Displays the scoreboard of the match running, if any",inline=False)
+	embed.add_field(name="c1invite",value="Sends an invite link of the bot",inline=False)
 	await ctx.send(embed=embed)
 @bot.command(aliases=['sb','scorecard'])
 async def scoreboard(ctx):
@@ -114,11 +114,11 @@ async def bowl(ctx):
 	channel=ctx.message.channel
 	
 	if db_collection.find_one({"Server_Id": ctx.message.guild.id})["Score_card"]["Maximum_overs"]=="0.0":
-		embed=discord.Embed(title="Details not given\nType `.so <number>` to set overs")
+		embed=discord.Embed(title="Details not given\nType `c!so <number>` to set overs")
 		await channel.send(embed=embed)
 		return
 	if db_collection.find_one({"Server_Id": ctx.message.guild.id})["Score_card"]["Toss"]==0:
-		embed=discord.Embed(title="Toss not done yet\nType `.toss` to toss the coin")
+		embed=discord.Embed(title="Toss not done yet\nType `c!toss` to toss the coin")
 		await channel.send(embed=embed)
 		return
 	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
@@ -333,11 +333,11 @@ async def setovers(ctx,number=None):
 	if x==None:
 		pass
 	else:
-		await ctx.send("Theres a matching running in this server currently, to cancel it type `.end`")
+		await ctx.send("Theres a matching running in this server currently, to cancel it type `c!end`")
 		return
 	
 	if number==None:
-		await ctx.channel.send("Syntax: `.so <number>`")
+		await ctx.channel.send("Syntax: `c!so <number>`")
 	else:
 		number=int(number)
 		temp={
