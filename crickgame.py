@@ -7,7 +7,6 @@ import datetime
 import pymongo
 bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
-first_innings_score=None
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
 db_name=db_client["Bot_data"]
 db_collection=db_name['Servers']
@@ -65,11 +64,11 @@ async def scoreboard(ctx):
 		return
 	x=x["Score_card"]
 	if x["Target"]==0:
-		embed=discord.Embed(title="Scoreboard",description=f"First Innings Score :\nScore : {x['Score']}/{x['Wickets']}")
+		embed=discord.Embed(title="Scoreboard",description=f"++First Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 		await ctx.send(embed=embed)
 		return
 	else:
-		embed=discord.Embed(title="Scoreboard",description=f"Target : {x['Target']}\nFirst Innings Score :\nScore : {first_innings_score}\nSecond Innings Score :\nScore : {x['Score']}/{x['Wickets']}")
+		embed=discord.Embed(title="Scoreboard",description=f"**Target :** {x['Target']}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 		await ctx.send(embed=embed)
 		return
 @bot.command(aliases=["e"])
@@ -216,10 +215,9 @@ async def bowl(ctx):
 								"Last_ball": "0",
 								"Score": 0,
 								"Wickets": 0,
-								"Toss": 1}}})
+								"Toss": 1,
+								"First_innings_score"=str(x['Target']-1)+"/"+str(x['Wickets']}}})
 					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {x['Target']} runs")
-					global first_innings_score
-					first_innings_score=str(x['Target']-1)+"/"+str(x['Wickets'])
 					await ctx.send(embed=embed)
 					return
 				else:
@@ -258,8 +256,8 @@ async def bowl(ctx):
 								"Last_ball": "0",
 								"Score": 0,
 								"Wickets": 0,
-								"Toss": 1}}})
-				first_innings_score=str(x['Target']-1)+"/"+str(x['Wickets'])
+								"Toss": 1,
+								"First_innings_score"=str(x['Target']-1)+"/"+str(x['Wickets'])}}})
 				await ctx.send(embed=embed)
 				return
 			else:
@@ -277,7 +275,8 @@ async def bowl(ctx):
 								"Last_ball": "0",
 								"Score": 0,
 								"Wickets": 0,
-								"Toss": 1}}})
+								"Toss": 1,
+								"Firs_innings_score": "0"}}})
 					embed=discord.Embed(title=last)
 					await ctx.send(embed=embed)
 					return
@@ -289,7 +288,8 @@ async def bowl(ctx):
 								"Last_ball": x["Last_ball"],
 								"Score": x["Score"],
 								"Wickets": x["Wickets"],
-								"Toss": 1}}})
+								"Toss": 1,
+								"First_innings_score": x["First_innings_score"]}}})
 	score=""
 	if x["Target"]==0:
 		score+="Score: "+str(x["Score"])+"/"+str(x["Wickets"])+"\nOvers: "+x["Overs"]+"/"+x["Maximum_overs"]
@@ -344,7 +344,8 @@ async def setovers(ctx,number=None):
 			"Last_ball": "0",
 			"Score": 0,
 			"Wickets": 0,
-			"Toss": 0
+			"Toss": 0,
+			"First_innings_score": "0" 
 		} 
 		}
 		db_collection.insert_one(temp)
