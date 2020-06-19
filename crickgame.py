@@ -64,7 +64,7 @@ async def scoreboard(ctx):
 		return
 	x=x["Score_card"]
 	if x["Target"]==0:
-		embed=discord.Embed(title="Scoreboard",description=f"++First Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
+		embed=discord.Embed(title="Scoreboard",description=f"**First Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 		await ctx.send(embed=embed)
 		return
 	else:
@@ -222,8 +222,9 @@ async def bowl(ctx):
 					return
 				else:
 					last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(x["Target"])-int(x["Score"]))+" runs"
-					db_collection.delete_one({"Server_Id": ctx.message.guild.id})
+					embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 					await ctx.send(embed=embed)
+					db_collection.delete_one({"Server_Id": ctx.message.guild.id})
 					return
 	#prev-ball
 	if x["Last_ball"]=='no-ball':
@@ -264,7 +265,7 @@ async def bowl(ctx):
 				if int(x["Score"])<int(int(x["Target"])-1):
 					last="GG both teams, well played! Team 1 won over Team 2 by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
 					db_collection.delete_one({"Server_Id": ctx.message.guild.id})
-					embed=discord.Embed(title=last)
+					embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 					await ctx.send(embed=embed)
 					return
 				elif int(x["Score"])==int(int(x["Target"])-1):
