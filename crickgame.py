@@ -55,6 +55,8 @@ async def help(ctx):
 	embed.add_field(name=".toss",value="Tosses a coin and prints the outcome",inline=False)
 	embed.add_field(name=".bowl",value="Should be used by the bowling team while bowling",inline=False)
 	embed.add_field(name=".end",value="Abandons the current match running in the channel",inline=False)
+	embed.add_field(name=".scoreboard",value="Displays the scoreboard of the match running, if any",inline=False)
+	
 	await ctx.send(embed=embed)
 @bot.command()
 async def scoreboard(ctx):
