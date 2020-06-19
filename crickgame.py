@@ -49,7 +49,7 @@ async def on_message(message):
 @bot.command()
 async def help(ctx):
 	channel=ctx.message.channel
-	await channel.edit(topic=None)
+	
 	embed=discord.Embed(title="List of commands",description="My prefix is '.'")
 	embed.add_field(name=".setovers",value="Sets the number of overs for match",inline=False)
 	embed.add_field(name=".toss",value="Tosses a coin and prints the outcome",inline=False)
