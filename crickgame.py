@@ -218,7 +218,7 @@ async def bowl(ctx):
 								"Wickets": 0,
 								"Toss": 1}}})
 					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {x['Target']} runs")
-					
+					global first_innings_score
 					first_innings_score=str(x['Target']-1)+"/"+str(x['Wickets'])
 					await ctx.send(embed=embed)
 					return
@@ -250,7 +250,7 @@ async def bowl(ctx):
 		if temp==x["Maximum_overs"]:
 			if x["Target"]==0:
 				x["Target"]=int(x["Score"])+1
-
+				global first_innings_score
 				embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {x['Target']} runs")
 				db_collection.update_one({"Server_Id": ctx.message.guild.id},{"$set":{"Score_card":{"Target": x["Target"],
 								"Overs": "0.0",
