@@ -59,7 +59,7 @@ async def help(ctx):
 	embed.add_field(name="c!bowl",value="Should be used by the bowling team while bowling",inline=False)
 	embed.add_field(name="c!end",value="Abandons the current match running in the channel",inline=False)
 	embed.add_field(name="c!scoreboard",value="Displays the scoreboard of the match running, if any",inline=False)
-	embed.add_field(name="c1invite",value="Sends an invite link of the bot",inline=False)
+	embed.add_field(name="c!invite",value="Sends an invite link of the bot",inline=False)
 	await ctx.send(embed=embed)
 @bot.command(aliases=['sb','scorecard'])
 async def scoreboard(ctx):
@@ -92,8 +92,10 @@ async def toss(ctx):
 	
 	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
 	if x["Match_channel"]!=ctx.message.channel.id:
+		await ctx.send("Make sure you do the toss in the channel where you started the match")
 		return
 	if x["Score_card"]["Toss"]==1:
+		await ctx.send("Toss already done! Type c!bowl to start the game")
 		return
 	#toss
 	outcomes=["Heads","Tails"]
@@ -333,7 +335,7 @@ async def setovers(ctx,number=None):
 	if x==None:
 		pass
 	else:
-		await ctx.send("Theres a matching running in this server currently, to cancel it type `c!end`")
+		await ctx.send("`Note : Only one match can be played at a time in the server! To allow the bot to host more than one match buy premium`\nTheres a matching running in this server currently, to cancel it type `c!end`")
 		return
 	
 	if number==None:
