@@ -113,7 +113,7 @@ async def bowl(ctx):
 		embed=discord.Embed(title="Details not given\nType `.so <number>` to set overs")
 		await channel.send(embed=embed)
 		return
-	if db_collection.find_one({"Server_Id": ctx.message.guild.id})["Score_card"]["Toss"]=="0":
+	if db_collection.find_one({"Server_Id": ctx.message.guild.id})["Score_card"]["Toss"]==0:
 		embed=discord.Embed(title="Toss not done yet\nType `.toss` to toss the coin")
 		await channel.send(embed=embed)
 		return
