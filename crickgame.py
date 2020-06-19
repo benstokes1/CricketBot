@@ -7,7 +7,7 @@ import datetime
 import pymongo
 bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
-
+first_innings_score=None
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
 db_name=db_client["Bot_data"]
 db_collection=db_name['Servers']
@@ -57,6 +57,21 @@ async def help(ctx):
 	embed.add_field(name=".bowl",value="Should be used by the bowling team while bowling",inline=False)
 	embed.add_field(name=".end",value="Abandons the current match running in the channel",inline=False)
 	await ctx.send(embed=embed)
+@bot.command()
+async def scoreboard(ctx):
+	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
+	if x==None:
+		await ctx.send("No matches are running in this server")
+		return
+	x=x["Score_card"]
+	if x["Target"]==0:
+		embed=discord.Embed(title="Scoreboard",description=f"First Innings Score :\nScore : {x['Score']}/{x['Wickets']}")
+		await ctx.send(embed=embed)
+		return
+	else:
+		embed=discord.Embed(title="Scoreboard",description=f"Target : {x['Target']}\nFirst Innings Score :\nScore : {first_innings_score}\nSecond Innings Score :\nScore : {x['Score']}/{x['Wickets']}")
+		await ctx.send(embed=embed)
+		return
 @bot.command(aliases=["e"])
 async def end(ctx):
 	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
@@ -203,6 +218,8 @@ async def bowl(ctx):
 								"Wickets": 0,
 								"Toss": 1}}})
 					embed=discord.Embed(title=f"Well played Team 1, Team 2 your Target is {x['Target']} runs")
+					
+					first_innings_score=str(x['Target']-1)+"/"+str(x['Wickets'])
 					await ctx.send(embed=embed)
 					return
 				else:
@@ -242,6 +259,7 @@ async def bowl(ctx):
 								"Score": 0,
 								"Wickets": 0,
 								"Toss": 1}}})
+				first_innings_score=str(x['Target']-1)+"/"+str(x['Wickets'])
 				await ctx.send(embed=embed)
 				return
 			else:
