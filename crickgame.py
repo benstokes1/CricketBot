@@ -8,7 +8,7 @@ import pymongo
 bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
-db_name=db_client["Bot_data"]
+db_name=db_client["Cricket_bot_personal"]
 db_collection=db_name['Servers']
 @bot.event
 async def on_ready():
