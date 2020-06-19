@@ -47,6 +47,10 @@ async def on_message(message):
 		await channel.send("My prefix is `.`. To learn how to use the bot, use the `.help` command.")
 	await bot.process_commands(message)
 @bot.command()
+async def invite(ctx):
+	channel=ctx.message.channel
+	embed=discord.Embed(title="Invite link",description="Invite the bot now\n\n[Invite](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)")
+@bot.command()
 async def help(ctx):
 	channel=ctx.message.channel
 	embed=discord.Embed(title="List of commands",description="My prefix is '.'")
@@ -55,7 +59,7 @@ async def help(ctx):
 	embed.add_field(name=".bowl",value="Should be used by the bowling team while bowling",inline=False)
 	embed.add_field(name=".end",value="Abandons the current match running in the channel",inline=False)
 	embed.add_field(name=".scoreboard",value="Displays the scoreboard of the match running, if any",inline=False)
-	
+	embed.add_field(name=".invite",value="Sends an invite link of the bot",inline=False)
 	await ctx.send(embed=embed)
 @bot.command(aliases=['sb','scorecard'])
 async def scoreboard(ctx):
