@@ -66,11 +66,11 @@ async def scoreboard(ctx):
 		return
 	x=x["Score_card"]
 	if x["Target"]==0:
-		embed=discord.Embed(title="Scoreboard",description=f"**First Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
+		embed=discord.Embed(title="Scoreboard",description=f"**First Innings Score :**\nScore : {x['Score']}/{x['Wickets']}\nOvers : {x['Overs']}/{x['Maximum_overs']}")
 		await ctx.send(embed=embed)
 		return
 	else:
-		embed=discord.Embed(title="Scoreboard",description=f"**Target :** {x['Target']}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
+		embed=discord.Embed(title="Scoreboard",description=f"**Target :** {x['Target']}\n**Overs :** {x['Overs']}/{x['Maximum_overs']}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 		await ctx.send(embed=embed)
 		return
 @bot.command(aliases=["e"])
