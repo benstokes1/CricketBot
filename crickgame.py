@@ -5,6 +5,7 @@ from discord.ext import commands
 import os
 import datetime
 import pymongo
+from pytz import timezone
 bot=commands.Bot(command_prefix='c!')
 bot.remove_command('help')
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
@@ -12,7 +13,7 @@ db_name=db_client["Cricket_bot_personal"]
 db_collection=db_name['Servers']
 @bot.event
 async def on_ready():
-	print(f"Less go\nBuild on: {datetime.datetime.now().strftime('%X')}")
+	print(f"Less go\nBuild on: {datetime.datetime.now(timezone('Asia/Kolkata')).strftime('%X')}")
 	r=len(bot.guilds)
 	if r==1:
 		game = discord.Game(f"Cricket in {r} Guild")	
