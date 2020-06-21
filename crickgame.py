@@ -13,7 +13,7 @@ db_name=db_client["Cricket_bot_personal"]
 db_collection=db_name['Servers']
 @bot.event
 async def on_ready():
-	print(f"Less go\nBuild on: {datetime.datetime.now(timezone('Asia/Kolkata')).strftime('%X')}")
+	print(f"Less go\nBuild on: {datetime.datetime.now(timezone('Asia/Kolkata'))}")
 	r=len(bot.guilds)
 	if r==1:
 		game = discord.Game(f"Cricket in {r} Guild")	
