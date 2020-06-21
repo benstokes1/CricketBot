@@ -90,7 +90,6 @@ async def end(ctx):
 	await ctx.send(embed=embed)
 @bot.command(aliases=["t"])
 async def toss(ctx):
-	
 	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
 	if x==None:
 		await ctx.send("No game is running currently. To start a game type `c!so <number_of_overs>`")
