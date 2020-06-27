@@ -210,6 +210,7 @@ async def bowl(ctx):
 		x["Score"]=int(x["Score"])+d[z]
 	if int(x["Score"])>=int(x["Target"]) and int(x["Target"])!=0:
 		last="GG both teams, well played! Team 2 won over Team 1 by "+str(10-int(x["Wickets"]))+" wickets"
+		embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 		db_collection.delete_one({"Server_Id": ctx.message.guild.id})
 		embed=discord.Embed(title=last)
 		await ctx.send(embed=embed)
