@@ -91,13 +91,11 @@ async def end(ctx):
 @bot.command(aliases=["t"])
 async def toss(ctx):
 	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
-	if x==None:
-		await ctx.send("No game is running currently. To start a game type `c!so <number_of_overs>`")
-		return
-	if x["Match_channel"]!=ctx.message.channel.id:
+	
+	elif x["Match_channel"]!=ctx.message.channel.id:
 		await ctx.send("Make sure you do the toss in the channel where you started the match")
 		return
-	if x["Score_card"]["Toss"]==1:
+	elif x["Score_card"]["Toss"]==1:
 		await ctx.send("Toss already done! Type `c!bowl` to start the game")
 		return
 	#toss
@@ -109,8 +107,10 @@ async def toss(ctx):
 	await asyncio.sleep(4)	
 	embed=discord.Embed(title=f'Oh! Its a {answer}')
 	await message.edit(embed=embed)
-	
-	db_collection.update_one({"Server_Id": ctx.message.guild.id},{"$set": {"Score_card.Toss": 1}})
+	if x==None:
+		pass
+	else:
+		db_collection.update_one({"Server_Id": ctx.message.guild.id},{"$set": {"Score_card.Toss": 1}})
 @bot.command(aliases=["b"])
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def bowl(ctx):
