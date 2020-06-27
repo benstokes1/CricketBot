@@ -22,7 +22,6 @@ async def on_ready():
 	await bot.change_presence(status=None, activity=game)
 @bot.event
 async def on_guild_join(guild):
-
 	r=len(bot.guilds)
 	if r==1:
 		game = discord.Game(f"Cricket in {r} Guild")	
