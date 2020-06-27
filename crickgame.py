@@ -91,7 +91,8 @@ async def end(ctx):
 @bot.command(aliases=["t"])
 async def toss(ctx):
 	x=db_collection.find_one({"Server_Id": ctx.message.guild.id})
-	
+	if x==None:
+		pass
 	elif x["Match_channel"]!=ctx.message.channel.id:
 		await ctx.send("Make sure you do the toss in the channel where you started the match")
 		return
