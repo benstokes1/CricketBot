@@ -1331,7 +1331,7 @@ async def profile(ctx,user:discord.Member=None):
 		if x["matches_played"]==0:
 			win=0
 		else:
-			win=(x["matches_played"]/x['won'])*100
+			win=(x['won']/x["matches_played"])*100
 		
 		embed.add_field(name="Win percentage",value="{:.2f}%".format(win),inline=False)
 		if len(x['recent_results'])==0:
