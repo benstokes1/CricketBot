@@ -10,7 +10,7 @@ import math
 bot=commands.Bot(command_prefix='c!')
 bot.remove_command('help')
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
-db1_client=pymongo.MongoClient(os.getenv("DB_URL"))
+db1_client=pymongo.MongoClient(os.getenv("DB2_URL"))
 db_name=db1_client["Challenge"]
 db_collection=db_name['Data']
 db1_name=db1_client['Running_matches']
@@ -92,7 +92,7 @@ async def list_of_commands(ctx):
 @bot.command()
 async def challenge(ctx,Team2:discord.Member=None):
 	if Team2==None:
-		await ctx.send("Syntax c!challenge <@mention>")
+		await ctx.send("Syntax `c!challenge <@mention>`")
 		return
 	Team1_id=ctx.message.author.id
 	Team2_id=Team2.id
