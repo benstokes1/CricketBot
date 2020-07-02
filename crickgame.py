@@ -894,7 +894,7 @@ async def bowl(ctx):
 			Bowling_team["Bowling"][Bowling_team["Current_bowling"][0]]["wickets"]+=1
 			Batting_team["Batsmen_out"].append(Batting_team["Current_batting"].pop(0))
 			x["Wickets"]=int(x["Wickets"])+1
-			if x["Wickets"]==x["Maximum_wickets"]:
+			if x["Wickets"]==original_data["Maximum_wickets"]:
 				if x["Target"]==0:
 					x["Target"]=int(x["Score"])+1
 					db_collection.update_one({"Now_batting": Batting_team_id},{"$set":{"This_over": "","Score_card":{"Target": x["Target"],
@@ -1331,7 +1331,7 @@ async def profile(ctx,user:discord.Member=None):
 		if x["matches_played"]==0:
 			win=0
 		else:
-			win=x["matches_played"]/x['won']
+			win=(x["matches_played"]/x['won'])*100
 		
 		embed.add_field(name="Win percentage",value="{:.2f}%".format(win),inline=False)
 		if len(x['recent_results'])==0:
