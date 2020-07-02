@@ -172,7 +172,7 @@ async def challenge(ctx,Team2:discord.Member=None):
 	await ctx.send("Select Teams by typing `c!select_team`")
 @bot.command(aliases=["pe"])
 async def team(ctx,number=None):
-	with open ("./IPL.json") as f:
+	with open ("./Teams/IPL.json") as f:
 		d=json.load(f)
 	
 	x=db_collection.find_one({"Team1_member_id":ctx.message.author.id})
@@ -197,7 +197,7 @@ async def team(ctx,number=None):
 		await ctx.send(embed=embed)
 @bot.command(aliases=["ct","st","show_teams"])
 async def select_team(ctx,number=None):
-	with open ("./IPL.json") as f:
+	with open (".Teams/IPL.json") as f:
 		d=json.load(f)
 	available_teams=[]
 	for i in d:
