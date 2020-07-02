@@ -69,7 +69,7 @@ async def invite(ctx):
 	await ctx.send(embed=embed)
 @bot.command()
 async def server(ctx):
-	embed=discord.Embed(colour=discord.Color.blue(),title="Join the server and support us!",description="[Server Link](https://discord.gg/tRFjMw9)")
+	embed=discord.Embed(colour=discord.Color.blue(),title="Join the server and support us!",description="[Server Link](https://discord.gg/amxXyQ9)")
 	await ctx.send(embed=embed)
 @bot.command(aliases=["commands"])
 async def list_of_commands(ctx):
