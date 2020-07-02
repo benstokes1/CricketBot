@@ -197,7 +197,7 @@ async def team(ctx,number=None):
 		await ctx.send(embed=embed)
 @bot.command(aliases=["ct","st","show_teams"])
 async def select_team(ctx,number=None):
-	with open (".Teams/IPL.json") as f:
+	with open ("./Teams/IPL.json") as f:
 		d=json.load(f)
 	available_teams=[]
 	for i in d:
