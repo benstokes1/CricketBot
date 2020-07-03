@@ -1260,6 +1260,8 @@ async def end(ctx):
 					if team1_member!=None:
 						break
 				team2_member=ctx.message.author
+				db2_collection.update_one({"id": team2_member.id},{"now_match" :""})
+				db2_collection.update_one({"id": x["Team1_member_id"]},{"now_match" :""})
 				if team1_member==None:
 					team1_member.id=x["Team1_member_id"]
 					db_collection.delete_one({"Team2_member_id":team2_member.id})
@@ -1292,6 +1294,8 @@ async def end(ctx):
 				if team2_member!=None:
 					break
 			team1_member=ctx.message.author
+			db2_collection.update_one({"id": team1_member.id},{"now_match" :""})
+			db2_collection.update_one({"id": x["Team2_member_id"]},{"now_match" :""})
 			if team2_member==None:
 				team2_member.id=x["Team2_member_id"]
 				
