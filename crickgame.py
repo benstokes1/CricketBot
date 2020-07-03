@@ -53,6 +53,15 @@ async def on_message(message):
 	if bot.user.mentioned_in(message) and message.mention_everyone is False:
 		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
+
+@bot.command()
+async def announce(ctx,*,txt=None):
+	channel=bot.get_channel(728507676379840532)
+	if ctx.author.id==442673891656335372:
+		if txt==None:
+			pass
+		else:
+			await ctx.send(txt)
 @bot.command()
 async def guide(ctx):
 	
