@@ -56,7 +56,7 @@ async def on_message(message):
 @bot.command()
 async def guide(ctx):
 	
-	link="Follow the guide given in the link below, if u still don't understand how to use it, you can join the official server and seek help from the staff\n\n"+"[Guide Link](https://docs.google.com/document/d/1XUCeTUohtaBWbwqDlmnSRMG5YA1AqPhPsZMiLguZ-Dw/edit)\n"+"[Server Link](https://discord.gg/DayDsCV)"
+	link="Follow the guide given in the link below, if u still don't understand how to use it, you can join the official server and seek help from the staff\n\n"+"[Guide Link](shorturl.at/joyGU)\n"+"[Server Link](https://discord.gg/DayDsCV)"
 	embed=discord.Embed(colour=discord.Color.blue(),title="Guide Link",description=link)
 	await ctx.send(embed=embed)
 @bot.command()
