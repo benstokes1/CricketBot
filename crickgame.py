@@ -54,6 +54,26 @@ async def on_message(message):
 		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
 
+@bot.command()
+async def ping(ctx):
+	await ctx.send(f"Pong! {round(bot.latency*1000)}ms")
+@bot.command()
+async def suggest(ctx,*,suggestion=None):
+	if suggestion==None:
+		await ctx.send("Syntax: `c!suggest <suggestion>`")
+		return
+	for i in bot.get_all_channels():
+		if i.id==728456356620795996:
+			break
+	counter=0
+	async for message in i.history(limit=None):
+    		if message.author == bot.user:
+        		counter += 1
+	embed=discord.Embed(colour=discord.Color.blue())
+	embed.set_thumbnail(url=f"{ctx.message.author.avatar_url}")
+	embed.add_field(name=f"Suggestion #{counter+1}",value=f" **Sender Name** : `{ctx.message.author.name}#{ctx.message.author.discriminator}`\n\n **Sender ID** : {ctx.message.author.id}\n\n **Guild Name** : {ctx.message.guild.name}\n\n **Guild ID** : {ctx.message.guild.id}\n\n **Suggestion** : {suggestion}")
+	await i.send(embed=embed)
+	await ctx.send(f"{ctx.message.author.mention} Thanks for your suggestion :heart:")
 
 @bot.command()
 async def help(ctx):
