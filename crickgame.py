@@ -61,7 +61,7 @@ async def announce(ctx,*,txt=None):
 		if txt==None:
 			pass
 		else:
-			await ctx.send(txt)
+			await channel.send(txt)
 @bot.command()
 async def guide(ctx):
 	
