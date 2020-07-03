@@ -54,7 +54,7 @@ async def on_message(message):
 		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
 @bot.command()
-async def setup(ctx):
+async def guide(ctx):
 	
 	link="Follow the guide given in the link below, if u still don't understand how to use it, you can join the official server and seek help from the staff\n\n"+"[Guide Link](https://docs.google.com/document/d/1XUCeTUohtaBWbwqDlmnSRMG5YA1AqPhPsZMiLguZ-Dw/edit)\n"+"[Server Link](https://discord.gg/DayDsCV)"
 	embed=discord.Embed(colour=discord.Color.blue(),title="Guide Link",description=link)
@@ -86,6 +86,7 @@ async def help(ctx):
 	embed.add_field(name="c!commands",value="Displays a list of commands",inline=False)
 	embed.add_field(name="c!invite",value="Sends an Invite Link of the bot",inline=False)
 	embed.add_field(name="c!server",value="Sends an invite link of official discord server of the bot",inline=False)
+	embed.add_field(name="c!guide",value="Sends a link of the guide",inline=False)
 	embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
 	await ctx.send(embed=embed)
 @bot.command()
