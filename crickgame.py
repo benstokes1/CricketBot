@@ -53,7 +53,12 @@ async def on_message(message):
 	if bot.user.mentioned_in(message) and message.mention_everyone is False:
 		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
-
+@bot.command()
+async def setup(ctx):
+	
+	link="Follow the guide given in the link below, if u still don't understand how to use it, you can join the official server and seek help from the staff\n\n"+"[Guide Link](https://docs.google.com/document/d/1XUCeTUohtaBWbwqDlmnSRMG5YA1AqPhPsZMiLguZ-Dw/edit)\n"+"[Server Link](https://discord.gg/DayDsCV)"
+	embed=discord.Embed(colour=discord.Color.blue(),title="Guide Link",description=link)
+	await ctx.send(embed=embed)
 @bot.command()
 async def ping(ctx):
 	await ctx.send(f"Pong! {round(bot.latency*1000)}ms")
@@ -89,7 +94,7 @@ async def invite(ctx):
 	await ctx.send(embed=embed)
 @bot.command()
 async def server(ctx):
-	embed=discord.Embed(colour=discord.Color.blue(),title="Join the server and support us!",description="[Server Link](https://discord.gg/amxXyQ9)")
+	embed=discord.Embed(colour=discord.Color.blue(),title="Join the server and support us!",description="[Server Link](https://discord.gg/DayDsCV)")
 	await ctx.send(embed=embed)
 @bot.command(aliases=["commands"])
 async def list_of_commands(ctx):
