@@ -1344,7 +1344,7 @@ async def create_account(ctx):
 			guild=i
 			break
 	if ctx.author not in guild.members:
-		await ctx.send("You need be a member of the official server to create an account. You can join get the server link by using `c!server` command")
+		await ctx.send("You need be a member of the official server to create an account. You can get the server link by using `c!server` command")
 		return
 	data={
 		"about": "I am a cricket lover!",
