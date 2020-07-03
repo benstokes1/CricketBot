@@ -848,6 +848,7 @@ async def bowl(ctx):
 	if z==None:
 		pass
 	else:
+		Bowling_team["Bowling"][Bowling_team["Current_bowling"][0]]["runs"]+=d[o]
 		x["Score"]=int(x["Score"])+d[z]
 		if z not in extras:
 			Batting_team["Batting"][Batting_team["Current_batting"][0]]["runs"]+=d[z]
