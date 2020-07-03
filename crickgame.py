@@ -51,7 +51,7 @@ async def on_guild_remove(guild):
 async def on_message(message):
 	channel=message.channel
 	if bot.user.mentioned_in(message) and message.mention_everyone is False:
-		await channel.send("My prefix is ``c! To learn how to use the bot, use the `c!help` command.")
+		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
 
 
