@@ -1334,6 +1334,10 @@ async def end(ctx):
 		pass
 @bot.command(aliases=["ca","start","register"])
 async def create_account(ctx):
+	h=db2_collection.find_one({"id":ctx.author.id})
+	if h!=None:
+		await ctx.send("Seems like you have an account already, type `c!profile` to check profile")
+		return
 	guild=0
 	for i in bot.guilds:
 		if i.id==723905142646243442:
