@@ -1334,6 +1334,14 @@ async def end(ctx):
 		pass
 @bot.command(aliases=["ca","start","register"])
 async def create_account(ctx):
+	guild=0
+	for i in bot.guilds:
+		if i.id==723905142646243442:
+			guild=i
+			break
+	if ctx.author not in guild.members:
+		await ctx.send("You need be a member of the official server to create an account. You can join get the server link by using `c!server` command")
+		return
 	data={
 		"about": "I am a cricket lover!",
 		"id": ctx.message.author.id,
