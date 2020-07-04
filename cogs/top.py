@@ -2,7 +2,7 @@ import discord
 import asyncio
 from discord.ext import commands
 import json
-class store(commands.Cog):
+class top(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
 	@commands.command()
