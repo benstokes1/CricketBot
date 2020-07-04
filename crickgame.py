@@ -116,6 +116,7 @@ async def guide(ctx):
 @bot.command(aliases=["commands"])
 async def list_of_commands(ctx):
 	embed=discord.Embed(title="List of commands",description="My prefix is 'c!'\n\n`General commands :`")
+	embed.add_field(name="c!top <server/global>",value="Displays top 5 players of guild/discord",inline=False)
 	embed.add_field(name="c!register",value="Creates an account on the name of the user which will be useful",inline=False)
 	embed.add_field(name="c!profile",value="Displays profile of the user",inline=False)
 	embed.add_field(name="c!set about",value="Sets the about of the user in his profile\n\n`Match commands :`",inline=False)
