@@ -20,7 +20,7 @@ class about(commands.Cog):
         	self.bot=bot
 	@commands.command(aliases=["about"])
 	@commands.guild_only()
-	async def profile(ctx,user:discord.Member=None):
+	async def profile(self,ctx,user:discord.Member=None):
 		if user==None:
 			User=ctx.message.author
 		else:
