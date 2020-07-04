@@ -23,7 +23,6 @@ class show_leagues(commands.Cog):
 	async def show_leagues(self,ctx,number=None):
 		arr = os.listdir('./Teams')
 		available_leagues=arr
-		print(arr)
 		list_of_leagues=""
 		for i in range(len(available_leagues)):
 			list_of_leagues+=str(i+1)+".  "+str(available_leagues[i][:-5]).title()+"\n"
