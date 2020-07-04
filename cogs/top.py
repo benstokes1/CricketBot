@@ -32,9 +32,9 @@ class top(commands.Cog):
 						top_players.append(i.name)
 						break
 			p=""
-			print(p)
-			for i in top_players:
-				p+=str(i+1)+". "+i+"\n"	
+			print(top_players)
+			for i in range(len(top_players)):
+				p+=str(i+1)+". "+top_players[i]+"\n"	
 			embed=discord.Embed(title="Top players",description=p)
 			await ctx.send(embed=embed)
 		elif m.lower()=="global":
@@ -47,8 +47,8 @@ class top(commands.Cog):
 				else:
 					top_player.append[i.name]
 			p=""
-			for i in top_players:
-				p+=str(i+1)+". "+i+"\n"	
+			for i in range(len(top_players)):
+				p+=str(i+1)+". "+top_players[i]+"\n"	
 			embed=discord.Embed(title="Top players",description=p)
 			await ctx.send(embed=embed)
 def setup(bot):
