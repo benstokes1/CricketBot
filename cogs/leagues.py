@@ -25,10 +25,10 @@ class show_leagues(commands.Cog):
 		available_leagues=arr
 		list_of_leagues=""
 		for i in range(len(available_leagues)):
-			if available_teams[i]!="INTERNATIONAL":
+			if available_leagues[i]!="INTERNATIONAL":
 				pass
 			else:
-				available_teams[i]=available_teams[i].title()
+				available_leagues[i]=available_leagues[i].title()
 			list_of_leagues+=str(i+1)+".  "+str(available_leagues[i][:-5])+"\n"
 		embed=discord.Embed(title="Leagues",description=list_of_leagues)
 		await ctx.send(embed=embed)
