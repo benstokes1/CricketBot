@@ -38,6 +38,7 @@ class select_team(commands.Cog):
 		
 		with open ("./Teams/"+team) as f:
 			d=json.load(f)
+		team=team[:-5]
 		available_teams=[]
 		for i in d:
 			available_teams.append(i)
@@ -59,15 +60,22 @@ class select_team(commands.Cog):
 				if x==None:
 					return
 				else:
+					if x["league"]=="None":
+						db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"league": team}})
+						return
 					player_list=""
 					for i in range(len(d[available_teams[number]])):
 						player_list+=str(i+1)+". "+d[available_teams[number]][i]+"\n"
 					if x["Team2_name"]!="None":
 						await ctx.send("Can't change your team once after u chose it")
 						return
-					if x["Team1_name"]!="None" and x["Team1_name"]==available_teams[number]:
-						await ctx.send(f"The other player already chose {available_teams[number]}\nChoose an other team")
-						return
+					if (x["Team1_name"]!="None" and x["Team1_name"]==available_teams[number]) or (x["Team1_name"]!="None" and team!=x["league"]]):
+						if (x["Team1_name"]!="None" and x["Team1_name"]==available_teams[number]):
+							await ctx.send(f"The other player already chose {available_teams[number]}\nChoose an other team")
+							return
+						else:
+							await ctx.send(f"Choose a team from same league, {team.title()}")
+							return
 					x["Team2_name"]=available_teams[number]
 					db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"Team2_name":available_teams[number],"Team2_data.Lineup":d[available_teams[number]]}})
 					embed=discord.Embed(title="Teams",description=player_list)
@@ -76,11 +84,19 @@ class select_team(commands.Cog):
 						await ctx.send("Set the overs by typing `c!set_overs`")
 						return
 			else:
+				
+				if x["league"]=="None":
+					db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"league": team}})
+					return
 				if x["Team1_name"]!="None":
 					await ctx.send("Can't change your team once after u chose it")
 					return
-				if x["Team2_name"]!="None" and x["Team2_name"]==available_teams[number]:
+				if (x["Team2_name"]!="None" and x["Team2_name"]==available_teams[number]) or (x["Team2_name"]!="None" and team!=x["league"]]):
+					if (x["Team2_name"]!="None" and x["Team2_name"]==available_teams[number]):
 						await ctx.send(f"The other player already chose {available_teams[number]}\nChoose an other team")
+						return
+					else:
+						await ctx.send(f"Choose a team from same league, {team.title()}")
 						return
 				x["Team1_name"]=available_teams[number]
 				player_list=""
