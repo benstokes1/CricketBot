@@ -65,7 +65,8 @@ async def on_message(message):
 @commands.guild_only()
 async def announcements(ctx):
 	announcement="Added a few commands and fixed a few minor bugs\n`c!top <server/global>` : Gives a list of top 5 players of guild/discord\n`c!leagues` : Displays the leagues available from which you can choose teams\nAlso edited the command `c!select_team`.\n `c!select_team <league_id> <team_id>` is the new syntax, where league id is the number next to the corresponding league which appears when you use the `c!leagues` command."
-	await ctx.send(announcement)
+	embed=discord.Embed(title="Announcement",description=announcement)
+	await ctx.send(embed=embed)
 @bot.command()
 @commands.guild_only()
 async def announce(ctx,channel:discord.TextChannel,*,txt=None):
