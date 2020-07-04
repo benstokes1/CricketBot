@@ -62,23 +62,16 @@ async def on_message(message):
 	await bot.process_commands(message)
 
 @bot.command()
-async def announce(ctx,*,txt=None):
-	channel=bot.get_channel(728507676379840532)
+@commands.guild_only()
+async def announce(ctx,channel:discord.TextChannel,*,txt=None):
 	if ctx.author.id==442673891656335372:
 		if txt==None:
 			pass
 		else:
 			await channel.send(txt)
+
 @bot.command()
-async def guide(ctx):
-	
-	link="Follow the guide given in the link below, if u still don't understand how to use it, you can join the official server and seek help from the staff\n\n"+"[Guide Link](https://rb.gy/vagecy)\n"+"[Server Link](https://discord.gg/DayDsCV)"
-	embed=discord.Embed(colour=discord.Color.blue(),title="Guide Link",description=link)
-	await ctx.send(embed=embed)
-@bot.command()
-async def ping(ctx):
-	await ctx.send(f"Pong! {round(bot.latency*1000)}ms")
-@bot.command()
+@commands.guild_only()
 async def suggest(ctx,*,suggestion=None):
 	if suggestion==None:
 		await ctx.send("Syntax: `c!suggest <suggestion>`")
@@ -114,6 +107,12 @@ async def invite(ctx):
 async def server(ctx):
 	embed=discord.Embed(colour=discord.Color.blue(),title="Join the server and support us!",description="[Server Link](https://discord.gg/DayDsCV)")
 	await ctx.send(embed=embed)
+@bot.command()
+async def guide(ctx):
+	
+	link="Follow the guide given in the link below, if u still don't understand how to use it, you can join the official server and seek help from the staff\n\n"+"[Guide Link](https://rb.gy/vagecy)\n"+"[Server Link](https://discord.gg/DayDsCV)"
+	embed=discord.Embed(colour=discord.Color.blue(),title="Guide Link",description=link)
+	await ctx.send(embed=embed)
 @bot.command(aliases=["commands"])
 async def list_of_commands(ctx):
 	embed=discord.Embed(title="List of commands",description="My prefix is 'c!'\n\n`General commands :`")
@@ -132,9 +131,11 @@ async def list_of_commands(ctx):
 	embed.add_field(name="c!scoreboard",value="Displays the scoreboard of the match running, if any.",inline=False)
 	embed.add_field(name="c!end",value="Abandons the match the player has if any.",inline=False)
 	await ctx.send(embed=embed)
-	
-	
-@bot.command(aliases=["e"])
+
+@bot.command()
+@commands.guild_only()
+async def ping(ctx):
+	await ctx.send(f"Pong! {round(bot.latency*1000)}ms")
 @bot.event
 async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandOnCooldown):
