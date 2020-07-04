@@ -26,7 +26,8 @@ class show_leagues(commands.Cog):
 		print(arr)
 		list_of_leagues=""
 		for i in range(len(available_leagues)):
-			list_of_leagues+=str(i)+". "+available_leagues[i]+"\n"
+			list_of_leagues+=str(i[:--5]).title()+". "+available_leagues[i]+"\n"
 		embed=discord.Embed(text="Leagues",description=available_leagues)
+		await ctx.send(embed=embed)
 def setup(bot):
 	bot.add_cog(show_leagues(bot))
