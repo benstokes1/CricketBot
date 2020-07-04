@@ -21,18 +21,43 @@ class set_overs(commands.Cog):
 	@commands.command(aliases=["so"])
 	@commands.guild_only()
 	async def set_overs(self,ctx,number=None):
-    if key==None:
-			return
-		if key.lower()!="about":
-			return
-		if about==None:
-			return
-		x=db2_collection.find_one({"id":ctx.message.author.id})
+	if number==None:
+		await ctx.send("Syntax: `c!set_overs <number>`")
+	x=db_collection.find_one({"Team1_member_id":ctx.message.author.id})
+	if x==None:
+		x=db_collection.find_one({"Team2_member_id":ctx.message.author.id})
 		if x==None:
 			return
 		else:
-			db2_collection.update_one({"id":ctx.author.id},{"$set":{"about":about}})
-			await ctx.send(f"Changed your about to '{about}'")
+			if x["Maximum_overs"]!=0:
+				await ctx.send("Can't change the overs once set")
+				return
+			if x["Team2_name"] =="None" or x["Team1_name"] =="None":
+				await ctx.send("Overs can be set only after choosing teams")
+				return
+			try:
+				number=int(number)		
+				db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"Maximum_overs":number,"Score_card.Maximum_overs": str(number)+".0"}})
+				await ctx.channel.send("Overs set successfully\nNow go for the toss. Syntax: `c!toss <opponent's call>`")
+			except:
+				await ctx.send("Syntax: `c!set_overs <number>`")
+				return
+	else:
+		if x["Maximum_overs"]!=0:
+			await ctx.send("Can't change the overs once set")
+			return
+	
+		if x["Team2_name"]=="None" or x["Team1_name"]=="None":
+			await ctx.send("Overs can be set only after choosing teams")
+			return	
+		try:
+			number=int(number)		
+			db_collection.update_one({"Team1_member_id": ctx.message.author.id},{"$set":{"Maximum_overs": number,"Score_card.Maximum_overs": str(number)+".0"}})
+			await ctx.channel.send("Overs set successfully\nNow go for the toss. Syntax: `c!toss <opponent's call>`")
+		except:
+
+			await ctx.send("Syntax: `c!set_overs <number>`")
+			return
 
 def setup(bot):
 	bot.add_cog(set_overs(bot))
