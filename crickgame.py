@@ -54,7 +54,7 @@ async def on_guild_remove(guild):
 @bot.event
 async def on_message(message):
 	channel=message.channel
-	if ((message.author.id!=442673891656335372 or message.author.id!=448127767184146432) and message.author!=bot.user ) and message.content.startswith("c!"):
+	if ((message.author.id!=442673891656335372 and message.author.id!=448127767184146432) and message.author!=bot.user ) and message.content.startswith("c!"):
 		await channel.send("Updating bot, edt : 2hrs")
 		return
 	if bot.user.mentioned_in(message) and message.mention_everyone is False:
