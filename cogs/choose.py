@@ -23,6 +23,7 @@ class choose(commands.Cog):
 	
 	async def choose(self,ctx,choice=None):
 		if choice==None:
+			await ctx.send("Syntax: `c!choose <bowl/bat>`")
 			return
 		if choice.lower() not in ["bowl","bat"]:
 			await ctx.send("Syntax: `c!choose <bowl/bat>`")
