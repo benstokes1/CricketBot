@@ -86,7 +86,7 @@ class select_team(commands.Cog):
 			else:
 				
 				if x["league"]=="None":
-					db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"league": team}})
+					db_collection.update_one({"Team1_member_id": ctx.message.author.id},{"$set":{"league": team}})
 					return
 				if x["Team1_name"]!="None":
 					await ctx.send("Can't change your team once after u chose it")
