@@ -20,7 +20,7 @@ class register(commands.Cog):
         	self.bot=bot
 	@commands.command(aliases=["start","register"])
 	@commands.guild_only()
-	async def create_account(self,ctx,m=None):
+	async def create_account(self,ctx):
 		h=db2_collection.find_one({"id":ctx.author.id})
 		if h!=None:
 			await ctx.send("Seems like you have an account already, type `c!profile` to check profile")
