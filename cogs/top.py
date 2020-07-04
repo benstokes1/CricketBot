@@ -48,7 +48,7 @@ class top(commands.Cog):
 				if l==None:
 					pass
 				else:
-					top_players.append(str(i.name+"#"+str(i.discriminator)))
+					top_players.append(str(l.name+"#"+str(l.discriminator)))
 			p=""
 			for i in range(len(top_players)):
 				p+=str(i+1)+". "+top_players[i]+"\n"	
