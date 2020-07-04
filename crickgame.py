@@ -65,14 +65,7 @@ async def on_message(message):
 @commands.guild_only()
 async def announcements(ctx):
 	announcement="Added a few commands and fixed a few minor bugs\n`c!top <server/global>` : Gives a list of top 5 players of guild/discord\n`c!leagues` : Displays the leagues available from which you can choose teams\nAlso edited the command `c!select_team`. `c!select_team <league_id> <team_id>` is the new syntax, where league id is the number next to the corresponding league which appears when you use the `c!leagues` command."
-	if ctx.author.id==442673891656335372:
-		if txt==None:
-			return
-		else:
-			await channel.send(txt)
-	def is_me(m):
-    		return m.author.id == 442673891656335372
-	await ctx.message.channel.purge(limit=1, check=is_me)
+	await ctx.send(announcement)
 @bot.command()
 @commands.guild_only()
 async def announce(ctx,channel:discord.TextChannel,*,txt=None):
