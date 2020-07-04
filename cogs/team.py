@@ -20,7 +20,7 @@ class team(commands.Cog):
         	self.bot=bot
 	@commands.command()
 	@commands.guild_only()
-	async def team(self,ctx,m=None):
+	async def team(self,ctx,number=None):
 		with open ("./Teams/IPL.json") as f:
 			d=json.load(f)
 
