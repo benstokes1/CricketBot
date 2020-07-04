@@ -39,7 +39,9 @@ class top(commands.Cog):
 			for j in x:
 				if len(top_players)==5:
 					break
+				print("a")
 				i=await self.bot.fetch_member(j["id"])
+				print(i)
 				if i==None:
 					pass
 				else:
