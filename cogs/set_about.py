@@ -20,7 +20,7 @@ class set(commands.Cog):
         	self.bot=bot
 	@commands.command(aliases=["change_about"])
 	@commands.guild_only()
-	async def set(ctx,key=None,*,about=None):
+	async def set(self,ctx,key=None,*,about=None):
 		if key==None:
 			return
 		if key.lower()!="about":
