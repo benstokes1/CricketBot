@@ -43,6 +43,7 @@ class select_team(commands.Cog):
 		for i in d:
 			available_teams.append(i)
 		team_list=""
+		print(available_teams)
 		for i in range(len(available_teams)):
 			team_list+=str(i+1)+". "+available_teams[i]+"\n"
 		if number==None:
