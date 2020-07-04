@@ -21,6 +21,9 @@ class top(commands.Cog):
 	@commands.command()
 	@commands.guild_only()
 	async def top(self,ctx,m=None):
+		if m==None:
+			await ctx.send("Syntax: `c!top <server/globa>`")
+			return
 		x=db2_collection.find().sort([("won",-1),("winning_percentage",-1)])
 		top_players=[]
 		if m.lower()=="server":
@@ -29,7 +32,7 @@ class top(commands.Cog):
 					break
 				for i in ctx.message.guild.members:
 					if i.id==j["id"]:
-						string=i.name+"#"+str(i.discriminator)+"\n"+"Wins: "+str(j["wins"])+"\n"
+						string=i.name+"#"+str(i.discriminator)+"\n"+"Wins: "+str(j["won"])+"\n"
 						top_players.append(string)
 						break
 			p=""
@@ -50,7 +53,7 @@ class top(commands.Cog):
 				if l==None:
 					pass
 				else:
-					string=l.name+"#"+str(l.discriminator)+"\n"+"Wins: "+str(j["wins"])+"\n"
+					string=l.name+"#"+str(l.discriminator)+"\n"+"Wins: "+str(j["won"])+"\n"
 					top_players.append(string)
 			p=""
 			for i in range(len(top_players)):
