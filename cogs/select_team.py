@@ -20,7 +20,7 @@ class select_team(commands.Cog):
         	self.bot=bot
 	@commands.command(aliases=["show_teams","st","ct"])
 	@commands.guild_only()
-	async def select_team(self,ctx,key=None,*,about=None):
+	async def select_team(self,ctx,number=None):
 		with open ("./Teams/IPL.json") as f:
 			d=json.load(f)
 		available_teams=[]
