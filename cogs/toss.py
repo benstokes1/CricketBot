@@ -20,7 +20,7 @@ class toss(commands.Cog):
         	self.bot=bot
 	@commands.command(aliases=["t"])
 	@commands.guild_only()
-	async def toss(self,ctx,number=None):
+	async def toss(self,ctx,choice=None):
 		
 		#toss
 		if choice==None:
