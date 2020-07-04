@@ -29,7 +29,7 @@ class top(commands.Cog):
 					break
 				for i in ctx.message.guild.members:
 					if i.id==j["id"]:
-						top_players.append(str(i.name+"#"+str(i.discriminator))+"\n"+"Wins: "+str(j["wins"])+"\n")
+						top_players.append(str(str(i.name+"#"+str(i.discriminator))+str("\n"+"Wins: "+str(j["wins"])+"\n")))
 						break
 			p=""
 			for i in range(len(top_players)):
@@ -49,7 +49,7 @@ class top(commands.Cog):
 				if l==None:
 					pass
 				else:
-					top_players.append(str(i.name+"#"+str(i.discriminator))+"\n"+"Wins: "+str(j["wins"])+"\n")
+					top_players.append(str(str(l.name+"#"+str(l.discriminator))+str("\n"+"Wins: "+str(j["wins"])+"\n")))
 			p=""
 			for i in range(len(top_players)):
 				p+=str(i+1)+". "+top_players[i]+"\n"	
