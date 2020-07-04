@@ -1336,35 +1336,6 @@ async def end(ctx):
 		
 	except:
 		pass
-@bot.command(aliases=["ca","start","register"])
-async def create_account(ctx):
-	h=db2_collection.find_one({"id":ctx.author.id})
-	if h!=None:
-		await ctx.send("Seems like you have an account already, type `c!profile` to check profile")
-		return
-	guild=0
-	for i in bot.guilds:
-		if i.id==723905142646243442:
-			guild=i
-			break
-	if ctx.author not in guild.members:
-		await ctx.send("You need be a member of the official server to create an account. You can get the server link by using `c!server` command")
-		return
-	data={
-		"about": "I am a cricket lover!",
-		"id": ctx.message.author.id,
-		"matches_played": 0,
-		"won": 0,
-		"lost": 0,
-		"highest_streak": 0,
-		"current_streak": 0,
-		"recent_results": [],
-		"now_match": "",
-		"winning_percentage": 0.00
-	}
-	db2_collection.insert_one(data)
-	await ctx.send("Account created successfully!\nType `c!profile` to check the profile")
-@bot.command(aliases=["about"])
 async def profile(ctx,user:discord.Member=None):
 	if user==None:
 		User=ctx.message.author
