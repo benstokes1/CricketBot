@@ -21,7 +21,6 @@ class top(commands.Cog):
 	@commands.command()
 	async def top(self,ctx,m=None):
 		x=db2_collection.find().sort([("won",-1),("winning_percentage",-1)])
-		print(x)
 		top_players=[]
 		if m.lower()=="server":
 			for j in x:
@@ -29,10 +28,9 @@ class top(commands.Cog):
 					break
 				for i in ctx.message.guild.members:
 					if i.id==j["id"]:
-						top_players.append(i.name)
+						top_players.append(str(i.name+"#"+str(i.discriminator)))
 						break
 			p=""
-			print(top_players)
 			for i in range(len(top_players)):
 				p+=str(i+1)+". "+top_players[i]+"\n"	
 			embed=discord.Embed(title="Top players",description=p)
@@ -45,7 +43,7 @@ class top(commands.Cog):
 				if i==None:
 					pass
 				else:
-					top_player.append[i.name]
+					top_player.append(str(i.name+"#"+str(i.discriminator)))
 			p=""
 			for i in range(len(top_players)):
 				p+=str(i+1)+". "+top_players[i]+"\n"	
