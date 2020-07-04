@@ -71,7 +71,7 @@ async def announce(ctx,channel:discord.TextChannel,*,txt=None):
 			await channel.send(txt)
 	def is_me(m):
     		return m.author.id == 442673891656335372
-	await channel.purge(limit=1, check=is_me)
+	await ctx.message.channel.purge(limit=1, check=is_me)
 @bot.command()
 @commands.guild_only()
 async def suggest(ctx,*,suggestion=None):
