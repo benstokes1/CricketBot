@@ -15,7 +15,7 @@ db1_name=db1_client['Running_matches']
 db1_collection=db1_name['data']
 db2_name=db_client["about"]
 db2_collection=db2_name["data"]
-class acore_board(commands.Cog):
+class score_board(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
 	@commands.command(aliases=["scorecard","sb"])
