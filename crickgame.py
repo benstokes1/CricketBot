@@ -919,7 +919,7 @@ async def bowl(ctx):
 		if len(team2_profile["recent_results"])>5:
 			team2_profile["recent_results"].pop(0)
 		db2_collection.update_one({"id": team1_profile["id"]},{"$set":{"now_match":"","matches_played":team1_profile["matches_played"],"won":team1_profile["won"],"highest_streak":team1_profile["highest_streak"],"current_streak": team1_profile["current_streak"],"recent_results": team1_profile["recent_results"],"winning_percentage": round((team1_profile["won"]/team1_profile["matches_played"])*100,4)}})
-		db2_collection.update_one({"id": team2_profile["id"]},{"$set":{"now_match":"","matches_played":team2_profile["matches_played"],"lost":team2_profile["lost"],"current_streak": team2_profile["current_streak"],"recent_results": team2_profile["recent_results"]"winning_percentage": round((team2_profile["won"]/team2_profile["matches_played"])*100,4)}})
+		db2_collection.update_one({"id": team2_profile["id"]},{"$set":{"now_match":"","matches_played":team2_profile["matches_played"],"lost":team2_profile["lost"],"current_streak": team2_profile["current_streak"],"recent_results": team2_profile["recent_results"],"winning_percentage": round((team2_profile["won"]/team2_profile["matches_played"])*100,4)}})
 		return
 	if o=='wicket':
 		if x["Last_ball"]=='no-ball':
