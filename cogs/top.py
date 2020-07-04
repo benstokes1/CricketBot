@@ -40,9 +40,12 @@ class top(commands.Cog):
 				if len(top_players)==5:
 					break
 				print("a")
-				i=await self.bot.fetch_member(j["id"])
-				print(i)
-				if i==None:
+				l=None
+				for i in self.bot.guilds:
+					l=await i.fetch_member(j["id"])
+					if l!=None:
+						break
+				if l==None:
 					pass
 				else:
 					top_players.append(str(i.name+"#"+str(i.discriminator)))
