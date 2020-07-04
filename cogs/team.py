@@ -21,39 +21,28 @@ class team(commands.Cog):
 	@commands.command()
 	@commands.guild_only()
 	async def team(self,ctx,m=None):
-		x=db2_collection.find().sort([("won",-1),("winning_percentage",-1)])
-		top_players=[]
-		if m.lower()=="server":
-			for j in x:
-				if len(top_players)==5:
-					break
-				for i in ctx.message.guild.members:
-					if i.id==j["id"]:
-						top_players.append(str(i.name+"#"+str(i.discriminator)))
-						break
-			p=""
-			for i in range(len(top_players)):
-				p+=str(i+1)+". "+top_players[i]+"\n"	
-			embed=discord.Embed(title="Top players",description=p)
+		with open ("./Teams/IPL.json") as f:
+			d=json.load(f)
+
+		x=db_collection.find_one({"Team1_member_id":ctx.message.author.id})
+		if x==None:
+			x=db_collection.find_one({"Team2_member_id":ctx.message.author.id})
+			if x==None:
+				return
+			if x["Team2_name"]=="None":
+				return
+			player_list=""
+			for i in range(len(d[x["Team2_name"]])):
+				player_list+=str(i+1)+". "+d[x['Team2_name']][i]+"\n"
+			embed=discord.Embed(title=f"{x['Team2_name']} Playin XI",description=player_list)
 			await ctx.send(embed=embed)
-		elif m.lower()=="global":
-			for j in x:
-				if len(top_players)==5:
-					break
-				
-				l=None
-				for i in self.bot.guilds:
-					l=i.get_member(j["id"])
-					if l!=None:
-						break
-				if l==None:
-					pass
-				else:
-					top_players.append(str(l.name+"#"+str(l.discriminator)))
-			p=""
-			for i in range(len(top_players)):
-				p+=str(i+1)+". "+top_players[i]+"\n"	
-			embed=discord.Embed(title="Top players",description=p)
+		else:
+			if x["Team1_name"]=="None":
+				return
+			player_list=""
+			for i in range(len(d[x["Team1_name"]])):
+				player_list+=str(i+1)+". "+d[x['Team1_name']][i]+"\n"
+			embed=discord.Embed(title=f"{x['Team1_name']} Playin XI",description=player_list)
 			await ctx.send(embed=embed)
 def setup(bot):
 	bot.add_cog(team(bot))
