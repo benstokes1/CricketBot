@@ -19,8 +19,9 @@ class top(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
 	@commands.command()
-	async def top(self,ctx,*,m=None):
+	async def top(self,ctx,m=None):
 		x=db_collection.find().sort([("won",-1)("winning_percentage",-1)])
+		print(x)
 		top_players=[]
 		if m.lower()=="server":
 			for j in x:
