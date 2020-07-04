@@ -902,7 +902,6 @@ async def bowl(ctx):
 		db1_collection.update_one({},{"$set":{"ids": p}})
 		team1_profile=db2_collection.find_one({"id": Batting_team_id})
 		team2_profile=db2_collection.find_one({"id": Bowling_team_id})
-		
 		#team1
 		team1_profile["current_streak"]+=1
 		if team1_profile["current_streak"]>team1_profile["highest_streak"]:
