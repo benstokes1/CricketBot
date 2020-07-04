@@ -30,7 +30,6 @@ class bowl(commands.Cog):
 			if x==None:
 				await ctx.send("Type `c!help` to know about how to use the bot!")
 				return
-
 		This_over=x["This_over"]
 		original_data=x
 		Batting_team=0
