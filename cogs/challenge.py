@@ -59,6 +59,7 @@ class challenge(commands.Cog):
 		opponent_1=Team2.name+"#"+Team2.discriminator
 		db2_collection.update_one({"id":Team1_id},{"$set":{"now_match": opponent_1}})
 		outline={
+		"league" : "None",
 	    "Team1_name": "None",
 	    "Team2_name": "None",
 	    "Team1_member_id": Team1_id,
