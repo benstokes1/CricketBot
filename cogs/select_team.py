@@ -46,7 +46,7 @@ class select_team(commands.Cog):
 			team_list+=str(i+1)+". "+available_teams[i]+"\n"
 		if number==None:
 			embed=discord.Embed(title="Teams",description=team_list)
-			embed.set_footer(text="To select a team use `c!select_team <league_number> <team_number>`")
+			embed.set_footer(text=f"To select a team use `c!select_team {number1} <team_number>`")
 			await ctx.send(embed=embed)
 		else:
 			try:
