@@ -1336,20 +1336,6 @@ async def end(ctx):
 		
 	except:
 		pass
-@bot.command(aliases=["change_about"])
-async def set(ctx,key=None,*,about=None):
-	if key==None:
-		return
-	if key.lower()!="about":
-		return
-	if about==None:
-		return
-	x=db2_collection.find_one({"id":ctx.message.author.id})
-	if x==None:
-		return
-	else:
-		db2_collection.update_one({"id":ctx.author.id},{"$set":{"about":about}})
-		await ctx.send(f"Changed your about to '{about}'")
 @bot.event
 async def on_command_error(ctx,error):
 	if isinstance(error,commands.CommandOnCooldown):
