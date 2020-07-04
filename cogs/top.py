@@ -37,13 +37,13 @@ class top(commands.Cog):
 			await ctx.send(embed=embed)
 		elif m.lower()=="global":
 			for j in x:
-				if len(top_player)==5:
+				if len(top_players)==5:
 					break
 				i=await self.bot.fetch_member(j["id"])
 				if i==None:
 					pass
 				else:
-					top_player.append(str(i.name+"#"+str(i.discriminator)))
+					top_players.append(str(i.name+"#"+str(i.discriminator)))
 			p=""
 			for i in range(len(top_players)):
 				p+=str(i+1)+". "+top_players[i]+"\n"	
