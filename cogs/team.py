@@ -32,7 +32,7 @@ class team(commands.Cog):
 			player_list=""
 			for i in range(len(x["Team2_data"]["Lineup"])):
 				player_list+=str(i+1)+". "+x["Team2_data"]["Lineup"][i]+"\n"
-			embed=discord.Embed(title=f"{x['Team2_name']} Playin XI",description=player_list)
+			embed=discord.Embed(title=f"{x['Team2_name']} Playing XI",description=player_list)
 			await ctx.send(embed=embed)
 		else:
 			if x["Team1_name"]=="None":
@@ -40,7 +40,7 @@ class team(commands.Cog):
 			player_list=""
 			for i in range(len(x["Team1_data"]["Lineup"])):
 				player_list+=str(i+1)+". "+x["Team1_data"]["Lineup"][i]+"\n"
-			embed=discord.Embed(title=f"{x['Team1_name']} Playin XI",description=player_list)
+			embed=discord.Embed(title=f"{x['Team1_name']} Playing XI",description=player_list)
 			await ctx.send(embed=embed)
 def setup(bot):
 	bot.add_cog(team(bot))
