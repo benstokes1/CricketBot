@@ -42,7 +42,7 @@ class top(commands.Cog):
 				
 				l=None
 				for i in self.bot.guilds:
-					l=await i.get_member(j["id"])
+					l=i.get_member(j["id"])
 					if l!=None:
 						break
 				if l==None:
