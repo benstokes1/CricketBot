@@ -21,8 +21,6 @@ class team(commands.Cog):
 	@commands.command()
 	@commands.guild_only()
 	async def team(self,ctx,number=None):
-		with open ("./Teams/IPL.json") as f:
-			d=json.load(f)
 
 		x=db_collection.find_one({"Team1_member_id":ctx.message.author.id})
 		if x==None:
@@ -32,16 +30,16 @@ class team(commands.Cog):
 			if x["Team2_name"]=="None":
 				return
 			player_list=""
-			for i in range(len(d[x["Team2_name"]])):
-				player_list+=str(i+1)+". "+d[x['Team2_name']][i]+"\n"
+			for i in range(len(x["Team2_data"]["Lineup"])):
+				player_list+=str(i+1)+". "+x["Team2_data"]["Lineup"][i]+"\n"
 			embed=discord.Embed(title=f"{x['Team2_name']} Playin XI",description=player_list)
 			await ctx.send(embed=embed)
 		else:
 			if x["Team1_name"]=="None":
 				return
 			player_list=""
-			for i in range(len(d[x["Team1_name"]])):
-				player_list+=str(i+1)+". "+d[x['Team1_name']][i]+"\n"
+			for i in range(len(x["Team1_data"]["Lineup"])):
+				player_list+=str(i+1)+". "+x["Team1_data"]["Lineup"][i]+"\n"
 			embed=discord.Embed(title=f"{x['Team1_name']} Playin XI",description=player_list)
 			await ctx.send(embed=embed)
 def setup(bot):
