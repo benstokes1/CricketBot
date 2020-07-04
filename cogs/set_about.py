@@ -18,42 +18,20 @@ db2_collection=db2_name["data"]
 class set(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
-	@commands.command()
-	async def set(self,ctx,m=None):
-		x=db2_collection.find().sort([("won",-1),("winning_percentage",-1)])
-		top_players=[]
-		if m.lower()=="server":
-			for j in x:
-				if len(top_players)==5:
-					break
-				for i in ctx.message.guild.members:
-					if i.id==j["id"]:
-						top_players.append(str(i.name+"#"+str(i.discriminator)))
-						break
-			p=""
-			for i in range(len(top_players)):
-				p+=str(i+1)+". "+top_players[i]+"\n"	
-			embed=discord.Embed(title="Top players",description=p)
-			await ctx.send(embed=embed)
-		elif m.lower()=="global":
-			for j in x:
-				if len(top_players)==5:
-					break
-				
-				l=None
-				for i in self.bot.guilds:
-					l=i.get_member(j["id"])
-					if l!=None:
-						break
-				if l==None:
-					pass
-				else:
-					top_players.append(str(l.name+"#"+str(l.discriminator)))
-				print(top_players)
-			p=""
-			for i in range(len(top_players)):
-				p+=str(i+1)+". "+top_players[i]+"\n"	
-			embed=discord.Embed(title="Top players",description=p)
-			await ctx.send(embed=embed)
+	@commands.command(aliases=["change_about"])
+	@commands.guild_only()
+	async def set(ctx,key=None,*,about=None):
+		if key==None:
+			return
+		if key.lower()!="about":
+			return
+		if about==None:
+			return
+		x=db2_collection.find_one({"id":ctx.message.author.id})
+		if x==None:
+			return
+		else:
+			db2_collection.update_one({"id":ctx.author.id},{"$set":{"about":about}})
+			await ctx.send(f"Changed your about to '{about}'")
 def setup(bot):
 	bot.add_cog(set(bot))
