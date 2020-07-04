@@ -7,8 +7,6 @@ import datetime
 import pymongo
 import json
 import math
-bot=commands.Bot(command_prefix='c!')
-bot.remove_command('help')
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
 db1_client=pymongo.MongoClient(os.getenv("DB2_URL"))
 db_name=db1_client["Challenge"]
