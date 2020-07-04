@@ -27,7 +27,7 @@ class select_team(commands.Cog):
 			return
 		team=""
 		try:
-			number1=int(number1)
+			number1=int(number1)-1
 			if number1>len(arr):
 				await ctx.send(f"Choose a number less than {len(arr)}")
 				return
