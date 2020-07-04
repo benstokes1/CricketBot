@@ -19,6 +19,7 @@ class top(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
 	@commands.command()
+	@commands.guild_only()
 	async def top(self,ctx,m=None):
 		x=db2_collection.find().sort([("won",-1),("winning_percentage",-1)])
 		top_players=[]
@@ -49,7 +50,6 @@ class top(commands.Cog):
 					pass
 				else:
 					top_players.append(str(l.name+"#"+str(l.discriminator)))
-				print(top_players)
 			p=""
 			for i in range(len(top_players)):
 				p+=str(i+1)+". "+top_players[i]+"\n"	
