@@ -18,42 +18,35 @@ db2_collection=db2_name["data"]
 class register(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
-	@commands.command()
+	@commands.command(aliases=["start","register"])
+	@commands.guild_only()
 	async def register(self,ctx,m=None):
-		x=db2_collection.find().sort([("won",-1),("winning_percentage",-1)])
-		top_players=[]
-		if m.lower()=="server":
-			for j in x:
-				if len(top_players)==5:
-					break
-				for i in ctx.message.guild.members:
-					if i.id==j["id"]:
-						top_players.append(str(i.name+"#"+str(i.discriminator)))
-						break
-			p=""
-			for i in range(len(top_players)):
-				p+=str(i+1)+". "+top_players[i]+"\n"	
-			embed=discord.Embed(title="Top players",description=p)
-			await ctx.send(embed=embed)
-		elif m.lower()=="global":
-			for j in x:
-				if len(top_players)==5:
-					break
-				
-				l=None
-				for i in self.bot.guilds:
-					l=i.get_member(j["id"])
-					if l!=None:
-						break
-				if l==None:
-					pass
-				else:
-					top_players.append(str(l.name+"#"+str(l.discriminator)))
-				print(top_players)
-			p=""
-			for i in range(len(top_players)):
-				p+=str(i+1)+". "+top_players[i]+"\n"	
-			embed=discord.Embed(title="Top players",description=p)
-			await ctx.send(embed=embed)
+		h=db2_collection.find_one({"id":ctx.author.id})
+		if h!=None:
+			await ctx.send("Seems like you have an account already, type `c!profile` to check profile")
+			return
+		guild=0
+		for i in bot.guilds:
+			if i.id==723905142646243442:
+				guild=i
+				break
+		if ctx.author not in guild.members:
+			await ctx.send("You need be a member of the official server to create an account. You can get the server link by using `c!server` command")
+			return
+		data={
+			"about": "I am a cricket lover!",
+			"id": ctx.message.author.id,
+			"matches_played": 0,
+			"won": 0,
+			"lost": 0,
+			"highest_streak": 0,
+			"current_streak": 0,
+			"recent_results": [],
+			"now_match": "",
+			"winning_percentage": 0.00
+		}
+		db2_collection.insert_one(data)
+		await ctx.send("Account created successfully!\nType `c!profile` to check the profile")
+@bot.command(aliases=["about"])
 def setup(bot):
 	bot.add_cog(register(bot))
