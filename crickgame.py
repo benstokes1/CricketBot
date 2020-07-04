@@ -90,6 +90,7 @@ async def suggest(ctx,*,suggestion=None):
 	await ctx.send(f"{ctx.message.author.mention} Thanks for your suggestion :heart:")
 
 @bot.command()
+@commands.guild_only()
 async def help(ctx):
 	embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="My prefix is 'c!'")
 	embed.add_field(name="c!commands",value="Displays a list of commands",inline=False)
