@@ -20,7 +20,7 @@ class register(commands.Cog):
         	self.bot=bot
 	@commands.command(aliases=["start","register"])
 	@commands.guild_only()
-	async def register(self,ctx,m=None):
+	async def create_account(self,ctx,m=None):
 		h=db2_collection.find_one({"id":ctx.author.id})
 		if h!=None:
 			await ctx.send("Seems like you have an account already, type `c!profile` to check profile")
@@ -47,6 +47,5 @@ class register(commands.Cog):
 		}
 		db2_collection.insert_one(data)
 		await ctx.send("Account created successfully!\nType `c!profile` to check the profile")
-@bot.command(aliases=["about"])
 def setup(bot):
 	bot.add_cog(register(bot))
