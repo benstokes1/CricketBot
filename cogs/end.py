@@ -31,7 +31,7 @@ class end(commands.Cog):
 				else:
 					xy=db1_collection.find_one()
 					team1_member=None
-					for i in bot.guilds:
+					for i in self.bot.guilds:
 						for j in i.members:
 							if x["Team1_member_id"]==j.id:
 								team1_member=j
@@ -65,7 +65,7 @@ class end(commands.Cog):
 			else:
 				xy=db1_collection.find_one()
 				team2_member=None
-				for i in bot.guilds:
+				for i in self.bot.guilds:
 					for j in i.members:
 						if x["Team2_member_id"]==j.id:
 							team2_member=j
