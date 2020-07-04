@@ -20,8 +20,23 @@ class select_team(commands.Cog):
         	self.bot=bot
 	@commands.command(aliases=["show_teams","st","ct"])
 	@commands.guild_only()
-	async def select_team(self,ctx,number=None):
-		with open ("./Teams/IPL.json") as f:
+	async def select_team(self,ctx,number1=None,number=None):
+		arr = os.listdir('./Teams')
+		if number1==None:
+			await ctx.send("Syntax : `c!select_team <league_number> <team_number>`")
+			return
+		team=""
+		try:
+			number1=int(number1)
+			if number1>len(arr):
+				await ctx.send(f"Choose a number less than {len(arr)}")
+				return
+			else:
+				team=arr[number1]
+		except:
+			return
+		
+		with open ("./Teams/"+team) as f:
 			d=json.load(f)
 		available_teams=[]
 		for i in d:
@@ -31,7 +46,7 @@ class select_team(commands.Cog):
 			team_list+=str(i+1)+". "+available_teams[i]+"\n"
 		if number==None:
 			embed=discord.Embed(title="Teams",description=team_list)
-			embed.set_footer(text="To select a team use `c!select_team <number>`")
+			embed.set_footer(text="To select a team use `c!select_team <league_number> <team_number>`")
 			await ctx.send(embed=embed)
 		else:
 			try:
