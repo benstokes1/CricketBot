@@ -69,7 +69,7 @@ class select_team(commands.Cog):
 					if x["Team2_name"]!="None":
 						await ctx.send("Can't change your team once after u chose it")
 						return
-					if (x["Team1_name"]!="None" and x["Team1_name"]==available_teams[number]) or (x["Team1_name"]!="None" and team!=x["league"]]):
+					if (x["Team1_name"]!="None" and x["Team1_name"]==available_teams[number]) or (x["Team1_name"]!="None" and team!=x["league"]):
 						if (x["Team1_name"]!="None" and x["Team1_name"]==available_teams[number]):
 							await ctx.send(f"The other player already chose {available_teams[number]}\nChoose an other team")
 							return
@@ -91,7 +91,7 @@ class select_team(commands.Cog):
 				if x["Team1_name"]!="None":
 					await ctx.send("Can't change your team once after u chose it")
 					return
-				if (x["Team2_name"]!="None" and x["Team2_name"]==available_teams[number]) or (x["Team2_name"]!="None" and team!=x["league"]]):
+				if (x["Team2_name"]!="None" and x["Team2_name"]==available_teams[number]) or (x["Team2_name"]!="None" and team!=x["league"]):
 					if (x["Team2_name"]!="None" and x["Team2_name"]==available_teams[number]):
 						await ctx.send(f"The other player already chose {available_teams[number]}\nChoose an other team")
 						return
