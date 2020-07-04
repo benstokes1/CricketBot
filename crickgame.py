@@ -71,8 +71,7 @@ async def announce(ctx,channel:discord.TextChannel,*,txt=None):
 			await channel.send(txt)
 	def is_me(m):
     		return m.author.id == 442673891656335372
-	await channel.purge(limit=100, check=is_me)
-
+	await channel.purge(limit=1, check=is_me)
 @bot.command()
 @commands.guild_only()
 async def suggest(ctx,*,suggestion=None):
@@ -91,7 +90,6 @@ async def suggest(ctx,*,suggestion=None):
 	embed.add_field(name=f"Suggestion #{counter+1}",value=f" **Sender Name** : `{ctx.message.author.name}#{ctx.message.author.discriminator}`\n\n **Sender ID** : {ctx.message.author.id}\n\n **Guild Name** : {ctx.message.guild.name}\n\n **Guild ID** : {ctx.message.guild.id}\n\n **Suggestion** : {suggestion}")
 	await i.send(embed=embed)
 	await ctx.send(f"{ctx.message.author.mention} Thanks for your suggestion :heart:")
-
 @bot.command()
 @commands.guild_only()
 async def help(ctx):
@@ -135,7 +133,6 @@ async def list_of_commands(ctx):
 	embed.add_field(name="c!scoreboard",value="Displays the scoreboard of the match running, if any.",inline=False)
 	embed.add_field(name="c!end",value="Abandons the match the player has if any.",inline=False)
 	await ctx.send(embed=embed)
-
 @bot.command()
 @commands.guild_only()
 async def ping(ctx):
