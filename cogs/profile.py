@@ -18,35 +18,40 @@ db2_collection=db2_name["data"]
 class about(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
-	@commands.command()
+	@commands.command(aliases=["about"])
 	@commands.guild_only()
-	async def about(self,ctx,m=None):
-		h=db2_collection.find_one({"id":ctx.author.id})
-		if h!=None:
-			await ctx.send("Seems like you have an account already, type `c!profile` to check profile")
-			return
-		guild=0
-		for i in bot.guilds:
-			if i.id==723905142646243442:
-				guild=i
-				break
-		if ctx.author not in guild.members:
-			await ctx.send("You need be a member of the official server to create an account. You can get the server link by using `c!server` command")
-			return
-		data={
-			"about": "I am a cricket lover!",
-			"id": ctx.message.author.id,
-			"matches_played": 0,
-			"won": 0,
-			"lost": 0,
-			"highest_streak": 0,
-			"current_streak": 0,
-			"recent_results": [],
-			"now_match": "",
-			"winning_percentage": 0.00
-		}
-		db2_collection.insert_one(data)
-		await ctx.send("Account created successfully!\nType `c!profile` to check the profile")
-@bot.command(aliases=["about"])
+	async def profile(ctx,user:discord.Member=None):
+		if user==None:
+			User=ctx.message.author
+		else:
+			User=user
+		x=db2_collection.find_one({"id": User.id})
+		if x==None:
+			if user==None:
+				await ctx.send("Create an account by typing `c!register`")
+				return
+			else:
+				await ctx.send(f"Looks like {User.name} doesnt have an account")
+		else:
+			embed=discord.Embed()
+			embed.set_thumbnail(url=f"{User.avatar_url}")
+			embed.set_author(name=f"{ctx.author.name}#{ctx.author.discriminator}",icon_url=f"{ctx.author.avatar_url}")
+			embed.add_field(name="About",value=f"{x['about']}",inline=False)
+			embed.add_field(name="Matches played",value=f"{x['matches_played']}",inline=False)
+			embed.add_field(name="Matches won",value=f"{x['won']}",inline=False)
+			embed.add_field(name="Matches lost",value=f"{x['lost']}",inline=False)
+			if x["matches_played"]==0:
+				win=0
+			else:
+				win=(x['won']/x["matches_played"])*100
+
+			embed.add_field(name="Win percentage",value="{:.2f}%".format(win),inline=False)
+			if len(x['recent_results'])==0:
+				rs="-"
+			else:
+				rs=' '.join(x['recent_results'])
+			embed.add_field(name="Recent results",value=rs)
+			embed.set_footer(text=f"Current streak: {x['current_streak']}  Highest streak: {x['highest_streak']}")
+			await ctx.send(embed=embed)
 def setup(bot):
 	bot.add_cog(about(bot))
