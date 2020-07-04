@@ -32,6 +32,7 @@ class top(commands.Cog):
 						top_players.append(i.name)
 						break
 			p=""
+			print(p)
 			for i in top_players:
 				p+=str(i+1)+". "+i+"\n"	
 			embed=discord.Embed(title="Top players",description=p)
