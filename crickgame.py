@@ -17,6 +17,10 @@ db1_name=db1_client['Running_matches']
 db1_collection=db1_name['data']
 db2_name=db_client["about"]
 db2_collection=db2_name["data"]
+#loading cogs
+for filename in os.listdir("./cogs"):
+	if filename.endswith(".py"):
+			bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.event
 async def on_ready():
 	print("Less go")
