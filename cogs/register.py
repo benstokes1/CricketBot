@@ -26,7 +26,7 @@ class register(commands.Cog):
 			await ctx.send("Seems like you have an account already, type `c!profile` to check profile")
 			return
 		guild=0
-		for i in bot.guilds:
+		for i in self.bot.guilds:
 			if i.id==723905142646243442:
 				guild=i
 				break
