@@ -1355,7 +1355,8 @@ async def create_account(ctx):
 		"highest_streak": 0,
 		"current_streak": 0,
 		"recent_results": [],
-		"now_match": ""
+		"now_match": "",
+		"winning_percentage": 0.00
 	}
 	db2_collection.insert_one(data)
 	await ctx.send("Account created successfully!\nType `c!profile` to check the profile")
