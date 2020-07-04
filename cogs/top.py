@@ -1,13 +1,28 @@
 import discord 
 import asyncio
+import random
 from discord.ext import commands
+import os
+import datetime
+import pymongo
 import json
+import math
+bot=commands.Bot(command_prefix='c!')
+bot.remove_command('help')
+db_client=pymongo.MongoClient(os.getenv("DB_URL"))
+db1_client=pymongo.MongoClient(os.getenv("DB2_URL"))
+db_name=db1_client["Challenge"]
+db_collection=db_name['Data']
+db1_name=db1_client['Running_matches']
+db1_collection=db1_name['data']
+db2_name=db_client["about"]
+db2_collection=db2_name["data"]
 class top(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
 	@commands.command()
 	async def top(self,ctx,*,m=None):
-		x=db_collectio.find().sort([("won",-1)("winning_percentage",-1)])
+		x=db_collection.find().sort([("won",-1)("winning_percentage",-1)])
 		top_players=[]
 		if m.lower()=="server":
 			for j in x:
