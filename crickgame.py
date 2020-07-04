@@ -66,9 +66,12 @@ async def on_message(message):
 async def announce(ctx,channel:discord.TextChannel,*,txt=None):
 	if ctx.author.id==442673891656335372:
 		if txt==None:
-			pass
+			return
 		else:
 			await channel.send(txt)
+	def is_me(m):
+    		return m.author.id == 442673891656335372
+	await channel.purge(limit=100, check=is_me)
 
 @bot.command()
 @commands.guild_only()
