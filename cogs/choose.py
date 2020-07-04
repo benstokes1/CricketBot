@@ -20,19 +20,63 @@ class choose(commands.Cog):
         	self.bot=bot
 	@commands.command()
 	@commands.guild_only()
-	async def choose(self,ctx,number=None):
-		if key==None:
+	
+	async def choose(self,ctx,choice=None):
+		if choice==None:
 			return
-		if key.lower()!="about":
+		if choice.lower() not in ["bowl","bat"]:
+			await ctx.send("Syntax: `c!choose <bowl/bat>`")
 			return
-		if about==None:
-			return
-		x=db2_collection.find_one({"id":ctx.message.author.id})
+		x=db_collection.find_one({"Team1_member_id": ctx.message.author.id})
 		if x==None:
-			return
-		else:
-			db2_collection.update_one({"id":ctx.author.id},{"$set":{"about":about}})
-			await ctx.send(f"Changed your about to '{about}'")
+			x=db_collection.find_one({"Team2_member_id": ctx.message.author.id})
+			if x==None:
+				await ctx.send("Type `c!help` to know about how to use the bot!")
+				return
+			else:
+				if x["Now_batting"]!=0:
+					return
+				if x["Score_card"]["Toss"]==0:
+					await ctx.send("Make sure you do the toss before choosing")
+					return
 
+				if x["Score_card"]["Toss"]!=ctx.message.author.id:
+					await ctx.send("Looks like you didn't win the toss")
+					return
+				else:
+					if choice.lower()=="bat":
+						db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"Now_batting": ctx.message.author.id}})
+						if x["Team2_name"]=="None":
+							await ctx.send("Team 2 will be batting first")
+						else:
+							await ctx.send(f"**{x['Team2_name']}** will be batting first")
+					else:
+						db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"Now_batting": x["Team1_member_id"]}})
+						if x["Team1_name"]=="None":
+							await ctx.send("Team 1 will be batting first")
+						else:
+							await ctx.send(f"**{x['Team1_name']}** will be batting first")
+		else:
+			if x["Now_batting"]!=0:
+				return
+			if x["Score_card"]["Toss"]==0:
+				await ctx.send("Make sure you do the toss before choosing")
+				return
+			if x["Score_card"]["Toss"]!=ctx.message.author.id:
+				await ctx.send("Looks like you didn't win the toss")
+				return
+			else:
+				if choice.lower()=="bat":
+					db_collection.update_one({"Team1_member_id": ctx.message.author.id},{"$set":{"Now_batting": ctx.message.author.id}})
+					if x["Team1_name"]=="None":
+						await ctx.send("Team 1 will be batting first")
+					else:
+						await ctx.send(f"**{x['Team1_name']}** will be batting first")
+				else:
+					db_collection.update_one({"Team1_member_id": ctx.message.author.id},{"$set":{"Now_batting": x["Team2_member_id"]}})
+					if x["Team2_name"]=="None":
+						await ctx.send("Team 2 will be batting first")
+					else:
+						await ctx.send(f"**{x['Team2_name']}** will be batting first")
 def setup(bot):
 	bot.add_cog(choose(bot))
