@@ -20,19 +20,32 @@ class acore_board(commands.Cog):
         	self.bot=bot
 	@commands.command(aliases=["scorecard","sb"])
 	@commands.guild_only()
-	async def score_board(self,ctx,number=None):
-		if key==None:
-			return
-		if key.lower()!="about":
-			return
-		if about==None:
-			return
-		x=db2_collection.find_one({"id":ctx.message.author.id})
+	async def scoreboard(self,ctx):
+		x=db_collection.find_one({"Team1_member_id": ctx.message.author.id})
 		if x==None:
-			return
+			x=db_collection.find_one({"Team2_member_id": ctx.message.author.id})
+			if x==None:
+				return
+			else:
+				x=x["Score_card"]
+				if x["Target"]==0:
+					embed=discord.Embed(title="Scoreboard",description=f"**First Innings Score :**\nScore : {x['Score']}/{x['Wickets']}\nOvers : {x['Overs']}/{x['Maximum_overs']}")
+					await ctx.send(embed=embed)
+					return
+				else:
+					embed=discord.Embed(title="Scoreboard",description=f"**Target :** {x['Target']}\n**Overs :** {x['Overs']}/{x['Maximum_overs']}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
+					await ctx.send(embed=embed)
+					return
 		else:
-			db2_collection.update_one({"id":ctx.author.id},{"$set":{"about":about}})
-			await ctx.send(f"Changed your about to '{about}'")
+			x=x["Score_card"]
+			if x["Target"]==0:
+				embed=discord.Embed(title="Scoreboard",description=f"**First Innings Score :**\nScore : {x['Score']}/{x['Wickets']}\nOvers : {x['Overs']}/{x['Maximum_overs']}")
+				await ctx.send(embed=embed)
+				return
+			else:
+				embed=discord.Embed(title="Scoreboard",description=f"**Target :** {x['Target']}\n**Overs :** {x['Overs']}/{x['Maximum_overs']}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
+				await ctx.send(embed=embed)
+				return
 
 def setup(bot):
 	bot.add_cog(score_board(bot))
