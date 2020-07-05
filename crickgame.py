@@ -112,7 +112,7 @@ async def help(ctx,*,com=None):
 	else:
 		l={"top":"Displays top 5 players of guild/discord",
 		   "register":"Creates an account on the name of the user which will be useful",
-		   "leagues":"Displays ist of leagues available from which teams can be chosen",
+		   "leagues":"Displays list of leagues available from which teams can be chosen",
 		   "profile":"Displays profile of the user",
 		   "set about":"Sets the about of the user in his profile",
 		   "challenge":"Used to challenge a user",
@@ -126,10 +126,30 @@ async def help(ctx,*,com=None):
 		   "bowl":"Should be used by the bowling team while bowling.",
 		   "scoreboard":"Displays the scoreboard of the match running, if any.",
 		   "end":"Abandons the match the player has if any."}
+		syntax:{"top": "`c!top <global/server>`",
+			"register": "`c!register`",
+			"leagues": "`c!leagues`",
+			"profile": "`c!profile`",
+			"set about": "`c!set about [about]`",
+			"challenge": "`c!challenge <@mention>`",
+			"select_team": "`c!select_team <league_id> <team_id>`",
+			"show_teams" : "`c!show_teams <league_id>`",
+			"team": "`c!team`",
+			"setovers": "`c!set_overs <number>`",
+			"toss": "`c!toss <opponent's call>(heads/tails)`",
+			"choose": "`c!choose <bat/bowl>`",
+			"select_player": "`c!select_player <player_id>`",
+			"bowl": "`c!bowl`",
+			"scoreboard": "`c!scoreboard`",
+			"end": "`c!end`"
+		       }
 		if com.lower() not in l:
 			return
 		else:
-			embed=discord.Embed(title="`c!"+com.lower()+"`",description=l[com.lower()])
+			embed=discord.Embed(title="Command description")
+			embed.add_field(name=com.lower(),value=l[com.lower()]))
+			embed.add_field(name="Syntax",value=syntax[com.lower()])
+			await ctx.send(embed=embed)
 	await ctx.send(embed=embed)
 @bot.command()
 async def invite(ctx):
