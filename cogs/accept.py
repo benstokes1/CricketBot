@@ -1,4 +1,4 @@
-'''import discord 
+import discord 
 import asyncio
 import random
 from discord.ext import commands
@@ -21,7 +21,7 @@ class accept(commands.Cog):
 	@commands.command()
 	@commands.guild_only()
 	async def accept(self,ctx):
-		Team2_id=ctx.message.author.id
+		'''Team2_id=ctx.message.author.id
 		h1=db2_collection.find_one({"id":ctx.message.author.id})
 		if h1==None:
 			if h1==None:
