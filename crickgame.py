@@ -125,7 +125,7 @@ async def help(ctx,*,com=None):
 		   "select_player":"To select a player from your team.",
 		   "bowl":"Should be used by the bowling team while bowling.",
 		   "scoreboard":"Displays the scoreboard of the match running, if any.",
-		   "end":"Abandons the match the player has if any."}
+		   "end":"Abandons the match, the player has, if any."}
 		syntax={"top": "`c!top <global/server>`",
 			"register": "`c!register`",
 			"leagues": "`c!leagues`",
