@@ -147,10 +147,9 @@ async def help(ctx,*,com=None):
 			return
 		else:
 			embed=discord.Embed(title="Command description")
-			embed.add_field(name=com.lower(),value=l[com.lower()])
-			embed.add_field(name="Syntax",value=syntax[com.lower()])
+			embed.add_field(name=com.lower(),value=l[com.lower()],inline=False)
+			embed.add_field(name="Syntax",value=syntax[com.lower()],inline=False)
 			await ctx.send(embed=embed)
-	await ctx.send(embed=embed)
 @bot.command()
 async def invite(ctx):
 	embed=discord.Embed(title="Invite link",description="Invite the bot now!\n\n[Invite](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)")
