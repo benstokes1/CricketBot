@@ -64,7 +64,7 @@ async def on_message(message):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Added a few commands and fixed a few minor bugs.\n`c!top <server/global>` : Gives a list of top 5 players of guild/discord\n`c!leagues` : Displays the leagues available from which you can choose teams.\nAlso edited the command `c!select_team`.\n `c!select_team <league_id> <team_id>` is the new syntax, where league id is the number next to the corresponding league which appears when you use the `c!leagues` command."
+	announcement="Made Changes in command `c!commands`. Now `c!help {command}` displays the description of the command"
 	embed=discord.Embed(title="Announcement",description=announcement)
 	def is_me(m):
     		return m.author.id == ctx.message.author.id
@@ -146,8 +146,8 @@ async def help(ctx,*,com=None):
 		if com.lower() not in l:
 			return
 		else:
-			embed=discord.Embed(title="Command description")
-			embed.add_field(name=com.lower(),value=l[com.lower()],inline=False)
+			embed=discord.Embed(title=com.lower())
+			embed.add_field(name="Command description",value=l[com.lower()],inline=False)
 			embed.add_field(name="Syntax",value=syntax[com.lower()],inline=False)
 			await ctx.send(embed=embed)
 @bot.command()
