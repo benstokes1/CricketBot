@@ -135,7 +135,7 @@ async def help(ctx,*,com=None):
 			"select_team": "`c!select_team <league_id> <team_id>`",
 			"show_teams" : "`c!show_teams <league_id>`",
 			"team": "`c!team`",
-			"setovers": "`c!set_overs <number>`",
+			"setovers": "`c!setovers <number>`",
 			"toss": "`c!toss <opponent's call>(heads/tails)`",
 			"choose": "`c!choose <bat/bowl>`",
 			"select_player": "`c!select_player <player_id>`",
