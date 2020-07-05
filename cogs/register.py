@@ -31,7 +31,8 @@ class register(commands.Cog):
 				guild=i
 				break
 		if ctx.author not in guild.members:
-			await ctx.send("You need to be a member of the official server to create an account. Click [here](https://discord.gg/DayDsCV) to join the server ")
+			embed=discord.Embed(description="You need to be a member of the official server to create an account. Click [here](https://discord.gg/DayDsCV) to join the server ")
+			await ctx.send(embed=embed)
 			return
 		data={
 			"about": "I am a cricket lover!",
