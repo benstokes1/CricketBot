@@ -147,7 +147,7 @@ async def help(ctx,*,com=None):
 			return
 		else:
 			embed=discord.Embed(title="Command description")
-			embed.add_field(name=com.lower(),value=l[com.lower()]))
+			embed.add_field(name=com.lower(),value=l[com.lower()])
 			embed.add_field(name="Syntax",value=syntax[com.lower()])
 			await ctx.send(embed=embed)
 	await ctx.send(embed=embed)
