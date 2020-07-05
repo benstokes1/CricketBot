@@ -52,18 +52,12 @@ class challenge(commands.Cog):
 				h=db2_collection.find_one({"id":Team2_id})
 			await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match")
 			return
-		x["ids"].append(Team2_id)
-		x['ids'].append(Team1_id)
-		opponent_1=ctx.message.author.name+"#"+str(ctx.message.author.discriminator)
-		db2_collection.update_one({"id": Team2_id},{"$set":{"now_match": opponent_1}})
-		opponent_1=Team2.name+"#"+Team2.discriminator
-		db2_collection.update_one({"id":Team1_id},{"$set":{"now_match": opponent_1}})
 		outline={
 		"league" : "None",
 	    "Team1_name": "None",
 	    "Team2_name": "None",
 	    "Team1_member_id": Team1_id,
-	    "Team2_member_id": Team2_id,
+	    "Team2_member_id": 0,
 		"Maximum_overs":0,
 		"Now_batting": 0,
 	    "Team1_data":{
