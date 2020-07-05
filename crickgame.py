@@ -102,12 +102,34 @@ async def suggest(ctx,*,suggestion=None):
 @bot.command()
 @commands.guild_only()
 async def help(ctx):
-	embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="My prefix is 'c!'")
-	embed.add_field(name="c!commands",value="Displays a list of commands",inline=False)
-	embed.add_field(name="c!invite",value="Sends an Invite Link of the bot",inline=False)
-	embed.add_field(name="c!server",value="Sends an invite link of official discord server of the bot",inline=False)
-	embed.add_field(name="c!guide",value="Sends a link of the guide",inline=False)
-	embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
+	if com==None:
+		embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="My prefix is 'c!'")
+		embed.add_field(name="c!commands",value="Displays a list of commands",inline=False)
+		embed.add_field(name="c!invite",value="Sends an Invite Link of the bot",inline=False)
+		embed.add_field(name="c!server",value="Sends an invite link of official discord server of the bot",inline=False)
+		embed.add_field(name="c!guide",value="Sends a link of the guide",inline=False)
+		embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
+	else:
+		l={"top":"Displays top 5 players of guild/discord",
+		   "register":"Creates an account on the name of the user which will be useful",
+		   "leagues":"Displays ist of leagues available from which teams can be chosen",
+		   "profile":"Displays profile of the user",
+		   "set about":"Sets the about of the user in his profile",
+		   "challenge":"Used to challenge a user",
+		   "select_team":"Used to select a team from default teams.",
+		   "show_teams":"Displays a list of default teams available.",
+		   "team":"Displays the playing XI of your team.",
+		   "setovers":"Sets the number of overs for match.",
+		   "toss":"Tosses a coin and prints the outcome.",
+		   "choose":"To be used by the toss winner to select batting or bowling.",
+		   "select_player":"To select a player from your team.",
+		   "bowl":"Should be used by the bowling team while bowling.",
+		   "scoreboard":"Displays the scoreboard of the match running, if any.",
+		   "end":"Abandons the match the player has if any."}
+		if com.lower() not in l:
+			return
+		else:
+			embed=discord.Embed(title=com.lower(),description=l[com.lower()])
 	await ctx.send(embed=embed)
 @bot.command()
 async def invite(ctx):
@@ -145,7 +167,7 @@ async def list_of_commands(ctx,m=None):
 	await ctx.send(embed=embed)
 	if m!=None:
 		embed1=discord.Embed(title="List of commands",description="My prefix is 'c!'\n\n`General commands :`\n`c!top``c!register``c!leagues``c!profile``c!set about`\n\n`Match commands:`\n`c!challenge``c!select_team``c!show_teams``c!team``c!setovers``c!toss``c!choose``c!select_player``c!bowl``c!scoreboard``c!end`")
-		await cxt.send(embed=embed1)
+		await ctx.send(embed=embed1)
 @bot.command()
 @commands.guild_only()
 async def ping(ctx):
