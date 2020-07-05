@@ -104,6 +104,6 @@ class accept(commands.Cog):
 		}
 		db1_collection.update_one({},{"$set":{"ids":x['ids']}})
 		db_collection.insert_one(outline)
-		await ctx.send("Select Teams by typing `c!select_team`")
+		await ctx.send("Select Teams by typing `c!select_team`")'''
 def setup(bot):
-	bot.add_cog(accept(bot))'''
+	bot.add_cog(accept(bot))
