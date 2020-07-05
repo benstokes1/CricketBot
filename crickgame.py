@@ -101,7 +101,7 @@ async def suggest(ctx,*,suggestion=None):
 	await ctx.send(f"{ctx.message.author.mention} Thanks for your suggestion :heart:")
 @bot.command()
 @commands.guild_only()
-async def help(ctx,com=None):
+async def help(ctx,*,com=None):
 	if com==None:
 		embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="My prefix is 'c!'")
 		embed.add_field(name="c!commands",value="Displays a list of commands",inline=False)
@@ -129,7 +129,7 @@ async def help(ctx,com=None):
 		if com.lower() not in l:
 			return
 		else:
-			embed=discord.Embed(title=com.lower(),description=l[com.lower()])
+			embed=discord.Embed(title="`c!"+com.lower()+"`",description=l[com.lower()])
 	await ctx.send(embed=embed)
 @bot.command()
 async def invite(ctx):
