@@ -114,7 +114,7 @@ async def help(ctx,*,com=None):
 		   "register":"Creates an account on the name of the user.",
 		   "leagues":"Displays list of leagues available from which teams can be chosen.",
 		   "profile":"Displays profile of the user.",
-		   "set about":"Sets the about of the user in his profile.",
+		   "set about":"Changes the **about** of the user in his profile.",
 		   "challenge":"Used to challenge a user.",
 		   "select_team":"Used to select a team from default teams.",
 		   "show_teams":"Displays a list of default teams available.",
