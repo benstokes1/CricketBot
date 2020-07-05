@@ -110,12 +110,12 @@ async def help(ctx,*,com=None):
 		embed.add_field(name="c!guide",value="Sends a link of the guide",inline=False)
 		embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
 	else:
-		l={"top":"Displays top 5 players of guild/discord",
-		   "register":"Creates an account on the name of the user which will be useful",
-		   "leagues":"Displays list of leagues available from which teams can be chosen",
-		   "profile":"Displays profile of the user",
-		   "set about":"Sets the about of the user in his profile",
-		   "challenge":"Used to challenge a user",
+		l={"top":"Displays top 5 players of guild/discord.",
+		   "register":"Creates an account on the name of the user.",
+		   "leagues":"Displays list of leagues available from which teams can be chosen.",
+		   "profile":"Displays profile of the user.",
+		   "set about":"Sets the about of the user in his profile.",
+		   "challenge":"Used to challenge a user.",
 		   "select_team":"Used to select a team from default teams.",
 		   "show_teams":"Displays a list of default teams available.",
 		   "team":"Displays the playing XI of your team.",
