@@ -124,7 +124,7 @@ async def guide(ctx):
 	embed=discord.Embed(colour=discord.Color.blue(),title="Guide Link",description=link)
 	await ctx.send(embed=embed)
 @bot.command(aliases=["commands"])
-async def list_of_commands(ctx):
+async def list_of_commands(ctx,m=None):
 	embed=discord.Embed(title="List of commands",description="My prefix is 'c!'\n\n`General commands :`")
 	embed.add_field(name="c!top <server/global>",value="Displays top 5 players of guild/discord",inline=False)
 	embed.add_field(name="c!register",value="Creates an account on the name of the user which will be useful",inline=False)
@@ -143,6 +143,9 @@ async def list_of_commands(ctx):
 	embed.add_field(name="c!scoreboard",value="Displays the scoreboard of the match running, if any.",inline=False)
 	embed.add_field(name="c!end",value="Abandons the match the player has if any.",inline=False)
 	await ctx.send(embed=embed)
+	if m!=None:
+		embed1=discord.Embed(title="List of commands",description="My prefix is 'c!'\n\n`General commands :`\n`c!top``c!register``c!leagues``c!profile``c!set about`\n\n`Match commands:`\n`c!challenge``c!select_team``c!show_teams``c!team``c!setovers``c!toss``c!choose``c!select_player``c!bowl``c!scoreboard``c!end`")
+		await cx.send(embed=embed1)
 @bot.command()
 @commands.guild_only()
 async def ping(ctx):
