@@ -38,7 +38,7 @@ class top(commands.Cog):
 			p=""
 			for i in range(len(top_players)):
 				p+=str(i+1)+". "+top_players[i]+"\n"	
-			embed=discord.Embed(title="Top players",description=p)
+			embed=discord.Embed(title="Top players of server",description=p)
 			await ctx.send(embed=embed)
 		elif m.lower()=="global":
 			for j in x:
@@ -58,7 +58,7 @@ class top(commands.Cog):
 			p=""
 			for i in range(len(top_players)):
 				p+=str(i+1)+". "+top_players[i]+"\n"	
-			embed=discord.Embed(title="Top players",description=p)
+			embed=discord.Embed(title="Top players of discord",description=p)
 			await ctx.send(embed=embed)
 def setup(bot):
 	bot.add_cog(top(bot))
