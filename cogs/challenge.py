@@ -52,12 +52,22 @@ class challenge(commands.Cog):
 				h=db2_collection.find_one({"id":Team2_id})
 			await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match")
 			return
+		x=db_collection.find_one({"Team1_member_id": Team1_id})
+		if x==None:
+			x=db_collection.find_one({"Team1_member_id": Team2_id})
+			if x==None:
+				pass
+			else:
+				return
+		else:
+			return
 		outline={
 		"league" : "None",
-	    "Team1_name": "None",
-	    "Team2_name": "None",
-	    "Team1_member_id": Team1_id,
-	    "Team2_member_id": 0,
+	    	"Team1_name": "None",
+	    	"Team2_name": "None",
+	    	"Team1_member_id": Team1_id,
+	    	"Team2_member_id": Team2_id,
+		"status": 0,
 		"Maximum_overs":0,
 		"Now_batting": 0,
 	    "Team1_data":{
@@ -92,8 +102,22 @@ class challenge(commands.Cog):
 	    "This_over": "",
 		"Maximum_wickets": 10
 		}
-		db1_collection.update_one({},{"$set":{"ids":x['ids']}})
 		db_collection.insert_one(outline)
-		await ctx.send("Select Teams by typing `c!select_team`")
+		await asyncio.sleep(10)
+		x=db_collection.find_one({"Team1_member_id": Team1_id})
+		if x==None:
+			x=db_collection.find_one({"Team1_member_id": Team2_id})
+			if x==None:
+				return
+			else:
+				db_collection.delete_one({"Team2_member_id": Team1_id})
+				await ctx.send("Repsonse Error: The opponent failed to accept the challenge")
+				return
+
+		else:
+			db_collection.delete_one({"Team2_member_id": Team2_id})
+			await ctx.send("Repsonse Error: The opponent failed to accept the challenge")
+			return
+		await ctx.send(f"{Team2.mention} you have been challenged by {ctx.author.name} for a match. Type `c!accept` to accept the challenge")
 def setup(bot):
 	bot.add_cog(challenge(bot))
