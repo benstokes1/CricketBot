@@ -18,7 +18,7 @@ db2_collection=db2_name["data"]
 class set_overs(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
-	@commands.command(aliases=["so"])
+	@commands.command(aliases=["so","setovers"])
 	@commands.guild_only()
 	async def set_overs(self,ctx,number=None):
 		if number==None:
