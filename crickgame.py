@@ -109,6 +109,7 @@ async def help(ctx,*,com=None):
 		embed.add_field(name="c!server",value="Sends an invite link of official discord server of the bot",inline=False)
 		embed.add_field(name="c!guide",value="Sends a link of the guide",inline=False)
 		embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
+		await ctx.send(embed=embed)
 	else:
 		l={"top":"Displays top 5 players of guild/discord.",
 		   "register":"Creates an account on the name of the user.",
