@@ -145,7 +145,7 @@ async def list_of_commands(ctx,m=None):
 	await ctx.send(embed=embed)
 	if m!=None:
 		embed1=discord.Embed(title="List of commands",description="My prefix is 'c!'\n\n`General commands :`\n`c!top``c!register``c!leagues``c!profile``c!set about`\n\n`Match commands:`\n`c!challenge``c!select_team``c!show_teams``c!team``c!setovers``c!toss``c!choose``c!select_player``c!bowl``c!scoreboard``c!end`")
-		await cx.send(embed=embed1)
+		await cxt.send(embed=embed1)
 @bot.command()
 @commands.guild_only()
 async def ping(ctx):
