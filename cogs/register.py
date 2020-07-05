@@ -31,7 +31,7 @@ class register(commands.Cog):
 				guild=i
 				break
 		if ctx.author not in guild.members:
-			await ctx.send("You need be a member of the official server to create an account. You can get the server link by using `c!server` command")
+			await ctx.send("You need to be a member of the official server to create an account. Click [here](https://discord.gg/DayDsCV) to join the server ")
 			return
 		data={
 			"about": "I am a cricket lover!",
