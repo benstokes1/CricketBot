@@ -1,4 +1,4 @@
-import discord 
+'''import discord 
 import asyncio
 import random
 from discord.ext import commands
@@ -21,30 +21,16 @@ class accept(commands.Cog):
 	@commands.command()
 	@commands.guild_only()
 	async def accept(self,ctx):
-		if Team2==None:
-			await ctx.send("Syntax `c!challenge <@mention>`")
-			return
-		Team1_id=ctx.message.author.id
-		Team2_id=Team2.id
-		if Team2.bot==True:
-			await ctx.send("Tag a human not a bot")
-			return
-		if Team2.id==Team1_id:
-			await ctx.send("Dont tag urself")
-			return
-		h=db2_collection.find_one({"id":Team2.id})
+		Team2_id=ctx.message.author.id
 		h1=db2_collection.find_one({"id":ctx.message.author.id})
-		if h1==None or h==None:
+		if h1==None:
 			if h1==None:
 				await ctx.send("You need to have an account to challenge a person\nType `c!register` to create an account")
-				return
-			else:
-				await ctx.send(f"{Team2.mention} doesn't have an account\nType `c!register` to create an account")
 				return
 		x=db1_collection.find_one()
 		if x==None:
 			pass
-		elif ctx.message.author.id in x["ids"] or Team2_id in x["ids"]:
+		elif ctx.message.author.id in x["ids"]:
 			h=db2_collection.find_one({"id":ctx.message.author.id})
 			original_name=ctx.author.name
 			if h==None:
@@ -52,8 +38,26 @@ class accept(commands.Cog):
 				h=db2_collection.find_one({"id":Team2_id})
 			await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match")
 			return
-		x["ids"].append(Team2_id)
-		x['ids'].append(Team1_id)
+		x=db_collection.find_one({"Team1_member_id": Team1_id})
+		if x==None:
+			x=db_collection.find_one({"Team2_member_id": Team1_id})
+			if x==None:
+				return
+			else:
+				if x["status"]==0:
+					db_collection.update_one({"Team2_member_id": Team1_id},{"status": 1})
+				      	await ctx.send("Select Teams by typing `c!select_team`")
+				       	return
+				else:
+				       	return
+		else:
+			if x["status"]==0:
+				db_collection.update_one({"Team2_member_id": Team1_id},{"status": 1})
+				await ctx.send("Select Teams by typing `c!select_team`")
+				return
+			else:
+				return
+		
 		opponent_1=ctx.message.author.name+"#"+str(ctx.message.author.discriminator)
 		db2_collection.update_one({"id": Team2_id},{"$set":{"now_match": opponent_1}})
 		opponent_1=Team2.name+"#"+Team2.discriminator
@@ -102,4 +106,4 @@ class accept(commands.Cog):
 		db_collection.insert_one(outline)
 		await ctx.send("Select Teams by typing `c!select_team`")
 def setup(bot):
-	bot.add_cog(accept(bot))
+	bot.add_cog(accept(bot))'''
