@@ -52,22 +52,18 @@ class challenge(commands.Cog):
 				h=db2_collection.find_one({"id":Team2_id})
 			await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match")
 			return
-		x=db_collection.find_one({"Team1_member_id": Team1_id})
-		if x==None:
-			x=db_collection.find_one({"Team1_member_id": Team2_id})
-			if x==None:
-				pass
-			else:
-				return
-		else:
-			return
+		x["ids"].append(Team2_id)
+		x['ids'].append(Team1_id)
+		opponent_1=ctx.message.author.name+"#"+str(ctx.message.author.discriminator)
+		db2_collection.update_one({"id": Team2_id},{"$set":{"now_match": opponent_1}})
+		opponent_1=Team2.name+"#"+Team2.discriminator
+		db2_collection.update_one({"id":Team1_id},{"$set":{"now_match": opponent_1}})
 		outline={
 		"league" : "None",
-	    	"Team1_name": "None",
-	    	"Team2_name": "None",
-	    	"Team1_member_id": Team1_id,
-	    	"Team2_member_id": Team2_id,
-		"status": 0,
+	    "Team1_name": "None",
+	    "Team2_name": "None",
+	    "Team1_member_id": Team1_id,
+	    "Team2_member_id": Team2_id,
 		"Maximum_overs":0,
 		"Now_batting": 0,
 	    "Team1_data":{
@@ -102,26 +98,8 @@ class challenge(commands.Cog):
 	    "This_over": "",
 		"Maximum_wickets": 10
 		}
+		db1_collection.update_one({},{"$set":{"ids":x['ids']}})
 		db_collection.insert_one(outline)
-		await asyncio.sleep(10)
-		x=db_collection.find_one({"Team1_member_id": Team1_id})
-		if x==None:
-			x=db_collection.find_one({"Team1_member_id": Team2_id})
-			if x==None:
-				return
-			else:
-				if x["status"]!=0:
-				       return
-				db_collection.delete_one({"Team2_member_id": Team1_id})
-				await ctx.send("Repsonse Error: The opponent failed to accept the challenge")
-				return
-		else:
-
-			if x["status"]!=0:
-			       return
-			db_collection.delete_one({"Team2_member_id": Team2_id})
-			await ctx.send("Repsonse Error: The opponent failed to accept the challenge")
-			return
-		await ctx.send(f"{Team2.mention} you have been challenged by {ctx.author.name} for a match. Type `c!accept` to accept the challenge")
+		await ctx.send("Select Teams by typing `c!select_team`")
 def setup(bot):
 	bot.add_cog(challenge(bot))
