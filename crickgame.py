@@ -167,7 +167,7 @@ async def guide(ctx):
 	await ctx.send(embed=embed)
 @bot.command(aliases=["commands"])
 async def list_of_commands(ctx):
-	embed1=discord.Embed(title="Command List",description="Here is the list of commands!\nFor more info on a specific command, use `c!help {command}`\nNeed more help? Come join our [guild](https://discord.gg/DayDsCV)")
+	embed1=discord.Embed(title="Command List",description="Here is the list of commands!\nFor more info on a specific command, use `c!help {command}`\nNeed more help? Come join our [guild](https://discord.gg/DayDsCV).")
 	embed1.add_field(name="General commands :",value="`c!top` `c!register` `c!leagues` `c!profile` `c!set about`",inline=False)
 	embed1.add_field(name="Match commands :",value="`c!challenge` `c!select_team` `c!show_teams` `c!team` `c!setovers` `c!toss` `c!choose` `c!select_player` `c!bowl` `c!scoreboard` `c!end`",inline=False)
 	await ctx.send(embed=embed1)
