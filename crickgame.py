@@ -64,7 +64,7 @@ async def on_message(message):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Made a few changes in `c!challenge` command. Added two new commands, `c!accept` and `c!decline`. Type `c!help {command}` to check their description. You can report bugs, if u find any :smile:."
+	announcement="Made a few changes in `c!challenge` command.\nAdded two new commands, `c!accept` and `c!decline`. Type `c!help {command}` to check their description.\nYou can report bugs, if u find any :smile:."
 	embed=discord.Embed(title="Announcement",description=announcement)
 	def is_me(m):
     		return m.author.id == ctx.message.author.id
