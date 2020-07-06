@@ -61,11 +61,13 @@ class approval(commands.Cog):
 		if player1==None:
 			pass
 		else:
-			h=db2_collection.find_one({"id":x["Team1_member_id"]},{"$set":{"now_match": player2.name+"#"+str(player2.discriminator)}})
+			name=player2.name+"#"+str(player2.discriminator)
+			h=db2_collection.find_one({"id":x["Team1_member_id"]},{"$set":{"now_match": name}})
 		if player2==None:
 			pass
 		else:
-			h=db2_collection.find_one({"id":x["Team2_member_id"]},{"$set":{"now_match": player1.name+"#"+str(player1.discriminator)}})
+			name=player1.name+"#"+str(player1.discriminator)
+			h=db2_collection.find_one({"id":x["Team2_member_id"]},{"$set":{"now_match": name}})
 		o["ids"].append(x["Team1_member_id"])
 		o["ids"].append(x["Team2_member_id"])
 		db1_collection.update_one({},{"$set":{"ids":o["ids"]}})
