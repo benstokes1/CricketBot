@@ -20,7 +20,7 @@ db2_collection=db2_name["data"]
 #loading cogs
 for filename in os.listdir("./cogs"):
 	if filename.endswith(".py"):
-			bot.load_extension(f"cogs.{filename[:-3]}")
+		bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.event
 async def on_ready():
 	print("Less go")
@@ -64,7 +64,7 @@ async def on_message(message):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Made Changes in command `c!commands`. Now `c!help {command}` displays the description of the command"
+	announcement="Made a few changes in `c!challenge` command. Added two new commands, `c!accept` and `c!decline`. Type `c!help {command}` to check their description. You can report bugs, if u find any :smile:."
 	embed=discord.Embed(title="Announcement",description=announcement)
 	def is_me(m):
     		return m.author.id == ctx.message.author.id
