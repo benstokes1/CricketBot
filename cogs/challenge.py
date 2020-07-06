@@ -20,7 +20,7 @@ class challenge(commands.Cog):
         	self.bot=bot
 	@commands.command()
 	@commands.guild_only()
-	async def challenge(self,ctx,Team2:discord.Member=None):
+	async def challenge(ctx,Team2:discord.Member=None):
 		if Team2==None:
 			await ctx.send("Syntax `c!challenge <@mention>`")
 			return
@@ -36,10 +36,10 @@ class challenge(commands.Cog):
 		h1=db2_collection.find_one({"id":ctx.message.author.id})
 		if h1==None or h==None:
 			if h1==None:
-				await ctx.send("You need to have an account to challenge a person\nType `c!register` to create an account")
+				await ctx.send("You need to have an account to challenge a person\nType `c!register` to create an account.")
 				return
 			else:
-				await ctx.send(f"{Team2.mention} doesn't have an account\nType `c!register` to create an account")
+				await ctx.send(f"{Team2.mention} doesn't have an account\nType `c!register` to create an account.")
 				return
 		x=db1_collection.find_one()
 		if x==None:
@@ -50,23 +50,27 @@ class challenge(commands.Cog):
 			if h==None:
 				original_name=Team2.name
 				h=db2_collection.find_one({"id":Team2_id})
-			await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match")
+			await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match.")
 			return
-		x["ids"].append(Team2_id)
-		x['ids'].append(Team1_id)
-		opponent_1=ctx.message.author.name+"#"+str(ctx.message.author.discriminator)
-		db2_collection.update_one({"id": Team2_id},{"$set":{"now_match": opponent_1}})
-		opponent_1=Team2.name+"#"+Team2.discriminator
-		db2_collection.update_one({"id":Team1_id},{"$set":{"now_match": opponent_1}})
+		x=db_collection.find_one({"Team1_member_id": Team1_id})
+		if x==None:
+			x=db_collection.find_one({"Team1_member_id": Team2_id})
+			if x==None:
+				pass
+			else:
+				return
+		else:
+			return
 		outline={
 		"league" : "None",
-	    "Team1_name": "None",
-	    "Team2_name": "None",
-	    "Team1_member_id": Team1_id,
-	    "Team2_member_id": Team2_id,
+			"Team1_name": "None",
+			"Team2_name": "None",
+			"Team1_member_id": Team1_id,
+			"Team2_member_id": Team2_id,
+		"status": 0,
 		"Maximum_overs":0,
 		"Now_batting": 0,
-	    "Team1_data":{
+		"Team1_data":{
 		"Lineup":[],
 		"Batting": {},
 		"Bowling": {},
@@ -74,8 +78,8 @@ class challenge(commands.Cog):
 			"Current_bowling": [],
 			"Previous_bowler": [],
 		"Batsmen_out": []
-	    },
-	    "Team2_data":{
+		},
+		"Team2_data":{
 		"Lineup":[],
 		"Batting": {},
 		"Bowling": {},
@@ -83,7 +87,7 @@ class challenge(commands.Cog):
 			"Current_bowling": [],
 			"Previous_bowler": [],
 		"Batsmen_out": []
-	    },
+		},
 		"Score_card": {
 				"Target": 0,
 				"Overs": "0.0",
@@ -94,12 +98,30 @@ class challenge(commands.Cog):
 				"Toss": 0,
 				"First_innings_score": "0" 
 			} ,
-	    "First_innings_score": "",
-	    "This_over": "",
+		"First_innings_score": "",
+		"This_over": "",
 		"Maximum_wickets": 10
 		}
-		db1_collection.update_one({},{"$set":{"ids":x['ids']}})
 		db_collection.insert_one(outline)
-		await ctx.send("Select Teams by typing `c!select_team`")
+		await ctx.send(f"{Team2.mention} , **{ctx.message.author.name}** has challenged you!\nType `c!accept` to accept the challenge or `c!decline` to decilne the challenge.")
+		await asyncio.sleep(60)
+		x=db_collection.find_one({"Team1_member_id": Team1_id})
+		if x==None:
+			x=db_collection.find_one({"Team1_member_id": Team2_id})
+			if x==None:
+				return
+			else:
+				if x["status"]!=0:
+					return
+				db_collection.delete_one({"Team2_member_id": Team1_id})
+				await ctx.send("Repsonse Error: The opponent failed to accept the challenge")
+				return
+		else:
+			print(x["status"])
+			if x["status"]!=0:
+				return
+			db_collection.delete_one({"Team2_member_id": Team2_id})
+			await ctx.send("Repsonse Error: The opponent failed to accept the challenge")
+			return
 def setup(bot):
 	bot.add_cog(challenge(bot))
