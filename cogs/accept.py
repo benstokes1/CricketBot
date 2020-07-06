@@ -22,6 +22,7 @@ class accept(commands.Cog):
 	@commands.guild_only()
 	async def accept(self,ctx):
 		'''Team2_id=ctx.message.author.id
+		Team2=ctx.message.author
 		h1=db2_collection.find_one({"id":ctx.message.author.id})
 		if h1==None:
 			if h1==None:
@@ -36,7 +37,7 @@ class accept(commands.Cog):
 			if h==None:
 				pass
 			else:	
-				await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match")
+				await ctx.send(f"**{Team2.name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match")
 				return
 		x=db_collection.find_one({"Team1_member_id": Team2_id})
 		if x==None:
