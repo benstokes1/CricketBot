@@ -18,7 +18,7 @@ db2_collection=db2_name["data"]
 class show_leagues(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
-	@commands.command(aliases=["leagues"])
+	@commands.command(aliases=["leagues","league"])
 	@commands.guild_only()
 	async def show_leagues(self,ctx,number=None):
 		arr = os.listdir('./Teams')
