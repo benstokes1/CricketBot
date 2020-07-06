@@ -72,12 +72,12 @@ async def announcements(ctx):
 	await ctx.send(embed=embed)
 @bot.command()
 @commands.guild_only()
-async def announce(ctx,channel:discord.TextChannel,fil:discord.File=None,*,txt=None):
+async def announce(ctx,channel:discord.TextChannel,*,txt=None):
 	if ctx.author.id==442673891656335372:
 		if txt==None:
 			return
 		else:
-			await channel.send(content=txt,file=fil)
+			await channel.send(content=txt)
 	def is_me(m):
     		return m.author.id == 442673891656335372
 	await ctx.message.channel.purge(limit=1, check=is_me)
