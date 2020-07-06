@@ -114,14 +114,14 @@ class challenge(commands.Cog):
 				if x["status"]!=0:
 					return
 				db_collection.delete_one({"Team2_member_id": Team1_id})
-				await ctx.send("Repsonse Error: The opponent failed to respond")
+				await ctx.send("`Repsonse Error: The opponent failed to respond`")
 				return
 		else:
 			print(x["status"])
 			if x["status"]!=0:
 				return
 			db_collection.delete_one({"Team2_member_id": Team2_id})
-			await ctx.send("Repsonse Error: The opponent failed to respond")
+			await ctx.send("`Repsonse Error: The opponent failed to respond`")
 			return
 def setup(bot):
 	bot.add_cog(challenge(bot))
