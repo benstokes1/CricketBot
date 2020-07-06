@@ -122,7 +122,9 @@ async def help(ctx,*,com=None):
 		   "select_player":"To select a player from your team.",
 		   "bowl":"Should be used by the bowling team while bowling.",
 		   "scoreboard":"Displays the scoreboard of the match running, if any.",
-		   "end":"Abandons the match, the player has, if any."}
+		   "end":"Abandons the match, the player has, if any.",
+		  "decline":"Declines the challenge request",
+		  "accept": "Accepts the challenge request"}
 		syntax={"top": "`c!top <global/server>`",
 			"register": "`c!register`",
 			"leagues": "`c!leagues`",
@@ -138,7 +140,9 @@ async def help(ctx,*,com=None):
 			"select_player": "`c!select_player <player_id>`",
 			"bowl": "`c!bowl`",
 			"scoreboard": "`c!scoreboard`",
-			"end": "`c!end`"
+			"end": "`c!end`",
+			"decline": "`c!decline`",
+			"accept": "`c!accept`"
 		       }
 		if com.lower() not in l:
 			return
@@ -165,7 +169,7 @@ async def guide(ctx):
 async def list_of_commands(ctx):
 	embed1=discord.Embed(title="Command List",description="Here is the list of commands!\nFor more info on a specific command, use `c!help {command}`\nNeed more help? Come join our [guild](https://discord.gg/DayDsCV).")
 	embed1.add_field(name="General commands :",value="`top` `register` `leagues` `profile` `set about`",inline=False)
-	embed1.add_field(name="Match commands :",value="`challenge` `select_team` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
+	embed1.add_field(name="Match commands :",value="`challenge` `decline` `accept` `select_team` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
 	await ctx.send(embed=embed1)
 @bot.command()
 @commands.guild_only()
