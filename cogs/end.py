@@ -94,7 +94,25 @@ class end(commands.Cog):
 				reaction, user = await self.bot.wait_for('reaction_add', timeout=120.0, check=check)
 			except asyncio.TimeoutError:
 				o = await ctx.channel.fetch_message(m.id)
-				embed=discord.Embed(title="Response Time error",description="Reaction not added.")
+				embed=discord.Embed(title="Response Time error",description="Reaction not added.\nMatch has been abandoned due to inactiveness.")
+				await o.edit(embed=embed)
+				await o.clear_reactions()
+				db2_collection.update_one({"id": team2_member_id},{"$set":{"now_match" :""}})
+				db2_collection.update_one({"id": team1_member_id},{"$set":{"now_match" :""}})
+				xy=db1_collection.find_one()
+				xy["ids"].pop(xy["ids"].index(team1_member_id))
+				xy["ids"].pop(xy["ids"].index(team2_member_id))
+				db1_collection.update_one({},{"$set":{"ids":xy["ids"]}})
+				x=db_collection.find_one({"Team1_member_id": team1_member_id})
+				if x==None:
+					x=db_collection.find_one({"Team1_member_id": team2_member_id})
+					if x==None:
+						return
+					else:
+						db_collection.delete_one({"Team1_member_id": team2_member_id})
+				else:
+					db_collection.delete_one({"Team1_member_id": team1_member_id})
+				embed=discord.Embed(title="Response Time error",description="Reaction not added.\nMatch has been abandoned due to inactiveness.")
 				await o.edit(embed=embed)
 				await o.clear_reactions()
 			else:
