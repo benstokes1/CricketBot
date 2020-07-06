@@ -123,8 +123,8 @@ async def help(ctx,*,com=None):
 		   "bowl":"Should be used by the bowling team while bowling.",
 		   "scoreboard":"Displays the scoreboard of the match running, if any.",
 		   "end":"Abandons the match, the player has, if any.",
-		  "decline":"Declines the challenge request",
-		  "accept": "Accepts the challenge request"}
+		  "decline":"Declines the challenge request.",
+		  "accept": "Accepts the challenge request."}
 		syntax={"top": "`c!top <global/server>`",
 			"register": "`c!register`",
 			"leagues": "`c!leagues`",
