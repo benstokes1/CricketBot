@@ -20,7 +20,7 @@ class challenge(commands.Cog):
         	self.bot=bot
 	@commands.command()
 	@commands.guild_only()
-	async def challenge(ctx,Team2:discord.Member=None):
+	async def challenge(self,ctx,Team2:discord.Member=None):
 		if Team2==None:
 			await ctx.send("Syntax `c!challenge <@mention>`")
 			return
