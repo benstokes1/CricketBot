@@ -91,7 +91,7 @@ class end(commands.Cog):
 			def check(reaction,user):
 				return (m.id == reaction.message.id and (user.id == team2_member_id and (reaction.emoji=="☑️" or reaction.emoji=="❌")))
 			try:
-				reaction, user = await self.bot.wait_for('reaction_add', timeout=60.0, check=check)
+				reaction, user = await self.bot.wait_for('reaction_add', timeout=120.0, check=check)
 			except asyncio.TimeoutError:
 				o = await ctx.channel.fetch_message(m.id)
 				embed=discord.Embed(title="Response Time error",description="Reaction not added.")
