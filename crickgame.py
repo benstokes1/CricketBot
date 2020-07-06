@@ -64,7 +64,7 @@ async def on_message(message):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Made few changes to `c!end` command , now the bot will abandon the match only when the other player agrees to abandon it by reacting. Timeout for the reaction is 2 minutes.\nFeel free to report bugs if any :smile:"
+	announcement="Made few changes to `c!end` command , now the bot will abandon the match only when the other player agrees to abandon it by reacting. Timeout for the reaction is 2 minutes i.e., if the opponent fails to react, the match will be abandoned automatically.\nFeel free to report bugs if any :smile:"
 	embed=discord.Embed(title="Announcement",description=announcement)
 	def is_me(m):
     		return m.author.id == ctx.message.author.id
