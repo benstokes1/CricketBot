@@ -95,8 +95,6 @@ class end(commands.Cog):
 			except asyncio.TimeoutError:
 				o = await ctx.channel.fetch_message(m.id)
 				embed=discord.Embed(title="Response Time error",description="Reaction not added.\nMatch has been abandoned due to inactiveness.")
-				await o.edit(embed=embed)
-				await o.clear_reactions()
 				db2_collection.update_one({"id": team2_member_id},{"$set":{"now_match" :""}})
 				db2_collection.update_one({"id": team1_member_id},{"$set":{"now_match" :""}})
 				xy=db1_collection.find_one()
