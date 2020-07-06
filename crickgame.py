@@ -103,11 +103,7 @@ async def suggest(ctx,*,suggestion=None):
 @commands.guild_only()
 async def help(ctx,*,com=None):
 	if com==None:
-		embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="My prefix is 'c!'")
-		embed.add_field(name="c!commands",value="Displays a list of commands",inline=False)
-		embed.add_field(name="c!invite",value="Sends an Invite Link of the bot",inline=False)
-		embed.add_field(name="c!server",value="Sends an invite link of official discord server of the bot",inline=False)
-		embed.add_field(name="c!guide",value="Sends a link of the guide",inline=False)
+		embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="My prefix is 'c!'\n[Invite me](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)\n\n[Guild Link](https://discord.gg/DayDsCV)\n\n[Guide link](https://rb.gy/vagecy)")
 		embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
 		await ctx.send(embed=embed)
 	else:
