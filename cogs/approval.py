@@ -56,6 +56,16 @@ class approval(commands.Cog):
 		else:
 			return
 		o=db1_collection.find_one()
+		player1=ctx.message.guild.get_member(x["Team1_member_id"])
+		player2=ctx.message.guild.get_member(x["Team2_member_id"])
+		if player1==None:
+			pass
+		else:
+			h=db2_collection.find_one({"id":x["Team1_member_id"]},{"$set":{"now_match": player2.name+"#"+str(player2.discriminator)}})
+		if player2==None:
+			pass
+		else:
+			h=db2_collection.find_one({"id":x["Team2_member_id"]},{"$set":{"now_match": player1.name+"#"+str(player1.discriminator)}})
 		o["ids"].append(x["Team1_member_id"])
 		o["ids"].append(x["Team2_member_id"])
 		db1_collection.update_one({},{"$set":{"ids":o["ids"]}})
