@@ -29,7 +29,6 @@ class end(commands.Cog):
 					await ctx.send("No matches are running")
 					return
 				else:
-					xy=db1_collection.find_one()
 					team1_member=None
 					for i in self.bot.guilds:
 						for j in i.members:
@@ -39,31 +38,27 @@ class end(commands.Cog):
 						if team1_member!=None:
 							break
 					team2_member=ctx.message.author
-					db2_collection.update_one({"id": team2_member.id},{"$set":{"now_match" :""}})
-					db2_collection.update_one({"id": x["Team1_member_id"]},{"$set":{"now_match" :""}})
 					if team1_member==None:
 						team1_member.id=x["Team1_member_id"]
-						db_collection.delete_one({"Team2_member_id":team2_member.id})
-						xy["ids"].pop(xy["ids"].index(team1_member.id))
-						xy["ids"].pop(xy["ids"].index(team2_member.id))
-						db1_collection.update_one({},{"$set":{"ids":x["ids"]}})
-						await ctx.send("Match abandoned successfully")
-						return				
-					db_collection.delete_one({"Team2_member_id":team2_member.id})
-					xy["ids"].pop(xy["ids"].index(team1_member.id))
-					xy["ids"].pop(xy["ids"].index(team2_member.id))
-					db1_collection.update_one({},{"$set":{"ids":xy["ids"]}})
-					await ctx.send("Match abandoned successfully")
-					if team2_member.dm_channel==None:
-						await team2_member.create_dm()	
-					if team1_member.dm_channel==None:
-						await team1_member.create_dm()
-					dm1=team2_member.dm_channel
-					dm2=team1_member.dm_channel			
-					await dm1.send(f"Match between **{team1_member.name}#{team1_member.discriminator}** vs **{team2_member.name}#{team2_member.discriminator}** has been abandoned by {ctx.message.author.name}#{ctx.message.author.discriminator}")
-					await dm2.send(f"Match between **{team1_member.name}#{team1_member.discriminator}** vs **{team2_member.name}#{team2_member.discriminator}** has been abandoned by {ctx.message.author.name}#{ctx.message.author.discriminator}")
+						h=db2_collection.find_one({"id":team1_member.id})
+						h1=db2_collection.find_one({"id":team2_member.id})
+						embed=discord.Embed(title="Request to abandon match",description=f"**{team2_member.name}** has requested to abandon the match between **{h['now_match']}** and **{h1['now_match']}**\nPlease react with ☑️ to abandon match and ❌ to deny the request.")
+						embed.set_footer(text=f"Match gets abandoned when {h1['now_match']} reacts with ☑️")
+						m=await ctx.send(embed=embed)
+						await m.add_reaction("☑️")
+						await m.add_reaction("❌")				
+					else:
+						
+						h=db2_collection.find_one({"id":team1_member.id})
+						h1=db2_collection.find_one({"id":team2_member.id})
+						embed=discord.Embed(title="Request to abandon match",description=f"**{team2_member.name}** has requested to abandon the match between **{h['now_match']}** and **{h1['now_match']}**\nPlease react with ☑️ to abandon match and ❌ to deny the request.")
+						embed.set_footer(text=f"Match gets abandoned when {h1['now_match']} reacts with ☑️")
+						m=await ctx.send(embed=embed)
+						await m.add_reaction("☑️")
+						await m.add_reaction("❌")
+					team1_member_id=team2_member.id
+					team2_member_id=team1_member.id
 			else:
-				xy=db1_collection.find_one()
 				team2_member=None
 				for i in self.bot.guilds:
 					for j in i.members:
@@ -73,35 +68,63 @@ class end(commands.Cog):
 					if team2_member!=None:
 						break
 				team1_member=ctx.message.author
-				db2_collection.update_one({"id": team1_member.id},{"$set":{"now_match" :""}})
-				db2_collection.update_one({"id": x["Team2_member_id"]},{"$set":{"now_match" :""}})
 				if team2_member==None:
 					team2_member.id=x["Team2_member_id"]
-
-					db_collection.delete_one({"Team1_member_id":team1_member.id})
-					xy["ids"].pop(xy["ids"].index(team1_member.id))
-					xy["ids"].pop(xy["ids"].index(team2_member.id))
-					db1_collection.update_one({},{"$set":{"ids":x["ids"]}})
-					await ctx.send("Match abandoned successfully")
-					return
-
-				db_collection.delete_one({"Team1_member_id":team1_member.id})
-				xy["ids"].pop(xy["ids"].index(team1_member.id))
-				xy["ids"].pop(xy["ids"].index(team2_member.id))
-				db1_collection.update_one({},{"$set":{"ids":xy["ids"]}})
-				await ctx.send("Match abandoned successfully")
-
-				if team2_member.dm_channel==None:
-					await team2_member.create_dm()
-				if team1_member.dm_channel==None:
-					await team1_member.create_dm()
-				dm1=team2_member.dm_channel
-				dm2=team1_member.dm_channel
-				await dm1.send(f"Match between **{team1_member.name}#{team1_member.discriminator}** vs **{team2_member.name}#{team2_member.discriminator}** has been abandoned by {ctx.message.author.name}#{ctx.message.author.discriminator}")
-				await dm2.send(f"Match between **{team1_member.name}#{team1_member.discriminator}** vs **{team2_member.name}#{team2_member.discriminator}** has been abandoned by {ctx.message.author.name}#{ctx.message.author.discriminator}")
-
+					h=db2_collection.find_one({"id":team1_member.id})
+					h1=db2_collection.find_one({"id":team2_member.id})
+					embed=discord.Embed(title="Request to abandon match",description=f"{team1_member.name} has requested to abandon the match between **{h['now_match']}** and **{h1['now_match']}**\nPlease react with ☑️ to abandon match and ❌ to deny the request.")
+					embed.set_footer(text=f"Match gets abandoned when {h['now_match']} reacts with ☑️")
+					m=await ctx.send(embed=embed)
+					await m.add_reaction("☑️")
+					await m.add_reaction("❌")
+				
+				else:
+					h=db2_collection.find_one({"id":team1_member.id})
+					h1=db2_collection.find_one({"id":team2_member.id})
+					embed=discord.Embed(title="Request to abandon match",description=f"{team1_member.name} has requested to abandon the match between **{h['now_match']}** and **{h1['now_match']}**\nPlease react with ☑️ to abandon match and ❌ to deny the request.")
+					embed.set_footer(text=f"Match gets abandoned when {h['now_match']} reacts with ☑️")
+					m=await ctx.send(embed=embed)
+					await m.add_reaction("☑️")
+					await m.add_reaction("❌")
+				team1_member_id=team1_member.id
+				team2_member_id=team2_member.id
+			def check(reaction,user):
+				return (m.id == reaction.message.id and (user.id == team2_member_id and (reaction.emoji=="☑️" or reaction.emoji=="❌")))
+			try:
+				reaction, user = await self.bot.wait_for('reaction_add', timeout=60.0, check=check)
+			except asyncio.TimeoutError:
+				o = await ctx.channel.fetch_message(m.id)
+				embed=discord.Embed(title="Response Time error",description="Reaction not added.")
+				await o.edit(embed=embed)
+				await o.clear_reactions()
+			else:
+				o = await ctx.channel.fetch_message(m.id)
+				if reaction.emoji=="☑️":
+					db2_collection.update_one({"id": team2_member_id},{"$set":{"now_match" :""}})
+					db2_collection.update_one({"id": team1_member_id},{"$set":{"now_match" :""}})
+					xy=db1_collection.find_one()
+					xy["ids"].pop(xy["ids"].index(team1_member_id))
+					xy["ids"].pop(xy["ids"].index(team2_member_id))
+					db1_collection.update_one({},{"$set":{"ids":xy["ids"]}})
+					x=db_collection.find_one({"Team1_member_id": team1_member_id})
+					if x==None:
+						x=db_collection.find_one({"Team1_member_id": team2_member_id})
+						if x==None:
+							return
+						else:
+							db_collection.delete_one({"Team1_member_id": team2_member_id})
+					else:
+						db_collection.delete_one({"Team1_member_id": team1_member_id})
+					embed=discord.Embed(title="Match has been abandoned")
+					await o.clear_reactions()
+					await o.edit(embed=embed)
+				elif reaction.emoji=="❌":
+					embed=discord.Embed(title="Request declined",desription="Request to end the match has been declined.")
+					await o.clear_reactions()
+					await o.edit(embed=embed)
 		except:
-			pass
+			pass	
+			
 
 def setup(bot):
 	bot.add_cog(end(bot))
