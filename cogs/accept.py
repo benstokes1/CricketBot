@@ -38,72 +38,36 @@ class accept(commands.Cog):
 				h=db2_collection.find_one({"id":Team2_id})
 			await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match")
 			return
-		x=db_collection.find_one({"Team1_member_id": Team1_id})
+		x=db_collection.find_one({"Team1_member_id": Team2_id})
 		if x==None:
-			x=db_collection.find_one({"Team2_member_id": Team1_id})
+			x=db_collection.find_one({"Team2_member_id": Team2_id})
 			if x==None:
 				return
 			else:
 				if x["status"]==0:
-					db_collection.update_one({"Team2_member_id": Team1_id},{"status": 1})
-				      	await ctx.send("Select Teams by typing `c!select_team`")
-				       	return
+				       	player1_name=ctx.message.guild.get_member(x["Team2_id"])
+				       	player2_name=ctx.message.guild.get_member(x["Team1_id"])
+				       	if player1_name==None or player2_name==None:
+				       		await ctx.send("Select Teams by typing `c!select_team`")	
+				       	else:
+				       		await ctx.send(f"Duel between {player1_name} and {player2_name} has started\nSelect Teams by typing `c!select_team`")
+					db_collection.update_one({"Team2_member_id": Team2_id},{"status": 1})
 				else:
 				       	return
 		else:
 			if x["status"]==0:
-				db_collection.update_one({"Team2_member_id": Team1_id},{"status": 1})
-				await ctx.send("Select Teams by typing `c!select_team`")
-				return
+				player1_name=ctx.message.guild.get_member(x["Team2_id"])
+				player2_name=ctx.message.guild.get_member(x["Team1_id"])
+				if player1_name==None or player2_name==None:
+					await ctx.send("Select Teams by typing `c!select_team`")	
+				else:
+					await ctx.send(f"Duel between {player1_name} and {player2_name} has started\nSelect Teams by typing `c!select_team`")
+				db_collection.update_one({"Team2_member_id": Team2_id},{"status": 1})
 			else:
 				return
-		
-		opponent_1=ctx.message.author.name+"#"+str(ctx.message.author.discriminator)
-		db2_collection.update_one({"id": Team2_id},{"$set":{"now_match": opponent_1}})
-		opponent_1=Team2.name+"#"+Team2.discriminator
-		db2_collection.update_one({"id":Team1_id},{"$set":{"now_match": opponent_1}})
-		outline={
-		"league" : "None",
-	    "Team1_name": "None",
-	    "Team2_name": "None",
-	    "Team1_member_id": Team1_id,
-	    "Team2_member_id": Team2_id,
-		"Maximum_overs":0,
-		"Now_batting": 0,
-	    "Team1_data":{
-		"Lineup":[],
-		"Batting": {},
-		"Bowling": {},
-			"Current_batting": [],
-			"Current_bowling": [],
-			"Previous_bowler": [],
-		"Batsmen_out": []
-	    },
-	    "Team2_data":{
-		"Lineup":[],
-		"Batting": {},
-		"Bowling": {},
-			"Current_batting": [],
-			"Current_bowling": [],
-			"Previous_bowler": [],
-		"Batsmen_out": []
-	    },
-		"Score_card": {
-				"Target": 0,
-				"Overs": "0.0",
-				"Maximum_overs": "0.0",
-				"Last_ball": "0",
-				"Score": 0,
-				"Wickets": 0,
-				"Toss": 0,
-				"First_innings_score": "0" 
-			} ,
-	    "First_innings_score": "",
-	    "This_over": "",
-		"Maximum_wickets": 10
-		}
-		db1_collection.update_one({},{"$set":{"ids":x['ids']}})
-		db_collection.insert_one(outline)
-		await ctx.send("Select Teams by typing `c!select_team`")'''
+		o=db1_collection.find_one()
+		o["ids"].append(x["Team1_member_id"])
+		o["ids"].append(x["Team2_member_id"])
+		db1_collection.update_one({},{"ids":o["ids"])'''
 def setup(bot):
 	bot.add_cog(accept(bot))
