@@ -23,7 +23,7 @@ class show_team(commands.Cog):
 	async def show_teams(self,ctx,number1=None):
 		arr = os.listdir('./Teams')
 		if number1==None:
-			await ctx.send("Syntax : `c!select_team <league_id> <team_id>`")
+			await ctx.send("Syntax : `c!show_team <league_id>`")
 			return
 		team=""
 		try:
