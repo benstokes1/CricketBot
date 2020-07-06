@@ -114,7 +114,7 @@ class challenge(commands.Cog):
 				if x["status"]!=0:
 					return
 				db_collection.delete_one({"Team2_member_id": Team1_id})
-				await ctx.send("Repsonse Error: The opponent failed to accept the challenge")
+				await ctx.send("Repsonse Error: The opponent failed to respond")
 				return
 		else:
 			print(x["status"])
