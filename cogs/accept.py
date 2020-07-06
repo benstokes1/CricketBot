@@ -68,6 +68,6 @@ class accept(commands.Cog):
 		o=db1_collection.find_one()
 		o["ids"].append(x["Team1_member_id"])
 		o["ids"].append(x["Team2_member_id"])
-		db1_collection.update_one({},{"ids":o["ids"])'''
+		db1_collection.update_one({},{"ids":o["ids"]})'''
 def setup(bot):
 	bot.add_cog(accept(bot))
