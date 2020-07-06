@@ -18,7 +18,7 @@ db2_collection=db2_name["data"]
 class challenge(commands.Cog):
 	def __init__(self,bot):
         	self.bot=bot
-	@commands.command()
+	@commands.command(aliases=["duel"])
 	@commands.guild_only()
 	async def challenge(self,ctx,Team2:discord.Member=None):
 		if Team2==None:
