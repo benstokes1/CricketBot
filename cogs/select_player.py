@@ -23,6 +23,7 @@ class select_player(commands.Cog):
 	async def select_player(self,ctx,number=None,number1=None):
 		x=db_collection.find_one({"Team1_member_id": ctx.message.author.id})
 		if x==None:
+			
 			x=db_collection.find_one({"Team2_member_id": ctx.message.author.id})
 			if x==None:
 				await ctx.send("Type `c!help` to know about how to use the bot!")
