@@ -501,7 +501,7 @@ class bowl(commands.Cog):
 				asyncio.sleep(1)
 			o = await ctx.channel.fetch_message(m.id)
 			embed=discord.Embed(title=f"You can continue bowling the next ball")
-			await o.edit(embed=embed
+			await o.edit(embed=embed)
 
 
 def setup(bot):
