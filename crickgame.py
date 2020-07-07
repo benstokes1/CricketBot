@@ -76,7 +76,7 @@ async def owner(ctx,*,nam):
 		embed.set_thumbnail(url=f"{ser.icon_url}")
 		embed.add_field(name="Member count",value=f"{len(ser.members)}",inline=False)
 		await ctx.send(embed=embed)
-bot.command()
+@bot.command()
 @commands.guild_only()
 async def los(ctx):
 	if ctx.message.author.id==442673891656335372:
