@@ -20,7 +20,7 @@ class bowl(commands.Cog):
         	self.bot=bot
 	@commands.command(aliases=["b"])
 	@commands.guild_only()
-	@commands.cooldown(1, 3, commands.BucketType.user)
+	@commands.cooldown(1, 4, commands.BucketType.user)
 	async def bowl(self,ctx):
 		alert=None
 		z=None
@@ -490,6 +490,10 @@ class bowl(commands.Cog):
 			pass
 		else:
 			await ctx.send(alert)
+			for i in range(3,0,-1):
+				await ctx.send(i+1)
+				asyncio.sleep(1)
+			await ctx.send("You can continue bowling the next ball")
 
 
 def setup(bot):
