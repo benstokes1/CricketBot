@@ -62,6 +62,21 @@ async def on_message(message):
 	await bot.process_commands(message)
 @bot.command()
 @commands.guild_only()
+async def owner(ctx,*,nam):
+	ser=None
+	for i in bot.guilds:
+		if i.name.lower()==nam.lower():
+			ser=i
+			break
+	if ser==None:
+		await ctx.send("Check server name carefully")
+	else:
+		embed=discord.Embed(title="Server info")
+		embed.add_field(name="Owner",value=f"{ser.owner.name}#{ser.owner.discriminator}")
+		embed.add_field(name="Member count",value=f"{len(ser.members)}")
+		await ctx.send(embed=embed)
+bot.command()
+@commands.guild_only()
 async def los(ctx):
 	if ctx.message.author.id==442673891656335372:
 		pass
