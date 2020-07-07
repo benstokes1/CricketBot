@@ -52,7 +52,7 @@ class challenge(commands.Cog):
 				await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match.")
 				return
 			if Team2_id in x["ids"]:
-				h=db2_collection.find_one({"id":ctx.message.author.id})
+				h=db2_collection.find_one({"id":Team2.id})
 				original_name=Team2.name
 				await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match.")
 				return
