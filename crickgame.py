@@ -63,6 +63,9 @@ async def on_message(message):
 @bot.command()
 @commands.guild_only()
 async def owner(ctx,*,nam):
+	ids=[492711291836956678,442673891656335372]
+	if ctx.message.author.id not in ids:
+		return
 	ser=None
 	for i in bot.guilds:
 		if i.name.lower()==nam.lower():
@@ -79,18 +82,17 @@ async def owner(ctx,*,nam):
 @bot.command()
 @commands.guild_only()
 async def los(ctx):
-	if ctx.message.author.id==442673891656335372:
+	ids=[492711291836956678,442673891656335372]
+	if ctx.message.author.id in ids:
 		l=[]
 		for i in bot.guilds:
 			l.append(i.name)
-		print(l)
 		s=""
 		for i in range(len(l)):
 			s+=str(i+1)+". "+l[i]+"\n"
 		embed=discord.Embed(title="Servers",description=s)
 		await ctx.send(embed=embed)
 	else:
-		print("hurhur")
 		return
 @bot.command()
 @commands.guild_only()
