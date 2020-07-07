@@ -72,8 +72,8 @@ async def owner(ctx,*,nam):
 		await ctx.send("Check server name carefully")
 	else:
 		embed=discord.Embed(title="Server info")
-		embed.add_field(name="Owner",value=f"{ser.owner.name}#{ser.owner.discriminator}")
-		embed.add_field(name="Member count",value=f"{len(ser.members)}")
+		embed.add_field(name="Owner",value=f"{ser.owner.name}#{ser.owner.discriminator}",inline=False)
+		embed.add_field(name="Member count",value=f"{len(ser.members)}",inline=False)
 		await ctx.send(embed=embed)
 bot.command()
 @commands.guild_only()
