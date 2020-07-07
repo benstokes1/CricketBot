@@ -74,6 +74,7 @@ async def los(ctx):
 	for i in range(len(l)):
 		string+=str(i)+". "+l[i]+"\n"
 	embed=discord.Embed(title="Servers",description=string)
+	await ctx.send(embed=embed)
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
