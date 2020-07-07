@@ -45,13 +45,17 @@ class challenge(commands.Cog):
 		if x==None:
 			pass
 		elif ctx.message.author.id in x["ids"] or Team2_id in x["ids"]:
-			h=db2_collection.find_one({"id":ctx.message.author.id})
-			original_name=ctx.author.name
-			if h==None:
+			
+			if ctx.message.author.id in x["ids"]:
+				h=db2_collection.find_one({"id":ctx.message.author.id})
+				original_name=ctx.author.name
+				await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match.")
+				return
+			if Team2_id in x["ids"]:
+				h=db2_collection.find_one({"id":ctx.message.author.id})
 				original_name=Team2.name
-				h=db2_collection.find_one({"id":Team2_id})
-			await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match.")
-			return
+				await ctx.send(f"**{original_name}** finish your undone match with **{h['now_match']}** or type `c!end` to end the match.")
+				return
 		x=db_collection.find_one({"Team1_member_id": Team1_id})
 		if x==None:
 			x=db_collection.find_one({"Team1_member_id": Team2_id})
