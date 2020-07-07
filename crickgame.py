@@ -99,9 +99,7 @@ async def los(ctx):
 async def announcements(ctx):
 	announcement="Added a timer and and a prompt message which will display after every ball is bowled"
 	embed=discord.Embed(title="Announcement",description=announcement)
-	def is_me(m):
-    		return m.author.id == ctx.message.author.id
-	await ctx.message.channel.purge(limit=1, check=is_me)
+	await ctx.message.delete()
 	await ctx.send(embed=embed)
 @bot.command()
 @commands.guild_only()
@@ -111,9 +109,7 @@ async def announce(ctx,channel:discord.TextChannel,*,txt=None):
 			return
 		else:
 			await channel.send(content=txt)
-	def is_me(m):
-    		return m.author.id == 442673891656335372
-	await ctx.message.channel.purge(limit=1, check=is_me)
+			await ctx.message.delete()
 @bot.command()
 @commands.guild_only()
 async def suggest(ctx,*,suggestion=None):
@@ -210,10 +206,5 @@ async def list_of_commands(ctx):
 @commands.guild_only()
 async def ping(ctx):
 	await ctx.send(f"Pong! {round(bot.latency*1000)}ms")
-@bot.event
-async def on_command_error(ctx,error):
-	if isinstance(error,commands.CommandOnCooldown):
-		message=await ctx.send(error)
-		await asyncio.sleep(1)
-		await message.delete()
+
 bot.run(os.getenv("BOT_TOKEN"))
