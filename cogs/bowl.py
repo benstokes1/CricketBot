@@ -22,6 +22,7 @@ class bowl(commands.Cog):
 	@commands.guild_only()
 	@commands.cooldown(1, 3, commands.BucketType.user)
 	async def bowl(self,ctx):
+		alert=None
 		z=None
 		txt,img=None,None
 		x=db_collection.find_one({"Team1_member_id": ctx.message.author.id})
@@ -194,6 +195,7 @@ class bowl(commands.Cog):
 			else:
 				Bowling_team["Bowling"][Bowling_team["Current_bowling"][0]]["wickets"]+=1
 				Batting_team["Batsmen_out"].append(Batting_team["Current_batting"].pop(0))
+				alert="Select batsman using `c!sp <number>`"
 				x["Wickets"]=int(x["Wickets"])+1
 				if x["Wickets"]==original_data["Maximum_wickets"]:
 					if x["Target"]==0:
@@ -306,12 +308,13 @@ class bowl(commands.Cog):
 			temp=x["Overs"].split(".")
 			temp[1]=str(int(temp[1])+1)
 			Bowling_team["Bowling"][Bowling_team["Current_bowling"][0]]["balls_thrown"]+=1
-
+			
 			if temp[1]=='6':
 				temp[0]=str(int(temp[0])+1)
 				temp[1]=str(0)
 				Bowling_team["Previous_bowler"]=Bowling_team["Current_bowling"].pop(0)
 				Batting_team["Current_batting"].reverse()
+				alert="Select bowler using `c!sp <number>`"
 				original_data["This_over"]=""
 			temp=".".join(temp)
 			if temp==x["Maximum_overs"]:
@@ -483,6 +486,10 @@ class bowl(commands.Cog):
 				await ctx.send(f'```{last}\n\n{score}\n\n{Batting_team["Current_batting"][0]} : {Batting_team["Batting"][Batting_team["Current_batting"][0]]["runs"]}({Batting_team["Batting"][Batting_team["Current_batting"][0]]["balls_faced"]})*\n{Batting_team["Current_batting"][1]} : {Batting_team["Batting"][Batting_team["Current_batting"][1]]["runs"]}({Batting_team["Batting"][Batting_team["Current_batting"][1]]["balls_faced"]})\n\nThis Over: {This_over}\n\n{Bowling_team["Current_bowling"][0]}: {Bowling_team["Bowling"][Bowling_team["Current_bowling"][0]]["runs"]}/{Bowling_team["Bowling"][Bowling_team["Current_bowling"][0]]["wickets"]} ({overs})```')
 			#embed=discord.Embed(title=f'{last}\n\n{score}\n\n{Batting_team["Current_batting"][0]} : {Batting_team["Batting"][Batting_team["Current_batting"][0]]["runs"]}({Batting_team["Batting"][Batting_team["Current_batting"][0]]["balls_faced"]})\n{Batting_team["Current_batting"][1]} : {Batting_team["Batting"][Batting_team["Current_batting"][1]]["runs"]}({Batting_team["Batting"][Batting_team["Current_batting"][1]]["balls_faced"]})\n\nThis Over: {This_over}')
 		#await ctx.send(embed=embed)
+		if alert==None:
+			pass
+		else:
+			await ctx.send(alert)
 
 
 def setup(bot):
