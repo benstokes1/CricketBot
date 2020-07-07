@@ -67,8 +67,8 @@ class challenge(commands.Cog):
 					return
 		else:
 			if x["status"]==0:
-			await ctx.send("They have challenged a person, please wait for some time")
-			return
+				await ctx.send("They have challenged a person, please wait for some time")
+				return
 		outline={
 		"league" : "None",
 			"Team1_name": "None",
