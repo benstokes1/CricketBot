@@ -82,6 +82,7 @@ async def los(ctx):
 	if ctx.message.author.id==442673891656335372:
 		pass
 	else:
+		print("hurhur")
 		return
 	l=[]
 	for i in bot.guilds:
