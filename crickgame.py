@@ -108,7 +108,8 @@ async def announce(ctx,channel:discord.TextChannel,*,txt=None):
 		if txt==None:
 			return
 		else:
-			await channel.send(content=txt)
+			embed=discor.Embed(description=txt)
+			await channel.send(embed=embed)
 			await ctx.message.delete()
 @bot.command()
 @commands.guild_only()
