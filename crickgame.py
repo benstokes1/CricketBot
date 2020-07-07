@@ -72,7 +72,7 @@ async def los(ctx):
 		l.append(i.name)
 	string=""
 	for i in range(len(l)):
-		string+=str(i)+". "+l[i]+"\n"
+		string+=str(i+1)+". "+l[i]+"\n"
 	embed=discord.Embed(title="Servers",description=string)
 	await ctx.send(embed=embed)
 @bot.command()
