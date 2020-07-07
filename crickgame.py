@@ -73,7 +73,7 @@ async def owner(ctx,*,nam):
 	else:
 		embed=discord.Embed(title="Server info")
 		embed.add_field(name="Owner",value=f"{ser.owner.name}#{ser.owner.discriminator}",inline=False)
-		embed.set_thumbnail(url=f"{guild.icon_url}")
+		embed.set_thumbnail(url=f"{ser.icon_url}")
 		embed.add_field(name="Member count",value=f"{len(ser.members)}",inline=False)
 		await ctx.send(embed=embed)
 bot.command()
@@ -86,6 +86,7 @@ async def los(ctx):
 	l=[]
 	for i in bot.guilds:
 		l.append(i.name)
+	print(l)
 	s=""
 	for i in range(len(l)):
 		s+=str(i+1)+". "+l[i]+"\n"
