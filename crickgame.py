@@ -97,7 +97,7 @@ async def los(ctx):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Added a timer and and a prompt message which will display after every ball is bowled")
+	announcement="Added a timer and and a prompt message which will display after every ball is bowled"
 	embed=discord.Embed(title="Announcement",description=announcement)
 	def is_me(m):
     		return m.author.id == ctx.message.author.id
