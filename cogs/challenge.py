@@ -62,8 +62,12 @@ class challenge(commands.Cog):
 			if x==None:
 				pass
 			else:
-				return
+				if x["status"]==0:
+					await ctx.send("They have challenged a person, please wait for some time")
+					return
 		else:
+			if x["status"]==0:
+			await ctx.send("They have challenged a person, please wait for some time")
 			return
 		outline={
 		"league" : "None",
@@ -108,7 +112,7 @@ class challenge(commands.Cog):
 		}
 		db_collection.insert_one(outline)
 		await ctx.send(f"{Team2.mention} , **{ctx.message.author.name}** has challenged you!\nType `c!accept` to accept the challenge or `c!decline` to decilne the challenge.")
-		await asyncio.sleep(60)
+		await asyncio.sleep(10)
 		x=db_collection.find_one({"Team1_member_id": Team1_id})
 		if x==None:
 			x=db_collection.find_one({"Team1_member_id": Team2_id})
