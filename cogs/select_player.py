@@ -93,6 +93,9 @@ class select_player(commands.Cog):
 								if number1>10:
 									await ctx.send("Choose a number less than 11")
 									return
+							if number==number1:
+								await ctx.send("Choose 2 different numbers")
+								return
 							if len(x["Team2_data"]["Current_batting"])==0:
 								if number1==None:
 									await ctx.send("Syntax: `c!select_player <number1> <number2>`")
@@ -240,6 +243,9 @@ class select_player(commands.Cog):
 							if number1>10:
 								await ctx.send("Choose a number less than 11")
 								return
+						if number==number1:
+							await ctx.send("Choose 2 different numbers")
+							return
 						if len(x["Team1_data"]["Current_batting"])==0:
 							if number1==None:
 								await ctx.send("Syntax: `c!select_player <number1> <number2>`")
