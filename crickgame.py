@@ -60,7 +60,20 @@ async def on_message(message):
 	if bot.user.mentioned_in(message) and message.mention_everyone is False:
 		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
-
+@bot.command()
+@commands.guild_only()
+async def los(ctx):
+	if ctx.message.author.id==442673891656335372:
+		pass
+	else:
+		return
+	l=[]
+	for i in bot.guilds:
+		l.append(i.name)
+	string=""
+	for i in range(len(l)):
+		string+=str(i)+". "+l[i]+"\n"
+	embed=discord.Embed(title="Servers",description=string)
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
