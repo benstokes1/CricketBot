@@ -491,9 +491,17 @@ class bowl(commands.Cog):
 		else:
 			await ctx.send(alert)
 			for i in range(3,0,-1):
-				await ctx.send(i+1)
+				if i==3:
+					embed=discord.Embed(title=f"{i}")
+					m=await ctx.send(embed=embed)
+				else:
+					o = await ctx.channel.fetch_message(m.id)
+					embed=discord.Embed(title=f"{i}")
+					await o.edit(embed=embed)
 				asyncio.sleep(1)
-			await ctx.send("You can continue bowling the next ball")
+			o = await ctx.channel.fetch_message(m.id)
+			embed=discord.Embed(title=f"You can continue bowling the next ball")
+			await o.edit(embed=embed
 
 
 def setup(bot):
