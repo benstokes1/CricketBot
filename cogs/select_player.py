@@ -68,7 +68,7 @@ class select_player(commands.Cog):
 										if x["Team2_data"]["Lineup"][i] in x["Team2_data"]["Bowling"]:
 											if x["Team2_data"]["Bowling"][x["Team2_data"]["Lineup"][i]]["balls_thrown"]==max_balls:
 												team_list+=str(i+1)+". ~~"+x["Team2_data"]["Lineup"][i]+"~~(quota over)\n"
-												continue
+										   		continue
 										    	else:
 												pass
 										else:
@@ -218,7 +218,7 @@ class select_player(commands.Cog):
 										if x["Team1_data"]["Bowling"][x["Team1_data"]["Lineup"][i]]["balls_thrown"]==max_balls:
 											team_list+=str(i+1)+". ~~"+x["Team1_data"]["Lineup"][i]+"~~(quota over)\n"
 											continue
-								    		else:
+								   		else:
 											pass
 									else:
 										pass
