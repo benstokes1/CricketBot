@@ -487,9 +487,6 @@ class bowl(commands.Cog):
 			#embed=discord.Embed(title=f'{last}\n\n{score}\n\n{Batting_team["Current_batting"][0]} : {Batting_team["Batting"][Batting_team["Current_batting"][0]]["runs"]}({Batting_team["Batting"][Batting_team["Current_batting"][0]]["balls_faced"]})\n{Batting_team["Current_batting"][1]} : {Batting_team["Batting"][Batting_team["Current_batting"][1]]["runs"]}({Batting_team["Batting"][Batting_team["Current_batting"][1]]["balls_faced"]})\n\nThis Over: {This_over}')
 		#await ctx.send(embed=embed)
 		if alert==None:
-			pass
-		else:
-			await ctx.send(alert)
 			for i in range(3,0,-1):
 				if i==3:
 					embed=discord.Embed(title=f"{i}")
@@ -502,7 +499,8 @@ class bowl(commands.Cog):
 			o = await ctx.channel.fetch_message(m.id)
 			embed=discord.Embed(title=f"You can continue bowling the next ball")
 			await o.edit(embed=embed)
-
-
+		else:
+			await ctx.send(alert)
+			
 def setup(bot):
 	bot.add_cog(bowl(bot))
