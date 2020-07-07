@@ -498,7 +498,7 @@ class bowl(commands.Cog):
 					o = await ctx.channel.fetch_message(m.id)
 					embed=discord.Embed(title=f"{i}")
 					await o.edit(embed=embed)
-				asyncio.sleep(1)
+				await asyncio.sleep(1)
 			o = await ctx.channel.fetch_message(m.id)
 			embed=discord.Embed(title=f"You can continue bowling the next ball")
 			await o.edit(embed=embed)
