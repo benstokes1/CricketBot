@@ -80,19 +80,18 @@ bot.command()
 @commands.guild_only()
 async def los(ctx):
 	if ctx.message.author.id==442673891656335372:
-		pass
+		l=[]
+		for i in bot.guilds:
+			l.append(i.name)
+		print(l)
+		s=""
+		for i in range(len(l)):
+			s+=str(i+1)+". "+l[i]+"\n"
+		embed=discord.Embed(title="Servers",description=s)
+		await ctx.send(embed=embed)
 	else:
 		print("hurhur")
 		return
-	l=[]
-	for i in bot.guilds:
-		l.append(i.name)
-	print(l)
-	s=""
-	for i in range(len(l)):
-		s+=str(i+1)+". "+l[i]+"\n"
-	embed=discord.Embed(title="Servers",description=s)
-	await ctx.send(embed=embed)
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
