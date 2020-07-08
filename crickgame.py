@@ -102,7 +102,8 @@ async def unban(ctx,person:discord.Member=None):
 			if person.id not in x["ids"]:
 				await ctx.send("Looks like they aren't banned")
 				return
-			db3_collection.delete_one({},{"$set":{"ids":person.id}})
+			x["ids"].pop(x["ids"].index(person.id))
+			db3_collection.update_one({},{"ids": x["ids"]})
 			await ctx.send(f"{person.mention} unbanned successfully")
 			
 @bot.command()
