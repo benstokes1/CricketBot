@@ -17,6 +17,8 @@ db1_name=db1_client['Running_matches']
 db1_collection=db1_name['data']
 db2_name=db_client["about"]
 db2_collection=db2_name["data"]
+db3_name=db1_client["banned_members"]
+db3_collection=db3_name["ids"]
 #loading cogs
 for filename in os.listdir("./cogs"):
 	if filename.endswith(".py"):
@@ -53,13 +55,54 @@ async def on_guild_remove(guild):
 	await bot.change_presence(status=None, activity=game)
 @bot.event
 async def on_message(message):
+	x=db3_collection.find_one()
 	channel=message.channel
+	if message.author.id in x["ids"] and message.content.startswith("c!"):
+		await channel.send("You have been banned :muscle:")
+		return
+		
 	'''if ((message.author.id!=442673891656335372 and message.author.id!=448127767184146432) and message.author!=bot.user ) and message.content.startswith("c!"):
 		await channel.send("Updating bot, edt : 2hrs")
 		return'''
 	if bot.user.mentioned_in(message) and message.mention_everyone is False:
 		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
+
+@bot.command()
+@commands.guild_only()
+async def ban(ctx,person:discord.Member=None):
+	ids=[442673891656335372]
+	if ctx.message.author.id not in ids:
+		return
+	else:
+		if person==None:
+			return
+		else:
+			if person.bot==True:
+				await ctx.send("Can't ban a bot")
+			db3_collection.insert_one({},{"$set":{"ids":person.id}})
+			await ctx.send(f"{person.mention} banned successfully")
+
+@bot.command()
+@commands.guild_only()
+async def unban(ctx,person:discord.Member=None):
+	ids=[442673891656335372]
+	if ctx.message.author.id not in ids:
+		return
+	else:
+		if person==None:
+			await ctx.send("Mention a user")
+			return
+		else:
+			if person.bot==True:
+				return
+			x=db3_collection.find_one()
+			if person.id not in x["ids"]:
+				await ctx.send("Looks like they aren't banned")
+				return
+			db3_collection.delete_one({},{"$set":{"ids":person.id}})
+			await ctx.send(f"{person.mention} unbanned successfully")
+			
 @bot.command()
 @commands.guild_only()
 async def owner(ctx,*,nam):
