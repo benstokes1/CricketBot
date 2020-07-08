@@ -80,7 +80,9 @@ async def ban(ctx,person:discord.Member=None):
 		else:
 			if person.bot==True:
 				await ctx.send("Can't ban a bot")
-			db3_collection.insert_one({},{"$set":{"ids":person.id}})
+			x=db3_collection.find_one()
+			x["ids"].append(person.id)
+			db3_collection.insert_one({},{"$set":{"ids": x["ids"]}})
 			await ctx.send(f"{person.mention} banned successfully")
 
 @bot.command()
