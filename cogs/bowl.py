@@ -61,8 +61,10 @@ class bowl(commands.Cog):
 		if ctx.message.author.id==Batting_team_id:
 			return
 		x=x["Score_card"]
-		a=x["Overs"].split(".")
-		a=a[0]
+		v=x["Overs"].split(".")
+		a=v[0]
+		if (v[1]=='0' and x["Last_ball"]=="wicket") and original_data["This_over"]=="":
+			Batting_team["Current_batting"].reverse()
 		c=x["Maximum_overs"].split(".")
 		c=c[0]
 		#outcomes=[1]
