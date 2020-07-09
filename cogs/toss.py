@@ -28,15 +28,35 @@ class toss(commands.Cog):
 		elif choice.title() not in ["Heads","Tails"]:
 			await ctx.send("Syntax: `c!toss <opponent's call>`")
 			return
-
+		x=db_collection.find_one({"Team1_member_id": ctx.message.author.id})
+		if x==None:
+			x=db_collection.find_one({"Team2_member_id": ctx.message.author.id})
+			if x==None:
+				return
+			else:
+				caller=x["Team1_member_id"]
+		else:
+			caller=x["Team2_member_id"]
 		outcomes=["Heads","Tails"]
 		answer=random.choice(outcomes)
 		embed=discord.Embed(title='Toss')
 		embed.set_image(url="https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif")
 		message=await ctx.send(embed=embed)
-		await asyncio.sleep(5)	
-		embed=discord.Embed(title=f'Oh! Its a {answer}')
-		await message.edit(embed=embed)
+		def check(message):
+			return(message.author.id==caller)
+		try:
+			message, user = await self.bot.wait_for('message', timeout=5.0, check=check)
+		except asyncio.TimeoutError:
+			if choice==None:
+				await ctx.send("`Timeout error`: Call not done")
+				return
+		else:
+			await asyncio.sleep(3)
+			if choice.title() not in ["Heads","Tails"]:
+				await ctx.send("Syntax: `c!toss <opponent's call>`")
+				return
+			embed=discord.Embed(title=f'Oh! Its a {answer}')
+			await message.edit(embed=embed)
 		x=db_collection.find_one({"Team1_member_id": ctx.message.author.id})
 		if x==None:
 			x=db_collection.find_one({"Team2_member_id": ctx.message.author.id})
