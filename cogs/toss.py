@@ -49,6 +49,7 @@ class toss(commands.Cog):
 		except asyncio.TimeoutError:
 			if choice==None:
 				await ctx.send("`Timeout error`: Call not done")
+				embed=discord.Embed(title=f'Beep-Boop!')
 				return
 		else:
 			await asyncio.sleep(3)
