@@ -41,7 +41,7 @@ class toss(commands.Cog):
 		answer=random.choice(outcomes)
 		embed=discord.Embed(title='Toss')
 		embed.set_image(url="https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif")
-		message=await ctx.send(embed=embed)
+		mess=await ctx.send(embed=embed)
 		def check(message):
 			return(message.author.id==caller)
 		try:
@@ -50,6 +50,7 @@ class toss(commands.Cog):
 			if choice==None:
 				await ctx.send("`Timeout error`: Call not done")
 				embed=discord.Embed(title=f'Beep-Boop!')
+				await mess.edit(embed=embed)
 				return
 		else:
 			await asyncio.sleep(3)
@@ -57,7 +58,7 @@ class toss(commands.Cog):
 				await ctx.send("Syntax: `c!toss <opponent's call>`")
 				return
 			embed=discord.Embed(title=f'Oh! Its a {answer}')
-			await message.edit(embed=embed)
+			await mess.edit(embed=embed)
 		x=db_collection.find_one({"Team1_member_id": ctx.message.author.id})
 		if x==None:
 			x=db_collection.find_one({"Team2_member_id": ctx.message.author.id})
