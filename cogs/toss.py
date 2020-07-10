@@ -53,7 +53,7 @@ class toss(commands.Cog):
 		def check(message):
 			return	(message.author.id==caller)
 		try:
-			msg = await self.bot.wait_for('message', timeout=7.0, check=check)
+			msg = await self.bot.wait_for('message', timeout=5.0, check=check)
 		except asyncio.TimeoutError:
 			if x==None:
 				embed=discord.Embed(title=f'Oh! Its a {answer}')
