@@ -27,7 +27,7 @@ class toss(commands.Cog):
 		if choice==None:
 			pass
 		elif choice.title() not in ["Heads","Tails"]:
-			await ctx.send("Syntax: `c!toss <opponent's call>`")
+			await ctx.send("Syntax: `c!toss`")
 			return
 		x=db_collection.find_one({"Team1_member_id": ctx.message.author.id})
 		if x==None:
