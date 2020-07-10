@@ -22,7 +22,7 @@ class toss(commands.Cog):
 	@commands.command(aliases=["t"])
 	@commands.guild_only()
 	async def toss(self,ctx,choice=None):
-		
+		caller=None
 		#toss
 		if choice==None:
 			pass
@@ -45,6 +45,8 @@ class toss(commands.Cog):
 				await ctx.send("Toss can be done only after setting overs")
 				return
 			caller=x["Team2_member_id"]
+		if caller==None:
+			caller=0
 		outcomes=["Heads","Tails"]
 		answer=random.choice(outcomes)
 		embed=discord.Embed(title='Toss')
