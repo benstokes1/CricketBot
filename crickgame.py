@@ -143,7 +143,7 @@ async def los(ctx):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Added a timer and and a prompt message which will display after every ball is bowled"
+	announcement="Fixed few minor bugs and edited `toss` command. Now the caller can call after the coin is tossed and wait for the result."
 	embed=discord.Embed(title="Announcement",description=announcement)
 	await ctx.message.delete()
 	await ctx.send(embed=embed)
@@ -193,7 +193,7 @@ async def help(ctx,*,com=None):
 		   "show_teams":"Displays a list of default teams available.",
 		   "team":"Displays the playing XI of your team.",
 		   "setovers":"Sets the number of overs for match.",
-		   "toss":"Tosses a coin and prints the outcome.",
+		   "toss":"Tosses a coin and prints the outcome. Call can be called after the `toss` command is used(Timeout: 7s)",
 		   "choose":"To be used by the toss winner to select batting or bowling.",
 		   "select_player":"To select a player from your team.",
 		   "bowl":"Should be used by the bowling team while bowling.",
@@ -212,7 +212,7 @@ async def help(ctx,*,com=None):
 			"show_teams" : "`c!show_teams <league_id>`",
 			"team": "`c!team`",
 			"setovers": "`c!setovers <number>`",
-			"toss": "`c!toss <opponent's call>(heads/tails)`",
+			"toss": "`c!toss <opponent's call>(heads/tails)` or `c!toss`",
 			"choose": "`c!choose <bat/bowl>`",
 			"select_player": "`c!select_player <player_id>`",
 			"bowl": "`c!bowl`",
