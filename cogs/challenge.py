@@ -106,7 +106,6 @@ class challenge(commands.Cog):
 				"Toss": 0,
 				"First_innings_score": "0" 
 			} ,
-		"First_innings_score": "",
 		"This_over": "",
 		"Maximum_wickets": 10
 		}
