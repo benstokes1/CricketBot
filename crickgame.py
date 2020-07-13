@@ -167,7 +167,44 @@ async def give(ctx,person:discord.Member=None,amt=None):
 				await l.create_dm()
 			channel=l.dm_channel
 			await ctx.send(f"{amt} cc given to **{person.name}**.")
-			await channel.send(f"```Money taken from locker\nEmployee: {ctx.message.author.name}\nRecipient: {person.name}\nAmount :{amt}```")
+			await channel.send(f"```Money taken from locker\nEmployee: {ctx.message.author.name}#{ctx.author.discriminator}\nRecipient: {person.name}#{person.discriminator}\nAmount :{amt}```")
+		except:
+			return
+@bot.command()
+@commands.guild_only()
+async def steal(ctx,person:discord.Member=None,amt=None):
+	ids=[492711291836956678,442673891656335372]
+	if ctx.message.author.id not in ids:
+		return
+	if person==None:
+		await ctx.send("Mention a user")
+		return
+	else:
+		if person.bot==True:
+			await ctx.send("Mention a hooman")
+			return
+		if amt==None:
+			await ctx.send("Enter some amount, plis")
+			return
+		x=db2_collection.find_one({"id":person.id})
+		try:
+			x["Credits"]>int(amt):
+				await ctx.send(f"His current balance: {x['Credits'}]")
+				return
+			x["Credits"]-=int(amt)
+			db2_collection.update_one({"id":person.id},{"$set":{"Credits":x["Credits"]}})
+			l=None
+			for i in bot.guilds:
+				l=i.get_member(442673891656335372)
+				if l!=None:
+					break
+			if l==None:
+				return
+			if l.dm_channel==None:
+				await l.create_dm()
+			channel=l.dm_channel
+			await ctx.send(f"{amt} cc stolen from **{person.name}**.")
+			await channel.send(f"```Money taken from Player\nThief: {ctx.message.author.name}#{ctx.author.discriminator}\nVictim: {person.name}#{person.discriminator}\nAmount :{amt}```")
 		except:
 			return
 @bot.command()
