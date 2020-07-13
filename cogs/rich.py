@@ -8,8 +8,8 @@ import pymongo
 import json
 import math
 
-db_client=pymongo.MongoClient("mongodb+srv://Shrikar:shrikar123@cricket.u4p4f.mongodb.net/about?retryWrites=true&w=majority")
-db1_client=pymongo.MongoClient("mongodb+srv://Shrikar:shrikar123@personal-cricket.ychhm.mongodb.net/Challenge?retryWrites=true&w=majority")
+db_client=pymongo.MongoClient(os.getenv("DB_URL"))
+db1_client=pymongo.MongoClient(os.getenv("DB2_URL"))
 
 db_name=db1_client["Challenge"]
 db_collection=db_name['Data']
