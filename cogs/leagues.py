@@ -21,8 +21,7 @@ class show_leagues(commands.Cog):
 	@commands.command(aliases=["leagues","league"])
 	@commands.guild_only()
 	async def show_leagues(self,ctx,number=None):
-		arr = os.listdir('./Teams')
-		arr.sort()
+		arr = ["International","IPL"]
 		available_leagues=arr
 		list_of_leagues=""
 		for i in range(len(available_leagues)):
