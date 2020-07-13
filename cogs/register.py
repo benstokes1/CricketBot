@@ -44,7 +44,8 @@ class register(commands.Cog):
 			"current_streak": 0,
 			"recent_results": [],
 			"now_match": "",
-			"winning_percentage": 0.00
+			"winning_percentage": 0.00,
+			"Credits": 1000
 		}
 		db2_collection.insert_one(data)
 		await ctx.send("Account created successfully!\nType `c!profile` to check the profile")
