@@ -178,7 +178,7 @@ class bowl(commands.Cog):
 			if str(ctx.message.guild.id) in u["ids"]:
 				chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 				if chnl!=None:
-					last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1]})+"**\n**"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
+					last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
 					embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 					await chnl.send(embed=embed)
 					u['ids'][str(ctx.message.guild.id)][1]+=1
