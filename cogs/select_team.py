@@ -21,8 +21,7 @@ class select_team(commands.Cog):
 	@commands.command(aliases=["st","ct"])
 	@commands.guild_only()
 	async def select_team(self,ctx,number1=None,number=None):
-		arr = os.listdir('./Teams')
-		arr.sort()
+		arr = ["International","IPL"]
 		if number1==None:
 			await ctx.send("Syntax : `c!select_team <league_id> <team_id>`")
 			return
