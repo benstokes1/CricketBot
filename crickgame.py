@@ -70,7 +70,7 @@ async def on_message(message):
 @bot.command()
 @commands.guild_only()
 async def log(ctx,chnl:discord.TextChannel=None):
-    	if chnl==None:
+	if chnl==None:
 		await ctx.send("`Synatx: c!log <channel_mention>`")
 		return
 	if ctx.message.author.guild_permissions.manage_channels:
