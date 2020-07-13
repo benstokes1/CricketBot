@@ -35,7 +35,7 @@ class about(commands.Cog):
 		else:
 			embed=discord.Embed()
 			embed.set_thumbnail(url=f"{User.avatar_url}")
-			embed.set_author(name=f"{ctx.author.name}#{ctx.author.discriminator}",icon_url=f"{ctx.author.avatar_url}")
+			embed.set_author(name=f"{User.name}#{User.discriminator}",icon_url=f"{User.avatar_url}")
 			embed.add_field(name="About",value=f"{x['about']}",inline=False)
 			x["Credits"]="{:,.0f} cc".format(x["Credits"])
 			embed.add_field(name="Wallet",value=f"{x['Credits']}",inline=False)
