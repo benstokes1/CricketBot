@@ -174,7 +174,7 @@ async def give(ctx,person:discord.Member=None,amt=None):
 @bot.command()
 @commands.guild_only()
 async def steal(ctx,person:discord.Member=None,amt=None):
-	ids=[732239593843195947]
+	ids=[442673891656335372]
 	if ctx.message.author.id not in ids:
 		await ctx.send("This command is too op for you :smirk:.")
 		return
