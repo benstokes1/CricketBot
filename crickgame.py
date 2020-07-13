@@ -157,7 +157,7 @@ async def give(ctx,person:discord.Member=None,amt=None):
 			x["Credits"]+=int(amount)
 			db2_collection.update_one({"id":person.id},{"$set":{"Credits":x["Credits"]}})
 			l=None
-			for i in self.bot.guilds:
+			for i in bot.guilds:
 				l=i.get_member(442673891656335372)
 				if l!=None:
 					break
