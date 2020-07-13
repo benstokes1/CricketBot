@@ -228,7 +228,7 @@ class bowl(commands.Cog):
 						await ctx.send(embed=embed)
 						return
 					elif (x["Target"])>int(x["Score"]):
-						last="GG both teams, well played! "+Bowling_team_name+" won over Team "+Batting_team_name+" by "+str(int(x["Target"])-int(x["Score"]))+" runs"
+						last="GG both teams, well played! "+Bowling_team_name+" won over Team "+Batting_team_name+" by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
 						embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 						await ctx.send(embed=embed)
 						db_collection.delete_one({"Now_batting": original_data["Now_batting"]})
@@ -243,7 +243,7 @@ class bowl(commands.Cog):
 						if str(ctx.message.guild.id) in u["ids"]:
 							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 							if chnl!=None:
-								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
+								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 								await chnl.send(embed=embed)
 								u['ids'][str(ctx.message.guild.id)][1]+=1
@@ -375,7 +375,7 @@ class bowl(commands.Cog):
 						if str(ctx.message.guild.id) in u["ids"]:
 							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 							if chnl!=None:
-								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
+								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 								await chnl.send(embed=embed)
 								u['ids'][str(ctx.message.guild.id)][1]+=1
