@@ -36,7 +36,7 @@ class select_team(commands.Cog):
 		except:
 			return
 		
-		with open ("./Teams/"+team) as f:
+		with open ("./Teams/"+team+".py") as f:
 			d=json.load(f)
 		team=team[:-5]
 		available_teams=[]
