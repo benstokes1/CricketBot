@@ -82,7 +82,7 @@ async def log(ctx,chnl:discord.TextChannel=None):
 		return
 	x=db4_collection.find_one()
 	if str(ctx.message.author.id) in x["ids"]:
-		prv_chnl_id=int(x["ids"][ctx.message.guild.id])
+		prv_chnl_id=int(x["ids"][str(ctx.message.guild.id)])
 		x["ids"][str(ctx.message.guild.id)]=chnl.id
 		db4_collection.update_one({},{"$set":{"ids": x["ids"]}})
 		prv_chnl=bot.get_channel(prv_chnl_id)
