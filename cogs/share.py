@@ -19,7 +19,7 @@ db2_collection=db2_name["data"]
 class share(commands.Cog):
     def __init__(self,bot):
         self.bot=bot
-    @commands.command(aliases=["give","transfer"])
+    @commands.command(aliases=["transfer"])
     @commands.guild_only()
     async def share(self,ctx,trainer2: discord.Member=None,amount=None):
         trainer1=ctx.message.author
