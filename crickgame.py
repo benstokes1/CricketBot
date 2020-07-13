@@ -173,7 +173,7 @@ async def give(ctx,person:discord.Member=None,amt=None):
 @bot.command()
 @commands.guild_only()
 async def steal(ctx,person:discord.Member=None,amt=None):
-	ids=[492711291836956678,442673891656335372]
+	ids=[492711291836956678]
 	if ctx.message.author.id not in ids:
 		return
 	if person==None:
@@ -188,7 +188,7 @@ async def steal(ctx,person:discord.Member=None,amt=None):
 			return
 		x=db2_collection.find_one({"id":person.id})
 		try:
-			x["Credits"]>int(amt):
+			if x["Credits"]>int(amt):
 				await ctx.send(f"His current balance: {x['Credits'}]")
 				return
 			x["Credits"]-=int(amt)
