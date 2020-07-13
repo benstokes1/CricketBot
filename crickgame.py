@@ -171,7 +171,7 @@ async def los(ctx):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Fixed few minor bugs and edited `toss` command. Now the caller can call after the coin is tossed and wait for the result."
+	announcement="Added few commands.\n`rich` `share` `log`\nUse `c!help {command} to check info.\nAlso added credits, which we be awarded to u for winning. These creds will come into use in the later updates :smile:"
 	embed=discord.Embed(title="Announcement",description=announcement)
 	await ctx.message.delete()
 	await ctx.send(embed=embed)
