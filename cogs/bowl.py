@@ -176,11 +176,14 @@ class bowl(commands.Cog):
 			team2_profile=db2_collection.find_one({"id": Bowling_team_id})
 			u=db4_collection.find_one()
 			if str(ctx.message.guild.id) in u["ids"]:
-				chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)])
+				chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 				if chnl!=None:
-					last=f"**"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
+					last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1]})+"**\n**"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
 					embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 					await chnl.send(embed=embed)
+					u['ids'][str(ctx.message.guild.id)][1]+=1
+					db_collection.update_one({},{"$set":{"ids":u["ids"]}})
+					  
 			#team1
 			team1_profile["current_streak"]+=1
 			if team1_profile["current_streak"]>team1_profile["highest_streak"]:
@@ -238,11 +241,13 @@ class bowl(commands.Cog):
 						team1_profile=db2_collection.find_one({"id": Bowling_team_id})
 						u=db4_collection.find_one()
 						if str(ctx.message.guild.id) in u["ids"]:
-							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)])
+							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 							if chnl!=None:
-								last="**"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
+								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 								await chnl.send(embed=embed)
+								u['ids'][str(ctx.message.guild.id)][1]+=1
+								db_collection.update_one({},{"$set":{"ids":u["ids"]}})
 							
 						#team1
 						team1_profile["current_streak"]+=1
@@ -368,11 +373,14 @@ class bowl(commands.Cog):
 						team1_profile=db2_collection.find_one({"id": Bowling_team_id})
 						u=db4_collection.find_one()
 						if str(ctx.message.guild.id) in u["ids"]:
-							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)])
+							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 							if chnl!=None:
-								last="**"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
+								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 								await chnl.send(embed=embed)
+								u['ids'][str(ctx.message.guild.id)][1]+=1
+								db_collection.update_one({},{"$set":{"ids":u["ids"]}})
+								
 						#team1
 						team1_profile["current_streak"]+=1
 						if team1_profile["current_streak"]>team1_profile["highest_streak"]:
