@@ -141,6 +141,7 @@ async def unban(ctx,person:discord.Member=None):
 async def give(ctx,person:discord.Member=None,amt=None):
 	ids=[492711291836956678,442673891656335372]
 	if ctx.message.author.id not in ids:
+		await ctx.send("I am too op for you :smirk:")
 		return
 	if person==None:
 		await ctx.send("Mention a user")
@@ -175,6 +176,7 @@ async def give(ctx,person:discord.Member=None,amt=None):
 async def steal(ctx,person:discord.Member=None,amt=None):
 	ids=[492711291836956678]
 	if ctx.message.author.id not in ids:
+		await ctx.send("I am too op for you :smirk:")
 		return
 	if person==None:
 		await ctx.send("Mention a user")
