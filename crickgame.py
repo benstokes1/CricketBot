@@ -231,7 +231,7 @@ async def help(ctx,*,com=None):
 		  "accept": "Accepts the challenge request.",
 		   "share": "Transfers specified amount to the specified member",
 		   "rich":"Displays top 5 richest players of guild/discord.",
-		   "log": "Logs all the match running in the server in the specified channel",
+		   "log": "Logs all the match results of the matches running in the server, in the specified channel",
 		  "announcements": "Displays latest updates/announcements, if any."}
 		syntax={"top": "`c!top <global/server>`",
 			"register": "`c!register`",
