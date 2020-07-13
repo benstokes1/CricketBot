@@ -201,6 +201,8 @@ async def help(ctx,*,com=None):
 		   "end":"Abandons the match, the player has, if any.",
 		  "decline":"Declines the challenge request.",
 		  "accept": "Accepts the challenge request.",
+		   "share": "Transfers specified amount to the specified member",
+		   "rich":"Displays top 5 richest players of guild/discord.",
 		  "announcements": "Displays latest updates/announcements, if any."}
 		syntax={"top": "`c!top <global/server>`",
 			"register": "`c!register`",
@@ -220,6 +222,8 @@ async def help(ctx,*,com=None):
 			"end": "`c!end`",
 			"decline": "`c!decline`",
 			"accept": "`c!accept`",
+			"rich": "`c!rich <global/server>`",
+			"share": "`c!share <@mention> amount`",
 			"announcements": "`c!announcements`"
 		       }
 		if com.lower() not in l:
