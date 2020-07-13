@@ -179,7 +179,7 @@ class bowl(commands.Cog):
 				chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 				u['ids'][str(ctx.message.guild.id)][1]+=1
 				if chnl!=None:
-					last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
+					last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n\n**"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
 					embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 					await chnl.send(embed=embed)
 				db4_collection.update_one({},{"$set":{"ids":u["ids"]}})
@@ -227,7 +227,7 @@ class bowl(commands.Cog):
 						embed=discord.Embed(title=f"Well played {Batting_team_name}, {Bowling_team_name} your Target is {x['Target']} runs")
 						await ctx.send(embed=embed)
 						return
-					elif (x["Target"])>int(x["Score"]):
+					elif (x["Target"]-1)>int(x["Score"]):
 						last="GG both teams, well played! "+Bowling_team_name+" won over Team "+Batting_team_name+" by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
 						embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 						await ctx.send(embed=embed)
@@ -244,7 +244,7 @@ class bowl(commands.Cog):
 							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 							u['ids'][str(ctx.message.guild.id)][1]+=1
 							if chnl!=None:
-								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
+								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** won over **"+team1_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 								await chnl.send(embed=embed)
 							db4_collection.update_one({},{"$set":{"ids":u["ids"]}})
@@ -376,8 +376,7 @@ class bowl(commands.Cog):
 							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 							u['ids'][str(ctx.message.guild.id)][1]+=1
 							if chnl!=None:
-								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
-								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
+								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** won over **"+team1_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"							embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 								await chnl.send(embed=embed)
 							db4_collection.update_one({},{"$set":{"ids":u["ids"]}})
 								
