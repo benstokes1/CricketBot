@@ -81,9 +81,9 @@ async def log(ctx,chnl:discord.TextChannel=None):
 	else:
 		return
 	x=db4_collection.find_one()
-	if ctx.message.author.id in x["ids"]:
-		prv_chnl_id=x["ids"][ctx.message.guild.id]
-		x["ids"][ctx.message.guild.id]=chnl.id
+	if str(ctx.message.author.id) in x["ids"]:
+		prv_chnl_id=int(x["ids"][ctx.message.guild.id])
+		x["ids"][str(ctx.message.guild.id)]=chnl.id
 		db4_collection.update_one({},{"$set":{"ids": x["ids"]}})
 		prv_chnl=bot.get_channel(prv_chnl_id)
 		if prv_chnl==None:
@@ -92,7 +92,7 @@ async def log(ctx,chnl:discord.TextChannel=None):
 		else:
 			await ctx.send(f"The logs channel has been changed from {prv_chnl.mention}, to {chnl.mention}")
 	else:
-		x["ids"][ctx.message.guild.id]=chnl.id
+		x["ids"][str(ctx.message.guild.id)]=chnl.id
 		db4_collection.update_one({},{"$set":{"ids": x["ids"]}})
 		await ctx.send(f"The match logs will be sent to {chnl.mention}")
 		return
