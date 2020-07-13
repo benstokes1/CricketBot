@@ -67,7 +67,32 @@ async def on_message(message):
 	if bot.user.mentioned_in(message) and message.mention_everyone is False:
 		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
-
+@bot.command()
+@commands.guild_only()
+async def log(ctx,chnl:discord.TextChannel=None):
+    if chnl==None:
+        await ctx.send("`Synatx: c!log <channel_mention>`")
+        return
+	if ctx.message.author.guild_permissions.manage_channels:
+		pass
+	else:
+		return
+    x=db4_collection.find_one()
+    if ctx.message.author.id in x["ids"]:
+        prv_chnl_id=x["ids"][ctx.message.guild.id]
+        x["ids"][ctx.message.guild.id]=chnl.id
+        db4_collection.update_one({},{"$set":{"ids": x["ids"]}})
+		prv_chnl=bot.get_channel(prv_chnl_id)
+		if prv_chnl==None:
+			await ctx.send(f"The match logs will be sent to {chnl.mention}")
+			return
+		else:
+			await ctx.send(f"The logs channel has been changed from {prv_chnl.mention}, to {chnl.mention}")
+	else:
+		x["ids"][ctx.message.guild.id]=chnl.id
+        db4_collection.update_one({},{"$set":{"ids": x["ids"]}})
+		await ctx.send(f"The match logs will be sent to {chnl.mention}")
+		return
 @bot.command()
 @commands.guild_only()
 async def ban(ctx,person:discord.Member=None):
