@@ -7,6 +7,7 @@ import datetime
 import pymongo
 import json
 import math
+import datetime
 bot=commands.Bot(command_prefix='c!')
 bot.remove_command('help')
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
@@ -28,7 +29,7 @@ for filename in os.listdir("./cogs"):
 		bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.event
 async def on_ready():
-	print("Less go")
+	print("Less go\n",datetime.datetime.now().strftime("%X"))
 	r=len(bot.guilds)
 	if r==1:
 		game = discord.Game(f"Cricket in {r} Guild")	
