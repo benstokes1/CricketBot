@@ -46,7 +46,6 @@ class about(commands.Cog):
 				win=0
 			else:
 				win=(x['won']/x["matches_played"])*100
-
 			embed.add_field(name="Win percentage",value="{:.f}%".format(win),inline=False)
 			if len(x['recent_results'])==0:
 				rs="-"
