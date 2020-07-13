@@ -46,12 +46,12 @@ class share(commands.Cog):
             await ctx.send(f"`Oops, Seems like **{trainer2.name}** doesn't have an account`")
             return
         if giver["Credits"]<amount:
-            await ctx.send("`Looks like you don't have enough balance. Balance : {:,.2f} cc`".format(giver['Credits']))
+            await ctx.send("`Looks like you don't have enough balance. Balance : {:,.0f} cc`".format(giver['Credits']))
             return
         giver["Credits"]-=amount
         taker["Credits"]+=amount
         db2_collection.update_one({"id":trainer2.id},{"$set":{"Credits": taker["Credits"]}})
         db2_collection.update_one({"id":trainer1.id},{"$set":{"Credits": giver["Credits"]}})
-        await ctx.send("`Money transfer succesful, Current balance: {:,.2f} cc`".format(giver['Credits']))
+        await ctx.send("`Money transfer succesful, Current balance: {:,.0f} cc`".format(giver['Credits']))
 def setup(bot):
 	bot.add_cog(share(bot))
