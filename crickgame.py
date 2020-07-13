@@ -190,7 +190,7 @@ async def steal(ctx,person:discord.Member=None,amt=None):
 			return
 		x=db2_collection.find_one({"id":person.id})
 		try:
-			if x["Credits"]>int(amt):
+			if x["Credits"]<int(amt):
 				await ctx.send(f"His current balance: {x['Credits']}")
 				return
 			x["Credits"]-=int(amt)
