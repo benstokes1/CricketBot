@@ -86,7 +86,7 @@ async def log(ctx,chnl:discord.TextChannel=None):
 		x["ids"][str(ctx.message.guild.id)]=chnl.id
 		db4_collection.update_one({},{"$set":{"ids": x["ids"]}})
 		prv_chnl=bot.get_channel(prv_chnl_id)
-		if prv_chnl==None:
+		if prv_chnl==None or prv_chnl_id==chnl.id:
 			await ctx.send(f"The match logs will be sent to {chnl.mention}")
 			return
 		else:
