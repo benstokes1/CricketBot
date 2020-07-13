@@ -371,6 +371,7 @@ class bowl(commands.Cog):
 						team2_profile["Credits"]+=500
 						db2_collection.update_one({"id": team1_profile["id"]},{"$set":{"Credits": team1_profile["Credits"],"now_match":"","matches_played":team1_profile["matches_played"],"won":team1_profile["won"],"highest_streak":team1_profile["highest_streak"],"current_streak": team1_profile["current_streak"],"recent_results": team1_profile["recent_results"],"winning_percentage": round((team1_profile["won"]/team1_profile["matches_played"])*100,4)}})
 						db2_collection.update_one({"id": team2_profile["id"]},{"$set":{"Credits": team2_profile["Credits"],"now_match":"","matches_played":team2_profile["matches_played"],"lost":team2_profile["lost"],"current_streak": team2_profile["current_streak"],"recent_results": team2_profile["recent_results"],"winning_percentage": round((team2_profile["won"]/team2_profile["matches_played"])*100,4)}})
+						return
 					elif int(x["Score"])==int(int(x["Target"])-1):
 						last="GG both teams, well played! Since it turned out to be no one's, lets go for a super-over..."+Batting_team_name+" will bat first"
 						db_collection.update_one({"Now_batting": Batting_team_id},{"$set":{"Maximum_wickets":2,"This_over": "","Maximum_overs":1,"Score_card":{"Target": 0,
