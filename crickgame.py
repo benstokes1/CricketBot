@@ -154,6 +154,9 @@ async def give(ctx,person:discord.Member=None,amt=None):
 			await ctx.send("Enter some amount, plis")
 			return
 		x=db2_collection.find_one({"id":person.id})
+		if x==None:
+			await ctx.send("They dont hab an account")
+			return
 		try:
 			x["Credits"]+=int(amt)
 			db2_collection.update_one({"id":person.id},{"$set":{"Credits":x["Credits"]}})
@@ -189,6 +192,9 @@ async def steal(ctx,person:discord.Member=None,amt=None):
 			await ctx.send("Enter some amount, plis")
 			return
 		x=db2_collection.find_one({"id":person.id})
+		if x==None:
+			await ctx.send("They dont hab an account")
+			return
 		try:
 			if x["Credits"]<int(amt):
 				await ctx.send(f"His current balance: {x['Credits']}")
