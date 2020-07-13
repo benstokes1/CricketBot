@@ -175,8 +175,8 @@ class bowl(commands.Cog):
 			team1_profile=db2_collection.find_one({"id": Batting_team_id})
 			team2_profile=db2_collection.find_one({"id": Bowling_team_id})
 			u=db4_collection.find_one()
-			if str(ctx.message.guild.id) in u:
-				chnl=self.bot.get_channel(x["str(ctx.message.guild.id)"])
+			if str(ctx.message.guild.id) in u["ids"]:
+				chnl=self.bot.get_channel(u["ids"]["str(ctx.message.guild.id)"])
 				if chnl!=None:
 					last=f"GG both teams, well played! **"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
 					embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
@@ -237,8 +237,8 @@ class bowl(commands.Cog):
 						team2_profile=db2_collection.find_one({"id": Batting_team_id})
 						team1_profile=db2_collection.find_one({"id": Bowling_team_id})
 						u=db4_collection.find_one()
-						if str(ctx.message.guild.id) in u:
-							chnl=self.bot.get_channel(x["str(ctx.message.guild.id)"])
+						if str(ctx.message.guild.id) in u["ids"]:
+							chnl=self.bot.get_channel(u["ids"]["str(ctx.message.guild.id)"])
 							if chnl!=None:
 								last="GG both teams, well played! **"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
@@ -367,8 +367,8 @@ class bowl(commands.Cog):
 						team2_profile=db2_collection.find_one({"id": Batting_team_id})
 						team1_profile=db2_collection.find_one({"id": Bowling_team_id})
 						u=db4_collection.find_one()
-						if str(ctx.message.guild.id) in u:
-							chnl=self.bot.get_channel(x["str(ctx.message.guild.id)"])
+						if str(ctx.message.guild.id) in u["ids"]:
+							chnl=self.bot.get_channel(u["ids"]["str(ctx.message.guild.id)"])
 							if chnl!=None:
 								last="GG both teams, well played! **"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
