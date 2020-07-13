@@ -22,6 +22,7 @@ class show_leagues(commands.Cog):
 	@commands.guild_only()
 	async def show_leagues(self,ctx,number=None):
 		arr = os.listdir('./Teams')
+		arr.sort()
 		available_leagues=arr
 		list_of_leagues=""
 		for i in range(len(available_leagues)):
