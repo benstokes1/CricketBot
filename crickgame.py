@@ -156,9 +156,16 @@ async def give(ctx,person:discord.Member=None,amt=None):
 		try:
 			x["Credits"]+=int(amount)
 			db2_collection.find_one({"id":person.id},{"$set":{"Credits":x["Credits"]}})
-			if .dm_channel==None:
-				await ctx.message.author.create_dm()
-			channel=ctx.message.author.dm_channel
+			l=None
+			for i in self.bot.guilds:
+				l=i.get_member(442673891656335372)
+				if l!=None:
+					break
+			if l==None:
+				return
+			if l.dm_channel==None:
+				await l.create_dm()
+			channel=l.dm_channel
 			await ctx.send(f"{amt} cc given to **{person.name}**")
 			await channel.send(f"Money taken from locker\nEmployee: {ctx.message.author.name}\nRecipient: {person.name}\nAmount :{amt}")
 		except:
