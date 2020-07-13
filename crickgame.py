@@ -166,8 +166,8 @@ async def give(ctx,person:discord.Member=None,amt=None):
 			if l.dm_channel==None:
 				await l.create_dm()
 			channel=l.dm_channel
-			await ctx.send(f"{amt} cc given to **{person.name}**")
-			await channel.send(f"Money taken from locker\nEmployee: {ctx.message.author.name}\nRecipient: {person.name}\nAmount :{amt}")
+			await ctx.send(f"{amt} cc given to **{person.name}**.")
+			await channel.send(f"```Money taken from locker\nEmployee: {ctx.message.author.name}\nRecipient: {person.name}\nAmount :{amt}```")
 		except:
 			return
 @bot.command()
