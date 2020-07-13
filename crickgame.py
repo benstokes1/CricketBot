@@ -189,7 +189,7 @@ async def steal(ctx,person:discord.Member=None,amt=None):
 		x=db2_collection.find_one({"id":person.id})
 		try:
 			if x["Credits"]>int(amt):
-				await ctx.send(f"His current balance: {x['Credits'}]")
+				await ctx.send(f"His current balance: {x['Credits']}")
 				return
 			x["Credits"]-=int(amt)
 			db2_collection.update_one({"id":person.id},{"$set":{"Credits":x["Credits"]}})
