@@ -39,7 +39,7 @@ class about(commands.Cog):
 			embed.add_field(name="About",value=f"{x['about']}",inline=False)
 			x["Credits"]="{:,.2f} cc".format(x["Credits"])
 			
-			embed.add_field(name="Balance",value=f"{x["Credits"]}",inline=False)
+			embed.add_field(name="Balance",value=f"{x['Credits']}",inline=False)
 			embed.add_field(name="Matches played",value=f"{x['matches_played']}",inline=False)
 			embed.add_field(name="Matches won",value=f"{x['won']}",inline=False)
 			embed.add_field(name="Matches lost",value=f"{x['lost']}",inline=False)
