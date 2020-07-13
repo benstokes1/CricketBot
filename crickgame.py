@@ -81,6 +81,7 @@ async def log(ctx,chnl:discord.TextChannel=None):
 	else:
 		return
 	x=db4_collection.find_one()
+	
 	if str(ctx.message.guild.id) in x["ids"]:
 		prv_chnl_id=int(x["ids"][str(ctx.message.guild.id)])
 		x["ids"][str(ctx.message.guild.id)]=chnl.id
@@ -93,6 +94,7 @@ async def log(ctx,chnl:discord.TextChannel=None):
 			await ctx.send(f"The logs channel has been changed from {prv_chnl.mention}, to {chnl.mention}")
 	else:
 		x["ids"][str(ctx.message.guild.id)]=chnl.id
+		x["ids"]["nom"]=0
 		db4_collection.update_one({},{"$set":{"ids": x["ids"]}})
 		await ctx.send(f"The match logs will be sent to {chnl.mention}")
 		return
@@ -171,7 +173,7 @@ async def los(ctx):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Added few commands.\n`rich` `share` `log`\nUse `c!help {command} to check info.\nAlso added credits, which we be awarded to u for winning. These creds will come into use in the later updates :smile:"
+	announcement="Added few commands.\n`rich` `share` `log`\nUse `c!help {command}` to check info.\nAlso added credits, which we be awarded to u for winning. These creds will come into use in the later updates :smile:"
 	embed=discord.Embed(title="Announcement",description=announcement)
 	await ctx.message.delete()
 	await ctx.send(embed=embed)
