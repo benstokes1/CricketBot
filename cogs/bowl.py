@@ -178,7 +178,7 @@ class bowl(commands.Cog):
 			if str(ctx.message.guild.id) in u["ids"]:
 				chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)])
 				if chnl!=None:
-					last=f"GG both teams, well played! **"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
+					last=f"**"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
 					embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 					await chnl.send(embed=embed)
 			#team1
@@ -240,7 +240,7 @@ class bowl(commands.Cog):
 						if str(ctx.message.guild.id) in u["ids"]:
 							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)])
 							if chnl!=None:
-								last="GG both teams, well played! **"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
+								last="**"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 								await chnl.send(embed=embed)
 							
@@ -370,7 +370,7 @@ class bowl(commands.Cog):
 						if str(ctx.message.guild.id) in u["ids"]:
 							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)])
 							if chnl!=None:
-								last="GG both teams, well played! **"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
+								last="**"+team2_profile["now_match"]+"** won over **"+team2_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"]))+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 								await chnl.send(embed=embed)
 						#team1
