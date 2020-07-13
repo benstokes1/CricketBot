@@ -34,7 +34,7 @@ class rich(commands.Cog):
 					break
 				for i in ctx.message.guild.members:
 					if i.id==j["id"]:
-						string="**"+i.name+"#"+str(i.discriminator)+"**\n"+"**Wallet: ** "+str("{:,.2f} cc".format(j["Credits"]))+"\n"
+						string="**"+i.name+"#"+str(i.discriminator)+"**\n"+"**Wallet: ** "+str("{:,.0f} cc".format(j["Credits"]))+"\n"
 						top_players.append(string)
 						break
 			p=""
@@ -55,7 +55,7 @@ class rich(commands.Cog):
 				if l==None:
 					pass
 				else:
-					string="**"+l.name+"#"+str(l.discriminator)+"**\n"+"**Wallet: ** "+str("{:,.2f} cc".format(j["Credits"]))+"\n"
+					string="**"+l.name+"#"+str(l.discriminator)+"**\n"+"**Wallet: ** "+str("{:,.0f} cc".format(j["Credits"]))+"\n"
 					top_players.append(string)
 			p=""
 			for i in range(len(top_players)):
