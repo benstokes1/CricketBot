@@ -154,7 +154,7 @@ async def give(ctx,person:discord.Member=None,amt=None):
 			return
 		x=db2_collection.find_one({"id":person.id})
 		try:
-			x["Credits"]+=int(amount)
+			x["Credits"]+=int(amt)
 			db2_collection.update_one({"id":person.id},{"$set":{"Credits":x["Credits"]}})
 			l=None
 			for i in bot.guilds:
