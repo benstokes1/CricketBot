@@ -136,7 +136,33 @@ async def unban(ctx,person:discord.Member=None):
 			x["ids"].pop(x["ids"].index(person.id))
 			db3_collection.update_one({},{"$set":{"ids": x["ids"]}})
 			await ctx.send(f"{person.mention} unbanned successfully")
-			
+@bot.command()
+@commands.guild_only()
+async def give(ctx,person:discord.Member=None,amt=None):
+	ids=[492711291836956678,442673891656335372]
+	if ctx.message.author.id not in ids:
+		return
+	if person==None:
+		await ctx.send("Mention a user")
+		return
+	else:
+		if person.bot==True:
+			await ctx.send("Mention a hooman")
+			return
+		if amt==None:
+			await ctx.send("Enter some amount, plis")
+			return
+		x=db2_collection.find_one({"id":person.id})
+		try:
+			x["Credits"]+=int(amount)
+			db2_collection.find_one({"id":person.id},{"$set":{"Credits":x["Credits"]}})
+			if ctx.message.author.dm_channel==None:
+				await ctx.message.author.create_dm()
+			channel=ctx.message.author.dm_channel
+			await ctx.send(f"{amt} given to **{person.name}**")
+			await channel.send(f"Money taken from locker\nEmployee: {ctx.message.author.name}\nRecipient: {person.name}\nAmount :{amt}")
+		eexcept:
+			return
 @bot.command()
 @commands.guild_only()
 async def owner(ctx,*,nam):
