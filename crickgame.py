@@ -74,7 +74,7 @@ async def on_message(message):
 @commands.guild_only()
 async def log(ctx,chnl:discord.TextChannel=None):
 	if chnl==None:
-		await ctx.send("`Synatx: c!log <channel_mention>`")
+		await ctx.send("`Synatx: c!log <#channel>`")
 		return
 	if ctx.message.author.guild_permissions.manage_channels:
 		pass
@@ -256,7 +256,7 @@ async def help(ctx,*,com=None):
 			"accept": "`c!accept`",
 			"rich": "`c!rich <global/server>`",
 			"share": "`c!share <@mention> amount`",
-			"log": "`c!log #channel`",
+			"log": "`c!log <#channel>`",
 			"announcements": "`c!announcements`"
 		       }
 		if com.lower() not in l:
