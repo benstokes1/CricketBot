@@ -65,7 +65,28 @@ async def on_message(message):
 		await channel.send("You have been banned :muscle:")
 		return
 	if message.author.id==732113054921130005 and message.channel.id==732581435353071688:
-		await message.channel.send(message)
+		content=message.content
+		content=content.split("\n")
+		member=None
+		for i in bot.guilds:
+			member=i.get_member(int(content[1]))
+			if member!=None:
+				break
+		x=db2_collection.find_one({"id":int(content[1])})
+		db2_collection.update_one({"id":x[0]},{"$set":{"Credits": int(x["Credits"])+int(content[0])}})
+		await message.delete()
+		if member==None:
+			member_name=content[1]
+		else:
+			member_name=member.name
+		embed=discord.Embed(title="Lottery winner",description=f"Winner: {member_name}\nPrize: {content[0]} cc")
+		await message.channel.send(embed=embed)
+		if member==None:
+			return
+		if member.dm_channel==None:
+			await member.create_dm()
+		channel=member.dm_channel
+		await channel.send(f"Congratulations :tada:, you have the lottery. You have {conent[0]} cc")
 	'''if ((message.author.id!=442673891656335372 and message.author.id!=448127767184146432) and message.author!=bot.user ) and message.content.startswith("c!"):
 		await channel.send("Updating bot, edt : 2hrs")
 		return'''
