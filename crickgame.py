@@ -316,7 +316,7 @@ async def help(ctx,*,com=None):
 		   "log": "Logs all the match results of the matches running in the server, in the specified channel",
 		   "wallet": "Displays the current balance of the user", 
 		  "announcements": "Displays latest updates/announcements, if any."}
-		synonyms={"top": "`c!top <global/server>`",
+		synonyms={"top": "`None`",
 			"register": "`start` `create_account`",
 			"leagues": "`show_leagues` `league`",
 			"profile": "`about`",
