@@ -64,7 +64,8 @@ async def on_message(message):
 	if message.author.id in x["ids"] and message.content.startswith("c!"):
 		await channel.send("You have been banned :muscle:")
 		return
-		
+	if message.author.id==732113054921130005 and message.channel.id==732581435353071688:
+		await message.channel.send(message)
 	'''if ((message.author.id!=442673891656335372 and message.author.id!=448127767184146432) and message.author!=bot.user ) and message.content.startswith("c!"):
 		await channel.send("Updating bot, edt : 2hrs")
 		return'''
