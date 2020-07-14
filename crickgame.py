@@ -77,9 +77,11 @@ async def on_message(message):
 		await message.delete()
 		if member==None:
 			member_name=content[1]
+			member_discriminator=""
 		else:
 			member_name=member.name
-		embed=discord.Embed(title="Lottery winner",description=f"Winner: {member_name}\nPrize: {content[0]} cc")
+			member_discriminator=member.discriminator
+		embed=discord.Embed(title="Lottery winner",description=f"**Winner:** {member_name}+{member_discriminator}\n**Prize:** {content[0]} cc")
 		await message.channel.send(embed=embed)
 		if member==None:
 			return
