@@ -86,7 +86,7 @@ async def on_message(message):
 		if member.dm_channel==None:
 			await member.create_dm()
 		channel=member.dm_channel
-		await channel.send(f"Congratulations :tada:, you have the lottery. You have {conent[0]} cc")
+		await channel.send(f"Congratulations :tada:, you have the lottery. You have {content[0]} cc")
 	'''if ((message.author.id!=442673891656335372 and message.author.id!=448127767184146432) and message.author!=bot.user ) and message.content.startswith("c!"):
 		await channel.send("Updating bot, edt : 2hrs")
 		return'''
