@@ -316,30 +316,30 @@ async def help(ctx,*,com=None):
 		   "log": "Logs all the match results of the matches running in the server, in the specified channel",
 		   "wallet": "Displays the current balance of the user", 
 		  "announcements": "Displays latest updates/announcements, if any."}
-		'''synonyms={"top": "`c!top <global/server>`",
-			"register": "`c!register`",
-			"leagues": "`c!show_leagues` `c!league`",
-			"profile": "`c!about`",
-			"set about": "`c!set about [about]`",
-			"challenge": "`c!duel`",
-			"select_team": "`c!select_team <league_id> <team_id>`",
-			"show_teams" : "`c!show_teams <league_id>`",
-			"team": "`c!team`",
-			"setovers": "`c!setovers <number>`",
-			"toss": "`c!toss <opponent's call>(heads/tails)` or `c!toss`",
-			"choose": None,
-			"select_player": "`c!select_player <player_id>`",
-			"bowl": "`c!b`",
-			"scoreboard": "`c!scoreboard`",
-			"end": None,
-			"decline": "`c!decline`",
+		synonyms={"top": "`c!top <global/server>`",
+			"register": "`start` `create_account`",
+			"leagues": "`show_leagues` `league`",
+			"profile": "`about`",
+			"set about": "`change_about`",
+			"challenge": "`duel`",
+			"select_team": "`st` `ct`",
+			"show_teams" : "`dt` `teams` `show_team`",
+			"team": "`None`",
+			"setovers": "`set_overs` `so`",
+			"toss": "`None`",
+			"choose": "`None`",
+			"select_player": "`sp`",
+			"bowl": "`b`",
+			"scoreboard": "`scorecard` `sb`",
+			"end": "`None`",
+			"decline": "`deny`",
 			"accept": None,
-			"rich": "`c!rich <global/server>`",
-			"share": "`c!share <@mention> amount`",
-			"log": "`c!log <#channel>`",
-			"announcements": "`c!announcements`",
-			"wallet": "`c!wallet`"
-		       }'''
+			"rich": "`None`",
+			"share": "`transfer`",
+			"log": "`None`",
+			"announcements": "`None`",
+			"wallet": "`bal`"
+		       }
 		syntax={"top": "`c!top <global/server>`",
 			"register": "`c!register`",
 			"leagues": "`c!leagues`",
@@ -370,6 +370,7 @@ async def help(ctx,*,com=None):
 			embed=discord.Embed(title=com.lower())
 			embed.add_field(name="Command description",value=l[com.lower()],inline=False)
 			embed.add_field(name="Syntax",value=syntax[com.lower()],inline=False)
+			embed.add_field(name="Aliases",value=synonyms[com.lower()],inline=False)
 			await ctx.send(embed=embed)
 @bot.command()
 async def invite(ctx):
