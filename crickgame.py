@@ -80,15 +80,15 @@ async def on_message(message):
 			member_discriminator=""
 		else:
 			member_name=member.name
-			member_discriminator=member.discriminator
-		embed=discord.Embed(title="Lottery winner",description=f"**Winner:** {member_name}+{member_discriminator}\n**Prize:** {content[0]} cc")
+			member_discriminator="#"+str(member.discriminator)
+		embed=discord.Embed(title="Lottery winner",description=f"**Winner:** {member_name}{member_discriminator}\n**Prize:** {content[0]} cc")
 		await message.channel.send(embed=embed)
 		if member==None:
 			return
 		if member.dm_channel==None:
 			await member.create_dm()
 		channel=member.dm_channel
-		await channel.send(f"Congratulations :tada:, you have the lottery. You have {content[0]} cc")
+		await channel.send(f":tada: Congratulations **{member.name}#{member.discriminator}**, you have won the lottery. You have won **{content[0]} cc**")
 	'''if ((message.author.id!=442673891656335372 and message.author.id!=448127767184146432) and message.author!=bot.user ) and message.content.startswith("c!"):
 		await channel.send("Updating bot, edt : 2hrs")
 		return'''
