@@ -73,7 +73,7 @@ async def on_message(message):
 			if member!=None:
 				break
 		x=db2_collection.find_one({"id":int(content[1])})
-		db2_collection.update_one({"id":x[0]},{"$set":{"Credits": int(x["Credits"])+int(content[0])}})
+		db2_collection.update_one({"id": x["id"]},{"$set":{"Credits": int(x["Credits"])+int(content[0])}})
 		await message.delete()
 		if member==None:
 			member_name=content[1]
