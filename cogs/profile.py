@@ -72,6 +72,7 @@ class about(commands.Cog):
 			embed=discord.Embed()
 			embed.set_thumbnail(url=f"{User.avatar_url}")
 			embed.set_author(name=f"{User.name}#{User.discriminator}")
+			x["Credits"]="{:,.0f} cc".format(x["Credits"])
 			embed.add_field(name="Wallet",value=f"{x['Credits']}",inline=False)
 			await ctx.send(embed=embed)
 
