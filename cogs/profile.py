@@ -54,5 +54,26 @@ class about(commands.Cog):
 			embed.add_field(name="Recent results",value=rs)
 			embed.set_footer(text=f"Current streak: {x['current_streak']}  Highest streak: {x['highest_streak']}")
 			await ctx.send(embed=embed)
+	@commands.command(aliases=["bal"])
+	@commands.guild_only()
+	async def wallet(self,ctx,user:discord.Member=None):
+		if user==None:
+			User=ctx.message.author
+		else:
+			User=user
+		x=db2_collection.find_one({"id": User.id})
+		if x==None:
+			if user==None:
+				await ctx.send("Create an account by typing `c!register`")
+				return
+			else:
+				await ctx.send(f"Looks like {User.name} doesnt have an account")
+		else:
+			embed=discord.Embed()
+			embed.set_thumbnail(url=f"{User.avatar_url}")
+			embed.set_author(name=f"{User.name}#{User.discriminator}")
+			embed.add_field(name="Wallet",value=f"{x['Credits']}",inline=False)
+			await ctx.send(embed=embed)
+
 def setup(bot):
 	bot.add_cog(about(bot))
