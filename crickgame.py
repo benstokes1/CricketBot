@@ -314,6 +314,7 @@ async def help(ctx,*,com=None):
 		   "share": "Transfers specified amount to the specified member",
 		   "rich":"Displays top 5 richest players of guild/discord.",
 		   "log": "Logs all the match results of the matches running in the server, in the specified channel",
+		   "wallet": "Displays the current balance of the user", 
 		  "announcements": "Displays latest updates/announcements, if any."}
 		syntax={"top": "`c!top <global/server>`",
 			"register": "`c!register`",
@@ -336,7 +337,8 @@ async def help(ctx,*,com=None):
 			"rich": "`c!rich <global/server>`",
 			"share": "`c!share <@mention> amount`",
 			"log": "`c!log <#channel>`",
-			"announcements": "`c!announcements`"
+			"announcements": "`c!announcements`",
+			"wallet": "`c!wallet`"
 		       }
 		if com.lower() not in l:
 			return
@@ -362,7 +364,7 @@ async def guide(ctx):
 @bot.command(aliases=["commands"])
 async def list_of_commands(ctx):
 	embed1=discord.Embed(title="Command List",description="Here is the list of commands!\nFor more info on a specific command, use `c!help {command}`\nNeed more help? Come join our [guild](https://discord.gg/DayDsCV).")
-	embed1.add_field(name="General commands :",value="`top` `register` `leagues` `profile` `set about` `announcements` `rich` `share` `log`",inline=False)
+	embed1.add_field(name="General commands :",value="`top` `register` `leagues` `profile` `set about` `wallet` `announcements` `rich` `share` `log`",inline=False)
 	embed1.add_field(name="Match commands :",value="`challenge` `decline` `accept` `select_team` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
 	await ctx.send(embed=embed1)
 @bot.command()
