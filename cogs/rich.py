@@ -24,7 +24,7 @@ class rich(commands.Cog):
 	@commands.guild_only()
 	async def rich(self,ctx,m=None):
 		if m==None:
-			await ctx.send("Syntax: `c!top <server/globa>`")
+			await ctx.send("Syntax: `c!rich <server/global>`")
 			return
 		x=db2_collection.find().sort("Credits",-1)
 		top_players=[]
