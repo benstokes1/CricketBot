@@ -418,8 +418,11 @@ async def guide(ctx):
 @bot.command(aliases=["commands"])
 async def list_of_commands(ctx):
 	embed1=discord.Embed(title="Command List",description="Here is the list of commands!\nFor more info on a specific command, use `c!help {command}`\nNeed more help? Come join our [guild](https://discord.gg/DayDsCV).")
-	embed1.add_field(name="General commands :",value="`top` `register` `leagues` `profile` `set about` `wallet` `announcements` `rich` `share` `log`",inline=False)
-	embed1.add_field(name="Match commands :",value="`challenge` `decline` `accept` `select_team` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
+	embed1.add_field(name=":military_medal: Rankings",value="`top` `rich`",inline=False)
+	embed1.add_field(name=":moneybag: Economy",value="`wallet` `share` `lottery`",inline=False)
+	embed1.add_field(name=":performing_arts: Social",value="`register` `set about` `profile`",inline=False)
+	embed1.add_field(name=":cricket_game: Match commands",value="`challenge` `decline` `accept` `select_team` `leagues` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
+	embed1.add_field(name=":wrench: Utility",value="`log` `help` `commands` `announcements`",inline=False)
 	await ctx.send(embed=embed1)
 @bot.command()
 @commands.guild_only()
