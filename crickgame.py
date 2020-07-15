@@ -407,7 +407,7 @@ async def help(ctx,*,com=None):
 			embed.add_field(name="Syntax",value=syntax[com.lower()],inline=False)
 			embed.add_field(name="Aliases",value=synonyms[com.lower()],inline=False)
 			await ctx.send(embed=embed)
-@bot.command()
+@bot.command(aliases=["link"])
 async def invite(ctx):
 	embed=discord.Embed(title="Invite link",description="Invite the bot now!\n\n[Invite](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)")
 	await ctx.send(embed=embed)
