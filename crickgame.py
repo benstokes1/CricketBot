@@ -370,7 +370,7 @@ async def help(ctx,*,com=None):
 			"log": "`None`",
 			"announcements": "`None`",
 			"wallet": "`bal`",
-			 "lottery": "`lotto`"
+			 "lottery": "`lotto`",
 			 "lottery buy": "`None`"
 		       }
 		syntax={"top": "`c!top <global/server>`",
