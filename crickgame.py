@@ -22,7 +22,6 @@ db3_name=db1_client["banned_members"]
 db3_collection=db3_name["ids"]
 db4_name=db_client["Logs"]
 db4_collection = db4_name["Channels"]
-
 #loading cogs
 for filename in os.listdir("./cogs"):
 	if filename.endswith(".py"):
