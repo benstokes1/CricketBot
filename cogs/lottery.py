@@ -51,7 +51,7 @@ class lottery(commands.Cog):
                 x["pool"]+=100
                 db3_collection.update_one({},{"$set":{"pool":x["pool"],"participants":x["participants"]}})
                 db2_collection.update_one({"id":y["id"]},{"$set":{"Credits": y["Credits"]-100}})
-                await ctx.send(f"You have been given a ticket, your ticket id is {len(x['participants'])}")
+                await ctx.send(f"You have been given a ticket, your ticket id is {len(x['participants'])}.")
                 channel=self.bot.get_channel(732643877009227807)
                 xy=db3_collection.find_one()
                 await channel.send(f"**{ctx.message.author.name}#{ctx.message.author.discriminator}** has bought a ticket(id: {len(x['participants'])}), current pool: {xy['pool']}")
