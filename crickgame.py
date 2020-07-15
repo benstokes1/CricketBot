@@ -282,7 +282,7 @@ async def los(ctx):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Added few commands.\n`rich` `share` `log`\nUse `c!help {command}` to check info.\nAlso added credits, which we be awarded to u for winning. These creds will come into use in the later updates :smile:"
+	announcement="Added a lottery system. You can buy a lottery ticket using `c!lottery buy`. A winner will be drawn every 12 hours. A lottery ticket costs 100 cc.\nTo know more about lottery use `c!help lottery`"
 	embed=discord.Embed(title="Announcement",description=announcement)
 	await ctx.message.delete()
 	await ctx.send(embed=embed)
@@ -326,6 +326,8 @@ async def help(ctx,*,com=None):
 		   "register":"Creates an account on the name of the user.",
 		   "leagues":"Displays list of leagues available from which teams can be chosen.",
 		   "profile":"Displays profile of the user.",
+		   "lottery": "Similar to the real life lottery, you will be given a ticket. A winner is drawn every 12 hours.",
+		   "lottery buy": "Used to buy a lottery ticket",
 		   "set about":"Changes the **about** of the user in his profile.",
 		   "challenge":"Used to challenge a user.",
 		   "select_team":"Used to select a team from default teams.",
@@ -362,12 +364,14 @@ async def help(ctx,*,com=None):
 			"scoreboard": "`scorecard` `sb`",
 			"end": "`None`",
 			"decline": "`deny`",
-			"accept": None,
+			"accept": "`None`",
 			"rich": "`None`",
 			"share": "`transfer`",
 			"log": "`None`",
 			"announcements": "`None`",
-			"wallet": "`bal`"
+			"wallet": "`bal`",
+			 "lottery": "`lotto`"
+			 "lottery buy": "`None`"
 		       }
 		syntax={"top": "`c!top <global/server>`",
 			"register": "`c!register`",
@@ -391,7 +395,9 @@ async def help(ctx,*,com=None):
 			"share": "`c!share <@mention> amount`",
 			"log": "`c!log <#channel>`",
 			"announcements": "`c!announcements`",
-			"wallet": "`c!wallet`"
+			"wallet": "`c!wallet`",
+			"lottery":"`c!lottery` ",
+			"lottery buy":"`c!lottery buy`",
 		       }
 		if com.lower() not in l:
 			return
@@ -419,7 +425,7 @@ async def guide(ctx):
 async def list_of_commands(ctx):
 	embed1=discord.Embed(title="Command List",description="Here is the list of commands!\nFor more info on a specific command, use `c!help {command}`\nNeed more help? Come join our [guild](https://discord.gg/DayDsCV).")
 	embed1.add_field(name=":military_medal: Rankings",value="`top` `rich`",inline=False)
-	embed1.add_field(name=":moneybag: Economy",value="`wallet` `share` `lottery`",inline=False)
+	embed1.add_field(name=":moneybag: Economy",value="`wallet` `share` `lottery` `lottery buy`",inline=False)
 	embed1.add_field(name=":performing_arts: Social",value="`register` `set about` `profile`",inline=False)
 	embed1.add_field(name=":cricket_game: Match commands",value="`challenge` `decline` `accept` `select_team` `leagues` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
 	embed1.add_field(name=":wrench: Utility",value="`log` `help` `commands` `announcements`",inline=False)
