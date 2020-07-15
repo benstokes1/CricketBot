@@ -318,7 +318,7 @@ async def suggest(ctx,*,suggestion=None):
 @commands.guild_only()
 async def help(ctx,*,com=None):
 	if com==None:
-		embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="`My prefix is 'c!'`\n\n[Invite me](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)\n\n[Guild Link](https://discord.gg/DayDsCV)\n\n[Guide link](https://rb.gy/vagecy)")
+		embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="`My prefix is 'c!'`\nTo view all the commands use `c!commands`.\n\n[Invite me](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)\n\n[Guild Link](https://discord.gg/DayDsCV)\n\n[Guide link](https://rb.gy/vagecy)")
 		embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
 		await ctx.send(embed=embed)
 	else:
@@ -428,7 +428,7 @@ async def list_of_commands(ctx):
 	embed1.add_field(name=":moneybag: Economy",value="`wallet` `share` `lottery` `lottery buy`",inline=False)
 	embed1.add_field(name=":performing_arts: Social",value="`register` `set about` `profile`",inline=False)
 	embed1.add_field(name=":cricket_game: Match",value="`challenge` `decline` `accept` `select_team` `leagues` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
-	embed1.add_field(name=":wrench: Utility",value="`log` `help` `commands` `announcements`",inline=False)
+	embed1.add_field(name=":wrench: Utility",value="`log` `help` `commands` `announcements` `link` `guide` `server`",inline=False)
 	await ctx.send(embed=embed1)
 @bot.command()
 @commands.guild_only()
