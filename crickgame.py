@@ -427,7 +427,7 @@ async def list_of_commands(ctx):
 	embed1.add_field(name=":military_medal: Rankings",value="`top` `rich`",inline=False)
 	embed1.add_field(name=":moneybag: Economy",value="`wallet` `share` `lottery` `lottery buy`",inline=False)
 	embed1.add_field(name=":performing_arts: Social",value="`register` `set about` `profile`",inline=False)
-	embed1.add_field(name=":cricket_game: Match commands",value="`challenge` `decline` `accept` `select_team` `leagues` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
+	embed1.add_field(name=":cricket_game: Match",value="`challenge` `decline` `accept` `select_team` `leagues` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
 	embed1.add_field(name=":wrench: Utility",value="`log` `help` `commands` `announcements`",inline=False)
 	await ctx.send(embed=embed1)
 @bot.command()
