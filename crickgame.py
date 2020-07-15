@@ -327,7 +327,7 @@ async def help(ctx,*,com=None):
 		   "leagues":"Displays list of leagues available from which teams can be chosen.",
 		   "profile":"Displays profile of the user.",
 		   "lottery": "Similar to the real life lottery, you will be given a ticket. A winner is drawn every 12 hours.",
-		   "lottery buy": "Used to buy a lottery ticket",
+		   "lottery buy": "Used to buy a lottery ticket.",
 		   "set about":"Changes the **about** of the user in his profile.",
 		   "challenge":"Used to challenge a user.",
 		   "select_team":"Used to select a team from default teams.",
