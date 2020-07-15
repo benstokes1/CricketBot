@@ -67,6 +67,11 @@ async def on_message(message):
 	if message.author.id==732113054921130005 and message.channel.id==732581435353071688:
 		content=message.content
 		content=content.split("\n")
+		if len(content)<2:
+			await message.delete()
+			embed=discord.Embed(title="A winner couldn't be determined.",description="Due to less number of participants, a winner couldn't be determined.")
+			await message.channel.send(embed=embed)
+			return
 		member=None
 		for i in bot.guilds:
 			member=i.get_member(int(content[1]))
