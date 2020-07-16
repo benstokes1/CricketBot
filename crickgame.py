@@ -414,12 +414,6 @@ async def invite(ctx):
 async def server(ctx):
 	embed=discord.Embed(colour=discord.Color.blue(),title="Join the server and support us!",description="[Server Link](https://discord.gg/DayDsCV)")
 	await ctx.send(embed=embed)
-@bot.command()
-async def guide(ctx):
-	
-	link="Follow the guide given in the link below, if u still don't understand how to use it, you can join the official server and seek help from the staff\n\n"+"[Guide Link](https://rb.gy/vagecy)\n"+"[Server Link](https://discord.gg/DayDsCV)"
-	embed=discord.Embed(colour=discord.Color.blue(),title="Guide Link",description=link)
-	await ctx.send(embed=embed)
 @bot.command(aliases=["commands"])
 async def list_of_commands(ctx):
 	embed1=discord.Embed(title="Command List",description="Here is the list of commands!\nFor more info on a specific command, use `c!help {command}`\nNeed more help? Come join our [guild](https://discord.gg/DayDsCV).")
