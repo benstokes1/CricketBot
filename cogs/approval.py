@@ -49,7 +49,7 @@ class approval(commands.Cog):
 					if player1==None or player2==None:
 						await ctx.send("Select Teams by typing `c!select_team`.")	
 					else:
-						await ctx.send(f"Duel between **{player1.name}** and **{player2.name}** has started.\nSelect Teams by typing `c!select_team`.")
+						await ctx.send(f"Duel between **{player1.name}** and **{player2.name}** has started.\nCheck the available leagues by `c!leagues`.")
 					db_collection.update_one({"Team2_member_id": Team2_id},{"$set":{"status": 1}})
 				else:
 					return
