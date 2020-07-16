@@ -53,7 +53,7 @@ class toss(commands.Cog):
 		embed.set_image(url="https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif")
 		mess=await ctx.send(embed=embed)
 		def check(message):
-			return	(message.author.id==caller)
+			return	(message.author.id==caller and (message.content.title() in outcomes))
 		try:
 			msg = await self.bot.wait_for('message', timeout=7.0, check=check)
 		except asyncio.TimeoutError:
