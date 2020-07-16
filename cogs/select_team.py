@@ -22,7 +22,7 @@ class select_team(commands.Cog):
 	@commands.guild_only()
 	async def select_team(self,ctx,number1=None,number=None):
 		t=db1_collection.find_one()
-		if ctx.message.author.id not in t:
+		if ctx.message.author.id not in t["ids"]:
 			return
 		arr = ["International","IPL"]
 		if number1==None:
