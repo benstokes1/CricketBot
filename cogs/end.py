@@ -31,7 +31,7 @@ class end(commands.Cog):
 				else:
 					temp=ctx.message.guild.get_member(x["Team1_member_id"])
 					if temp==None:
-						await ctx.send("Looks like your opponent isn't in this server, trying using in a command in a different server")
+						await ctx.send("Looks like your opponent isn't in this server, trying using the command in a different server")
 						return
 					team1_member=None
 					for i in self.bot.guilds:
@@ -66,7 +66,7 @@ class end(commands.Cog):
 
 				temp=ctx.message.guild.get_member(x["Team2_member_id"])
 				if temp==None:
-					await ctx.send("Looks like your opponent isn't in this server, trying using in a command in a different server")
+					await ctx.send("Looks like your opponent isn't in this server, trying using the command in a different server")
 					return
 				team2_member=None
 				for i in self.bot.guilds:
