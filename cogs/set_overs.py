@@ -23,6 +23,7 @@ class set_overs(commands.Cog):
 	async def set_overs(self,ctx,number=None):
 		if number==None:
 			await ctx.send("Syntax: `c!set_overs <number>`")
+			return
 		x=db_collection.find_one({"Team1_member_id":ctx.message.author.id})
 		if x==None:
 			x=db_collection.find_one({"Team2_member_id":ctx.message.author.id})
