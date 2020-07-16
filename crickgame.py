@@ -281,7 +281,7 @@ async def los(ctx):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Added a lottery system. You can buy a lottery ticket using `c!lottery buy`. A winner will be drawn every 12 hours. A lottery ticket costs 100 cc.\nTo know more about lottery use `c!help lottery`"
+	announcement="Added a guide, type `c!guide` to check."
 	embed=discord.Embed(title="Announcement",description=announcement)
 	await ctx.message.delete()
 	await ctx.send(embed=embed)
@@ -420,7 +420,7 @@ async def list_of_commands(ctx):
 	embed1.add_field(name=":military_medal: Rankings",value="`top` `rich`",inline=False)
 	embed1.add_field(name=":moneybag: Economy",value="`wallet` `share` `lottery` `lottery buy`",inline=False)
 	embed1.add_field(name=":performing_arts: Social",value="`register` `set about` `profile`",inline=False)
-	embed1.add_field(name=":cricket_game: Match",value="`challenge` `decline` `accept` `select_team` `leagues` `show_teams` `team` `setovers` `toss` `choose` `select_player` `bowl` `scoreboard` `end`",inline=False)
+	embed1.add_field(name=":cricket_game: Match",value="`challenge` `decline` `accept` `leagues` `select_team` `setovers` `toss` `choose` `show_teams` `team` `select_player` `bowl` `scoreboard` `end`",inline=False)
 	embed1.add_field(name=":wrench: Utility",value="`log` `ping` `help` `commands` `announcements` `link` `guide` `server`",inline=False)
 	await ctx.send(embed=embed1)
 @bot.command()
