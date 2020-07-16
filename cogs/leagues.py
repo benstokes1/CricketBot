@@ -28,5 +28,8 @@ class show_leagues(commands.Cog):
 			list_of_leagues+=str(i+1)+".  "+str(available_leagues[i])+"\n"
 		embed=discord.Embed(title="Leagues",description=list_of_leagues)
 		await ctx.send(embed=embed)
+		y=db1_collection.find_one()
+		if ctx.author.id in y["ids"]:
+			await ctx.send("Select team by using `c!st <league_id>`")
 def setup(bot):
 	bot.add_cog(show_leagues(bot))
