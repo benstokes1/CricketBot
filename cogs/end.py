@@ -29,7 +29,7 @@ class end(commands.Cog):
 					await ctx.send("No matches are running")
 					return
 				else:
-					temp=ctx.message.guild..get_member(x["Team1_member_id"])
+					temp=ctx.message.guild.get_member(x["Team1_member_id"])
 					if temp==None:
 						await ctx.send("Looks like your opponent isn't in this server, trying using in a command in a different server")
 						return
