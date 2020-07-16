@@ -61,17 +61,18 @@ class toss(commands.Cog):
 				embed=discord.Embed(title=f'Oh! Its a {answer}')
 				await mess.edit(embed=embed)
 				return
-			if choice!=None:
-				embed=discord.Embed(title=f'Oh! Its a {answer}')
-				await mess.edit(embed=embed)
 			if x["Score_card"]["Toss"]!=0:
 				embed=discord.Embed(title=f'Oh! Its a {answer}')
 				await mess.edit(embed=embed)
 				return
 			else:
-				embed=discord.Embed(title=f'Response error: No/wrong input given')
-				await mess.edit(embed=embed)
-				return
+				if choice!=None:
+					embed=discord.Embed(title=f'Oh! Its a {answer}')
+					await mess.edit(embed=embed)
+				else:
+					embed=discord.Embed(title=f'Response error: No/wrong input given')
+					await mess.edit(embed=embed)
+					return
 				
 		else:
 			await asyncio.sleep(2)			
