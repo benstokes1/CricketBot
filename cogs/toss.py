@@ -66,7 +66,7 @@ class toss(commands.Cog):
 				await mess.edit(embed=embed)
 				return
 			else:
-				if choice!=None:
+				if choice!=None and x["Score_card"]["Toss"]==0:
 					embed=discord.Embed(title=f'Oh! Its a {answer}')
 					await mess.edit(embed=embed)
 				else:
