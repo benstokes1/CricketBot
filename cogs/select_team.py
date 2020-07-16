@@ -21,6 +21,9 @@ class select_team(commands.Cog):
 	@commands.command(aliases=["st","ct"])
 	@commands.guild_only()
 	async def select_team(self,ctx,number1=None,number=None):
+		t=db1_collection.find_one()
+		if ctx.message.author.id not in t:
+			return
 		arr = ["International","IPL"]
 		if number1==None:
 			await ctx.send("Syntax : `c!select_team <league_id> <team_id>`")
@@ -38,7 +41,6 @@ class select_team(commands.Cog):
 		
 		with open ("./Teams/"+team+".json") as f:
 			d=json.load(f)
-		team=team[:-5]
 		available_teams=[]
 		for i in d:
 			available_teams.append(i)
