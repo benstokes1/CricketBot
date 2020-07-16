@@ -43,13 +43,13 @@ class select_team(commands.Cog):
 		for i in d:
 			available_teams.append(i)
 		team_list=""
-		print(available_teams)
 		for i in range(len(available_teams)):
 			team_list+=str(i+1)+". "+available_teams[i]+"\n"
 		if number==None:
 			embed=discord.Embed(title="Teams",description=team_list)
 			embed.set_footer(text=f"To select a team use `c!select_team {number1+1} <team_id>`")
 			await ctx.send(embed=embed)
+			await ctx.send(f"Now select your team, `c!st {number1} <team_id>")
 		else:
 			try:
 				number=int(number)-1
