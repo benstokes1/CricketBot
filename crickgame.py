@@ -431,8 +431,8 @@ async def ping(ctx):
 async def on_guild_join(guild):
 	i=bot.get_channel(733538403269738538)
 	embed=discord.Embed(colour=discord.Color.green(),title="Join-Log")
-	embed.add_field(name="Guild-count",value=f"{len(guild.name)}",inline=False)
-	embed.add_field(name="Guild-name",value=f"{bot.guilds}",inline=False)
+	embed.add_field(name="Guild-count",value=f"{len(bot.guilds)}",inline=False)
+	embed.add_field(name="Guild-name",value=f"{guild.name}",inline=False)
 	embed.set_thumbnail(url=f"{guild.icon_url}")
 	embed.add_field(name="Guild-id",value=f"{guild.id}",inline=False)
 	embed.add_field(name="Owner-Name",value=f"{guild.owner.name}#{guild.owner.discriminator}",inline=False)
