@@ -49,5 +49,7 @@ class register(commands.Cog):
 		}
 		db2_collection.insert_one(data)
 		await ctx.send("Account created successfully!\nType `c!profile` to check the profile")
+		chnl=bot.get_channel(733542814453071974)
+		await chnl.send(f"{ctx.message.author.name} has created an account in {ctx.message.guild.name} server.")
 def setup(bot):
 	bot.add_cog(register(bot))
