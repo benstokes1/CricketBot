@@ -32,6 +32,9 @@ class share(commands.Cog):
         if amount==None:
             await ctx.send("`Syntax: c!share <@mention> <amount>`")
             return
+        if trainer1==trainer2:
+            await ctx.send("Wait, buy a piggy bank bruh!")
+            return
         try:
             amount=int(amount)
         except:
