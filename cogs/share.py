@@ -55,5 +55,6 @@ class share(commands.Cog):
         await ctx.send("`Money transfer succesful, Current balance: {:,.0f} cc`".format(giver['Credits']))
 	chnl=bot.get_channel(733543421712662528)
 	await chnl.send(f"Money({amount} cc) transferred from **{ctx.message.author.name}#{ctx.author.discriminator}**({ctx.message.author.id}) to **{trainer2.name}#{trainer2.discriminator}**({trainer2.id})")
+
 def setup(bot):
 	bot.add_cog(share(bot))
