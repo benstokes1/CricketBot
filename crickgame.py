@@ -325,7 +325,7 @@ async def help(ctx,*,com=None):
 		   "register":"Creates an account on the name of the user.",
 		   "leagues":"Displays list of leagues available from which teams can be chosen.",
 		   "profile":"Displays profile of the user.",
-		   "lottery": "Similar to the real life lottery, you will be given a ticket. A winner is drawn every 12 hours.",
+		   "lottery": "Similar to the real life lottery, you will be given a ticket. A winner is drawn every 12 hours.\nA ticket can be bought using `c!lottery buy` command",
 		   "lottery buy": "Used to buy a lottery ticket.",
 		   "set about":"Changes the **about** of the user in his profile.",
 		   "challenge":"Used to challenge a user.",
