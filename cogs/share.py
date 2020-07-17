@@ -53,5 +53,7 @@ class share(commands.Cog):
         db2_collection.update_one({"id":trainer2.id},{"$set":{"Credits": taker["Credits"]}})
         db2_collection.update_one({"id":trainer1.id},{"$set":{"Credits": giver["Credits"]}})
         await ctx.send("`Money transfer succesful, Current balance: {:,.0f} cc`".format(giver['Credits']))
+	chnl=bot.get_channel(733543421712662528)
+	await chnl.send(f"Money({amount} cc) transferred from **{ctx.message.author.name}#{ctx.author.discriminator}**({ctx.message.author.id}) to **{trainer2.name}#{trainer2.discriminator}**({trainer2.id})")
 def setup(bot):
 	bot.add_cog(share(bot))
