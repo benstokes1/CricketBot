@@ -427,5 +427,24 @@ async def list_of_commands(ctx):
 @commands.guild_only()
 async def ping(ctx):
 	await ctx.send(f"Pong! {round(bot.latency*1000)}ms")
-
+@bot.event
+async def on_guild_join(guild):
+	i=bot.get_channel(733538403269738538)
+	embed=discord.Embed(colour=discord.Color.green(),title="Join-Log")
+	embed.add_field(name="Guild-name",value=f"{guild.name}",inline=False)
+	embed.set_thumbnail(url=f"{guild.icon_url}")
+	embed.add_field(name="Guild-id",value=f"{guild.id}",inline=False)
+	embed.add_field(name="Owner-Name",value=f"{guild.owner.name}#{guild.owner.discriminator}",inline=False)
+	embed.add_field(name="Owner-id",value=f"{guild.owner.id}",inline=False)
+	embed.add_field(name="Member-count",value=f"{len(guild.members)}",inline=False)
+	await i.send(embed=embed)
+	l=['bots','cricket','general']
+	for i in guild.channels:
+		for k in l:
+			if k in i.name.lower() and type(i)==discord.TextChannel:
+				embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="`My prefix is 'c!'`\nTo view all the commands use `c!commands`.\n\n[Invite me](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)\n\n[Guild Link](https://discord.gg/DayDsCV)\n\n[Guide link](https://rb.gy/vagecy)")
+				embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
+				await i.send(embed=embed)
+				break
+				
 bot.run(os.getenv("BOT_TOKEN"))
