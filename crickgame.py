@@ -269,11 +269,13 @@ async def los(ctx):
 	ids=[492711291836956678,442673891656335372]
 	if ctx.message.author.id in ids:
 		l=[]
+		b=[]
 		for i in bot.guilds:
 			l.append(i.name)
+			b.append(i.id)
 		s=""
 		for i in range(len(l)):
-			s+=str(i+1)+". "+l[i]+"\n"
+			s+=str(i+1)+". "+l[i]+"\nId: "+str(b[i])+"\n\n"
 		embed=discord.Embed(title="Servers",description=s)
 		await ctx.send(embed=embed)
 	else:
