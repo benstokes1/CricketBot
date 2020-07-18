@@ -61,7 +61,7 @@ async def on_message(message):
 	x=db3_collection.find_one()
 	channel=message.channel
 	if message.author.id in x["ids"] and message.content.startswith("c!"):
-		await channel.send("You have been banned :muscle:")
+		await channel.send("You have been banned :muscle:.")
 		return
 	if message.author.id==732113054921130005 and message.channel.id==732581435353071688:
 		content=message.content
@@ -134,7 +134,7 @@ async def log(ctx,chnl:discord.TextChannel=None):
 @bot.command()
 @commands.guild_only()
 async def ban(ctx,person:discord.Member=None):
-	ids=[442673891656335372]
+	ids=[442673891656335372,492711291836956678]
 	if ctx.message.author.id not in ids:
 		return
 	else:
@@ -143,6 +143,10 @@ async def ban(ctx,person:discord.Member=None):
 		else:
 			if person.bot==True:
 				await ctx.send("Can't ban a bot")
+				return
+			if person.id in ids:
+				await ctx.send("Can't ban the owners sorry.")
+				return
 			x=db3_collection.find_one()
 			x["ids"].append(person.id)
 			db3_collection.update_one({},{"$set":{"ids": x["ids"]}})
@@ -151,7 +155,7 @@ async def ban(ctx,person:discord.Member=None):
 @bot.command()
 @commands.guild_only()
 async def unban(ctx,person:discord.Member=None):
-	ids=[442673891656335372]
+	ids=[442673891656335372,492711291836956678]
 	if ctx.message.author.id not in ids:
 		return
 	else:
@@ -161,6 +165,7 @@ async def unban(ctx,person:discord.Member=None):
 		else:
 			if person.bot==True:
 				return
+			
 			x=db3_collection.find_one()
 			if person.id not in x["ids"]:
 				await ctx.send("Looks like they aren't banned")
