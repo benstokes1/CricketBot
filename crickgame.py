@@ -96,6 +96,9 @@ async def on_message(message):
 	'''if ((message.author.id!=442673891656335372 and message.author.id!=448127767184146432) and message.author!=bot.user ) and message.content.startswith("c!"):
 		await channel.send("Updating bot, edt : 2hrs")
 		return'''
+	if message.guild.id==702193286810435604 and message.content.startswith("c!"):
+		await channel.send("oops!, something went wrong")
+		return
 	if bot.user.mentioned_in(message) and message.mention_everyone is False:
 		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
