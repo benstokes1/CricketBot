@@ -28,13 +28,26 @@ for filename in os.listdir("./cogs"):
 		bot.load_extension(f"cogs.{filename[:-3]}")
 @bot.event
 async def on_ready():
-	print("Less go\n",datetime.datetime.now().strftime("%X"))
-	r=len(bot.guilds)
-	if r==1:
-		game = discord.Game(f"Cricket in {r} Guild")	
-	else:
-		game = discord.Game(f"Cricket in {r} Guilds")
-	await bot.change_presence(status=None, activity=game)
+	print("Less go")
+	k=0
+	while (1):
+		if k%2==0:
+			global number_of_servers
+			number_of_servers=len(bot.guilds)
+			if number_of_servers==1:
+				game = discord.Game(f"Playing cricket in {number_of_servers} guild.")	
+			else:
+				game = discord.Game(f"Playing cricket in {number_of_servers} guilds.")
+			await bot.change_presence(status=None, activity=game)
+		else:
+			global number_of_trainers
+			number_of_trainers=0
+			for i in bot.guilds:
+				number_of_trainers+=len(i.members)
+			game = discord.Game(f"Taking care of {number_of_trainers} players.")
+			await bot.change_presence(status=None, activity=game)
+		k+=1
+		await asyncio.sleep(10)
 @bot.event
 async def on_guild_join(guild):
 
