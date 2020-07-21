@@ -40,11 +40,10 @@ async def on_ready():
 				game = discord.Game(f"cricket in {number_of_servers} guilds.")
 			await bot.change_presence(status=None, activity=game)
 		else:
-			global number_of_trainers
-			number_of_trainers=0
-			for i in bot.guilds:
-				number_of_trainers+=len(i.members)
-			game = discord.Game(f"with {number_of_trainers} players.")
+			
+			sizee=db2_collection.find_one()
+			sizee=len(sizee["ids"])
+			game = discord.Game(f"with {sizee} players.")
 			await bot.change_presence(status=None, activity=game)
 		k+=1
 		await asyncio.sleep(10)
