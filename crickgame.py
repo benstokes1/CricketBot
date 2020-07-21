@@ -40,7 +40,7 @@ async def on_ready():
 				game = discord.Game(f"cricket in {number_of_servers} guilds.")
 			await bot.change_presence(status=None, activity=game)
 		else:
-			sizee=db2_collection.find_one()
+			sizee=db2_collection.find()
 			count=0
 			for i in sizee:
 				count+=1
