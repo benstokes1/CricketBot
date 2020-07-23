@@ -20,10 +20,9 @@ class top(commands.Cog):
         	self.bot=bot
 	@commands.command()
 	@commands.guild_only()
-	async def top(self,ctx,m=None):
-		if m==None:
-			await ctx.send("Syntax: `c!top <server/globa>`")
-			return
+	async def top(self,ctx,m=None):		
+		if m==None or m.lower() not in ["server","global"]:
+			m="server"
 		x=db2_collection.find().sort([("won",-1),("winning_percentage",-1)])
 		top_players=[]
 		if m.lower()=="server":
