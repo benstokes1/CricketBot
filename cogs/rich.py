@@ -23,9 +23,8 @@ class rich(commands.Cog):
 	@commands.command()
 	@commands.guild_only()
 	async def rich(self,ctx,m=None):
-		if m==None:
-			await ctx.send("Syntax: `c!rich <server/global>`")
-			return
+		if m==None or m.lower() not in ["server","global"]:
+			m="server"
 		x=db2_collection.find().sort("Credits",-1)
 		top_players=[]
 		if m.lower()=="server":
