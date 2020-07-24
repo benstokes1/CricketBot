@@ -30,6 +30,6 @@ class show_leagues(commands.Cog):
 		await ctx.send(embed=embed)
 		y=db1_collection.find_one()
 		if ctx.author.id in y["ids"]:
-			await ctx.send("Select team by using `c!st <league_id>`")
+			await ctx.send("Select league by using `c!st <league_id>`")
 def setup(bot):
 	bot.add_cog(show_leagues(bot))
