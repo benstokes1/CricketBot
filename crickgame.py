@@ -49,15 +49,6 @@ async def on_ready():
 		k+=1
 		await asyncio.sleep(10)
 @bot.event
-async def on_guild_join(guild):
-
-	r=len(bot.guilds)
-	if r==1:
-		game = discord.Game(f"Cricket in {r} Guild")	
-	else:
-		game = discord.Game(f"Cricket in {r} Guilds")
-	await bot.change_presence(status=None, activity=game)
-@bot.event
 async def on_guild_remove(guild):
 	condition={"Server_Id": guild.id}
 	db_collection.delete_one(condition) 
