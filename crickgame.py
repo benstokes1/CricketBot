@@ -98,8 +98,8 @@ async def on_message(message):
 @bot.command()
 @commands.guild_only()
 async def test(ctx):
-	last="```**Match #"+"1"+"**\n**"+"A"+"** won over **"+"B"+"** by "+"0"+" runs"
-	last+="\n\n**First Innings Score :**\t\t\t\t\t\t\t\t**Second Innings Score :**\nScore : 0\t\t\t\t\t\t\t\tScore: 0```"
+	last="**Match #"+"1"+"**\n**"+"A"+"** won over **"+"B"+"** by "+"0"+" runs"
+	last+="\n\n**First Innings Score :**\t\t\t\t\t\t\t**Second Innings Score :**\nScore : 0\t\t\t\t\t\t\t\t\tScore: 0"
 	embed=discord.Embed(title="Test",description=last)
 	await ctx.send(embed=embed)
 @bot.command()
