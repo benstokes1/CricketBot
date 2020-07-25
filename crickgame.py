@@ -98,9 +98,9 @@ async def on_message(message):
 @bot.command()
 @commands.guild_only()
 async def test(ctx):
-	last="**Match #"+"1"+"**\n**"+"A"+"** won over **"+"B"+"** by "+"0"+" runs"
-	embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\t\t**Second Innings Score :**\nScore : 0 \t\tScore: 0")
-	await ctx.send(embed=embed)
+	last="```**Match #"+"1"+"**\n**"+"A"+"** won over **"+"B"+"** by "+"0"+" runs"
+	last+="\n\n**First Innings Score :**\t\t**Second Innings Score :**\nScore : 0 \t\tScore: 0```"
+	await ctx.send(last)
 @bot.command()
 @commands.guild_only()
 async def log(ctx,chnl:discord.TextChannel=None):
