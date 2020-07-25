@@ -48,18 +48,7 @@ async def on_ready():
 			await bot.change_presence(status=None, activity=game)
 		k+=1
 		await asyncio.sleep(10)
-@bot.event
-async def on_guild_remove(guild):
-	condition={"Server_Id": guild.id}
-	db_collection.delete_one(condition) 
-	r=len(bot.guilds)
-	if r==1:
-		game = discord.Game(f"Cricket in {r} Guild")	
-	elif r==0:
-		game = discord.Game(f"Cracking nuts all alone")
-	else:
-		game = discord.Game(f"Cricket in {r} Guilds")
-	await bot.change_presence(status=None, activity=game)
+
 @bot.event
 async def on_message(message):
 	x=db3_collection.find_one()
