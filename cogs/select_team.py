@@ -73,10 +73,10 @@ class select_team(commands.Cog):
 						return
 					if (x["Team1_name"]!="None" and x["Team1_name"]==available_teams[number]) or (x["Team1_name"]!="None" and team!=x["league"]):
 						if (x["Team1_name"]!="None" and x["Team1_name"]==available_teams[number]):
-							await ctx.send(f"The other player already chose {available_teams[number]}\nChoose an other team")
+							await ctx.send(f"The other player already chose {available_teams[number]}\nChoose an other team {ctx.author.mention}")
 							return
 						else:
-							await ctx.send(f"Choose a team from same league, **{team.title()}**")
+							await ctx.send(f"Choose a team from same league {ctx.author.mention}, **{team.title()}**")
 							return
 					x["Team2_name"]=available_teams[number]
 					db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"Team2_name":available_teams[number],"Team2_data.Lineup":d[available_teams[number]]}})
@@ -94,10 +94,10 @@ class select_team(commands.Cog):
 					return
 				if (x["Team2_name"]!="None" and x["Team2_name"]==available_teams[number]) or (x["Team2_name"]!="None" and team!=x["league"]):
 					if (x["Team2_name"]!="None" and x["Team2_name"]==available_teams[number]):
-						await ctx.send(f"The other player already chose {available_teams[number]}\nChoose an other team")
+						await ctx.send(f"The other player already chose {available_teams[number]}\nChoose an other team {ctx.author.mention}")
 						return
 					else:
-						await ctx.send(f"Choose a team from same league, **{team.title()}**")
+						await ctx.send(f"Choose a team from same league {ctx.author.mention}, **{team.title()}**")
 						return
 				x["Team1_name"]=available_teams[number]
 				player_list=""
