@@ -157,27 +157,27 @@ class bowl(commands.Cog):
 
 			#calculation of the output width 
 			rc0=ri0+rrv-((2*wlv)+wpv+fv+bsv)
-			print("Zero: ",rc0)
+			
 			rc1=ri1+(2*(rrv-wlv))
-			print("One: ",rc1)
+			
 			rc2=ri2+(2*(rrv-wlv))
-			print("Two: ",rc2)
+			
 			rc3=ri3+(wlv-rrv)
-			print("Three: ",rc3)
+			
 			rc4=ri4+(wlv+wpv+fv+bsv-rrv)
-			print("Four: ",rc4)
+			
 			rc6=ri6+(wlv+wpv+fv+bsv-rrv)
-			print("Six: ",rc6)
+			
 			owc=owi+(wlv-wpv-fv-bsv-rrv)
-			print("Wicket: ",owc)
+			
 			orc=ori+(wlv-wpv-fv-bsv-rrv)
-			print("Run-out: ",orc)
+			
 			occ=oci+(wlv-wpv-fv-bsv-rrv)
-			print("Catch-out: ",occ)
+			
 			bwc=bwi+(wpv+fv+bsv)
-			print("Wide: ",bwc)
+			
 			bnc=bni+(wpv+fv+bsv)
-			print("No-ball: ",bnc)
+			
 
 			#getting random integer
 			with open ("./cache/outcomes.json","r") as f:
