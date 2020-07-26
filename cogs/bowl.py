@@ -484,7 +484,7 @@ class bowl(commands.Cog):
 				if o=="no-ball":
 					This_over+=" "+str(z)+"nb"
 				elif o=="wicket":
-					This_over+=" "+"W"
+					This_over+=" "+"0"
 				else:
 					This_over+=" "+str(o)
 		else:
