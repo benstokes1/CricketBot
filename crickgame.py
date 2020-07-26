@@ -97,11 +97,17 @@ async def on_message(message):
 	await bot.process_commands(message)
 @bot.command()
 @commands.guild_only()
-async def test(ctx):
-	last="**Match #"+"1"+"**\n**"+"A"+"** won over **"+"B"+"** by "+"0"+" runs"
-	last+="\n\n**First Innings Score :**\t\t\t**Second Innings Score :**\nScore : 999/10\t\t\t\t\t\t\t\t\tScore: 998/10"
-	embed=discord.Embed(title="Test",description=last)
-	await ctx.send(embed=embed)
+async def read(ctx):
+	with open ("./cache/super-over.json","r") as f:
+		data=json.load(f)
+	await ctx.send(data)
+@bot.command()
+@commands.guild_only()
+async def write(ctx,*,txt):
+	id={"data":txt}
+	with open ("./cache/super-over.json","w") as f:
+		json.dump(id,f)
+	await ctx.send("Dumped data")
 @bot.command()
 @commands.guild_only()
 async def log(ctx,chnl:discord.TextChannel=None):
