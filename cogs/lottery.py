@@ -54,7 +54,7 @@ class lottery(commands.Cog):
                 await ctx.send(f"You have been given a ticket, your ticket id is {len(x['participants'])}.")
                 channel=self.bot.get_channel(732643877009227807)
                 xy=db3_collection.find_one()
-                await channel.send(f"**{ctx.message.author.name}#{ctx.message.author.discriminator}** has bought a ticket(id: {len(x['participants'])}), current pool: {xy['pool']}")
+                await channel.send(f"**{ctx.message.author.name}#{ctx.message.author.discriminator}** has bought a lottery ticket(id: {len(x['participants'])}), current pool: {xy['pool']}")
                 return
         
             
