@@ -459,13 +459,14 @@ async def on_guild_join(guild):
 				break
 @bot.event
 async def on_guild_remove(guild):
-	i=bot.get_channel(733538403269738538)
+	i=bot.get_channel(736880625621008444)
 	embed=discord.Embed(colour=discord.Color.green(),title="Leave-Log")
+	embed.add_field(name="Guild-count",value=f"{len(bot.guilds)}",inline=False)
 	embed.add_field(name="Guild-name",value=f"{guild.name}",inline=False)
 	embed.set_thumbnail(url=f"{guild.icon_url}")
 	embed.add_field(name="Guild-id",value=f"{guild.id}",inline=False)
 	embed.add_field(name="Owner-Name",value=f"{guild.owner.name}#{guild.owner.discriminator}",inline=False)
 	embed.add_field(name="Owner-id",value=f"{guild.owner.id}",inline=False)
+	embed.add_field(name="Member-count",value=f"{len(guild.members)}",inline=False)
 	await i.send(embed=embed)
-				
 bot.run(os.getenv("BOT_TOKEN"))
