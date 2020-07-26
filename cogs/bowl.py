@@ -64,21 +64,183 @@ class bowl(commands.Cog):
 			return
 		x=x["Score_card"]
 		v=x["Overs"].split(".")
-		a=v[0]
 		if (v[1]=='0' and x["Last_ball"]=="wicket") and original_data["This_over"]=="":
 			Batting_team["Current_batting"].reverse()
+		#winning-percent
+		wpi_data=db2_collection.find_one({"id": Batting_team_id})
+		wpi_per=wpi_data["winning_percentage"]/100
+		#Form
+		fi_value=0
+		count=10
+		recent_matches=list(reversed(wpi_data["recent_results"]))
+		if len(recent_matches)==0:
+			fi_value=20
+		else:
+			for i in wpi_data["recent_results"]:
+				d={"W":1,"L":0}
+				fi_value+=d[i]*count
+				count-=1
+		#Batting-skill
+		bs_order=Batting_team["Lineup"].index(Batting_team["Current_batting"][0])
+		bs_bs={"1": 80,"5": 80,"3": 100,"4": 90,"2": 90,"6":70,"7":70,"8":60,"9":60,"10":50,"11":50}
+		bs_bsi=bs_bs[str(bs_order+1)]
+		#Run-rate
+		rr_balls=int(v[0])*6+int(v[1])
+		rr_score=x["Score"]
+		if rr_balls==0:
+			rr_rri=3
+		else:
+			rr_rri=rr_score/rr_balls
+		#Wickets
+		wl_wli=original_data["Maximum_wickets"]-x["Wickets"]
 		c=x["Maximum_overs"].split(".")
 		c=c[0]
-		#outcomes=[1]
-		outcomes=[1, 4, 2, 2, 2, 6, 'no-ball', 3, 2, 2, 2, 4, 1, 1, 2, 1, 2, 1, 'wicket', 1, 3, 1, 'wicket', 0, 2, 'no-ball', 1, 2, 2, 'wicket', 0, 1, 'wicket', 'wide', 2, 1, 'no-ball', 2, 4, 2, 'wide', 6, 1, 3, 0, 1, 3, 2, 'no-ball', 1, 2, 1, 0, 'wicket', 'wide', 3, 2, 6, 1, 4, 1, 3, 'wide', 4, 3, 2, 0, 4, 6, 1, 'wicket', 2, 0, 4, 4, 3, 'wide', 2, 0, 0, 1, 'wide', 1, 1]
-		if a=='0':
-			#outcomes=[1]
-			outcomes=[1, 4, 'wicket', 4, 'wide', 2, 1, 0, 'no-ball', 0, 3, 1, 1, 2, 6, 1, 1, 4, 0, 4, 'wicket', 0, 4, 'no-ball', 0, 4, 'wide', 6, 6, 4, 6, 3, 2, 'wicket', 1, 4, 'wicket', 4, 2, 0, 2, 3, 2, 4, 6, 1, 1, 'wicket', 0, 'wicket', 4, 0, 'wide', 4, 6, 0, 4, 3, 4, 6, 0, 6, 1, 2, 'wide', 2, 2, 2, 4]
-		elif a==str(int(c)-1) and a!='0':
-			#outcomes=[1]
-			outcomes=[0, 2, 'wicket', 1, 'wicket', 'wicket', 0, 4, 1, 6, 4, 4, 4, 1, 6, 0, 2, 6, 1, 0, 1, 1, 'no-ball', 1, 4, 1, 'wide', 0, 1, 4, 'wicket', 'no-ball', 'no-ball', 4, 'wicket', 0, 0, 3, 3, 3, 'wide', 4, 4, 0, 0, 'wicket', 6, 2, 4, 2, 4, 'wide', 2, 'no-ball', 4, 2, 6, 4, 2, 2, 2, 4, 6, 4, 6, 3, 2, 6, 0, 'wide', 1]
-		random.shuffle(outcomes)
-		o=random.choice(outcomes)
+		def give_result():
+			#c!bowl command event code here 
+			#from down starts the code which involves the processes to be executed when c!bowl command is entered 
+
+
+			
+			#following are the global variables 
+
+			# default values for output
+			ri0=150;ri1=150;ri2=150;ri3=50;ri4=100;ri6=100;owi=100;ori=50;oci=50;bwi=50;bni=50
+
+			# default values for variables
+			rrd=3;fd=20;bsd=75;wpd=0.5;wld=5
+			if x["Target"]==0:
+				pass
+			else:
+				rrd_overs=original_data["Maximum_overs"]*6
+				rrd=(x["Target"])/(rrd_overs)
+
+			#default factor values for variables
+			rrf=5;ff=0.5;wlf=2;wpf=20;bsf=0.4
+
+
+
+
+			#following are the variables for current value of outputs
+			#rc0,rc1,rc2,rc3,rc4,rc6,owc,orc,occ,bwc,bnc
+
+			#following are the variables to be added or substracted from width 
+			#rrv,fv,wlv,wpv,bsv
+			
+
+
+			#following are the variables which will take in inputs 
+			#rri,fi,wli,wpi,bsi
+
+			#taking the input value same as the default value for time being so that the variables don't come in play yet
+			#runrate
+			rri=rr_rri
+			#batting-skill
+			bsi=bs_bsi
+			#winning-percent
+			wpi=wpi_per
+			#wickets-left
+			wli=wl_wli
+			#form
+			fi=fi_value
+
+
+
+			#calculation for the final value of variables
+			rrv=(rri-rrd)*rrf
+			fv=(fi-fd)*ff
+			wlv=(wli-wld)*wlf
+			wpv=(wpi-wpd)*wpf
+			bsv=(bsi-bsd)*bsf
+
+
+
+
+			#calculation of the output width 
+			rc0=ri0+rrv-((2*wlv)+wpv+fv+bsv)
+			print("Zero: ",rc0)
+			rc1=ri1+(2*(rrv-wlv))
+			print("One: ",rc1)
+			rc2=ri2+(2*(rrv-wlv))
+			print("Two: ",rc2)
+			rc3=ri3+(wlv-rrv)
+			print("Three: ",rc3)
+			rc4=ri4+(wlv+wpv+fv+bsv-rrv)
+			print("Four: ",rc4)
+			rc6=ri6+(wlv+wpv+fv+bsv-rrv)
+			print("Six: ",rc6)
+			owc=owi+(wlv-wpv-fv-bsv-rrv)
+			print("Wicket: ",owc)
+			orc=ori+(wlv-wpv-fv-bsv-rrv)
+			print("Run-out: ",orc)
+			occ=oci+(wlv-wpv-fv-bsv-rrv)
+			print("Catch-out: ",occ)
+			bwc=bwi+(wpv+fv+bsv)
+			print("Wide: ",bwc)
+			bnc=bni+(wpv+fv+bsv)
+			print("No-ball: ",bnc)
+
+			#getting random integer
+			with open ("./cache/outcomes.json","r") as f:
+				prev_outcome=json.load(f)
+			if len(list(prev_outcome.keys()))==0:
+				previous_outcome=0
+			else:
+				previous_outcome=int(prev_outcome[str(original_data["_id"])])
+			while 1:
+				rin=(random.randint(0,1001))
+				if abs(rin-previous_outcome)>=50:
+					break
+			if len(list(prev_outcome.keys()))==0:
+				prev_outcome={str(original_data["_id"]) : rin}
+			else:
+				prev_outcome[str(original_data["_id"])]=rin
+			with open ("./cache/outcomes.json","w") as f:
+				json.dump(prev_outcome,f)
+			print(rin,"\n")
+			#checking for output and printing results 
+			if (rin<=rc3):
+				return 3
+			else: 
+				rin=rin-rc3
+				if (rin<=orc):
+					return "wicket"	
+				else:
+					rin=rin-orc
+					if(rin<=rc0):
+						return 0
+					else:
+						rin=rin-rc0
+						if(rin<=rc2):
+							return 2
+						else:
+							rin=rin-rc2
+							if(rin<=rc4):
+								return 4
+							else:
+								rin=rin-rc4
+								if(rin<=owc):
+									return "wicket"
+								else:		
+									rin=rin-owc
+									if(rin<=rc6):
+										return 6
+									else:
+										rin=rin-rc6
+										if(rin<=bwc):
+											return "wide"
+										else:
+											rin=rin-bwc
+											if(rin<=rc1):
+												return 1
+											else: 
+												rin=rin-rc1
+												if(rin<=occ):
+													return "wicket"
+												else:
+													return "no-ball"
+			
+		
+		o=give_result()
 		if o==0:
 			img="https://thumbs.gfycat.com/CrazyRigidGyrfalcon-size_restricted.gif"
 			txt="Well bowled! no runs came off that ball"
@@ -174,6 +336,7 @@ class bowl(commands.Cog):
 			db1_collection.update_one({},{"$set":{"ids": p}})
 			team1_profile=db2_collection.find_one({"id": Batting_team_id})
 			team2_profile=db2_collection.find_one({"id": Bowling_team_id})
+			u=db4_collection.find_one()
 			#team1
 			team1_profile["current_streak"]+=1
 			if team1_profile["current_streak"]>team1_profile["highest_streak"]:
@@ -194,15 +357,16 @@ class bowl(commands.Cog):
 			team2_profile["Credits"]+=750
 			db2_collection.update_one({"id": team1_profile["id"]},{"$set":{"now_match":"","matches_played":team1_profile["matches_played"],"won":team1_profile["won"],"highest_streak":team1_profile["highest_streak"],"current_streak": team1_profile["current_streak"],"recent_results": team1_profile["recent_results"],"Credits": team1_profile["Credits"],"winning_percentage": round((team1_profile["won"]/team1_profile["matches_played"])*100,4)}})
 			db2_collection.update_one({"id": team2_profile["id"]},{"$set":{"now_match":"","matches_played":team2_profile["matches_played"],"lost":team2_profile["lost"],"current_streak": team2_profile["current_streak"],"recent_results": team2_profile["recent_results"],"Credits": team2_profile["Credits"],"winning_percentage": round((team2_profile["won"]/team2_profile["matches_played"])*100,4)}})
-
-			u=db4_collection.find_one()
 			if str(ctx.message.guild.id) in u["ids"]:
 				chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
 				u['ids'][str(ctx.message.guild.id)][1]+=1
 				if chnl!=None:
 					last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n\n**"+team2_profile['now_match']+"** won over **"+team1_profile['now_match']+"** by "+str(10-int(x["Wickets"]))+" wickets"
 					embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
-					await chnl.send(embed=embed)
+					try:
+						await chnl.send(embed=embed)
+					except:
+						await ctx.send(f"Looks like I don't have permissions to send messages in {chnl.mention}")
 				db4_collection.update_one({},{"$set":{"ids":u["ids"]}})
 			return
 		if o=='wicket':
@@ -259,8 +423,6 @@ class bowl(commands.Cog):
 						team2_profile["Credits"]+=750
 						db2_collection.update_one({"id": team1_profile["id"]},{"$set":{"Credits": team1_profile["Credits"],"now_match":"","matches_played":team1_profile["matches_played"],"won":team1_profile["won"],"highest_streak":team1_profile["highest_streak"],"current_streak": team1_profile["current_streak"],"recent_results": team1_profile["recent_results"],"winning_percentage": round((team1_profile["won"]/team1_profile["matches_played"])*100,4)}})
 						db2_collection.update_one({"id": team2_profile["id"]},{"$set":{"Credits": team2_profile["Credits"],"now_match":"","matches_played":team2_profile["matches_played"],"lost":team2_profile["lost"],"current_streak": team2_profile["current_streak"],"recent_results": team2_profile["recent_results"],"winning_percentage": round((team2_profile["won"]/team2_profile["matches_played"])*100,4)}})
-
-						
 						u=db4_collection.find_one()
 						if str(ctx.message.guild.id) in u["ids"]:
 							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
@@ -268,8 +430,11 @@ class bowl(commands.Cog):
 							if chnl!=None:
 								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** won over **"+team1_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
-								await chnl.send(embed=embed)
-							db4_collection.update_one({},{"$set":{"ids":u["ids"]}})
+								try:
+									await chnl.send(embed=embed)
+								except:
+									await ctx.send(f"Looks like I don't have permissions to send messages in {chnl.mention}")
+							db4_collection.update_one({},{"$set":{"ids":u["ids"]}})							
 						return
 					else:
 						last="GG both teams, well played! Since it turned out to be no one's, lets go for a super-over..."+Batting_team_name+" will bat first"
@@ -392,7 +557,6 @@ class bowl(commands.Cog):
 						team2_profile["Credits"]+=750
 						db2_collection.update_one({"id": team1_profile["id"]},{"$set":{"Credits": team1_profile["Credits"],"now_match":"","matches_played":team1_profile["matches_played"],"won":team1_profile["won"],"highest_streak":team1_profile["highest_streak"],"current_streak": team1_profile["current_streak"],"recent_results": team1_profile["recent_results"],"winning_percentage": round((team1_profile["won"]/team1_profile["matches_played"])*100,4)}})
 						db2_collection.update_one({"id": team2_profile["id"]},{"$set":{"Credits": team2_profile["Credits"],"now_match":"","matches_played":team2_profile["matches_played"],"lost":team2_profile["lost"],"current_streak": team2_profile["current_streak"],"recent_results": team2_profile["recent_results"],"winning_percentage": round((team2_profile["won"]/team2_profile["matches_played"])*100,4)}})
-						
 						u=db4_collection.find_one()
 						if str(ctx.message.guild.id) in u["ids"]:
 							chnl=self.bot.get_channel(u["ids"][str(ctx.message.guild.id)][0])
@@ -400,7 +564,10 @@ class bowl(commands.Cog):
 							if chnl!=None:
 								last="**Match #"+str(u["ids"][str(ctx.message.guild.id)][1])+"**\n**"+team2_profile["now_match"]+"** won over **"+team1_profile["now_match"]+"** by "+str(int(x["Target"])-int(x["Score"])-1)+" runs"
 								embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
-								await chnl.send(embed=embed)
+								try:
+									await chnl.send(embed=embed)
+								except:
+									await ctx.send(f"Looks like I don't have permissions to send messages in {chnl.mention}")
 							db4_collection.update_one({},{"$set":{"ids":u["ids"]}})
 						return
 					elif int(x["Score"])==int(int(x["Target"])-1):
