@@ -334,8 +334,6 @@ class bowl(commands.Cog):
 			Bowling_team["Bowling"][Bowling_team["Current_bowling"][0]]["runs"]+=d[z]
 			x["Score"]=int(x["Score"])+d[z]
 			if z not in extras:
-				Batting_team["Batting"][Batting_team["Current_batting"][0]]["runs"]+=d[z]
-				Batting_team["Batting"][Batting_team["Current_batting"][0]]["balls_faced"]+=1
 				if d[z]%2!=0:
 					Batting_team["Current_batting"].reverse()
 		if int(x["Score"])>=int(x["Target"]) and int(x["Target"])!=0:
