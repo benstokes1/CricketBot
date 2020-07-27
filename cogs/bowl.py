@@ -104,7 +104,7 @@ class bowl(commands.Cog):
 			#following are the global variables 
 
 			# default values for output
-			ri0=150;ri1=150;ri2=150;ri3=50;ri4=100;ri6=100;owi=100;ori=50;oci=50;bwi=50;bni=50
+			ri0=120;ri1=180;ri2=180;ri3=50;ri4=120;ri6=100;owi=50;ori=50;oci=50;bwi=50;bni=50
 
 			# default values for variables
 			rrd=3;fd=20;bsd=75;wpd=0.5;wld=5
@@ -201,45 +201,56 @@ class bowl(commands.Cog):
 				json.dump(prev_outcome,f)
 			print(rin,"\n")
 			#checking for output and printing results 
-			if (rin<=rc3):
-				return 3
-			else: 
-				rin=rin-rc3
-				if (rin<=orc):
-					return "wicket"	
+			if (rin<=occ):
+				print(rin,"cw")
+				return "wicket"
+			else:
+				rin-=occ
+				if rin<=orc:
+					print(rin,"rw")
+					return "wicket"
 				else:
-					rin=rin-orc
-					if(rin<=rc0):
-						return 0
+					rin-=orc
+					if rin<=rc6:
+						print(rin,"6")
+						return 6
 					else:
-						rin=rin-rc0
-						if(rin<=rc2):
-							return 2
+						rin-=rc6
+						if rin<=rc1:
+							print(rin,"1")
+							return 1
 						else:
-							rin=rin-rc2
-							if(rin<=rc4):
-								return 4
+							rin-=rc1
+							if rin<=owc:
+								print(rin,"w")
+								return "wicket"
 							else:
-								rin=rin-rc4
-								if(rin<=owc):
-									return "wicket"
-								else:		
-									rin=rin-owc
-									if(rin<=rc6):
-										return 6
+								rin-=owc
+								if rin<=rc0:
+									print(rin,"0")
+									return 0
+								else:
+									rin-=rc0
+									if rin<=rc3:
+										print(rin,"3")
+										return 3
 									else:
-										rin=rin-rc6
-										if(rin<=bwc):
-											return "wide"
+										rin-=rc3
+										if rin<=rc2:
+											print(rin,"2")
+											return 2
 										else:
-											rin=rin-bwc
-											if(rin<=rc1):
-												return 1
-											else: 
-												rin=rin-rc1
-												if(rin<=occ):
-													return "wicket"
+											rin-=rc2
+											if rin<=rc4:
+												print(rin,"4")
+												return 4
+											else:
+												rin-=rc4
+												if rin<=bwc:
+													print(rin,"wide")
+													return "wide"
 												else:
+													print(rin,"nb")
 													return "no-ball"
 			
 		
