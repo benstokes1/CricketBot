@@ -297,7 +297,7 @@ async def los(ctx):
 @bot.command()
 @commands.guild_only()
 async def announcements(ctx):
-	announcement="Added a guide, type `c!guide` to check."
+	announcement="Made the scoreboard a bit realistic, now it shows an innings' Batting team and Bowling team individual player scores"
 	embed=discord.Embed(title="Announcement",description=announcement)
 	await ctx.message.delete()
 	await ctx.send(embed=embed)
