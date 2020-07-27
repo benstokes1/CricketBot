@@ -57,10 +57,7 @@ class score_board(commands.Cog):
 		for i in Batting_players:
 			if i in Batting_team["Batting"]:
 				if i in Batting_team["Current_batting"]:
-					if Batting_team["Current_batting"][0]==i:
-						out_batting+="```{:<25}".format(i)+"{:<20}".format("notout")+"{}({})*```".format(Batting_team["Batting"][i]["runs"],Batting_team["Batting"][i]["balls_faced"])
-					else:
-						out_batting+="```{:<25}".format(i)+"{:<20}".format("notout")+"{}({})```".format(Batting_team["Batting"][i]["runs"],Batting_team["Batting"][i]["balls_faced"])
+					out_batting+="```{:<25}".format(i)+"{:<20}".format("notout")+"{}({})```".format(Batting_team["Batting"][i]["runs"],Batting_team["Batting"][i]["balls_faced"])
 				if i in Batting_team['Batsmen_out']:
 					out_batting+="```{:<25}".format(i)+"{:<20}".format("out")+"{}({})```".format(Batting_team["Batting"][i]["runs"],Batting_team["Batting"][i]["balls_faced"])
 			else:
