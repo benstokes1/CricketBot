@@ -71,7 +71,7 @@ class guide(commands.Cog):
         await m.add_reaction("⬅️")
         await m.add_reaction("➡️")	
         def check(reaction, user):
-            return user.id==ctx.message.author.id
+            return (user.id==ctx.message.author.id and m.id==reaction.message.id)
         while 1:
             try:
                 reaction, user = await self.bot.wait_for('reaction_add', timeout=30.0, check=check)
