@@ -7,7 +7,7 @@ import datetime
 import pymongo
 import json
 import math
-
+m=None
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
 db1_client=pymongo.MongoClient(os.getenv("DB2_URL"))
 db_name=db1_client["Challenge"]
@@ -22,6 +22,7 @@ class score_board(commands.Cog):
 	@commands.command(aliases=["scorecard","sb"])
 	@commands.guild_only()
 	async def scoreboard(self,ctx):
+		global m
 		x=db_collection.find_one({"Team1_member_id": ctx.message.author.id})
 		if x==None:
 			x=db_collection.find_one({"Team2_member_id": ctx.message.author.id})
