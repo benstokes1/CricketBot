@@ -67,7 +67,7 @@ class score_board(commands.Cog):
 			balls_reamining=score_board["Overs"].split(".")
 			balls_reamining=int(balls_reamining[0])*6+int(balls_reamining[1])
 			balls_reamining=x["Maximum_overs"]*6-balls_reamining
-			out_batting+="```"+Batting_team_name+" needs "+str(score_board["Target"]-score_board["Score"])+" from "+str(balls_reamining)+"."
+			out_batting+="```"+Batting_team_name+" needs "+str(score_board["Target"]-score_board["Score"])+" from "+str(balls_reamining)+".```"
 		for i in Bowling_players:
 			balls_thrown=str(Bowling_players[i]["balls_thrown"]//6)+"."+str(Bowling_players[i]["balls_thrown"]%6)
 			try:
