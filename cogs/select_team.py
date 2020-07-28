@@ -80,7 +80,7 @@ class select_team(commands.Cog):
 							return
 					x["Team2_name"]=available_teams[number]
 					db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"Team2_name":available_teams[number],"Team2_data.Lineup":d[available_teams[number]]}})
-					embed=discord.Embed(title="Teams",description=player_list)
+					embed=discord.Embed(title="Playing XI",description=player_list)
 					await ctx.send(content=f"**{available_teams[number]}** selected\n`Heres the list of playin XI`",embed=embed)
 					if x["Team2_name"]!="None" and x["Team1_name"]!="None":
 						await ctx.send("Set the overs by typing `c!set_overs`")
@@ -104,7 +104,7 @@ class select_team(commands.Cog):
 				for i in range(len(d[available_teams[number]])):
 					player_list+=str(i+1)+". "+d[available_teams[number]][i]+"\n"
 				db_collection.update_one({"Team1_member_id": ctx.message.author.id},{"$set":{"Team1_name":available_teams[number],"Team1_data.Lineup":d[available_teams[number]]}})
-				embed=discord.Embed(title="Teams",description=player_list)
+				embed=discord.Embed(title="Playing XI",description=player_list)
 				await ctx.send(content=f"**{available_teams[number]}** selected\n`Here's the list of playing XI`",embed=embed)
 				if x["Team2_name"]!="None" and x["Team1_name"]!="None":
 					await ctx.send("Set the overs by typing `c!set_overs`")
