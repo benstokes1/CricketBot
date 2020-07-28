@@ -50,13 +50,13 @@ class choose(commands.Cog):
 						if x["Team2_name"]=="None":
 							await ctx.send("Team 2 will be batting first")
 						else:
-							await ctx.send(f"**{x['Team2_name']}** will be batting first")
+							await ctx.send(f"**{x['Team2_name']}** will be batting first\nChoose players using `c!sp`")
 					else:
 						db_collection.update_one({"Team2_member_id": ctx.message.author.id},{"$set":{"Now_batting": x["Team1_member_id"]}})
 						if x["Team1_name"]=="None":
 							await ctx.send("Team 1 will be batting first")
 						else:
-							await ctx.send(f"**{x['Team1_name']}** will be batting first")
+							await ctx.send(f"**{x['Team1_name']}** will be batting first\nChoose players using `c!sp`")
 		else:
 			if x["Now_batting"]!=0:
 				return
@@ -72,12 +72,12 @@ class choose(commands.Cog):
 					if x["Team1_name"]=="None":
 						await ctx.send("Team 1 will be batting first")
 					else:
-						await ctx.send(f"**{x['Team1_name']}** will be batting first")
+						await ctx.send(f"**{x['Team1_name']}** will be batting first\nChoose players using `c!sp`")
 				else:
 					db_collection.update_one({"Team1_member_id": ctx.message.author.id},{"$set":{"Now_batting": x["Team2_member_id"]}})
 					if x["Team2_name"]=="None":
 						await ctx.send("Team 2 will be batting first")
 					else:
-						await ctx.send(f"**{x['Team2_name']}** will be batting first")
+						await ctx.send(f"**{x['Team2_name']}** will be batting first\nChoose players using `c!sp`")
 def setup(bot):
 	bot.add_cog(choose(bot))
