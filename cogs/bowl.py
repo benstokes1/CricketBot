@@ -337,7 +337,7 @@ class bowl(commands.Cog):
 				if d[z]%2!=0:
 					Batting_team["Current_batting"].reverse()
 		if int(x["Score"])>=int(x["Target"]) and int(x["Target"])!=0:
-			last=f"GG both teams, well played! "+Batting_team_name+" won over "+Bowling_team_name+" by "+str(10-int(x["Wickets"]))+" wickets"
+			last=f"GG both teams, well played! "+Batting_team_name+" won over "+Bowling_team_name+" by "+str(original_data["Maximum_wickets"]-int(x["Wickets"]))+" wickets"
 			embed=discord.Embed(title="Scoreboard",description=f"{last}\n\n**First Innings Score :**\nScore : {x['First_innings_score']}\n\n**Second Innings Score :**\nScore : {x['Score']}/{x['Wickets']}")
 			await ctx.send(embed=embed)
 			db_collection.delete_one({"Now_batting": original_data["Now_batting"]})
