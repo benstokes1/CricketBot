@@ -63,7 +63,6 @@ class end(commands.Cog):
 					team1_member_id=team2_member.id
 					team2_member_id=team1_member.id
 			else:
-
 				temp=ctx.message.guild.get_member(x["Team2_member_id"])
 				if temp==None:
 					await ctx.send("Looks like your opponent isn't in this server, try using the command in a different server")
