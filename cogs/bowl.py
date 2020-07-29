@@ -98,9 +98,6 @@ class bowl(commands.Cog):
 		def give_result():
 			#c!bowl command event code here 
 			#from down starts the code which involves the processes to be executed when c!bowl command is entered 
-
-
-			
 			#following are the global variables 
 
 			# default values for output
