@@ -188,7 +188,7 @@ class bowl(commands.Cog):
 					previous_outcome=0
 			while 1:
 				rin=(random.randint(0,1001))
-				if abs(rin-previous_outcome)>=50:
+				if abs(rin-previous_outcome)>=70:
 					break
 			if len(list(prev_outcome.keys()))==0:
 				prev_outcome={str(original_data["_id"]) : rin}
