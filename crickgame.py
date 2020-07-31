@@ -331,7 +331,7 @@ async def suggest(ctx,*,suggestion=None):
 @commands.guild_only()
 async def help(ctx,*,com=None):
 	if com==None:
-		embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="`My prefix is 'c!'`\nTo view all the commands use `c!commands`.\n\n[Invite me](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)\n\n[Guild Link](https://discord.gg/DayDsCV)\n\n[Guide link](https://rb.gy/vagecy)")
+		embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="`My prefix is 'c!'`\nTo view all the commands use `c!commands`.\n\n[Invite me](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)\n\n[Guild Link](https://discord.gg/DayDsCV)\n\n[Guide link](https://rb.gy/vagecy)\n\n")
 		embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
 		await ctx.send(embed=embed)
 	else:
@@ -457,7 +457,7 @@ async def on_guild_join(guild):
 	for i in guild.channels:
 		for k in l:
 			if k in i.name.lower() and type(i)==discord.TextChannel:
-				embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="`My prefix is 'c!'`\nTo view all the commands use `c!commands`.\n\n[Invite me](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)\n\n[Guild Link](https://discord.gg/DayDsCV)\n\n[Guide link](https://rb.gy/vagecy)")
+				embed=discord.Embed(colour=discord.Color.blue(),title="Help Menu",description="`My prefix is 'c!'`\nTo view all the commands use `c!commands`.\n\n[Invite me](https://discord.com/oauth2/authorize?client_id=723470180490936411&permissions=129024&scope=bot)\n\n[Guild Link](https://discord.gg/DayDsCV)\n\n[Guide link](https://rb.gy/vagecy)\n\n")
 				embed.set_footer(text="Feel free to give some suggestions on the bot by using `c!suggest <suggestion>`.")
 				await i.send(embed=embed)
 				break
