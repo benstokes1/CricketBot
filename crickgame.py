@@ -359,7 +359,8 @@ async def help(ctx,*,com=None):
 		   "rich":"Displays top 5 richest players of guild/discord.",
 		   "log": "Logs all the match results of the matches running in the server, in the specified channel",
 		   "wallet": "Displays the current balance of the user", 
-		  "announcements": "Displays latest updates/announcements, if any."}
+		  "announcements": "Displays latest updates/announcements, if any.",
+		  "suggest": "Sends a suggestion to the dev-team of the bot"}
 		synonyms={"top": "`None`",
 			"register": "`start` `create_account`",
 			"leagues": "`show_leagues` `league`",
@@ -384,7 +385,8 @@ async def help(ctx,*,com=None):
 			"announcements": "`None`",
 			"wallet": "`bal`",
 			 "lottery": "`lotto`",
-			 "lottery buy": "`None`"
+			 "lottery buy": "`None`",
+			  "suggest" :"`None`"
 		       }
 		syntax={"top": "`c!top <global/server>`",
 			"register": "`c!register`",
@@ -411,6 +413,7 @@ async def help(ctx,*,com=None):
 			"wallet": "`c!wallet`",
 			"lottery":"`c!lottery` ",
 			"lottery buy":"`c!lottery buy`",
+			"suggest":"`c!suggest`"
 		       }
 		if com.lower() not in l:
 			return
@@ -435,7 +438,7 @@ async def list_of_commands(ctx):
 	embed1.add_field(name=":moneybag: Economy",value="`wallet` `share` `lottery` `lottery buy`",inline=False)
 	embed1.add_field(name=":performing_arts: Social",value="`register` `set about` `profile`",inline=False)
 	embed1.add_field(name=":cricket_game: Match",value="`challenge` `decline` `accept` `leagues` `select_team` `setovers` `toss` `choose` `show_teams` `team` `select_player` `bowl` `scoreboard` `end`",inline=False)
-	embed1.add_field(name=":wrench: Utility",value="`log` `ping` `help` `commands` `announcements` `link` `guide` `server`",inline=False)
+	embed1.add_field(name=":wrench: Utility",value="`log` `ping` `help` `commands` `announcements` `suggest` `link` `guide` `server`",inline=False)
 	await ctx.send(embed=embed1)
 @bot.command()
 @commands.guild_only()
