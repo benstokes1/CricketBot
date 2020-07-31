@@ -95,19 +95,6 @@ async def on_message(message):
 	await bot.process_commands(message)
 @bot.command()
 @commands.guild_only()
-async def read(ctx):
-	with open ("./cache/super-over.json","r") as f:
-		data=json.load(f)
-	await ctx.send(data)
-@bot.command()
-@commands.guild_only()
-async def write(ctx,*,txt):
-	id={"data":txt}
-	with open ("./cache/super-over.json","w") as f:
-		json.dump(id,f)
-	await ctx.send("Dumped data")
-@bot.command()
-@commands.guild_only()
 async def log(ctx,chnl:discord.TextChannel=None):
 	if chnl==None:
 		await ctx.send("`Synatx: c!log <#channel>`")
