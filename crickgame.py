@@ -47,6 +47,7 @@ async def on_ready():
 			await bot.change_presence(status=None, activity=game)
 		k+=1
 		await asyncio.sleep(10)
+		
 @bot.event
 async def on_message(message):
 	x=db3_collection.find_one()
