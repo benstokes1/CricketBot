@@ -7,6 +7,7 @@ import pymongo
 import json
 import math
 import datetime
+import asyncio
 bot=commands.Bot(command_prefix='c!')
 bot.remove_command('help')
 db_client=pymongo.MongoClient(os.getenv("DB_URL"))
