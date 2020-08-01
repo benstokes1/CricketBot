@@ -109,7 +109,7 @@ async def participate(ctx):
 		for i in ctx.message.guild.roles:
 			if i.id==739113180059533373:
 				break
-		await ctx.author.add_role(i)
+		await ctx.author.add_roles(i)
 		await ctx.send("Registration successfull")
 	
 @bot.command()
