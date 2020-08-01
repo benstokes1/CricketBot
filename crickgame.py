@@ -110,7 +110,7 @@ async def participate(ctx):
 			if i.id==739113180059533373:
 				break
 		await ctx.author.add_role(i)
-		await ctx.send("Registration successfull)
+		await ctx.send("Registration successfull")
 	
 @bot.command()
 @commands.guild_only()
