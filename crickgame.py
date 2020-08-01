@@ -95,6 +95,23 @@ async def on_message(message):
 	if bot.user.mentioned_in(message) and message.mention_everyone is False:
 		await channel.send("My prefix is `c!` To learn how to use the bot, use the `c!help` command.")
 	await bot.process_commands(message)
+	
+@bot.command(aliases=["p"])
+@commands.guild_only()
+async def participate(ctx):
+	if ctx.message.channel.id!=739112206028767265:
+		return
+	else:
+		for i in ctx.author.roles:
+			if i.id==739113180059533373:
+				await ctx.send("Looks like you have registered already")
+				return
+		for i in ctx.message.guild.roles:
+			if i.id==739113180059533373:
+				break
+		await ctx.author.add_role(i)
+		await ctx.send("Registration successfull)
+	
 @bot.command()
 @commands.guild_only()
 async def log(ctx,chnl:discord.TextChannel=None):
