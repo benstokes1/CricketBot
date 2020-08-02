@@ -176,6 +176,7 @@ class bowl(commands.Cog):
 			bnc=bni+(wpv+fv+bsv)
 			
 
+			
 			#getting random integer
 			with open ("./cache/outcomes.json","r") as f:
 				prev_outcome=json.load(f)
@@ -183,17 +184,22 @@ class bowl(commands.Cog):
 				previous_outcome=0
 			else:
 				try:
-					previous_outcome=int(prev_outcome[str(original_data["_id"])])
+					if prev_outcome[str(original_data["_id"])][1]!=str(original_data["Now_batting"]):
+						prev_outcome[str(original_data["_id"])]=[0,original_data["Now_batting"]]
+						previous_outcome=0
+					else:
+						previous_outcome=int(prev_outcome[str(original_data["_id"])][0])
 				except:
 					previous_outcome=0
+
 			while 1:
 				rin=(random.randint(0,1001))
 				if abs(rin-previous_outcome)>=70:
 					break
 			if len(list(prev_outcome.keys()))==0:
-				prev_outcome={str(original_data["_id"]) : rin}
+				prev_outcome={str(original_data["_id"]) : [rin,original_data["Now_batting"]]}
 			else:
-				prev_outcome[str(original_data["_id"])]=rin
+				prev_outcome[str(original_data["_id"])][0]=rin
 			with open ("./cache/outcomes.json","w") as f:
 				json.dump(prev_outcome,f)
 			print(rin,"\n")
