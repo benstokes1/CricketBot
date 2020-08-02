@@ -202,58 +202,46 @@ class bowl(commands.Cog):
 				prev_outcome[str(original_data["_id"])][0]=rin
 			with open ("./cache/outcomes.json","w") as f:
 				json.dump(prev_outcome,f)
-			print(rin,"\n")
 			#checking for output and printing results 
 			if (rin<=occ):
-				print(rin,"cw")
 				return "wicket"
 			else:
 				rin-=occ
 				if rin<=orc:
-					print(rin,"rw")
 					return "wicket"
 				else:
 					rin-=orc
 					if rin<=rc6:
-						print(rin,"6")
 						return 6
 					else:
 						rin-=rc6
 						if rin<=rc1:
-							print(rin,"1")
 							return 1
 						else:
 							rin-=rc1
 							if rin<=owc:
-								print(rin,"w")
 								return "wicket"
 							else:
 								rin-=owc
 								if rin<=rc0:
-									print(rin,"0")
 									return 0
 								else:
 									rin-=rc0
 									if rin<=rc3:
-										print(rin,"3")
 										return 3
 									else:
 										rin-=rc3
 										if rin<=rc2:
-											print(rin,"2")
 											return 2
 										else:
 											rin-=rc2
 											if rin<=rc4:
-												print(rin,"4")
 												return 4
 											else:
 												rin-=rc4
 												if rin<=bwc:
-													print(rin,"wide")
 													return "wide"
 												else:
-													print(rin,"nb")
 													return "no-ball"
 			
 		
