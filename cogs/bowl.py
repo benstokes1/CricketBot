@@ -198,6 +198,8 @@ class bowl(commands.Cog):
 					break
 			if len(list(prev_outcome.keys()))==0:
 				prev_outcome={str(original_data["_id"]) : [rin,original_data["Now_batting"]]}
+			elif str(original_data["_id"]) not in list(prev_outcome.keys()):
+				prev_outcome[str(original_data["_id"])]= [rin,original_data["Now_batting"]]}
 			else:
 				prev_outcome[str(original_data["_id"])][0]=rin
 			with open ("./cache/outcomes.json","w") as f:
